@@ -12,27 +12,29 @@ module Project(
 	output [9:0] LEDR
 );
 
-  parameter DBITS    =32;
-  parameter INSTSIZE =32'd4;
-  parameter INSTBITS =32;
-  parameter REGNOBITS=4;
-  parameter IMMBITS  =16;
-  parameter STARTPC  =32'h100;
-  parameter ADDRHEX  =32'hFFFFF000;
-  parameter ADDRLEDR =32'hFFFFF020;
-  parameter ADDRKEY  =32'hFFFFF080;
-  parameter ADDRSW   =32'hFFFFF090;
+  parameter DBITS    =32; // This is a 32-bit architecture. The bus is 32 bits wide.
+  parameter INSTSIZE =32'd4; // Size of an instruction in bytes (used for incrementing PC).
+  parameter INSTBITS =32; // Size of an instruction in bits.
+  parameter REGNOBITS=4; // Number of bits needed to address all registers.
+  parameter IMMBITS  =16; // Number of bits in our immediate.
+  parameter STARTPC  =32'h100; // The initial address of our PC in instruction memory.
+  parameter ADDRHEX  =32'hFFFFF000; // Memory mapped I/O.
+  parameter ADDRLEDR =32'hFFFFF020; // Memory mapped I/O.
+  parameter ADDRKEY  =32'hFFFFF080; // Memory mapped I/O.
+  parameter ADDRSW   =32'hFFFFF090; // Memory mapped I/O.
+  
   // Change this to fmedian.mif before submitting
   parameter IMEMINITFILE="test.mif";
-  parameter IMEMADDRBITS=16;
-  parameter IMEMWORDBITS=2;
-  parameter IMEMWORDS=(1<<(IMEMADDRBITS-IMEMWORDBITS));
-  parameter DMEMADDRBITS=16;
-  parameter DMEMWORDBITS=2;
-  parameter DMEMWORDIDXBITS = DMEMADDRBITS-DMEMWORDBITS;
-  parameter DMEMWORDS=(1<<(DMEMADDRBITS-DMEMWORDBITS));
   
-  parameter OP1BITS  =6;
+  parameter IMEMADDRBITS=16; // Addressability of i-memory is 2^16
+  parameter IMEMWORDBITS=2; // There are 2^2 bytes per word
+  parameter IMEMWORDS=(1<<(IMEMADDRBITS-IMEMWORDBITS)); // We can map to this many words
+  parameter DMEMADDRBITS=16; // Addressability of d-memory is 2^16
+  parameter DMEMWORDBITS=2; // There are 2^2 bytes per word
+  parameter DMEMWORDIDXBITS = DMEMADDRBITS-DMEMWORDBITS; // lg(number of words in memory)
+  parameter DMEMWORDS=(1<<(DMEMADDRBITS-DMEMWORDBITS)); // number of words in memory
+  
+  parameter OP1BITS  =6; // # bits in primary opcode
   parameter OP1_EXT  =6'b000000;
   parameter OP1_BEQ  =6'b001000;
   parameter OP1_BLT  =6'b001001;
@@ -50,7 +52,7 @@ module Project(
   // Add parameters for secondary opcode values
     
   /* OP2 */
-  parameter OP2BITS  = 8;
+  parameter OP2BITS  = 8; // # bits in the secondary opcode
   parameter OP2_EQ   = 8'b00001000;
   parameter OP2_LT   = 8'b00001001;
   parameter OP2_LE   = 8'b00001010;
