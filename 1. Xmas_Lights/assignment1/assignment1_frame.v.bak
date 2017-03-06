@@ -1,0 +1,81 @@
+
+module assignment1_frame(
+	input        CLOCK_50,
+	input        RESET_N,
+	input  [3:0] KEY,
+	output [6:0] HEX0,
+	output [6:0] HEX1,
+	output [6:0] HEX2,
+	output [6:0] HEX3,
+	output [6:0] HEX4,
+	output [6:0] HEX5,
+	output [9:0] LEDR
+);
+
+	wire clk;
+	wire rst;
+	
+	reg [9:0] red_lights;
+	reg [3:0] multiplier = 32'd2;
+	reg [31:0] blink_timer = 32'd12500000;
+	reg [31:0] count = 32'd1;
+	reg [4:0] state = 32'd0;
+	reg [0:0] is_pressed = 1'b0;
+	
+	wire [31:0] full_timer = blink_timer * multiplier;
+	
+	assign clk = CLOCK_50;
+	assign rst = ~RESET_N;
+	
+	always@(posedge clk or posedge rst) begin
+		if(rst) begin
+			multiplier <= 2;
+		end
+		else if (!KEY[0] && !is_pressed && multiplier < 8) begin
+			is_pressed <= 1;
+			multiplier <= multiplier + 1;
+		end
+		else if (!KEY[1] && !is_pressed && multiplier > 1) begin
+			is_pressed <= 1;
+			multiplier <= multiplier - 1;
+		end
+		else if (KEY[0] && KEY[1]) begin
+			is_pressed <= 0;
+		end
+	end
+	
+	always@(posedge clk or posedge rst)begin 
+		if(rst) begin
+			state <= 0;
+			count <= 0;
+		end
+		else if (full_timer <= count) begin
+			count <= 0;
+			state <= state + 1;
+			if (state == 17) begin
+				state <= 0;
+			end
+		end
+		else begin
+			if(state == 0 || state == 2 || state == 4 || state == 12 || state == 14 || state == 16) begin
+				red_lights = 10'b1111100000;
+			end
+			if(state == 6 || state == 8 || state == 10 || state == 13 || state == 15 || state == 17) begin
+				red_lights = 10'b0000011111;
+			end
+			if(state == 1 || state == 3 || state == 5 || state == 7 || state == 9 || state == 11) begin
+				red_lights = 10'b0000000000;
+			end
+			count <= count + 1;
+		end
+	end
+	
+assign LEDR= red_lights;
+		
+	SevenSeg ss0(.IN(state),.OFF(1'b0),.OUT(HEX0));
+	SevenSeg ss1(.IN((state >> 4) & 1'b0001),.OFF(1'b0),.OUT(HEX1));
+	SevenSeg ss2(.IN(multiplier),.OFF(1'b0),.OUT(HEX3));
+	SevenSeg ss3(.IN(is_pressed),.OFF(1'b0),.OUT(HEX4));
+
+	
+endmodule

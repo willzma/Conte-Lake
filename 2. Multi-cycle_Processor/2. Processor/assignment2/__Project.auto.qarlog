@@ -1,0 +1,38 @@
+Quartus II Archive log --	C:/Users/Cokeran/Downloads/Assignment2_frame_2017-4_restored/__Project.auto.qarlog
+
+Archive:	C:/Users/Cokeran/Downloads/Assignment2_frame_2017-4_restored/__Project.auto.qar
+Date:		Wed Feb 22 12:42:05 2017
+Quartus II 64-Bit		14.0.0 Build 200 06/17/2014 SJ Web Edition
+
+	=========== Files Selected: ===========
+Assignment_frame_2017-4.qarlog
+C:/Users/Cokeran/Downloads/Assignment2_frame_2017-4_restored/Pll.cmp
+C:/Users/Cokeran/Downloads/Assignment2_frame_2017-4_restored/Pll/Pll_0002.qip
+C:/Users/Cokeran/Downloads/Assignment2_frame_2017-4_restored/Pll/Pll_0002.v
+C:/Users/Cokeran/Downloads/Assignment2_frame_2017-4_restored/Pll_sim/Pll.vo
+C:/Users/Cokeran/Downloads/Assignment2_frame_2017-4_restored/Test.asm
+C:/Users/Cokeran/Downloads/Assignment2_frame_2017-4_restored/db/Project.cbx.xml
+C:/Users/Cokeran/Downloads/Assignment2_frame_2017-4_restored/db/Project.qpf
+C:/Users/Cokeran/Downloads/Assignment2_frame_2017-4_restored/inclass-feg10.asm
+Debug_assignment_defaults.qdf
+Pll.qip
+Pll.sip
+Pll.v
+Project.archive.rpt
+Project.flow.rpt
+Project.map.rpt
+Project.map.smsg
+Project.map.summary
+Project.qsf
+Project.restore.rpt
+Project.sdc
+Project.v
+SevenSeg.v
+Test.mif
+__Project.auto.qarlog
+assignment_defaults.qdf
+inclass-feg10.mif
+	======= Total: 27 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

@@ -1,0 +1,36 @@
+Quartus II Archive log --	C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Assignment_frame_2017-4.qarlog
+
+Archive:	C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Assignment_frame_2017-4.qar
+Date:		Wed Feb 22 08:31:55 2017
+Quartus II 64-Bit		14.0.0 Build 200 06/17/2014 SJ Web Edition
+
+	=========== Files Selected: ===========
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Assignment_frame_2017-4.qarlog
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Debug.qsf
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Debug_assignment_defaults.qdf
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Pll.cmp
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Pll.qip
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Pll.sip
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Pll.spd
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Pll.v
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Pll/Pll_0002.qip
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Pll/Pll_0002.v
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Pll_sim/Pll.vo
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Project.archive.rpt
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Project.flow.rpt
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Project.map.rpt
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Project.map.smsg
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Project.map.summary
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Project.qpf
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Project.qsf
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Project.restore.rpt
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Project.sdc
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Project.v
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/SevenSeg.v
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Test.mif
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/__Project.auto.qarlog
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/assignment_defaults.qdf
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/inclass-feg10.asm
+C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/inclass-feg10.mif
+	======= Total: 27 files to archive =======
+
