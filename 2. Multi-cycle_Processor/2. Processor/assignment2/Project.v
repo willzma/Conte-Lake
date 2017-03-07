@@ -17,14 +17,14 @@ module Project(
   parameter INSTBITS =32; // Size of an instruction in bits.
   parameter REGNOBITS=4; // Number of bits needed to address all registers.
   parameter IMMBITS  =16; // Number of bits in our immediate.
-  parameter STARTPC  =32'h100; // The initial address of our PC in instruction memory.
+  parameter STARTPC  =32'h000; // The initial address of our PC in instruction memory.
   parameter ADDRHEX  =32'hFFFFF000; // Memory mapped I/O.
   parameter ADDRLEDR =32'hFFFFF020; // Memory mapped I/O.
   parameter ADDRKEY  =32'hFFFFF080; // Memory mapped I/O.
   parameter ADDRSW   =32'hFFFFF090; // Memory mapped I/O.
   
   // Change this to fmedian.mif before submitting
-  parameter IMEMINITFILE="test.mif";
+  parameter IMEMINITFILE="Test.mif";
   
   parameter IMEMADDRBITS=16; // Addressability of i-memory is 2^16
   parameter IMEMWORDBITS=2; // There are 2^2 bytes per word
@@ -139,6 +139,12 @@ module Project(
   wire [(IMMBITS-1)    : 0] imm;
 
   //TODO: Implement instruction decomposition logic
+  assign op1 = IR[31:26];
+  assign op2 = IR[25:18];
+  assign rs = IR[7:4];
+  assign rd = IR[11:8];
+  assign rt = IR[3:0];
+  assign imm = IR[23:8];
    
   /*************** sxtimm *****************/   
   wire [(DBITS-1)      : 0] sxtimm;
@@ -189,23 +195,105 @@ module Project(
 
   //TODO: Implement ALU functionality
   
+  reg altFunc;
+  
   //ALU results
 	always @ (*)
 	begin: ALU_OPERATION
+	
 		case(op1)
 			OP1_EXT: begin
-			  ALUout = 0;
+					case(op2)
+						OP2_ADD: begin
+						  ALUout = (A + B);
+						end
+						OP2_AND: begin
+						  ALUout = (A & B);
+						end	
+						OP2_OR: begin
+						  ALUout = (A | B);
+						end
+						OP2_XOR: begin
+						  ALUout = (A ^ B);
+						end
+						OP2_SUB: begin
+						  ALUout = (A - B);
+						end
+						OP2_NAND: begin
+						  ALUout = (~(A & B));
+						end
+						OP2_NOR: begin
+						  ALUout = (~(A | B));
+						end
+						OP2_NXOR: begin
+						  ALUout = (~(A ^ B));
+						end
+						OP2_RSHF: begin
+						  ALUout = (A << B);
+						end
+						OP2_LSHF: begin
+						  ALUout = (A >>> B);
+						end
+						default:
+							ALUout = 0;
+					endcase
+			end
+			OP1_BEQ: begin
+			  if (!altFunc)
+			    ALUout = (A == B);
+			  else
+			    ALUout = (A + B);
+			end	
+			OP1_BLT: begin
+			  if (!altFunc)
+			    ALUout = (A < B);
+			  else
+			    ALUout = (A + B);
+			end
+			OP1_BLE: begin
+			  if (!altFunc)
+			    ALUout = (A <= B);
+			  else
+			    ALUout = (A + B);
+			end
+			OP1_BNE: begin
+			  if (!altFunc)
+			    ALUout = (A != B);
+			  else
+			    ALUout = (A + B);
+			end
+			OP1_LW, OP1_SW, OP1_JAL, OP1_ADDI: begin
+			  ALUout = (A + B);
+			end
+			OP1_ANDI: begin
+			  ALUout = (A & B);
+			end
+			OP1_ORI: begin
+			  ALUout = (A | B);
+			end
+			OP1_XORI: begin
+			  ALUout = (A ^ B);
 			end
 			default:
 				ALUout = 0;
 		endcase
+		
 	end
 
   // Connect ALU output to the bus (controlled by DrALU)
   assign thebus=DrALU?ALUout:BUSZ;
 
   /*************** Data Memory *****************/    
-  // TODO: Put the code for data memory and I/O here  
+  // TODO: Put the code for data memory and I/O here
+  
+  // I/O
+  reg [23:0] HEXout, KEYout, SWout;
+  reg [9:0] LEDRout;
+  assign LEDR = LEDRout[9:0];
+  
+  (* ram_init_file = IMEMINITFILE *)
+  reg [(DBITS-1):0] dmem[(DMEMWORDS-1):0];
+  
   //Data memory
   reg [(DBITS-1):0] MAR;
   
@@ -213,7 +301,7 @@ module Project(
   wire [(DBITS-1):0] memin, MemVal;
   wire [(DMEMWORDIDXBITS-1):0] dmemAddr;
   
-  //Control singals
+  //Control signals
   reg DrMem, WrMem, LdMAR; 
   wire MemEnable, MemWE;
 
@@ -249,21 +337,49 @@ module Project(
   parameter [(S_BITS-1):0]
     S_ZERO        = {(S_BITS){1'b0}},
     S_ONE         = {{(S_BITS-1){1'b0}},1'b1},
-    S_FETCH1      = S_ZERO,
-	 S_FETCH2      = S_FETCH1+S_ONE,
-    S_ALUR1       = S_FETCH2+S_ONE,
+    S_FETCH1      = S_ZERO * 0,
+	 S_FETCH2      = S_ONE * 1,
+    S_ALUR1       = S_ONE * 2,
+    S_ALUR2       = S_ONE * 3,
+    S_ALUR3       = S_ONE * 4,
+    S_ALUI1       = S_ONE * 5,
+    S_ALUI2       = S_ONE * 6,
+    S_ALUI3       = S_ONE * 7,
+	 S_JAL1       = S_ONE * 8,
+    S_JAL2       = S_ONE * 9,
+    S_JAL3       = S_ONE * 10,
+    S_JAL4       = S_ONE * 11,
+    S_B1       = S_ONE * 12,
+    S_B2       = S_ONE * 13,
+    S_B3       = S_ONE * 14,
+    S_B4       = S_ONE * 15,
+    S_B5       = S_ONE * 16,
+    S_B6       = S_ONE * 17,
+    S_S1       = S_ONE * 18,
+    S_S2       = S_ONE * 19,
+    S_S3       = S_ONE * 20,
+    S_S4       = S_ONE * 21,
+	 S_L1       = S_ONE * 22,
+    S_L2       = S_ONE * 23,
+    S_L3       = S_ONE * 24,
+    S_L4       = S_ONE * 25,
+	 
 	 //TODO: Define your processor states here
-	 S_ERROR       = S_ALUR1+S_ONE;
+	 S_ERROR       = S_ONE * 12;
 
  reg [(S_BITS-1):0] state,next_state;
   always @(state or op1 or rs or rt or rd or op2 or ALUout[0]) begin
-    {LdPC,DrPC,IncPC,LdMAR,WrMem,DrMem,LdIR,DrOff,ShOff, LdA, LdB,ALUfunc,DrALU,regno,DrReg,WrReg,next_state}=
-    {1'b0,1'b0, 1'b0, 1'b0, 1'b0, 1'b0,1'b0, 1'b0, 1'b0,1'b0,1'b0,   6'bX,1'b0,  6'bX, 1'b0, 1'b0,state+S_ONE};
+    //{LdPC,DrPC,IncPC,LdMAR,WrMem,DrMem,LdIR,DrOff,ShOff, LdA, LdB, ALUfunc, DrALU,regno,DrReg,WrReg,next_state}=
+    //{1'b0,1'b0, 1'b0, 1'b0, 1'b0, 1'b0,1'b0, 1'b0, 1'b0,1'b0,1'b0,   6'bX,1'b0,  6'bX, 1'b0, 1'b0,state+S_ONE};
+	 
+	 {LdPC,DrPC,IncPC,LdMAR,WrMem,DrMem,LdIR,DrOff,LdA, LdB,DrALU,regno,DrReg,WrReg,altFunc,next_state}=
+    {1'b0,1'b0, 1'b0, 1'b0, 1'b0, 1'b0,1'b0, 1'b0,1'b0,1'b0,1'b0,  6'bX, 1'b0, 1'b0,1'b0,state+S_ONE};
     case(state)
       S_FETCH1: {LdIR,IncPC}={1'b1,1'b1};
       S_FETCH2: begin
 	               case(op1)
-					   OP1_ALUR: begin
+					   //OP1_ALUR: begin
+					   OP1_EXT: begin
 					     case(op2)
 					       OP2_SUB,
 				  		    OP2_NAND,OP2_NOR,OP2_NXOR,
@@ -274,13 +390,124 @@ module Project(
 						    default: next_state=S_ERROR;
 						  endcase
 				       end
-					    //...
+				 
 					    OP1_ADDI,OP1_ANDI,OP1_ORI,OP1_XORI:
 						   next_state=S_ALUI1;
+							
+						 OP1_JAL: begin
+							next_state = S_JAL1;
+						 end
+						 
+						 OP1_BEQ, OP1_BLT, OP1_BLE, OP1_BNE: begin
+							next_state = S_B1;
+						 end
+						 
+						 OP1_SW: begin
+							next_state = S_S1;
+						 end
+						 
+						 OP1_LW: begin
+							next_state = S_L1;
+						 end
+							
 					    endcase
 					  end
+		S_ALUR1: {LdA, DrReg, regno}={1'b1, 1'b1, rs};
+		S_ALUR2: {LdB, DrReg, regno}={1'b1, 1'b1, rt};
+		S_ALUR3: begin
+					{DrALU, WrReg, regno}={1'b1, 1'b1, rd};
+					next_state=S_FETCH1;
+					end
+		
+		S_ALUI1: {LdA, DrReg, regno}={1'b1, 1'b1, rs};
+		S_ALUI2: {LdB, DrOff}={1'b1, 1'b1};
+		S_ALUI3: begin
+					{DrALU, WrReg, regno}={1'b1, 1'b1, rd};
+					next_state=S_FETCH1;
+					end
+					
+		S_JAL1: begin
+				{regno, WrReg, DrPC} = {rt, 1'b1, 1'b1};
+				next_state = S_JAL2;
+			end
+		S_JAL2: begin
+				{LdA, DrReg, regno} = {1'b1, 1'b1, rs};
+				next_state = S_JAL3;
+			end
+		S_JAL3: begin
+				{LdB, DrOff} = {1'b1, 1'b1};
+				next_state = S_JAL4;
+			end
+		S_JAL4: begin
+				{DrALU, LdPC} = {1'b1, 1'b1};
+				next_state = S_FETCH1;
+			end
+			
+		S_B1: begin
+				{LdA, DrReg, regno} = {1'b1, 1'b1, rs};
+				next_state = S_B2;
+			end
+		S_B2: begin
+				{LdB, DrReg, regno} = {1'b1, 1'b1, rt};
+				next_state = S_B3;
+			end
+		S_B3: begin
+				{DrALU} = {1'b1};
+				if (!ALUout)
+					next_state = S_FETCH1;
+				else
+					next_state = S_B4;
+			end
+		S_B4: begin
+				{LdA, DrPC} = {1'b1, 1'b1};
+				next_state = S_B5;
+			end
+		S_B5: begin
+				{LdB, DrOff} = {1'b1, 1'b1};
+				next_state = S_B6;
+			end
+		S_B6: begin
+				{LdPC, DrALU, altFunc} = {1'b1, 1'b1, 1'b1};
+				next_state = S_FETCH1;
+			end
+			
+		S_S1: begin
+				{LdA, DrReg, regno} = {1'b1, 1'b1, rs}; 
+				next_state = S_S2;
+			end
+		S_S2: begin
+				{LdB, DrOff} = {1'b1, 1'b1}; 
+				next_state = S_S3;
+			end
+		S_S3: begin
+				{DrALU, LdMAR} = {1'b1, 1'b1};
+				next_state = S_S4;
+			end
+		S_S4: begin
+				{regno, WrMem, DrReg} = {rt, 1'b1, 1'b1};
+				next_state = S_FETCH1;
+			end
+		
+		S_L1: begin
+				{LdA, DrReg, regno} = {1'b1, 1'b1, rs}; 
+				next_state = S_L2;
+			end
+		S_L2: begin
+				{LdB, DrOff} = {1'b1, 1'b1}; 
+				next_state = S_L3;
+			end
+		S_L3: begin
+				{DrALU, LdMAR} = {1'b1, 1'b1};
+				next_state = S_L4;
+			end
+		S_L4: begin
+				{DrMem, regno, WrReg} = {1'b1, rt, 1'b1};
+				next_state = S_FETCH1;
+			end
+			
 	  // Put the code for the rest of the "dispatch" here	
 	  // Put the rest of the "microcode" here
+	  
       default:  next_state=S_ERROR;
     endcase
   end
@@ -293,13 +520,33 @@ module Project(
 	  
   /*************** sign-extend (SXT) *****************/       
   //TODO: Instantiate SXT module
-
+	SXT #(IMMBITS, DBITS) sxt(imm, sxtimm);
   
   /*************** HEX/LEDR Output *****************/    
   //TODO: Implement output logic
   //      store to HEXADDR or LEDR addr should display given values to HEX or LEDR
-
+  always @(posedge clk or posedge reset)
+  begin
+    if(reset) begin
+	   HEXout <= {IR[31:8]};
+		LEDRout <= 0;
+		end
+	else
+		HEXout <= IR[31:8];
+	
+	 //else if(!MemEnable) // Interrupt
+		//if(sxtimm == ADDRHEX)
+			//HEXout <= regs[rt];
+		//else if(sxtimm == ADDRLEDR)
+			//LEDRout <= regs[rt];
+  end
   //TODO: Utilize seven segment display decoders to convert hex to actual seven-segment display control signal
+	SevenSeg Hex0Out(.IN(HEXout[3:0]), .OUT(HEX0));
+	SevenSeg Hex1Out(.IN(HEXout[7:4]), .OUT(HEX1));
+	SevenSeg Hex2Out(.IN(HEXout[11:8]), .OUT(HEX2));
+	SevenSeg Hex3Out(.IN(HEXout[15:12]), .OUT(HEX3));
+	SevenSeg Hex4Out(.IN(HEXout[19:16]), .OUT(HEX4));
+	SevenSeg Hex5Out(.IN(HEXout[23:20]), .OUT(HEX5));
   
 endmodule
 

@@ -1,0 +1,6 @@
+
+
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Pll.v
+
+Mar 07 02AM:06:24>: Megafunction Altera PLL v15.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted

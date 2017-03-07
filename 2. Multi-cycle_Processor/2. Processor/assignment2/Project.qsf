@@ -235,7 +235,6 @@ set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH ProjectTest -se
 set_global_assignment -name EDA_TEST_BENCH_NAME ProjectTest -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ProjectTest
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ProjectTest -section_id ProjectTest
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE ProjectTest.v -section_id ProjectTest
 set_global_assignment -name MIF_FILE "inclass-feg10.mif"
 set_global_assignment -name SOURCE_FILE "inclass-feg10.asm"
@@ -246,3 +245,4 @@ set_global_assignment -name QIP_FILE Pll.qip
 set_global_assignment -name SIP_FILE Pll.sip
 set_global_assignment -name MIF_FILE Test.mif
 set_global_assignment -name SOURCE_FILE Test.asm
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
