@@ -310,7 +310,7 @@ def main():
     else: output_path = str(input_file.name) + ".mif"
     output_file = open(output_path, "wt")
     output_file.write("WIDTH=32;\n")
-    output_file.write("DEPTH=2048;\n")
+    output_file.write("DEPTH=16384;\n")
     output_file.write("ADDRESS_RADIX=HEX;\n")
     output_file.write("DATA_RADIX=HEX;\n")
     output_file.write("CONTENT BEGIN\n")
