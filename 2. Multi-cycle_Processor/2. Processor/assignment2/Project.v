@@ -17,7 +17,7 @@ module Project(
   parameter INSTBITS =32; // Size of an instruction in bits.
   parameter REGNOBITS=4; // Number of bits needed to address all registers.
   parameter IMMBITS  =16; // Number of bits in our immediate.
-  parameter STARTPC  =32'h000; // The initial address of our PC in instruction memory.
+  parameter STARTPC  =32'h100; // The initial address of our PC in instruction memory.
   parameter ADDRHEX  =32'hFFFFF000; // Memory mapped I/O.
   parameter ADDRLEDR =32'hFFFFF020; // Memory mapped I/O.
   parameter ADDRKEY  =32'hFFFFF080; // Memory mapped I/O.
@@ -74,15 +74,33 @@ module Project(
   
   // The reset signal comes from the reset button on the DE0-CV board
   // RESET_N is active-low, so we flip its value ("reset" is active-high)
-  wire clk,locked;
+  wire locked,clk2;
   // The PLL is wired to produce clk and locked signals for our logic
   Pll myPll(
     .refclk(CLOCK_50),
 	 .rst      (!RESET_N),
-	 .outclk_0 (clk),
+	 .outclk_0 (clk2),
     .locked   (locked)
   );
+  
   wire reset=!locked;
+  
+  reg [31:0] buffer = 32'd0;
+  reg [31:0] cap = 32'd500000;
+  reg clk; 
+  
+  always@(posedge clk2 or posedge reset) begin
+	if (reset) begin
+		buffer <= 0;
+		clk <= 0;
+	end
+	else if (buffer < cap)
+		buffer <= buffer + 1;
+	else begin
+		buffer <= 0;
+		clk <= ~clk;
+		end
+  end
  
   /*************** BUS *****************/
   // Create the processor's bus
@@ -149,8 +167,8 @@ module Project(
   /*************** sxtimm *****************/   
   wire [(DBITS-1)      : 0] sxtimm;
   reg DrOff;
-
-
+  reg ShOff;
+  assign thebus = ShOff? (sxtimm << 2):BUSZ;
   assign thebus = DrOff? sxtimm:BUSZ;  
 
   /*************** Register file *****************/ 		
@@ -165,9 +183,13 @@ module Project(
   wire [(DBITS-1)    :0] regOut;
      
   integer r;
-  always @(posedge clk)
+  integer i;
+  always @(posedge clk or posedge reset)
   begin: REG_WRITE
-    if(WrReg&&!reset)
+	if(reset) begin
+		 for (i=0; i<16; i=i+1) regs[i] <= 0;
+	end
+    else if(WrReg&&!reset)
       regs[regno]<=thebus;
   end  
   
@@ -186,12 +208,19 @@ module Project(
  
   //Data path
   // Receive data from bus
-  always @(posedge clk) begin
+  always @(posedge clk or posedge reset) begin
+  if (reset) begin
+		A <= 0;
+		B <= 0;
+  end
+  else begin
     if(LdA)
       A <= thebus;
     if(LdB)
       B <= thebus;
-  end  
+  end 
+  
+ end
 
   //TODO: Implement ALU functionality
   
@@ -365,20 +394,32 @@ module Project(
     S_L4       = S_ONE * 25,
 	 
 	 //TODO: Define your processor states here
-	 S_ERROR       = S_ONE * 12;
+	 S_ERROR       = S_ONE * 26;
 
  reg [(S_BITS-1):0] state,next_state;
   always @(state or op1 or rs or rt or rd or op2 or ALUout[0]) begin
-    //{LdPC,DrPC,IncPC,LdMAR,WrMem,DrMem,LdIR,DrOff,ShOff, LdA, LdB, ALUfunc, DrALU,regno,DrReg,WrReg,next_state}=
-    //{1'b0,1'b0, 1'b0, 1'b0, 1'b0, 1'b0,1'b0, 1'b0, 1'b0,1'b0,1'b0,   6'bX,1'b0,  6'bX, 1'b0, 1'b0,state+S_ONE};
-	 
-	 {LdPC,DrPC,IncPC,LdMAR,WrMem,DrMem,LdIR,DrOff,LdA, LdB,DrALU,regno,DrReg,WrReg,altFunc,next_state}=
-    {1'b0,1'b0, 1'b0, 1'b0, 1'b0, 1'b0,1'b0, 1'b0,1'b0,1'b0,1'b0,  6'bX, 1'b0, 1'b0,1'b0,state+S_ONE};
+	 LdPC = 1'b0;
+	 DrPC = 1'b0;
+	 IncPC =  1'b0;
+	 LdMAR =  1'b0;
+	 WrMem =  1'b0;
+	 DrMem =  1'b0;
+	 LdIR =  1'b0;
+	 DrOff =  1'b0;
+	 ShOff =  1'b0;
+	 LdA =  1'b0;
+	 LdB = 1'b0;
+	 DrALU =  1'b0;
+	 regno = 6'bX;
+	 DrReg =  1'b0;
+	 WrReg =  1'b0;
+	 altFunc =  1'b0;
+	 next_state = state+S_ONE;
     case(state)
-      S_FETCH1: {LdIR,IncPC}={1'b1,1'b1};
+      S_FETCH1: begin {LdIR,IncPC}={1'b1,1'b1}; 
+					end
       S_FETCH2: begin
 	               case(op1)
-					   //OP1_ALUR: begin
 					   OP1_EXT: begin
 					     case(op2)
 					       OP2_SUB,
@@ -412,17 +453,25 @@ module Project(
 							
 					    endcase
 					  end
-		S_ALUR1: {LdA, DrReg, regno}={1'b1, 1'b1, rs};
-		S_ALUR2: {LdB, DrReg, regno}={1'b1, 1'b1, rt};
+		S_ALUR1: begin 
+					{LdA, DrReg, regno}={1'b1, 1'b1, rs};
+					end
+		S_ALUR2: begin
+					{LdB, DrReg, regno}={1'b1, 1'b1, rt};
+					end
 		S_ALUR3: begin
 					{DrALU, WrReg, regno}={1'b1, 1'b1, rd};
 					next_state=S_FETCH1;
 					end
 		
-		S_ALUI1: {LdA, DrReg, regno}={1'b1, 1'b1, rs};
-		S_ALUI2: {LdB, DrOff}={1'b1, 1'b1};
+		S_ALUI1: begin 
+					{LdA, DrReg, regno}={1'b1, 1'b1, rs};
+					end
+		S_ALUI2: begin 
+					{LdB, DrOff}={1'b1, 1'b1};
+					end
 		S_ALUI3: begin
-					{DrALU, WrReg, regno}={1'b1, 1'b1, rd};
+					{DrALU, WrReg, regno}={1'b1, 1'b1, rt};
 					next_state=S_FETCH1;
 					end
 					
@@ -435,7 +484,7 @@ module Project(
 				next_state = S_JAL3;
 			end
 		S_JAL3: begin
-				{LdB, DrOff} = {1'b1, 1'b1};
+				{LdB, ShOff, DrOff} = {1'b1, 1'b1, 1'b1};
 				next_state = S_JAL4;
 			end
 		S_JAL4: begin
@@ -463,7 +512,7 @@ module Project(
 				next_state = S_B5;
 			end
 		S_B5: begin
-				{LdB, DrOff} = {1'b1, 1'b1};
+				{LdB, ShOff, DrOff} = {1'b1, , 1'b1};
 				next_state = S_B6;
 			end
 		S_B6: begin
@@ -493,7 +542,7 @@ module Project(
 				next_state = S_L2;
 			end
 		S_L2: begin
-				{LdB, DrOff} = {1'b1, 1'b1}; 
+				{LdB, DrOff} = {1'b1, 1'b1};
 				next_state = S_L3;
 			end
 		S_L3: begin
@@ -528,18 +577,21 @@ module Project(
   always @(posedge clk or posedge reset)
   begin
     if(reset) begin
-	   HEXout <= {IR[31:8]};
-		LEDRout <= 0;
+	   HEXout <= {24{1'b0}};
+		LEDRout <= {{10{1'b0}}};
 		end
-	else
-		HEXout <= IR[31:8];
+	//else begin
+		//HEXout <= regs[8];
+		//LEDRout <= state;
+		//end
 	
-	 //else if(!MemEnable) // Interrupt
-		//if(sxtimm == ADDRHEX)
-			//HEXout <= regs[rt];
-		//else if(sxtimm == ADDRLEDR)
-			//LEDRout <= regs[rt];
+	 else if(!MemEnable) // Interrupt
+		if(sxtimm == ADDRHEX)
+			HEXout <= regs[rt];
+		else if(sxtimm == ADDRLEDR)
+			LEDRout <= regs[rt];
   end
+ 
   //TODO: Utilize seven segment display decoders to convert hex to actual seven-segment display control signal
 	SevenSeg Hex0Out(.IN(HEXout[3:0]), .OUT(HEX0));
 	SevenSeg Hex1Out(.IN(HEXout[7:4]), .OUT(HEX1));

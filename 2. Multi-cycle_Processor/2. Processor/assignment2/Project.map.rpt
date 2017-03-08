@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Project
-Tue Mar 07 03:50:25 2017
+Wed Mar 08 01:13:37 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -13,14 +13,14 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis IP Cores Summary
-  9. Registers Removed During Synthesis
- 10. Removed Registers Triggering Further Register Optimizations
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. Registers Removed During Synthesis
  11. General Register Statistics
  12. Inverted Register Statistics
  13. Registers Added for RAM Pass-Through Logic
  14. Multiplexer Restructuring Statistics (No Restructuring Performed)
- 15. Source assignments for altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated
+ 15. Source assignments for altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated
  16. Parameter Settings for User Entity Instance: Top-level Entity: |Project
  17. Parameter Settings for User Entity Instance: Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i
  18. Parameter Settings for User Entity Instance: SXT:sxt
@@ -62,16 +62,16 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Mar 07 03:50:25 2017      ;
+; Analysis & Synthesis Status     ; Successful - Wed Mar 08 01:13:37 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 129                                        ;
+; Total registers                 ; 870                                        ;
 ; Total pins                      ; 68                                         ;
 ; Total virtual pins              ; 0                                          ;
-; Total block memory bits         ; 0                                          ;
+; Total block memory bits         ; 524,288                                    ;
 ; Total DSP Blocks                ; 0                                          ;
 ; Total HSSI RX PCSs              ; 0                                          ;
 ; Total HSSI PMA RX Deserializers ; 0                                          ;
@@ -201,58 +201,72 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; altrom.inc                       ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/altrom.inc                                                 ;         ;
 ; altram.inc                       ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/altram.inc                                                 ;         ;
 ; altdpram.inc                     ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/altdpram.inc                                               ;         ;
-; db/altsyncram_r0m1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/db/altsyncram_r0m1.tdf ;         ;
+; db/altsyncram_dbm1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/db/altsyncram_dbm1.tdf ;         ;
 ; db/decode_5la.tdf                ; yes             ; Auto-Generated Megafunction      ; C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/db/decode_5la.tdf      ;         ;
 ; db/decode_u0a.tdf                ; yes             ; Auto-Generated Megafunction      ; C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/db/decode_u0a.tdf      ;         ;
 ; db/mux_2hb.tdf                   ; yes             ; Auto-Generated Megafunction      ; C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/db/mux_2hb.tdf         ;         ;
 +----------------------------------+-----------------+----------------------------------+-----------------------------------------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                                                      ;
-+---------------------------------------------+--------------------------------------------------------------------+
-; Resource                                    ; Usage                                                              ;
-+---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 590                                                                ;
-;                                             ;                                                                    ;
-; Combinational ALUT usage for logic          ; 841                                                                ;
-;     -- 7 input functions                    ; 13                                                                 ;
-;     -- 6 input functions                    ; 322                                                                ;
-;     -- 5 input functions                    ; 122                                                                ;
-;     -- 4 input functions                    ; 188                                                                ;
-;     -- <=3 input functions                  ; 196                                                                ;
-;                                             ;                                                                    ;
-; Dedicated logic registers                   ; 129                                                                ;
-;                                             ;                                                                    ;
-; I/O pins                                    ; 68                                                                 ;
-; Total DSP Blocks                            ; 0                                                                  ;
-; Total PLLs                                  ; 1                                                                  ;
-;     -- PLLs                                 ; 1                                                                  ;
-;                                             ;                                                                    ;
-; Maximum fan-out node                        ; Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 176                                                                ;
-; Total fan-out                               ; 4318                                                               ;
-; Average fan-out                             ; 3.90                                                               ;
-+---------------------------------------------+--------------------------------------------------------------------+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Estimate of Logic utilization (ALMs needed) ; 1102   ;
+;                                             ;        ;
+; Combinational ALUT usage for logic          ; 1417   ;
+;     -- 7 input functions                    ; 22     ;
+;     -- 6 input functions                    ; 685    ;
+;     -- 5 input functions                    ; 228    ;
+;     -- 4 input functions                    ; 234    ;
+;     -- <=3 input functions                  ; 248    ;
+;                                             ;        ;
+; Dedicated logic registers                   ; 870    ;
+;                                             ;        ;
+; I/O pins                                    ; 68     ;
+; Total MLAB memory bits                      ; 0      ;
+; Total block memory bits                     ; 524288 ;
+; Total DSP Blocks                            ; 0      ;
+; Total PLLs                                  ; 1      ;
+;     -- PLLs                                 ; 1      ;
+;                                             ;        ;
+; Maximum fan-out node                        ; clk    ;
+; Maximum fan-out                             ; 902    ;
+; Total fan-out                               ; 12260  ;
+; Average fan-out                             ; 4.93   ;
++---------------------------------------------+--------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                        ;
-+------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node         ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                          ; Library Name ;
-+------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
-; |Project                           ; 841 (800)         ; 129 (129)    ; 0                 ; 0          ; 68   ; 0            ; |Project                                                     ; work         ;
-;    |Pll:myPll|                     ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll                                           ; Pll          ;
-;       |Pll_0002:pll_inst|          ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst                         ; Pll          ;
-;          |altera_pll:altera_pll_i| ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i ; work         ;
-;    |SevenSeg:Hex0Out|              ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex0Out                                    ; work         ;
-;    |SevenSeg:Hex1Out|              ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex1Out                                    ; work         ;
-;    |SevenSeg:Hex2Out|              ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex2Out                                    ; work         ;
-;    |SevenSeg:Hex3Out|              ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex3Out                                    ; work         ;
-;    |SevenSeg:Hex4Out|              ; 6 (6)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex4Out                                    ; work         ;
-;    |SevenSeg:Hex5Out|              ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex5Out                                    ; work         ;
-+------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
++----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                              ; Library Name ;
++----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
+; |Project                               ; 1417 (1372)       ; 870 (867)    ; 524288            ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
+;    |Pll:myPll|                         ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll                                                               ; Pll          ;
+;       |Pll_0002:pll_inst|              ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst                                             ; Pll          ;
+;          |altera_pll:altera_pll_i|     ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i                     ; work         ;
+;    |SevenSeg:Hex0Out|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex0Out                                                        ; work         ;
+;    |SevenSeg:Hex1Out|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex1Out                                                        ; work         ;
+;    |SevenSeg:Hex2Out|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex2Out                                                        ; work         ;
+;    |SevenSeg:Hex3Out|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex3Out                                                        ; work         ;
+;    |SevenSeg:Hex4Out|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex4Out                                                        ; work         ;
+;    |SevenSeg:Hex5Out|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:Hex5Out                                                        ; work         ;
+;    |altsyncram:dmem_rtl_0|             ; 3 (0)             ; 3 (0)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0                                                   ; work         ;
+;       |altsyncram_dbm1:auto_generated| ; 3 (2)             ; 3 (3)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated                    ; work         ;
+;          |decode_5la:decode2|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|decode_5la:decode2 ; work         ;
++----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                          ;
++-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------+
+; Name                                                            ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF      ;
++-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------+
+; altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16384        ; 32           ; 16384        ; 32           ; 524288 ; Test.mif ;
++-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------+
 
 
 +------------------------------------------------------------------------------------------------------+
@@ -264,108 +278,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+--------------------+-----------------+
 
 
-+------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                               ;
-+-------------------------------------------------------------------------+----------------------------------------+
-; Register name                                                           ; Reason for Removal                     ;
-+-------------------------------------------------------------------------+----------------------------------------+
-; dmem~32                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[91,92]                                                ; Lost fanout                            ;
-; dmem~31                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[89,90]                                                ; Lost fanout                            ;
-; dmem~30                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[87,88]                                                ; Lost fanout                            ;
-; dmem~29                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[85,86]                                                ; Lost fanout                            ;
-; dmem~28                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[83,84]                                                ; Lost fanout                            ;
-; dmem~27                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[81,82]                                                ; Lost fanout                            ;
-; dmem~26                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[79,80]                                                ; Lost fanout                            ;
-; dmem~25                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[77,78]                                                ; Lost fanout                            ;
-; dmem~24                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[75,76]                                                ; Lost fanout                            ;
-; dmem~23                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[73,74]                                                ; Lost fanout                            ;
-; dmem~22                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[71,72]                                                ; Lost fanout                            ;
-; dmem~21                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[69,70]                                                ; Lost fanout                            ;
-; dmem~20                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[67,68]                                                ; Lost fanout                            ;
-; dmem~19                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[65,66]                                                ; Lost fanout                            ;
-; dmem~18                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[63,64]                                                ; Lost fanout                            ;
-; dmem~17                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[61,62]                                                ; Lost fanout                            ;
-; dmem~16                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[59,60]                                                ; Lost fanout                            ;
-; dmem~15                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[57,58]                                                ; Lost fanout                            ;
-; dmem~14                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[55,56]                                                ; Lost fanout                            ;
-; dmem~13                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[53,54]                                                ; Lost fanout                            ;
-; dmem~12                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[51,52]                                                ; Lost fanout                            ;
-; dmem~11                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[49,50]                                                ; Lost fanout                            ;
-; dmem~10                                                                 ; Lost fanout                            ;
-; dmem_rtl_0_bypass[47,48]                                                ; Lost fanout                            ;
-; dmem~9                                                                  ; Lost fanout                            ;
-; dmem_rtl_0_bypass[45,46]                                                ; Lost fanout                            ;
-; dmem~8                                                                  ; Lost fanout                            ;
-; dmem_rtl_0_bypass[43,44]                                                ; Lost fanout                            ;
-; dmem~7                                                                  ; Lost fanout                            ;
-; dmem_rtl_0_bypass[41,42]                                                ; Lost fanout                            ;
-; dmem~6                                                                  ; Lost fanout                            ;
-; dmem_rtl_0_bypass[39,40]                                                ; Lost fanout                            ;
-; dmem~5                                                                  ; Lost fanout                            ;
-; dmem_rtl_0_bypass[37,38]                                                ; Lost fanout                            ;
-; dmem~4                                                                  ; Lost fanout                            ;
-; dmem_rtl_0_bypass[35,36]                                                ; Lost fanout                            ;
-; dmem~3                                                                  ; Lost fanout                            ;
-; dmem_rtl_0_bypass[33,34]                                                ; Lost fanout                            ;
-; PC[1]                                                                   ; Lost fanout                            ;
-; dmem~2                                                                  ; Lost fanout                            ;
-; dmem_rtl_0_bypass[31,32]                                                ; Lost fanout                            ;
-; PC[0]                                                                   ; Lost fanout                            ;
-; IR[0..7]                                                                ; Lost fanout                            ;
-; dmem~1                                                                  ; Lost fanout                            ;
-; dmem~0                                                                  ; Lost fanout                            ;
-; dmem_rtl_0_bypass[0..30]                                                ; Lost fanout                            ;
-; IR[24]                                                                  ; Stuck at GND due to stuck port data_in ;
-; HEXout[16]                                                              ; Stuck at GND due to stuck port data_in ;
-; PC[16..31]                                                              ; Lost fanout                            ;
-; MAR[15..31]                                                             ; Lost fanout                            ;
-; altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|addrstall_reg_b[0] ; Lost fanout                            ;
-; MAR[2..14]                                                              ; Lost fanout                            ;
-; Total Number of Removed Registers = 185                                 ;                                        ;
-+-------------------------------------------------------------------------+----------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                 ;
-+-----------------------+---------------------------+---------------------------------------------------------------------------------------------------------+
-; Register name         ; Reason for Removal        ; Registers Removed due to This Register                                                                  ;
-+-----------------------+---------------------------+---------------------------------------------------------------------------------------------------------+
-; PC[31]                ; Lost Fanouts              ; PC[30], PC[29], PC[28], PC[27], PC[26], PC[25], PC[24], PC[23], PC[22], PC[21], PC[20], PC[19], PC[18], ;
-;                       ;                           ; PC[17], PC[16]                                                                                          ;
-; dmem~32               ; Lost Fanouts              ; MAR[15], MAR[31], MAR[30], MAR[29], MAR[28], MAR[27], MAR[2], MAR[9], MAR[10], MAR[11], MAR[12],        ;
-;                       ;                           ; MAR[13], MAR[14]                                                                                        ;
-; dmem_rtl_0_bypass[0]  ; Lost Fanouts              ; MAR[26], MAR[25]                                                                                        ;
-; dmem_rtl_0_bypass[3]  ; Lost Fanouts              ; MAR[3]                                                                                                  ;
-; dmem_rtl_0_bypass[5]  ; Lost Fanouts              ; MAR[4]                                                                                                  ;
-; dmem_rtl_0_bypass[7]  ; Lost Fanouts              ; MAR[5]                                                                                                  ;
-; dmem_rtl_0_bypass[9]  ; Lost Fanouts              ; MAR[6]                                                                                                  ;
-; dmem_rtl_0_bypass[11] ; Lost Fanouts              ; MAR[7]                                                                                                  ;
-; dmem_rtl_0_bypass[13] ; Lost Fanouts              ; MAR[8]                                                                                                  ;
-; IR[24]                ; Stuck at GND              ; HEXout[16]                                                                                              ;
-;                       ; due to stuck port data_in ;                                                                                                         ;
-+-----------------------+---------------------------+---------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; IR[24]                                ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 1 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -373,12 +293,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 129   ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 870   ;
+; Number of registers using Synchronous Clear  ; 32    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 65    ;
+; Number of registers using Asynchronous Clear ; 756   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 55    ;
+; Number of registers using Clock Enable       ; 752   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -388,24 +308,66 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------+---------+
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
-; IR[9]                                   ; 3       ;
-; IR[10]                                  ; 3       ;
-; IR[11]                                  ; 3       ;
-; IR[12]                                  ; 3       ;
-; IR[14]                                  ; 3       ;
-; IR[15]                                  ; 3       ;
-; IR[16]                                  ; 3       ;
-; IR[18]                                  ; 65      ;
+; IR[0]                                   ; 63      ;
+; IR[2]                                   ; 63      ;
+; IR[3]                                   ; 63      ;
+; IR[18]                                  ; 104     ;
 ; IR[19]                                  ; 14      ;
-; IR[21]                                  ; 78      ;
-; IR[23]                                  ; 7       ;
-; IR[26]                                  ; 45      ;
-; IR[27]                                  ; 48      ;
-; IR[25]                                  ; 7       ;
-; IR[28]                                  ; 17      ;
-; IR[30]                                  ; 17      ;
-; IR[31]                                  ; 28      ;
-; Total number of inverted registers = 17 ;         ;
+; IR[23]                                  ; 8       ;
+; IR[16]                                  ; 3       ;
+; IR[15]                                  ; 3       ;
+; IR[14]                                  ; 3       ;
+; IR[21]                                  ; 62      ;
+; IR[12]                                  ; 3       ;
+; IR[11]                                  ; 4       ;
+; IR[10]                                  ; 4       ;
+; IR[9]                                   ; 4       ;
+; IR[5]                                   ; 3       ;
+; IR[7]                                   ; 3       ;
+; IR[31]                                  ; 17      ;
+; IR[25]                                  ; 4       ;
+; IR[27]                                  ; 43      ;
+; IR[28]                                  ; 11      ;
+; IR[30]                                  ; 12      ;
+; IR[26]                                  ; 40      ;
+; dmem_rtl_0_bypass[30]                   ; 1       ;
+; PC[8]                                   ; 100     ;
+; dmem_rtl_0_bypass[80]                   ; 1       ;
+; dmem_rtl_0_bypass[78]                   ; 1       ;
+; dmem_rtl_0_bypass[72]                   ; 1       ;
+; dmem_rtl_0_bypass[70]                   ; 1       ;
+; dmem~30                                 ; 1       ;
+; dmem_rtl_0_bypass[88]                   ; 1       ;
+; dmem_rtl_0_bypass[87]                   ; 1       ;
+; dmem_rtl_0_bypass[86]                   ; 1       ;
+; dmem_rtl_0_bypass[84]                   ; 1       ;
+; dmem_rtl_0_bypass[82]                   ; 1       ;
+; dmem_rtl_0_bypass[76]                   ; 1       ;
+; dmem_rtl_0_bypass[74]                   ; 1       ;
+; dmem_rtl_0_bypass[68]                   ; 1       ;
+; dmem_rtl_0_bypass[66]                   ; 1       ;
+; dmem_rtl_0_bypass[92]                   ; 1       ;
+; dmem_rtl_0_bypass[90]                   ; 1       ;
+; dmem_rtl_0_bypass[64]                   ; 1       ;
+; dmem_rtl_0_bypass[62]                   ; 1       ;
+; dmem_rtl_0_bypass[32]                   ; 1       ;
+; dmem_rtl_0_bypass[34]                   ; 1       ;
+; dmem_rtl_0_bypass[36]                   ; 1       ;
+; dmem_rtl_0_bypass[38]                   ; 1       ;
+; dmem_rtl_0_bypass[40]                   ; 1       ;
+; dmem_rtl_0_bypass[42]                   ; 1       ;
+; dmem_rtl_0_bypass[44]                   ; 1       ;
+; dmem_rtl_0_bypass[46]                   ; 1       ;
+; dmem_rtl_0_bypass[48]                   ; 1       ;
+; dmem_rtl_0_bypass[50]                   ; 1       ;
+; dmem~12                                 ; 1       ;
+; dmem_rtl_0_bypass[52]                   ; 1       ;
+; dmem_rtl_0_bypass[51]                   ; 1       ;
+; dmem_rtl_0_bypass[54]                   ; 1       ;
+; dmem_rtl_0_bypass[56]                   ; 1       ;
+; dmem_rtl_0_bypass[58]                   ; 1       ;
+; dmem_rtl_0_bypass[60]                   ; 1       ;
+; Total number of inverted registers = 59 ;         ;
 +-----------------------------------------+---------+
 
 
@@ -515,27 +477,31 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
-; 3:1                ; 30 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Project|PC[4]                ;
-; 95:1               ; 3 bits    ; 189 LEs       ; 60 LEs               ; 129 LEs                ; Yes        ; |Project|state[3]             ;
+; 3:1                ; 29 bits   ; 58 LEs        ; 0 LEs                ; 58 LEs                 ; Yes        ; |Project|PC[11]               ;
+; 16:1               ; 14 bits   ; 140 LEs       ; 140 LEs              ; 0 LEs                  ; Yes        ; |Project|HEXout[19]           ;
+; 95:1               ; 3 bits    ; 189 LEs       ; 60 LEs               ; 129 LEs                ; Yes        ; |Project|state[0]             ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft0           ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft0           ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftRight0          ;
 ; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |Project|ShiftLeft0           ;
-; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|ShiftRight0          ;
+; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|ShiftLeft0           ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:Hex0Out|OUT ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:Hex1Out|OUT ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:Hex2Out|OUT ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:Hex3Out|OUT ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:Hex4Out|OUT ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:Hex5Out|OUT ;
+; 16:1               ; 10 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|Mux53                ;
+; 13:1               ; 4 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; No         ; |Project|Selector72           ;
 ; 196:1              ; 11 bits   ; 1430 LEs      ; 330 LEs              ; 1100 LEs               ; No         ; |Project|Selector49           ;
-; 196:1              ; 12 bits   ; 1560 LEs      ; 360 LEs              ; 1200 LEs               ; No         ; |Project|Selector39           ;
-; 199:1              ; 3 bits    ; 396 LEs       ; 96 LEs               ; 300 LEs                ; No         ; |Project|Selector61           ;
-; 199:1              ; 3 bits    ; 396 LEs       ; 96 LEs               ; 300 LEs                ; No         ; |Project|Selector35           ;
+; 196:1              ; 12 bits   ; 1560 LEs      ; 360 LEs              ; 1200 LEs               ; No         ; |Project|Selector36           ;
+; 199:1              ; 3 bits    ; 396 LEs       ; 96 LEs               ; 300 LEs                ; No         ; |Project|Selector62           ;
+; 199:1              ; 3 bits    ; 396 LEs       ; 96 LEs               ; 300 LEs                ; No         ; |Project|Selector34           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
 
 
 +-----------------------------------------------------------------------------+
-; Source assignments for altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated ;
+; Source assignments for altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated ;
 +---------------------------------+--------------------+------+---------------+
 ; Assignment                      ; Value              ; From ; To            ;
 +---------------------------------+--------------------+------+---------------+
@@ -553,7 +519,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; INSTBITS        ; 32                               ; Signed Integer     ;
 ; REGNOBITS       ; 4                                ; Signed Integer     ;
 ; IMMBITS         ; 16                               ; Signed Integer     ;
-; STARTPC         ; 00000000000000000000000000000000 ; Unsigned Binary    ;
+; STARTPC         ; 00000000000000000000000100000000 ; Unsigned Binary    ;
 ; ADDRHEX         ; 11111111111111111111000000000000 ; Unsigned Binary    ;
 ; ADDRLEDR        ; 11111111111111111111000000100000 ; Unsigned Binary    ;
 ; ADDRKEY         ; 11111111111111111111000010000000 ; Unsigned Binary    ;
@@ -626,7 +592,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; S_L2            ; 10111                            ; Unsigned Binary    ;
 ; S_L3            ; 11000                            ; Unsigned Binary    ;
 ; S_L4            ; 11001                            ; Unsigned Binary    ;
-; S_ERROR         ; 01100                            ; Unsigned Binary    ;
+; S_ERROR         ; 11010                            ; Unsigned Binary    ;
 +-----------------+----------------------------------+--------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -944,7 +910,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped        ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped        ;
 ; DEVICE_FAMILY                      ; Cyclone V            ; Untyped        ;
-; CBXI_PARAMETER                     ; altsyncram_r0m1      ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_dbm1      ; Untyped        ;
 +------------------------------------+----------------------+----------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -1028,32 +994,33 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 129                         ;
-;     CLR               ; 42                          ;
-;     ENA               ; 32                          ;
-;     ENA CLR           ; 23                          ;
-;     plain             ; 32                          ;
-; arriav_lcell_comb     ; 849                         ;
-;     arith             ; 46                          ;
-;         1 data inputs ; 14                          ;
+; arriav_ff             ; 870                         ;
+;     CLR               ; 6                           ;
+;     CLR SCLR          ; 32                          ;
+;     ENA               ; 34                          ;
+;     ENA CLR           ; 718                         ;
+;     plain             ; 80                          ;
+; arriav_lcell_comb     ; 1423                        ;
+;     arith             ; 94                          ;
+;         1 data inputs ; 62                          ;
 ;         2 data inputs ; 32                          ;
-;     extend            ; 13                          ;
-;         7 data inputs ; 13                          ;
-;     normal            ; 758                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 8                           ;
-;         2 data inputs ; 61                          ;
-;         3 data inputs ; 56                          ;
-;         4 data inputs ; 188                         ;
-;         5 data inputs ; 122                         ;
-;         6 data inputs ; 322                         ;
+;     extend            ; 22                          ;
+;         7 data inputs ; 22                          ;
+;     normal            ; 1275                        ;
+;         1 data inputs ; 11                          ;
+;         2 data inputs ; 42                          ;
+;         3 data inputs ; 75                          ;
+;         4 data inputs ; 234                         ;
+;         5 data inputs ; 228                         ;
+;         6 data inputs ; 685                         ;
 ;     shared            ; 32                          ;
 ;         2 data inputs ; 32                          ;
 ; boundary_port         ; 68                          ;
 ; generic_pll           ; 1                           ;
+; stratixv_ram_block    ; 64                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 10.10                       ;
-; Average LUT depth     ; 6.67                        ;
+; Max LUT depth         ; 9.10                        ;
+; Average LUT depth     ; 5.20                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1062,7 +1029,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:06     ;
+; Top            ; 00:00:08     ;
 +----------------+--------------+
 
 
@@ -1072,7 +1039,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Tue Mar 07 03:50:16 2017
+    Info: Processing started: Wed Mar 08 01:13:26 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Project -c Project
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 2 entities, in source file project.v
@@ -1085,49 +1052,41 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
     Info (12023): Found entity 1: Pll_0002
 Info (12127): Elaborating entity "Project" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at Project.v(340): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(341): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(342): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(343): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(344): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(345): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(346): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(347): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(348): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(349): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(350): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(351): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(352): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(353): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(354): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(355): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(356): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(357): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(358): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(359): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(360): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(361): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(362): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(363): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(364): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(365): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(368): truncated value with size 32 to match size of target (5)
-Warning (10858): Verilog HDL warning at Project.v(112): object imem used but never assigned
-Warning (10764): Verilog HDL warning at Project.v(232): converting signed shift amount to unsigned
-Warning (10764): Verilog HDL warning at Project.v(235): converting signed shift amount to unsigned
-Warning (10230): Verilog HDL assignment warning at Project.v(375): truncated value with size 25 to match size of target (23)
-Warning (10270): Verilog HDL Case Statement warning at Project.v(380): incomplete case statement has no default case item
-Warning (10240): Verilog HDL Always Construct warning at Project.v(528): inferring latch(es) for variable "LEDRout", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "LEDRout[0]" at Project.v(528)
-Info (10041): Inferred latch for "LEDRout[1]" at Project.v(528)
-Info (10041): Inferred latch for "LEDRout[2]" at Project.v(528)
-Info (10041): Inferred latch for "LEDRout[3]" at Project.v(528)
-Info (10041): Inferred latch for "LEDRout[4]" at Project.v(528)
-Info (10041): Inferred latch for "LEDRout[5]" at Project.v(528)
-Info (10041): Inferred latch for "LEDRout[6]" at Project.v(528)
-Info (10041): Inferred latch for "LEDRout[7]" at Project.v(528)
-Info (10041): Inferred latch for "LEDRout[8]" at Project.v(528)
-Info (10041): Inferred latch for "LEDRout[9]" at Project.v(528)
+Warning (10230): Verilog HDL assignment warning at Project.v(369): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(370): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(371): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(372): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(373): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(374): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(375): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(376): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(377): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(378): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(379): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(380): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(381): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(382): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(383): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(384): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(385): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(386): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(387): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(388): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(389): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(390): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(391): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(392): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(393): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(394): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(397): truncated value with size 32 to match size of target (5)
+Warning (10858): Verilog HDL warning at Project.v(130): object imem used but never assigned
+Warning (10240): Verilog HDL Always Construct warning at Project.v(187): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
+Warning (10764): Verilog HDL warning at Project.v(261): converting signed shift amount to unsigned
+Warning (10764): Verilog HDL warning at Project.v(264): converting signed shift amount to unsigned
+Warning (10230): Verilog HDL assignment warning at Project.v(413): truncated value with size 6 to match size of target (4)
+Warning (10270): Verilog HDL Case Statement warning at Project.v(422): incomplete case statement has no default case item
+Warning (10230): Verilog HDL assignment warning at Project.v(590): truncated value with size 32 to match size of target (24)
+Warning (10230): Verilog HDL assignment warning at Project.v(592): truncated value with size 32 to match size of target (10)
 Info (12128): Elaborating entity "Pll" for hierarchy "Pll:myPll"
 Info (12128): Elaborating entity "Pll_0002" for hierarchy "Pll:myPll|Pll_0002:pll_inst"
 Info (12128): Elaborating entity "altera_pll" for hierarchy "Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i"
@@ -1198,7 +1157,7 @@ Info (12128): Elaborating entity "SXT" for hierarchy "SXT:sxt"
 Info (12128): Elaborating entity "SevenSeg" for hierarchy "SevenSeg:Hex0Out"
 Warning (276020): Inferred RAM node "dmem_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
 Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276007): RAM logic "regs" is uninferred due to asynchronous read logic
+    Info (276007): RAM logic "imem" is uninferred due to asynchronous read logic
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13048): Converted tri-state node "memin[31]" into a selector
     Warning (13048): Converted tri-state node "memin[30]" into a selector
@@ -1266,118 +1225,16 @@ Info (12133): Instantiated megafunction "altsyncram:dmem_rtl_0" with the followi
     Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "Test.mif"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_r0m1.tdf
-    Info (12023): Found entity 1: altsyncram_r0m1
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_dbm1.tdf
+    Info (12023): Found entity 1: altsyncram_dbm1
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_5la.tdf
     Info (12023): Found entity 1: decode_5la
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_u0a.tdf
     Info (12023): Found entity 1: decode_u0a
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_2hb.tdf
     Info (12023): Found entity 1: mux_2hb
-Warning (14284): Synthesized away the following node(s):
-    Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a0"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a1"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a2"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a3"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a4"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a5"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a6"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a7"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a8"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a9"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a10"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a11"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a12"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a13"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a14"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a15"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a16"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a17"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a18"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a19"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a20"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a21"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a22"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a23"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a24"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a25"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a26"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a27"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a28"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a29"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a30"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a31"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a32"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a33"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a34"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a35"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a36"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a37"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a38"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a39"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a40"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a41"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a42"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a43"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a44"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a45"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a46"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a47"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a48"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a49"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a50"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a51"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a52"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a53"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a54"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a55"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a56"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a57"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a58"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a59"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a60"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a61"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a62"
-        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_r0m1:auto_generated|ram_block1a63"
 Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
-    Warning (13310): Register "HEXout[1]" is converted into an equivalent circuit using register "HEXout[1]~_emulated" and latch "HEXout[1]~1"
-    Warning (13310): Register "HEXout[2]" is converted into an equivalent circuit using register "HEXout[2]~_emulated" and latch "HEXout[2]~5"
-    Warning (13310): Register "HEXout[3]" is converted into an equivalent circuit using register "HEXout[3]~_emulated" and latch "HEXout[3]~9"
-    Warning (13310): Register "HEXout[0]" is converted into an equivalent circuit using register "HEXout[0]~_emulated" and latch "HEXout[0]~13"
-    Warning (13310): Register "HEXout[4]" is converted into an equivalent circuit using register "HEXout[4]~_emulated" and latch "HEXout[4]~17"
-    Warning (13310): Register "HEXout[5]" is converted into an equivalent circuit using register "HEXout[5]~_emulated" and latch "HEXout[5]~21"
-    Warning (13310): Register "HEXout[6]" is converted into an equivalent circuit using register "HEXout[6]~_emulated" and latch "HEXout[6]~25"
-    Warning (13310): Register "HEXout[7]" is converted into an equivalent circuit using register "HEXout[7]~_emulated" and latch "HEXout[7]~29"
-    Warning (13310): Register "HEXout[8]" is converted into an equivalent circuit using register "HEXout[8]~_emulated" and latch "HEXout[8]~33"
-    Warning (13310): Register "HEXout[9]" is converted into an equivalent circuit using register "HEXout[9]~_emulated" and latch "HEXout[9]~37"
-    Warning (13310): Register "HEXout[10]" is converted into an equivalent circuit using register "HEXout[10]~_emulated" and latch "HEXout[10]~41"
-    Warning (13310): Register "HEXout[11]" is converted into an equivalent circuit using register "HEXout[11]~_emulated" and latch "HEXout[11]~45"
-    Warning (13310): Register "HEXout[12]" is converted into an equivalent circuit using register "HEXout[12]~_emulated" and latch "HEXout[12]~49"
-    Warning (13310): Register "HEXout[13]" is converted into an equivalent circuit using register "HEXout[13]~_emulated" and latch "HEXout[13]~53"
-    Warning (13310): Register "HEXout[14]" is converted into an equivalent circuit using register "HEXout[14]~_emulated" and latch "HEXout[14]~57"
-    Warning (13310): Register "HEXout[15]" is converted into an equivalent circuit using register "HEXout[15]~_emulated" and latch "HEXout[15]~61"
-    Warning (13310): Register "HEXout[19]" is converted into an equivalent circuit using register "HEXout[19]~_emulated" and latch "HEXout[19]~65"
-    Warning (13310): Register "HEXout[18]" is converted into an equivalent circuit using register "HEXout[18]~_emulated" and latch "HEXout[18]~69"
-    Warning (13310): Register "HEXout[17]" is converted into an equivalent circuit using register "HEXout[17]~_emulated" and latch "HEXout[17]~73"
-    Warning (13310): Register "HEXout[20]" is converted into an equivalent circuit using register "HEXout[20]~_emulated" and latch "HEXout[20]~77"
-    Warning (13310): Register "HEXout[21]" is converted into an equivalent circuit using register "HEXout[21]~_emulated" and latch "HEXout[21]~81"
-    Warning (13310): Register "HEXout[22]" is converted into an equivalent circuit using register "HEXout[22]~_emulated" and latch "HEXout[22]~85"
-    Warning (13310): Register "HEXout[23]" is converted into an equivalent circuit using register "HEXout[23]~_emulated" and latch "HEXout[23]~89"
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[0]" is stuck at GND
-    Warning (13410): Pin "LEDR[1]" is stuck at GND
-    Warning (13410): Pin "LEDR[2]" is stuck at GND
-    Warning (13410): Pin "LEDR[3]" is stuck at GND
-    Warning (13410): Pin "LEDR[4]" is stuck at GND
-    Warning (13410): Pin "LEDR[5]" is stuck at GND
-    Warning (13410): Pin "LEDR[6]" is stuck at GND
-    Warning (13410): Pin "LEDR[7]" is stuck at GND
-    Warning (13410): Pin "LEDR[8]" is stuck at GND
-    Warning (13410): Pin "LEDR[9]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 183 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Project.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
@@ -1396,16 +1253,17 @@ Warning (21074): Design contains 14 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 975 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2303 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 906 logic cells
+    Info (21061): Implemented 2170 logic cells
+    Info (21064): Implemented 64 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 185 warnings
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 86 warnings
     Info: Peak virtual memory: 787 megabytes
-    Info: Processing ended: Tue Mar 07 03:50:25 2017
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Processing ended: Wed Mar 08 01:13:37 2017
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:11
 
 
 +------------------------------------------+

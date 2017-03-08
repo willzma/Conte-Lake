@@ -1,15 +1,15 @@
-Fitter Status : Successful - Tue Mar 07 03:51:12 2017
+Fitter Status : Successful - Wed Mar 08 01:14:45 2017
 Quartus II 64-Bit Version : 14.0.0 Build 200 06/17/2014 SJ Web Edition
 Revision Name : Project
 Top-level Entity Name : Project
 Family : Cyclone V
 Device : 5CEBA4F23C7
 Timing Models : Final
-Logic utilization (in ALMs) : 592 / 18,480 ( 3 % )
-Total registers : 168
+Logic utilization (in ALMs) : 1,083 / 18,480 ( 6 % )
+Total registers : 933
 Total pins : 68 / 224 ( 30 % )
 Total virtual pins : 0
-Total block memory bits : 0 / 3,153,920 ( 0 % )
+Total block memory bits : 524,288 / 3,153,920 ( 17 % )
 Total DSP Blocks : 0 / 66 ( 0 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
