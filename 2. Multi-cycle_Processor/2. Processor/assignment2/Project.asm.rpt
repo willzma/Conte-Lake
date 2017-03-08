@@ -1,5 +1,5 @@
 Assembler report for Project
-Tue Mar 07 03:51:20 2017
+Wed Mar 08 04:19:15 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Mar 07 03:51:20 2017 ;
+; Assembler Status      ; Successful - Wed Mar 08 04:19:15 2017 ;
 ; Revision Name         ; Project                               ;
 ; Top-level Entity Name ; Project                               ;
 ; Family                ; Cyclone V                             ;
@@ -68,8 +68,8 @@ agreement for further details.
 ; Option         ; Setting                                                                                                 ;
 +----------------+---------------------------------------------------------------------------------------------------------+
 ; Device         ; 5CEBA4F23C7                                                                                             ;
-; JTAG usercode  ; 0x0061F4EB                                                                                              ;
-; Checksum       ; 0x0061F4EB                                                                                              ;
+; JTAG usercode  ; 0x0164D1FA                                                                                              ;
+; Checksum       ; 0x0164D1FA                                                                                              ;
 +----------------+---------------------------------------------------------------------------------------------------------+
 
 
@@ -79,13 +79,13 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Tue Mar 07 03:51:15 2017
+    Info: Processing started: Wed Mar 08 04:19:09 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Project -c Project
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 661 megabytes
-    Info: Processing ended: Tue Mar 07 03:51:20 2017
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 667 megabytes
+    Info: Processing ended: Wed Mar 08 04:19:15 2017
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
 
 
