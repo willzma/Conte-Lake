@@ -233,6 +233,18 @@ module Project(
 		case(op1)
 			OP1_EXT: begin
 					case(op2)
+						OP2_EQ: begin
+						  ALUout = (A == B);
+						end
+						OP2_LT: begin
+						  ALUout = (A < B);
+						end
+						OP2_LE: begin
+						  ALUout = (A <= B);
+						end
+						OP2_NE: begin
+						  ALUout = (A != B);
+						end
 						OP2_ADD: begin
 						  ALUout = (A + B);
 						end
@@ -512,7 +524,7 @@ module Project(
 				next_state = S_B5;
 			end
 		S_B5: begin
-				{LdB, ShOff, DrOff} = {1'b1, , 1'b1};
+				{LdB, ShOff, DrOff} = {1'b1, 1'b1, 1'b1};
 				next_state = S_B6;
 			end
 		S_B6: begin

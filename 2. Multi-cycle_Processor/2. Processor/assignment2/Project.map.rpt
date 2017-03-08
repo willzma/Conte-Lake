@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Project
-Wed Mar 08 01:13:37 2017
+Wed Mar 08 04:18:02 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -62,7 +62,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Mar 08 01:13:37 2017      ;
+; Analysis & Synthesis Status     ; Successful - Wed Mar 08 04:18:02 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
@@ -213,14 +213,14 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------+
 ; Resource                                    ; Usage  ;
 +---------------------------------------------+--------+
-; Estimate of Logic utilization (ALMs needed) ; 1102   ;
+; Estimate of Logic utilization (ALMs needed) ; 1095   ;
 ;                                             ;        ;
-; Combinational ALUT usage for logic          ; 1417   ;
-;     -- 7 input functions                    ; 22     ;
-;     -- 6 input functions                    ; 685    ;
-;     -- 5 input functions                    ; 228    ;
-;     -- 4 input functions                    ; 234    ;
-;     -- <=3 input functions                  ; 248    ;
+; Combinational ALUT usage for logic          ; 1399   ;
+;     -- 7 input functions                    ; 5      ;
+;     -- 6 input functions                    ; 707    ;
+;     -- 5 input functions                    ; 165    ;
+;     -- 4 input functions                    ; 257    ;
+;     -- <=3 input functions                  ; 265    ;
 ;                                             ;        ;
 ; Dedicated logic registers                   ; 870    ;
 ;                                             ;        ;
@@ -233,8 +233,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                                             ;        ;
 ; Maximum fan-out node                        ; clk    ;
 ; Maximum fan-out                             ; 902    ;
-; Total fan-out                               ; 12260  ;
-; Average fan-out                             ; 4.93   ;
+; Total fan-out                               ; 12094  ;
+; Average fan-out                             ; 4.90   ;
 +---------------------------------------------+--------+
 
 
@@ -243,7 +243,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                              ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
-; |Project                               ; 1417 (1372)       ; 870 (867)    ; 524288            ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
+; |Project                               ; 1399 (1354)       ; 870 (867)    ; 524288            ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
 ;    |Pll:myPll|                         ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll                                                               ; Pll          ;
 ;       |Pll_0002:pll_inst|              ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst                                             ; Pll          ;
 ;          |altera_pll:altera_pll_i|     ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i                     ; work         ;
@@ -311,45 +311,45 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; IR[0]                                   ; 63      ;
 ; IR[2]                                   ; 63      ;
 ; IR[3]                                   ; 63      ;
-; IR[18]                                  ; 104     ;
-; IR[19]                                  ; 14      ;
+; IR[19]                                  ; 16      ;
+; IR[18]                                  ; 79      ;
 ; IR[23]                                  ; 8       ;
 ; IR[16]                                  ; 3       ;
-; IR[15]                                  ; 3       ;
-; IR[14]                                  ; 3       ;
-; IR[21]                                  ; 62      ;
 ; IR[12]                                  ; 3       ;
 ; IR[11]                                  ; 4       ;
 ; IR[10]                                  ; 4       ;
 ; IR[9]                                   ; 4       ;
+; IR[21]                                  ; 74      ;
+; IR[15]                                  ; 3       ;
+; IR[14]                                  ; 3       ;
 ; IR[5]                                   ; 3       ;
 ; IR[7]                                   ; 3       ;
-; IR[31]                                  ; 17      ;
+; IR[31]                                  ; 18      ;
 ; IR[25]                                  ; 4       ;
 ; IR[27]                                  ; 43      ;
-; IR[28]                                  ; 11      ;
+; IR[28]                                  ; 12      ;
 ; IR[30]                                  ; 12      ;
-; IR[26]                                  ; 40      ;
+; IR[26]                                  ; 42      ;
 ; dmem_rtl_0_bypass[30]                   ; 1       ;
 ; PC[8]                                   ; 100     ;
-; dmem_rtl_0_bypass[80]                   ; 1       ;
-; dmem_rtl_0_bypass[78]                   ; 1       ;
-; dmem_rtl_0_bypass[72]                   ; 1       ;
-; dmem_rtl_0_bypass[70]                   ; 1       ;
+; dmem_rtl_0_bypass[68]                   ; 1       ;
+; dmem_rtl_0_bypass[66]                   ; 1       ;
+; dmem_rtl_0_bypass[64]                   ; 1       ;
+; dmem_rtl_0_bypass[62]                   ; 1       ;
 ; dmem~30                                 ; 1       ;
 ; dmem_rtl_0_bypass[88]                   ; 1       ;
 ; dmem_rtl_0_bypass[87]                   ; 1       ;
 ; dmem_rtl_0_bypass[86]                   ; 1       ;
 ; dmem_rtl_0_bypass[84]                   ; 1       ;
 ; dmem_rtl_0_bypass[82]                   ; 1       ;
-; dmem_rtl_0_bypass[76]                   ; 1       ;
-; dmem_rtl_0_bypass[74]                   ; 1       ;
-; dmem_rtl_0_bypass[68]                   ; 1       ;
-; dmem_rtl_0_bypass[66]                   ; 1       ;
+; dmem_rtl_0_bypass[80]                   ; 1       ;
+; dmem_rtl_0_bypass[78]                   ; 1       ;
+; dmem_rtl_0_bypass[72]                   ; 1       ;
+; dmem_rtl_0_bypass[70]                   ; 1       ;
 ; dmem_rtl_0_bypass[92]                   ; 1       ;
 ; dmem_rtl_0_bypass[90]                   ; 1       ;
-; dmem_rtl_0_bypass[64]                   ; 1       ;
-; dmem_rtl_0_bypass[62]                   ; 1       ;
+; dmem_rtl_0_bypass[76]                   ; 1       ;
+; dmem_rtl_0_bypass[74]                   ; 1       ;
 ; dmem_rtl_0_bypass[32]                   ; 1       ;
 ; dmem_rtl_0_bypass[34]                   ; 1       ;
 ; dmem_rtl_0_bypass[36]                   ; 1       ;
@@ -1000,27 +1000,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA               ; 34                          ;
 ;     ENA CLR           ; 718                         ;
 ;     plain             ; 80                          ;
-; arriav_lcell_comb     ; 1423                        ;
+; arriav_lcell_comb     ; 1405                        ;
 ;     arith             ; 94                          ;
 ;         1 data inputs ; 62                          ;
 ;         2 data inputs ; 32                          ;
-;     extend            ; 22                          ;
-;         7 data inputs ; 22                          ;
-;     normal            ; 1275                        ;
+;     extend            ; 5                           ;
+;         7 data inputs ; 5                           ;
+;     normal            ; 1274                        ;
 ;         1 data inputs ; 11                          ;
-;         2 data inputs ; 42                          ;
-;         3 data inputs ; 75                          ;
-;         4 data inputs ; 234                         ;
-;         5 data inputs ; 228                         ;
-;         6 data inputs ; 685                         ;
+;         2 data inputs ; 49                          ;
+;         3 data inputs ; 85                          ;
+;         4 data inputs ; 257                         ;
+;         5 data inputs ; 165                         ;
+;         6 data inputs ; 707                         ;
 ;     shared            ; 32                          ;
 ;         2 data inputs ; 32                          ;
 ; boundary_port         ; 68                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 64                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.10                        ;
-; Average LUT depth     ; 5.20                        ;
+; Max LUT depth         ; 10.00                       ;
+; Average LUT depth     ; 5.30                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1029,7 +1029,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:08     ;
+; Top            ; 00:00:07     ;
 +----------------+--------------+
 
 
@@ -1039,7 +1039,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Wed Mar 08 01:13:26 2017
+    Info: Processing started: Wed Mar 08 04:17:52 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Project -c Project
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 2 entities, in source file project.v
@@ -1052,18 +1052,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
     Info (12023): Found entity 1: Pll_0002
 Info (12127): Elaborating entity "Project" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at Project.v(369): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(370): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(371): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(372): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(373): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(374): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(375): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(376): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(377): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(378): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(379): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(380): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(381): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(382): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(383): truncated value with size 32 to match size of target (5)
@@ -1078,15 +1066,27 @@ Warning (10230): Verilog HDL assignment warning at Project.v(391): truncated val
 Warning (10230): Verilog HDL assignment warning at Project.v(392): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(393): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(394): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(395): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(396): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(397): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(398): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(399): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(400): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(401): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(402): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(403): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(404): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(405): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(406): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(409): truncated value with size 32 to match size of target (5)
 Warning (10858): Verilog HDL warning at Project.v(130): object imem used but never assigned
 Warning (10240): Verilog HDL Always Construct warning at Project.v(187): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
-Warning (10764): Verilog HDL warning at Project.v(261): converting signed shift amount to unsigned
-Warning (10764): Verilog HDL warning at Project.v(264): converting signed shift amount to unsigned
-Warning (10230): Verilog HDL assignment warning at Project.v(413): truncated value with size 6 to match size of target (4)
-Warning (10270): Verilog HDL Case Statement warning at Project.v(422): incomplete case statement has no default case item
-Warning (10230): Verilog HDL assignment warning at Project.v(590): truncated value with size 32 to match size of target (24)
-Warning (10230): Verilog HDL assignment warning at Project.v(592): truncated value with size 32 to match size of target (10)
+Warning (10764): Verilog HDL warning at Project.v(273): converting signed shift amount to unsigned
+Warning (10764): Verilog HDL warning at Project.v(276): converting signed shift amount to unsigned
+Warning (10230): Verilog HDL assignment warning at Project.v(425): truncated value with size 6 to match size of target (4)
+Warning (10270): Verilog HDL Case Statement warning at Project.v(434): incomplete case statement has no default case item
+Warning (10230): Verilog HDL assignment warning at Project.v(602): truncated value with size 32 to match size of target (24)
+Warning (10230): Verilog HDL assignment warning at Project.v(604): truncated value with size 32 to match size of target (10)
 Info (12128): Elaborating entity "Pll" for hierarchy "Pll:myPll"
 Info (12128): Elaborating entity "Pll_0002" for hierarchy "Pll:myPll|Pll_0002:pll_inst"
 Info (12128): Elaborating entity "altera_pll" for hierarchy "Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i"
@@ -1253,17 +1253,17 @@ Warning (21074): Design contains 14 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 2303 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2285 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 2170 logic cells
+    Info (21061): Implemented 2152 logic cells
     Info (21064): Implemented 64 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 86 warnings
     Info: Peak virtual memory: 787 megabytes
-    Info: Processing ended: Wed Mar 08 01:13:37 2017
+    Info: Processing ended: Wed Mar 08 04:18:03 2017
     Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Total CPU time (on all processors): 00:00:10
 
 
 +------------------------------------------+
