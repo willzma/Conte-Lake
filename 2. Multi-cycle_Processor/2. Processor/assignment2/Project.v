@@ -283,10 +283,10 @@ module Project(
 						  ALUout = (~(A ^ B));
 						end
 						OP2_RSHF: begin
-						  ALUout = (A << B);
+						  ALUout = (A >>> B);
 						end
 						OP2_LSHF: begin
-						  ALUout = (A >>> B);
+						  ALUout = (A << B);
 						end
 						default:
 							ALUout = 0;
@@ -451,7 +451,7 @@ module Project(
 				  		    OP2_NAND,OP2_NOR,OP2_NXOR,
 						    OP2_EQ,OP2_LT,OP2_LE,OP2_NE,
 						    OP2_ADD,
-						    OP2_AND,OP2_OR,OP2_XOR:
+						    OP2_AND,OP2_OR,OP2_XOR,OP2_RSHF,OP2_LSHF:
 						         next_state=S_ALUR1;
 						    default: next_state=S_ERROR;
 						  endcase

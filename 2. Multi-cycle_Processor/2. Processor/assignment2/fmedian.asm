@@ -75,6 +75,7 @@ MainLoop:
 	ADDI  Zero,S0,4000000
 DoneSorting:
 	ADDI	S0,S0,-1
+	SW		S0,HEX(Zero)
 	BEQ   S0,Zero,ShowMedian
 	JMP DoneSorting(Zero)
 
@@ -83,10 +84,16 @@ DoneSorting:
 ; -----------------------------------------------------------------
 ; Shows Median on HEX
 ShowMedian:
+	ADDI  Zero,S1,0xDAB
+	SW		S1,HEX(Zero)
 	ADDI	Zero,A0,Array
 	LW		A1,ArrayBytesVal(Zero)			; A1 size of the array
-	ADDI	Zero,T0,3
+	ADDI	Zero,T0,1
+	ADDI  Zero,S1,0xCAB
+	SW		S1,HEX(Zero)
 	RSHF	A1,A1,T0										; A1 now is divided by eight (*4 each element size, *2 to find element)
+	ADDI  Zero,S1,0xDAD
+	SW		S1,HEX(Zero)
 	ADD   A1,A1,	A0
 	LW		T0,0(A1)
 	SW		T0,HEX(Zero)

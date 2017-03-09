@@ -6,7 +6,6 @@
 
 	.ORIG 0x100
 	
-gaylord:
-	addi	s1,s1,1
-	sw		s1,HEX(Zero)
-	br      gaylord
+addi	s1,s1,3
+addi	s2,s2,0x4000
+sw		s2,HEX(Zero)
