@@ -235,12 +235,12 @@ def alui_subi(statement):
         if labels[imm].bit_length() > 16:
             print("Assembly failed: Label " + imm + " bit-width too wide for immediate")
             sys.exit()
-        else: imm = (4 * (int(labels[imm]) - orig_address)) + orig_address
+        else: imm = 4 * int(labels[imm])
     elif imm in names:
         if names[imm].bit_length() > 16:
             print("Assembly failed: Name " + imm + " bit-width too wide for immediate")
             sys.exit()
-        else: imm = (4 * (int(names[imm]) - orig_address)) + orig_address
+        else: imm = 4 * int(labels[imm])
     else: imm = offset(imm)
     output_statements.append([statement[0],
                             pack_imm(opcode, -1 * imm, rs, rt),
