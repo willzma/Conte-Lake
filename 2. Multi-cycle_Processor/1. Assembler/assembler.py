@@ -314,20 +314,6 @@ def main():
         else: # throw error, undefined opcode
             print("Assembly failed: opcode " + opcode + " not found")
 
-    print(names)
-    print(labels)
-
-    '''def rshift(val, n): return (val % 0x100000000) >> n
-
-    for statement in output_statements:
-        print(str(statement[0]), end = " ")
-        binary = int(statement[1])
-        while binary > 0:
-            print("{0:0b}".format(binary & 0xF).zfill(4), end = " ")
-            binary = rshift(binary, 4)
-        print("\n")
-        #print("{0:0b}".format(statement[1]))'''
-
     # Third phase, write the MIF file
     output_path = ""
     if "." in str(input_file.name):
