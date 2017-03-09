@@ -1,5 +1,5 @@
 Design Assistant report for Project
-Wed Mar 08 04:19:37 2017
+Wed Mar 08 22:19:58 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -9,10 +9,8 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   1. Legal Notice
   2. Design Assistant Summary
   3. Design Assistant Settings
-  4. High Violations
-  5. Medium Violations
-  6. Information only Violations
-  7. Design Assistant Messages
+  4. Information only Violations
+  5. Design Assistant Messages
 
 
 
@@ -39,17 +37,15 @@ agreement for further details.
 +-------------------------------------------------------------------------+
 ; Design Assistant Summary                                                ;
 +-----------------------------------+-------------------------------------+
-; Design Assistant Status           ; Analyzed - Wed Mar 08 04:19:37 2017 ;
+; Design Assistant Status           ; Analyzed - Wed Mar 08 22:19:58 2017 ;
 ; Revision Name                     ; Project                             ;
 ; Top-level Entity Name             ; Project                             ;
 ; Family                            ; Cyclone V                           ;
 ; Total Critical Violations         ; 0                                   ;
-; Total High Violations             ; 1                                   ;
-; - Rule C105                       ; 1                                   ;
-; Total Medium Violations           ; 1                                   ;
-; - Rule C104                       ; 1                                   ;
-; Total Information only Violations ; 165                                 ;
-; - Rule T101                       ; 115                                 ;
+; Total High Violations             ; 0                                   ;
+; Total Medium Violations           ; 0                                   ;
+; Total Information only Violations ; 151                                 ;
+; - Rule T101                       ; 101                                 ;
 ; - Rule T102                       ; 50                                  ;
 +-----------------------------------+-------------------------------------+
 
@@ -100,205 +96,162 @@ agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
 
 
-+----------------------------------------------------------+
-; High Violations                                          ;
-+---------------------------------------------------+------+
-; Rule name                                         ; Name ;
-+---------------------------------------------------+------+
-; Rule C105: Clock signal should be a global signal ; clk  ;
-+---------------------------------------------------+------+
-
-
-+--------------------------------------------------------------------------------------+
-; Medium Violations                                                                    ;
-+--------------------------------------------------------------------+-----------------+
-; Rule name                                                          ; Name            ;
-+--------------------------------------------------------------------+-----------------+
-; Rule C104: Clock signal source should drive only clock input ports ; clk             ;
-;  Clock ports destination node(s) list                              ; B[0]            ;
-;  Clock ports destination node(s) list                              ; state[3]        ;
-;  Clock ports destination node(s) list                              ; IR[30]          ;
-;  Clock ports destination node(s) list                              ; state[2]        ;
-;  Clock ports destination node(s) list                              ; state[0]        ;
-;  Clock ports destination node(s) list                              ; state[1]        ;
-;  Clock ports destination node(s) list                              ; state[4]        ;
-;  Clock ports destination node(s) list                              ; IR[19]          ;
-;  Clock ports destination node(s) list                              ; PC[2]~DUPLICATE ;
-;  Clock ports destination node(s) list                              ; IR[5]           ;
-;  Non-clock ports destination node(s) list                          ; clk~0           ;
-+--------------------------------------------------------------------+-----------------+
-
-
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Information only Violations                                                                                                                                     ;
 +------------------------------------------------------------------+------------------------------------------------------------------------------------+---------+
 ; Rule name                                                        ; Name                                                                               ; Fan-Out ;
 +------------------------------------------------------------------+------------------------------------------------------------------------------------+---------+
-; Rule T101: Nodes with more than the specified number of fan-outs ; B[0]                                                                               ; 77      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; clk                                                                                ; 999     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0]~CLKENA0         ; 38      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; LessThan0~5                                                                        ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; WideOr20~0                                                                         ; 39      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; state[3]                                                                           ; 39      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder8~1                                                                         ; 35      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; state[2]                                                                           ; 54      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Selector32~5                                                                       ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; B[0]~DUPLICATE                                                                     ; 40      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0]~CLKENA0         ; 1207    ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[0]~4                                                                         ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; dmem~43                                                                            ; 64      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; LdMAR~0                                                                            ; 117     ;
 ; Rule T101: Nodes with more than the specified number of fan-outs ; state[1]                                                                           ; 40      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; state[4]                                                                           ; 31      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; PC[2]~DUPLICATE                                                                    ; 81      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; PC~1                                                                               ; 37      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; LdPC~1                                                                             ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[2]~78                                                                        ; 119     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Selector71~4                                                                       ; 96      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; PC[7]                                                                              ; 52      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[7]~103                                                                       ; 119     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Selector70~4                                                                       ; 96      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; IR[2]                                                                              ; 63      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; PC[8]                                                                              ; 100     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; PC[6]                                                                              ; 92      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[6]~98                                                                        ; 120     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; WideOr19~0                                                                         ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Selector72~4                                                                       ; 96      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; PC[9]                                                                              ; 90      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[9]~113                                                                       ; 121     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder9~1                                                                         ; 53      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[3]~83                                                                        ; 106     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[8]~108                                                                       ; 121     ;
 ; Rule T101: Nodes with more than the specified number of fan-outs ; altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|decode_5la:decode2|eq_node[1] ; 64      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; LdMAR~0                                                                            ; 113     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[15]~144                                                                      ; 58      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; B[2]                                                                               ; 69      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; WideOr22~0                                                                         ; 42      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[4]~88                                                                        ; 120     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; IR[21]                                                                             ; 74      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; PC[4]                                                                              ; 105     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; PC[3]                                                                              ; 88      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[3]~83                                                                        ; 119     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~3                                                                         ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Selector69~4                                                                       ; 96      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; IR[3]                                                                              ; 63      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; PC[5]                                                                              ; 110     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[24]~69                                                                       ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[4]~88                                                                        ; 119     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[11]~123                                                                      ; 120     ;
 ; Rule T101: Nodes with more than the specified number of fan-outs ; memin[5]~93                                                                        ; 120     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; dmem~45                                                                            ; 64      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[30]~61                                                                       ; 54      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder3~0                                                                         ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[6]~98                                                                        ; 120     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[12]~128                                                                      ; 120     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[14]~136                                                                      ; 120     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Selector56~0                                                                       ; 42      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; PC~1                                                                               ; 55      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; IR[26]~DUPLICATE                                                                   ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; PC~8                                                                               ; 92      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; state[2]~DUPLICATE                                                                 ; 34      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; PC~5                                                                               ; 100     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; PC~7                                                                               ; 52      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[7]~103                                                                       ; 120     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[10]~118                                                                      ; 121     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[2]~78                                                                        ; 105     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[9]~113                                                                       ; 120     ;
 ; Rule T101: Nodes with more than the specified number of fan-outs ; DrPC~0                                                                             ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[29]~25                                                                       ; 55      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; WideOr23~0                                                                         ; 33      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~0                                                                         ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~12                                                                        ; 33      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~4                                                                         ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~8                                                                         ; 33      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~1                                                                         ; 33      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~13                                                                        ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~9                                                                         ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~5                                                                         ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~7                                                                         ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~11                                                                        ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~15                                                                        ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~14                                                                        ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~10                                                                        ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~6                                                                         ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder0~2                                                                         ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; IR[18]                                                                             ; 79      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[10]~118                                                                      ; 119     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Selector21~0                                                                       ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Selector56~0                                                                       ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; IR[26]                                                                             ; 42      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; IR[27]                                                                             ; 43      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[8]~108                                                                       ; 119     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[11]~123                                                                      ; 119     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; B[3]                                                                               ; 69      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; B[1]                                                                               ; 73      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[1]~73                                                                        ; 53      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; dmem~40                                                                            ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[14]                                                                            ; 66      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[14]~138                                                                      ; 122     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[12]~128                                                                      ; 119     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[13]~133                                                                      ; 119     ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[31]~57                                                                       ; 55      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Selector33~0                                                                       ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; A[31]~DUPLICATE                                                                    ; 36      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[28]~29                                                                       ; 54      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[24]~45                                                                       ; 55      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[23]~65                                                                       ; 55      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[22]~69                                                                       ; 55      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; dmem~44                                                                            ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[5]                                                                             ; 66      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[2]                                                                             ; 66      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[9]                                                                             ; 66      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[8]                                                                             ; 66      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; state[3]~DUPLICATE                                                                 ; 35      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; PC~3                                                                               ; 105     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; PC~2                                                                               ; 88      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; PC~0                                                                               ; 87      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; PC~4                                                                               ; 110     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; PC~6                                                                               ; 90      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; IR[18]~DUPLICATE                                                                   ; 82      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; IR[21]                                                                             ; 42      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[13]~132                                                                      ; 120     ;
 ; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[4]                                                                             ; 66      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[3]                                                                             ; 66      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[3]~DUPLICATE                                                                   ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[9]                                                                             ; 66      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[6]                                                                             ; 66      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[12]                                                                            ; 66      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[14]                                                                            ; 66      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[10]~DUPLICATE                                                                  ; 65      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[2]                                                                             ; 66      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[7]                                                                             ; 66      ;
 ; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[13]                                                                            ; 66      ;
 ; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[11]                                                                            ; 66      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[12]                                                                            ; 66      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[7]                                                                             ; 66      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[6]                                                                             ; 66      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[10]                                                                            ; 66      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[19]~8                                                                        ; 54      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[5]                                                                             ; 66      ;
 ; Rule T101: Nodes with more than the specified number of fan-outs ; altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|_~0                           ; 64      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; dmem~0                                                                             ; 32      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[18]~12                                                                       ; 54      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[17]~16                                                                       ; 54      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[15]~142                                                                      ; 58      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; WideOr23~0                                                                         ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Selector70~4                                                                       ; 122     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; IR[2]                                                                              ; 67      ;
 ; Rule T101: Nodes with more than the specified number of fan-outs ; memin[16]~21                                                                       ; 55      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[0]~3                                                                         ; 53      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[21]~49                                                                       ; 54      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[20]~53                                                                       ; 56      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; Selector63~0                                                                       ; 33      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; ShiftLeft0~5                                                                       ; 37      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[26]~37                                                                       ; 54      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[25]~41                                                                       ; 54      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; memin[27]~33                                                                       ; 55      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; IR[0]                                                                              ; 63      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; IR[1]                                                                              ; 63      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; clk                                                                                ; 999     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[14]~138                                                                      ; 122     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[9]~113                                                                       ; 121     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; MAR[8]~DUPLICATE                                                                   ; 39      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; dmem~42                                                                            ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|address_reg_b[0]~0            ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; dmem~0                                                                             ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; dmem~38                                                                            ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Decoder4~0                                                                         ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Selector71~4                                                                       ; 122     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; IR[1]                                                                              ; 80      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Selector72~4                                                                       ; 120     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; IR[0]                                                                              ; 80      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Selector69~4                                                                       ; 120     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; IR[3]~DUPLICATE                                                                    ; 57      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; WideOr18~0                                                                         ; 45      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regs~18                                                                            ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regs~20                                                                            ; 34      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regs~36                                                                            ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regs~38                                                                            ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regs~8                                                                             ; 34      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regs~11                                                                            ; 34      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; WideOr20~0                                                                         ; 39      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; WideOr22~0                                                                         ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; B[4]~DUPLICATE                                                                     ; 46      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; B[3]~DUPLICATE                                                                     ; 62      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; B[2]                                                                               ; 67      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; B[1]                                                                               ; 42      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[1]~73                                                                        ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[30]~61                                                                       ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[29]~41                                                                       ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[28]~45                                                                       ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[27]~49                                                                       ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[26]~53                                                                       ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[25]~65                                                                       ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[23]~25                                                                       ; 55      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Selector32~0_OTERM561                                                              ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[22]~29                                                                       ; 55      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; Selector32~3                                                                       ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[21]~33                                                                       ; 55      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[20]~37                                                                       ; 55      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[19]~9                                                                        ; 55      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[18]~13                                                                       ; 55      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[17]~17                                                                       ; 55      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ShiftLeft1~7                                                                       ; 62      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; memin[31]~57                                                                       ; 38      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; WideOr19~0                                                                         ; 184     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; HEXout[23]~0                                                                       ; 42      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0]~CLKENA0         ; 1207    ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; WideOr19~0                                                                         ; 184     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; Selector70~4                                                                       ; 122     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; Selector71~4                                                                       ; 122     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[8]~108                                                                       ; 121     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[10]~118                                                                      ; 121     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[11]~123                                                                      ; 120     ;
 ; Rule T102: Top nodes with the highest number of fan-outs         ; memin[6]~98                                                                        ; 120     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[12]~128                                                                      ; 120     ;
 ; Rule T102: Top nodes with the highest number of fan-outs         ; memin[5]~93                                                                        ; 120     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[4]~88                                                                        ; 120     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[7]~103                                                                       ; 119     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[2]~78                                                                        ; 119     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[13]~133                                                                      ; 119     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[8]~108                                                                       ; 119     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[12]~128                                                                      ; 119     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[3]~83                                                                        ; 119     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[10]~118                                                                      ; 119     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; memin[11]~123                                                                      ; 119     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; LdMAR~0                                                                            ; 113     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; PC[5]                                                                              ; 110     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; PC[4]                                                                              ; 105     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; PC[8]                                                                              ; 100     ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; Selector70~4                                                                       ; 96      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; Selector69~4                                                                       ; 96      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; Selector71~4                                                                       ; 96      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; Selector72~4                                                                       ; 96      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; PC[6]                                                                              ; 92      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; PC[9]                                                                              ; 90      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; PC[3]                                                                              ; 88      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; PC[2]~DUPLICATE                                                                    ; 81      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; IR[18]                                                                             ; 79      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; B[0]                                                                               ; 77      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; IR[21]                                                                             ; 74      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; B[1]                                                                               ; 73      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; B[2]                                                                               ; 69      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; B[3]                                                                               ; 69      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[6]                                                                             ; 66      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[3]                                                                             ; 66      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[7]                                                                             ; 66      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[14]~136                                                                      ; 120     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[13]~132                                                                      ; 120     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; Selector69~4                                                                       ; 120     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; Selector72~4                                                                       ; 120     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[9]~113                                                                       ; 120     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[7]~103                                                                       ; 120     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[4]~88                                                                        ; 119     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; LdMAR~0                                                                            ; 117     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PC~4                                                                               ; 110     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[3]~83                                                                        ; 106     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[2]~78                                                                        ; 105     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PC~3                                                                               ; 105     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PC~5                                                                               ; 100     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PC~8                                                                               ; 92      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PC~6                                                                               ; 90      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PC~2                                                                               ; 88      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PC~0                                                                               ; 87      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; IR[18]~DUPLICATE                                                                   ; 82      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; IR[1]                                                                              ; 80      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; IR[0]                                                                              ; 80      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; B[2]                                                                               ; 67      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; IR[2]                                                                              ; 67      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[5]                                                                             ; 66      ;
 ; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[14]                                                                            ; 66      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[7]                                                                             ; 66      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[12]                                                                            ; 66      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[2]                                                                             ; 66      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[6]                                                                             ; 66      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[11]                                                                            ; 66      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[9]                                                                             ; 66      ;
 ; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[4]                                                                             ; 66      ;
 ; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[13]                                                                            ; 66      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[9]                                                                             ; 66      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[8]                                                                             ; 66      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[5]                                                                             ; 66      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[12]                                                                            ; 66      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[10]                                                                            ; 66      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[11]                                                                            ; 66      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[2]                                                                             ; 66      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|_~0                           ; 64      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; dmem~45                                                                            ; 64      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[10]~DUPLICATE                                                                  ; 65      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; MAR[3]~DUPLICATE                                                                   ; 65      ;
 ; Rule T102: Top nodes with the highest number of fan-outs         ; altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|decode_5la:decode2|eq_node[1] ; 64      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; IR[3]                                                                              ; 63      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; IR[1]                                                                              ; 63      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|_~0                           ; 64      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; dmem~43                                                                            ; 64      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ShiftLeft1~7                                                                       ; 62      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; B[3]~DUPLICATE                                                                     ; 62      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; memin[15]~142                                                                      ; 58      ;
 +------------------------------------------------------------------+------------------------------------------------------------------------------------+---------+
 
 
@@ -308,93 +261,86 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Design Assistant
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Wed Mar 08 04:19:35 2017
+    Info: Processing started: Wed Mar 08 22:19:56 2017
 Info: Command: quartus_drc --read_settings_files=off --write_settings_files=off Project -c Project
 Info (332104): Reading SDC File: 'Project.sdc'
 Info (332110): Deriving PLL clocks
     Info (332110): create_generated_clock -source {myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin} -divide_by 2 -multiply_by 12 -duty_cycle 50.00 -name {myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]} {myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}
     Info (332110): create_generated_clock -source {myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|vco0ph[0]} -divide_by 6 -duty_cycle 50.00 -name {myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk} {myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}
 Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
-Warning (332060): Node: clk was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register B[0] is being clocked by clk
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
     Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
     Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
     Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Critical Warning (308042): (High) Rule C105: Clock signal should be a global signal. (Reporting threshold:25). Found 1 node(s) related to this rule.
-    Info (308076): You set a Design Assistant configuration rule to check for clocks with a certain number of fanouts. You specified a reporting threshold of <number> fanouts. The following clocks all contain more than <number> fanouts. You can either adjust the reporting threshold in the Design Assistant Settings page, or change the following clock signals to global signals.
-    Critical Warning (308012): Node  "clk"
-Warning (308040): (Medium) Rule C104: Clock signal source should drive only clock input ports. Found 1 nodes related to this rule.
-    Warning (308010): Node  "clk"
-Info (308046): (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 115 node(s) with highest fan-out.
-    Info (308011): Node  "B[0]"
-    Info (308011): Node  "clk"
+Info (308046): (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 101 node(s) with highest fan-out.
+    Info (308011): Node  "B[0]~DUPLICATE"
     Info (308011): Node  "Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0]~CLKENA0"
-    Info (308011): Node  "LessThan0~5"
-    Info (308011): Node  "WideOr20~0"
-    Info (308011): Node  "state[3]"
-    Info (308011): Node  "Decoder8~1"
-    Info (308011): Node  "state[2]"
-    Info (308011): Node  "Selector32~5"
-    Info (308011): Node  "state[1]"
-    Info (308011): Node  "state[4]"
-    Info (308011): Node  "PC[2]~DUPLICATE"
-    Info (308011): Node  "PC~1"
-    Info (308011): Node  "LdPC~1"
-    Info (308011): Node  "memin[2]~78"
-    Info (308011): Node  "Selector71~4"
-    Info (308011): Node  "PC[7]"
-    Info (308011): Node  "memin[7]~103"
-    Info (308011): Node  "Selector70~4"
-    Info (308011): Node  "IR[2]"
-    Info (308011): Node  "PC[8]"
-    Info (308011): Node  "PC[6]"
-    Info (308011): Node  "memin[6]~98"
-    Info (308011): Node  "WideOr19~0"
-    Info (308011): Node  "Selector72~4"
-    Info (308011): Node  "PC[9]"
-    Info (308011): Node  "memin[9]~113"
-    Info (308011): Node  "altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|decode_5la:decode2|eq_node[1]"
+    Info (308011): Node  "memin[0]~4"
+    Info (308011): Node  "dmem~43"
     Info (308011): Node  "LdMAR~0"
-    Info (308011): Node  "memin[15]~144"
+    Info (308011): Node  "state[1]"
+    Info (308011): Node  "Decoder9~1"
+    Info (308011): Node  "memin[3]~83"
+    Info (308011): Node  "memin[8]~108"
+    Info (308011): Node  "altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|decode_5la:decode2|eq_node[1]"
+    Info (308011): Node  "memin[24]~69"
+    Info (308011): Node  "memin[4]~88"
+    Info (308011): Node  "memin[11]~123"
+    Info (308011): Node  "memin[5]~93"
+    Info (308011): Node  "memin[6]~98"
+    Info (308011): Node  "memin[12]~128"
+    Info (308011): Node  "memin[14]~136"
+    Info (308011): Node  "Selector56~0"
+    Info (308011): Node  "PC~1"
+    Info (308011): Node  "IR[26]~DUPLICATE"
+    Info (308011): Node  "PC~8"
+    Info (308011): Node  "state[2]~DUPLICATE"
+    Info (308011): Node  "PC~5"
+    Info (308011): Node  "PC~7"
+    Info (308011): Node  "memin[7]~103"
+    Info (308011): Node  "memin[10]~118"
+    Info (308011): Node  "memin[2]~78"
+    Info (308011): Node  "memin[9]~113"
+    Info (308011): Node  "DrPC~0"
+    Info (308011): Node  "state[3]~DUPLICATE"
     Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
 Info (308044): (Information) Rule T102: Top nodes with the highest number of fan-outs. (Value defined:50). Found 50 node(s) with highest fan-out.
-    Info (308011): Node  "clk"
-    Info (308011): Node  "memin[14]~138"
-    Info (308011): Node  "memin[9]~113"
-    Info (308011): Node  "memin[6]~98"
-    Info (308011): Node  "memin[5]~93"
-    Info (308011): Node  "memin[4]~88"
-    Info (308011): Node  "memin[7]~103"
-    Info (308011): Node  "memin[2]~78"
-    Info (308011): Node  "memin[13]~133"
+    Info (308011): Node  "Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0]~CLKENA0"
+    Info (308011): Node  "WideOr19~0"
+    Info (308011): Node  "Selector70~4"
+    Info (308011): Node  "Selector71~4"
     Info (308011): Node  "memin[8]~108"
-    Info (308011): Node  "memin[12]~128"
-    Info (308011): Node  "memin[3]~83"
     Info (308011): Node  "memin[10]~118"
     Info (308011): Node  "memin[11]~123"
-    Info (308011): Node  "LdMAR~0"
-    Info (308011): Node  "PC[5]"
-    Info (308011): Node  "PC[4]"
-    Info (308011): Node  "PC[8]"
-    Info (308011): Node  "Selector70~4"
+    Info (308011): Node  "memin[6]~98"
+    Info (308011): Node  "memin[12]~128"
+    Info (308011): Node  "memin[5]~93"
+    Info (308011): Node  "memin[14]~136"
+    Info (308011): Node  "memin[13]~132"
     Info (308011): Node  "Selector69~4"
-    Info (308011): Node  "Selector71~4"
     Info (308011): Node  "Selector72~4"
-    Info (308011): Node  "PC[6]"
-    Info (308011): Node  "PC[9]"
-    Info (308011): Node  "PC[3]"
-    Info (308011): Node  "PC[2]~DUPLICATE"
-    Info (308011): Node  "IR[18]"
-    Info (308011): Node  "B[0]"
-    Info (308011): Node  "IR[21]"
-    Info (308011): Node  "B[1]"
+    Info (308011): Node  "memin[9]~113"
+    Info (308011): Node  "memin[7]~103"
+    Info (308011): Node  "memin[4]~88"
+    Info (308011): Node  "LdMAR~0"
+    Info (308011): Node  "PC~4"
+    Info (308011): Node  "memin[3]~83"
+    Info (308011): Node  "memin[2]~78"
+    Info (308011): Node  "PC~3"
+    Info (308011): Node  "PC~5"
+    Info (308011): Node  "PC~8"
+    Info (308011): Node  "PC~6"
+    Info (308011): Node  "PC~2"
+    Info (308011): Node  "PC~0"
+    Info (308011): Node  "IR[18]~DUPLICATE"
+    Info (308011): Node  "IR[1]"
+    Info (308011): Node  "IR[0]"
     Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
-Info (308007): Design Assistant information: finished post-fitting analysis of current design -- generated 165 information messages and 2 warning messages
-Info: Quartus II 64-Bit Design Assistant was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 580 megabytes
-    Info: Processing ended: Wed Mar 08 04:19:37 2017
+Info (308007): Design Assistant information: finished post-fitting analysis of current design -- generated 151 information messages and 0 warning messages
+Info: Quartus II 64-Bit Design Assistant was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 595 megabytes
+    Info: Processing ended: Wed Mar 08 22:19:58 2017
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
