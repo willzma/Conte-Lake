@@ -1,10 +1,10 @@
 |Project
 CLOCK_50 => CLOCK_50.IN1
 RESET_N => _.IN1
-KEY[0] => ~NO_FANOUT~
-KEY[1] => ~NO_FANOUT~
-KEY[2] => ~NO_FANOUT~
-KEY[3] => ~NO_FANOUT~
+KEY[0] => keyval.DATAB
+KEY[1] => keyval.DATAB
+KEY[2] => keyval.DATAB
+KEY[3] => keyval.DATAB
 SW[0] => ~NO_FANOUT~
 SW[1] => ~NO_FANOUT~
 SW[2] => ~NO_FANOUT~

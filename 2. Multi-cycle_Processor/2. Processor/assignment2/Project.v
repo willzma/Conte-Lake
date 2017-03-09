@@ -24,7 +24,7 @@ module Project(
   parameter ADDRSW   =32'hFFFFF090; // Memory mapped I/O.
   
   // Change this to fmedian.mif before submitting
-  parameter IMEMINITFILE="Test.mif";
+  parameter IMEMINITFILE="test.mif";
   
   parameter IMEMADDRBITS=16; // Addressability of i-memory is 2^16
   parameter IMEMWORDBITS=2; // There are 2^2 bytes per word
@@ -74,22 +74,22 @@ module Project(
   
   // The reset signal comes from the reset button on the DE0-CV board
   // RESET_N is active-low, so we flip its value ("reset" is active-high)
-  wire locked,clk2;
+  wire locked,clk;
   // The PLL is wired to produce clk and locked signals for our logic
   Pll myPll(
     .refclk(CLOCK_50),
 	 .rst      (!RESET_N),
-	 .outclk_0 (clk2),
+	 .outclk_0 (clk),
     .locked   (locked)
   );
   
   wire reset=!locked;
   
-  reg [31:0] buffer = 32'd0;
-  reg [31:0] cap = 32'd500000;
+  /*reg [31:0] buffer = 32'd0;
+  reg [31:0] cap = 32'd1500000;
   reg clk; 
-  
-  always@(posedge clk2 or posedge reset) begin
+ 
+  always@(posedge clk or posedge reset) begin
 	if (reset) begin
 		buffer <= 0;
 		clk <= 0;
@@ -101,7 +101,7 @@ module Project(
 		clk <= ~clk;
 		end
   end
- 
+ */
   /*************** BUS *****************/
   // Create the processor's bus
   tri [(DBITS-1):0] thebus;
@@ -168,8 +168,7 @@ module Project(
   wire [(DBITS-1)      : 0] sxtimm;
   reg DrOff;
   reg ShOff;
-  assign thebus = ShOff? (sxtimm << 2):BUSZ;
-  assign thebus = DrOff? sxtimm:BUSZ;  
+  assign thebus = DrOff? (sxtimm << (ShOff?2:0)):BUSZ;  
 
   /*************** Register file *****************/ 		
   // Create the registers and connect them to the bus
@@ -184,6 +183,7 @@ module Project(
      
   integer r;
   integer i;
+  reg [(DBITS - 1):0] keyval;
   always @(posedge clk or posedge reset)
   begin: REG_WRITE
 	if(reset) begin
@@ -191,6 +191,8 @@ module Project(
 	end
     else if(WrReg&&!reset)
       regs[regno]<=thebus;
+	 else if(keyval!=0&&!reset)
+		regs[rt]<= keyval;
   end  
   
   assign regOut= WrReg?{DBITS{1'bX}}:regs[regno];
@@ -592,16 +594,20 @@ module Project(
 	   HEXout <= {24{1'b0}};
 		LEDRout <= {{10{1'b0}}};
 		end
-	//else begin
-		//HEXout <= regs[8];
-		//LEDRout <= state;
-		//end
+	/*else begin
+		HEXout <= thebus;
+		LEDRout <= state;
+		end*/
 	
 	 else if(!MemEnable) // Interrupt
 		if(sxtimm == ADDRHEX)
 			HEXout <= regs[rt];
 		else if(sxtimm == ADDRLEDR)
 			LEDRout <= regs[rt];
+		else if(sxtimm == ADDRKEY && keyval==0)
+			keyval <= {28'd0, ~KEY};
+	else
+	keyval = 0;
   end
  
   //TODO: Utilize seven segment display decoders to convert hex to actual seven-segment display control signal
