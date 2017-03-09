@@ -57,14 +57,14 @@ def offset(literal): # Automatically checks immediates and whether they're HEX o
     else: return int(literal)
 
 def pack_imm(opcode, imm, rs, rt): # Packing function for I-type instructions
-    output = opcodes[opcode] << 26
+    output = opcodes[opcode.lower()] << 26
     output |= (imm & 0xFFFF) << 8
     output |= rs << 4
     output |= rt
     return output
 
 def pack_reg(opcode, rd, rs, rt): # Packing function for R-type instructions
-    output = ext_opcodes[opcode] << 18
+    output = ext_opcodes[opcode.lower()] << 18
     output |= rd << 8
     output |= rs << 4
     output |= rt
@@ -74,15 +74,26 @@ def pack_reg(opcode, rd, rs, rt): # Packing function for R-type instructions
 def orig(statement): # Directive to change the current memory location
     global orig_address
     global current_address
+    if ";" in statement: # Remove any comments (not needed to assemble)
+        statement = statement.partition(";")[0].strip()
     if ".ORG" in statement:
-        orig_address = int(int(statement.partition(".ORG")[2].strip(), 16) / 4)
+        orig_address = int(offset(statement.partition(".ORG")[2].strip()) / 4)
     else:
-        orig_address = int(int(statement.partition(".ORIG")[2].strip(), 16) / 4)
+        orig_address = int(offset(statement.partition(".ORIG")[2].strip()) / 4)
     current_address = orig_address
 
 def name(statement): # Directive to define some constant
+    if ";" in statement: # Remove any comments (not needed to assemble)
+        statement = statement.partition(";")[0].strip()
     tuple = statement.partition(".NAME")[2].strip().split("=")
-    names[tuple[0].strip()] = int(tuple[1].strip(), 16)
+    names[tuple[0].strip()] = offset(tuple[1].strip())
+
+def word(statement): # Directive to define some memory variable
+    hex_word = statement[1].partition(".WORD")[2].strip()
+    if hex_word in labels: hex_word = int(labels[hex_word])
+    elif hex_word in names: hex_word = int(names[hex_word])
+    else: hex_word = offset(hex_word)
+    output_statements.append([statement[0], hex_word, statement[1].strip()])
 
 ### EXT instructions and pseudoinstructions (ADD, AND, LT, LE, etc.)
 def ext(statement):
@@ -170,9 +181,9 @@ def base_offset_ret(statement):
 
 def base_offset_call(statement):
     opcode = get_opcode(statement[1])
-    params = statement[1].partition(opcode)[2].split(",")
-    imm = params[1].strip().partition("(")[0]
-    rs = registers[params[1].strip().partition("(")[2].partition(")")[0].lower()]
+    params = statement[1].partition(opcode)[2]
+    imm = params.strip().partition("(")[0]
+    rs = registers[params.strip().partition("(")[2].partition(")")[0].lower()]
     if imm in labels: imm = int(labels[imm])
     elif imm in names: imm = int(names[imm])
     else: imm = offset(imm)
@@ -182,9 +193,9 @@ def base_offset_call(statement):
 
 def base_offset_jmp(statement):
     opcode = get_opcode(statement[1])
-    params = statement[1].partition(opcode)[2].split(",")
-    imm = params[1].strip().partition("(")[0]
-    rs = registers[params[1].strip().partition("(")[2].partition(")")[0].lower()]
+    params = statement[1].partition(opcode)[2]
+    imm = params.strip().partition("(")[0]
+    rs = registers[params.strip().partition("(")[2].partition(")")[0].lower()]
     if imm in labels: imm = int(labels[imm])
     elif imm in names: imm = int(names[imm])
     else: imm = offset(imm)
@@ -237,12 +248,12 @@ def alui_subi(statement):
 
 # Case statements for assembler directives and opcode functions
 assembler_directives = { # Map assembler directives to associated functions
-    ".ORIG": orig, ".ORG": orig, ".NAME": name }
+    ".ORIG": orig, ".ORG": orig, ".NAME": name}
 
 opcodes_functions = { # Map opcodes to their respective assembler functions
     "eq": ext, "lt": ext, "le": ext, "ne": ext, "gt": ext_gtge, "ge": ext_gtge,
     "add": ext, "and": ext, "or": ext, "xor": ext, "sub": ext, "not": ext_not,
-    "nand": ext, "nor": ext, "nxor": ext, "rshf": ext, "lshf": ext,
+    "nand": ext, "nor": ext, "nxor": ext, "rshf": ext, "lshf": ext, ".word": word,
     "beq": branch, "blt": branch, "ble": branch, "bne": branch, "jmp": base_offset_jmp,
     "br": branch_br, "bgt": branch_gtge, "bge": branch_gtge, "call": base_offset_call,
     "jal": base_offset, "ret": base_offset_ret, "lw": base_offset, "sw": base_offset,
@@ -284,7 +295,7 @@ def main():
             if opcode in assembler_directives:
                 assembler_directives[opcode](line)
                 continue
-            if opcode in opcodes or opcode in ext_opcodes:
+            if opcode.lower() in opcodes_functions:
                 program_statements.append([current_address, line.strip()])
                 current_address += 1
     input_file.close()
@@ -298,10 +309,12 @@ def main():
         for char in statement[1]:
             if char == "\t" or char == " ": break
             else: opcode += char
-        if opcode in opcodes_functions:
-            opcodes_functions[opcode](statement)
+        if opcode.lower() in opcodes_functions:
+            opcodes_functions[opcode.lower()](statement)
         else: # throw error, undefined opcode
             print("Assembly failed: opcode " + opcode + " not found")
+
+    #print(output_statements)
 
     # Third phase, write the MIF file
     output_path = ""
