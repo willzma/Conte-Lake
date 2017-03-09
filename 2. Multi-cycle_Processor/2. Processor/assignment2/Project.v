@@ -24,7 +24,7 @@ module Project(
   parameter ADDRSW   =32'hFFFFF090; // Memory mapped I/O.
   
   // Change this to fmedian.mif before submitting
-  parameter IMEMINITFILE="test.mif";
+  parameter IMEMINITFILE="fmedian.mif";
   
   parameter IMEMADDRBITS=16; // Addressability of i-memory is 2^16
   parameter IMEMWORDBITS=2; // There are 2^2 bytes per word
@@ -74,8 +74,12 @@ module Project(
   
   // The reset signal comes from the reset button on the DE0-CV board
   // RESET_N is active-low, so we flip its value ("reset" is active-high)
-  wire locked,clk;
   // The PLL is wired to produce clk and locked signals for our logic
+  wire locked;
+  wire reset=!locked;
+  
+  
+  wire clk;
   Pll myPll(
     .refclk(CLOCK_50),
 	 .rst      (!RESET_N),
@@ -83,13 +87,19 @@ module Project(
     .locked   (locked)
   );
   
-  wire reset=!locked;
-  
-  /*reg [31:0] buffer = 32'd0;
-  reg [31:0] cap = 32'd1500000;
+/*  
+  wire clk2;
+  Pll myPll(
+    .refclk(CLOCK_50),
+	 .rst      (!RESET_N),
+	 .outclk_0 (clk2),
+    .locked   (locked)
+  );
+  reg [31:0] buffer = 32'd0;
+  reg [31:0] cap = 32'd40500000;
   reg clk; 
  
-  always@(posedge clk or posedge reset) begin
+  always@(posedge clk2 or posedge reset) begin
 	if (reset) begin
 		buffer <= 0;
 		clk <= 0;
@@ -101,7 +111,8 @@ module Project(
 		clk <= ~clk;
 		end
   end
- */
+  */
+ 
   /*************** BUS *****************/
   // Create the processor's bus
   tri [(DBITS-1):0] thebus;
@@ -539,7 +550,7 @@ module Project(
 				next_state = S_S2;
 			end
 		S_S2: begin
-				{LdB, DrOff} = {1'b1, 1'b1}; 
+				{LdB, DrOff, ShOff} = {1'b1, 1'b1, 1'b1}; 
 				next_state = S_S3;
 			end
 		S_S3: begin
@@ -556,7 +567,7 @@ module Project(
 				next_state = S_L2;
 			end
 		S_L2: begin
-				{LdB, DrOff} = {1'b1, 1'b1};
+				{LdB, DrOff, ShOff} = {1'b1, 1'b1, 1'b1};
 				next_state = S_L3;
 			end
 		S_L3: begin
@@ -594,10 +605,13 @@ module Project(
 	   HEXout <= {24{1'b0}};
 		LEDRout <= {{10{1'b0}}};
 		end
-	/*else begin
+	
+/*	
+	else begin
 		HEXout <= thebus;
 		LEDRout <= state;
-		end*/
+		end
+	*/
 	
 	 else if(!MemEnable) // Interrupt
 		if(sxtimm == ADDRHEX)
@@ -608,6 +622,9 @@ module Project(
 			keyval <= {28'd0, ~KEY};
 	else
 	keyval = 0;
+	
+	
+	
   end
  
   //TODO: Utilize seven segment display decoders to convert hex to actual seven-segment display control signal

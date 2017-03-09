@@ -1,5 +1,5 @@
 Flow report for Project
-Wed Mar 08 22:20:02 2017
+Thu Mar 09 02:56:17 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -41,15 +41,15 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +---------------------------------+--------------------------------------------+
-; Flow Status                     ; Successful - Wed Mar 08 22:20:02 2017      ;
+; Flow Status                     ; Successful - Thu Mar 09 02:56:17 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
 ; Family                          ; Cyclone V                                  ;
 ; Device                          ; 5CEBA4F23C7                                ;
 ; Timing Models                   ; Final                                      ;
-; Logic utilization (in ALMs)     ; 1,432 / 18,480 ( 8 % )                     ;
-; Total registers                 ; 1079                                       ;
+; Logic utilization (in ALMs)     ; 1,411 / 18,480 ( 8 % )                     ;
+; Total registers                 ; 1202                                       ;
 ; Total pins                      ; 68 / 224 ( 30 % )                          ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 524,288 / 3,153,920 ( 17 % )               ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/08/2017 22:17:17 ;
+; Start date & time ; 03/09/2017 02:53:16 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Project             ;
 +-------------------+---------------------+
@@ -81,7 +81,7 @@ agreement for further details.
 +----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+----------------+
 ; ALM_REGISTER_PACKING_EFFORT                  ; Low                                                                                                                              ; Medium        ; --          ; --             ;
 ; AUTO_DELAY_CHAINS_FOR_HIGH_FANOUT_INPUT_PINS ; On                                                                                                                               ; Off           ; --          ; --             ;
-; COMPILER_SIGNATURE_ID                        ; 92962967258156.148902943707316                                                                                                   ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                        ; 92962967258156.148904599602224                                                                                                   ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME                     ; NA                                                                                                                               ; --            ; --          ; ProjectTest    ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH         ; ProjectTest                                                                                                                      ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT                       ; Verilog Hdl                                                                                                                      ; --            ; --          ; eda_simulation ;
@@ -153,13 +153,13 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:13     ; 1.0                     ; 789 MB              ; 00:00:13                           ;
-; Fitter                    ; 00:01:51     ; 1.0                     ; 1521 MB             ; 00:01:50                           ;
-; Assembler                 ; 00:00:06     ; 1.0                     ; 684 MB              ; 00:00:06                           ;
-; TimeQuest Timing Analyzer ; 00:00:20     ; 1.0                     ; 929 MB              ; 00:00:20                           ;
-; Design Assistant          ; 00:00:02     ; 1.0                     ; 595 MB              ; 00:00:02                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 641 MB              ; 00:00:02                           ;
-; Total                     ; 00:02:34     ; --                      ; --                  ; 00:02:33                           ;
+; Analysis & Synthesis      ; 00:00:11     ; 1.0                     ; 663 MB              ; 00:00:11                           ;
+; Fitter                    ; 00:02:07     ; 1.0                     ; 1509 MB             ; 00:02:06                           ;
+; Assembler                 ; 00:00:07     ; 1.0                     ; 675 MB              ; 00:00:06                           ;
+; TimeQuest Timing Analyzer ; 00:00:21     ; 1.0                     ; 965 MB              ; 00:00:20                           ;
+; Design Assistant          ; 00:00:02     ; 1.0                     ; 586 MB              ; 00:00:02                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 657 MB              ; 00:00:02                           ;
+; Total                     ; 00:02:51     ; --                      ; --                  ; 00:02:47                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

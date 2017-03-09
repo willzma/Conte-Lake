@@ -31,7 +31,7 @@
 	ADDI 	Zero,T0,Array							; T0 is CurPtr, set to start of array
 	LW		T1,ArrayBytesVal(Zero)
 	ADD		T1,T1,T0									; T1 is EndPtr, set to end of array
-	ADDI	Zero,S1,13								; S1 is the current value of the array element for initialization
+	ADDI	Zero,S1,13		 						; S1 is the current value of the array element for initialization
 	XOR		A1,S1,A0
 Init:
 	SW		S1,0(T0)									; Store value into an element
