@@ -219,7 +219,7 @@ def alui(statement):
         if names[imm].bit_length() > 16:
             print("Assembly failed: Name " + imm + " bit-width too wide for immediate")
             sys.exit()
-        else: imm = 4 * int(names[imm])
+        else: imm = int(names[imm])
     else: imm = offset(imm)
     output_statements.append([statement[0],
                             pack_imm(opcode, imm, rs, rt),
@@ -240,7 +240,7 @@ def alui_subi(statement):
         if names[imm].bit_length() > 16:
             print("Assembly failed: Name " + imm + " bit-width too wide for immediate")
             sys.exit()
-        else: imm = 4 * int(labels[imm])
+        else: imm = int(labels[imm])
     else: imm = offset(imm)
     output_statements.append([statement[0],
                             pack_imm(opcode, -1 * imm, rs, rt),
