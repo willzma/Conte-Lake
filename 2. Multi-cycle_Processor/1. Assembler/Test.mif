@@ -311,7 +311,7 @@ CONTENT BEGIN
 -- @ 0x00000324 :			sw		s0,LEDR(sp)
 000000C9 : 68F020E7;
 -- @ 0x00000328 :			addi	fp,t1,JalRet
-000000CA : 800270D6;
+000000CA : 800330D6;
 -- @ 0x0000032C :			jal		t0,JalTarg(fp)
 000000CB : 3000CDD5;
 -- @ 0x00000330 :			br		JalWorks

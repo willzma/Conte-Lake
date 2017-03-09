@@ -214,12 +214,12 @@ def alui(statement):
         if labels[imm].bit_length() > 16:
             print("Assembly failed: Label " + imm + " bit-width too wide for immediate")
             sys.exit()
-        else: imm = (4 * (int(labels[imm]) - orig_address)) + orig_address
+        else: imm = 4 * int(labels[imm])
     elif imm in names:
         if names[imm].bit_length() > 16:
             print("Assembly failed: Name " + imm + " bit-width too wide for immediate")
             sys.exit()
-        else: imm = (4 * (int(names[imm]) - orig_address)) + orig_address
+        else: imm = 4 * int(names[imm])
     else: imm = offset(imm)
     output_statements.append([statement[0],
                             pack_imm(opcode, imm, rs, rt),
@@ -314,7 +314,19 @@ def main():
         else: # throw error, undefined opcode
             print("Assembly failed: opcode " + opcode + " not found")
 
-    #print(output_statements)
+    print(names)
+    print(labels)
+
+    '''def rshift(val, n): return (val % 0x100000000) >> n
+
+    for statement in output_statements:
+        print(str(statement[0]), end = " ")
+        binary = int(statement[1])
+        while binary > 0:
+            print("{0:0b}".format(binary & 0xF).zfill(4), end = " ")
+            binary = rshift(binary, 4)
+        print("\n")
+        #print("{0:0b}".format(statement[1]))'''
 
     # Third phase, write the MIF file
     output_path = ""
