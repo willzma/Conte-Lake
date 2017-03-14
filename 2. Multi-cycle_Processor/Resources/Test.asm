@@ -209,7 +209,7 @@ JalRet:
 	br		JalWorks
 JalTarg:
 	bne		t0,t1,JalFailed
-	jal		t1,0(t0) 
+	jal		t1,0(t0)
 JalFailed:
 	; Display what's in t0
 	sw		t0,HEX(Zero)

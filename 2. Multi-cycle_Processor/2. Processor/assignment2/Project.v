@@ -179,7 +179,8 @@ module Project(
   wire [(DBITS-1)      : 0] sxtimm;
   reg DrOff;
   reg ShOff;
-  assign thebus = DrOff? (sxtimm << (ShOff?2:0)):BUSZ;  
+  assign thebus=DrOff?sxtimm:BUSZ;
+  assign thebus=ShOff?{sxtimm,2'b0}:BUSZ;
 
   /*************** Register file *****************/ 		
   // Create the registers and connect them to the bus
@@ -194,7 +195,6 @@ module Project(
      
   integer r;
   integer i;
-  reg [(DBITS - 1):0] keyval;
   always @(posedge clk or posedge reset)
   begin: REG_WRITE
 	if(reset) begin
@@ -202,8 +202,6 @@ module Project(
 	end
     else if(WrReg&&!reset)
       regs[regno]<=thebus;
-	 else if(keyval!=0&&!reset)
-		regs[rt]<= keyval;
   end  
   
   assign regOut= WrReg?{DBITS{1'bX}}:regs[regno];
@@ -384,8 +382,8 @@ module Project(
       dmem[dmemAddr] <= memin;
     end
   end
-  assign thebus=DrMem? MemVal:BUSZ;
-      
+  assign thebus=DrMem? (sxtimm == ADDRKEY)?{28'd0, ~KEY[3:0]}:MemVal:BUSZ;
+    
   /******************** Processor state **********************/
   parameter S_BITS=5;
   parameter [(S_BITS-1):0]
@@ -435,7 +433,7 @@ module Project(
 	 LdA =  1'b0;
 	 LdB = 1'b0;
 	 DrALU =  1'b0;
-	 regno = 6'bX;
+	 regno = 4'bX;
 	 DrReg =  1'b0;
 	 WrReg =  1'b0;
 	 altFunc =  1'b0;
@@ -509,7 +507,7 @@ module Project(
 				next_state = S_JAL3;
 			end
 		S_JAL3: begin
-				{LdB, ShOff, DrOff} = {1'b1, 1'b1, 1'b1};
+				{LdB, ShOff} = {1'b1, 1'b1};
 				next_state = S_JAL4;
 			end
 		S_JAL4: begin
@@ -537,7 +535,7 @@ module Project(
 				next_state = S_B5;
 			end
 		S_B5: begin
-				{LdB, ShOff, DrOff} = {1'b1, 1'b1, 1'b1};
+				{LdB, ShOff} = {1'b1, 1'b1};
 				next_state = S_B6;
 			end
 		S_B6: begin
@@ -550,7 +548,7 @@ module Project(
 				next_state = S_S2;
 			end
 		S_S2: begin
-				{LdB, DrOff, ShOff} = {1'b1, 1'b1, 1'b1}; 
+				{LdB, DrOff} = {1'b1, 1'b1}; 
 				next_state = S_S3;
 			end
 		S_S3: begin
@@ -567,7 +565,7 @@ module Project(
 				next_state = S_L2;
 			end
 		S_L2: begin
-				{LdB, DrOff, ShOff} = {1'b1, 1'b1, 1'b1};
+				{LdB, DrOff} = {1'b1, 1'b1};
 				next_state = S_L3;
 			end
 		S_L3: begin
@@ -618,12 +616,6 @@ module Project(
 			HEXout <= regs[rt];
 		else if(sxtimm == ADDRLEDR)
 			LEDRout <= regs[rt];
-		else if(sxtimm == ADDRKEY && keyval==0)
-			keyval <= {28'd0, ~KEY};
-	else
-	keyval = 0;
-	
-	
 	
   end
  

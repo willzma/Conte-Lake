@@ -163,13 +163,26 @@ def branch_gtge(statement):
                             statement[1].strip()])
 
 ### Base + offset instructions/pseudoinstructions (JAL and LW/SW)
-def base_offset(statement):
+def base_offset_jal(statement):
     opcode = get_opcode(statement[1])
     params = statement[1].partition(opcode)[2].split(",")
     rt = registers[params[0].strip().lower()]
     imm = params[1].strip().partition("(")[0]
     rs = registers[params[1].strip().partition("(")[2].partition(")")[0].lower()]
     if imm in labels: imm = int(labels[imm])
+    elif imm in names: imm = int(names[imm])
+    else: imm = offset(imm)
+    output_statements.append([statement[0],
+                            pack_imm(opcode, imm, rs, rt),
+                            statement[1].strip()])
+							
+def base_offset_mem(statement):
+    opcode = get_opcode(statement[1])
+    params = statement[1].partition(opcode)[2].split(",")
+    rt = registers[params[0].strip().lower()]
+    imm = params[1].strip().partition("(")[0]
+    rs = registers[params[1].strip().partition("(")[2].partition(")")[0].lower()]
+    if imm in labels: imm = 4 * int(labels[imm])
     elif imm in names: imm = int(names[imm])
     else: imm = offset(imm)
     output_statements.append([statement[0],
@@ -256,7 +269,7 @@ opcodes_functions = { # Map opcodes to their respective assembler functions
     "nand": ext, "nor": ext, "nxor": ext, "rshf": ext, "lshf": ext, ".word": word,
     "beq": branch, "blt": branch, "ble": branch, "bne": branch, "jmp": base_offset_jmp,
     "br": branch_br, "bgt": branch_gtge, "bge": branch_gtge, "call": base_offset_call,
-    "jal": base_offset, "ret": base_offset_ret, "lw": base_offset, "sw": base_offset,
+    "jal": base_offset_jal, "ret": base_offset_ret, "lw": base_offset_mem, "sw": base_offset_mem,
     "addi": alui, "andi": alui, "ori": alui, "xori": alui, "subi": alui_subi }
 
 ### Below code defines the main assembler code (calls instruction specific code)
@@ -328,8 +341,8 @@ def main():
 
     # Place the first DEAD range, if necessary
     if output_statements[0][0] > 0:
-        endAddress = str("{0:02X}".format(output_statements[0][0] - 1)).zfill(8)
-        output_file.write("[" + "00000000" + ".." + endAddress + "] : DEAD;\n")
+        endAddress = str("{0:02X}".format(output_statements[0][0] - 1)).zfill(4)
+        output_file.write("[" + "0000" + ".." + endAddress + "] : DEAD;\n")
 
     # Place instructions and DEAD ranges
     for i in range(len(output_statements) - 1):

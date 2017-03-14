@@ -31,7 +31,7 @@
 	ADDI 	Zero,T0,Array							; T0 is CurPtr, set to start of array
 	LW		T1,ArrayBytesVal(Zero)
 	ADD		T1,T1,T0									; T1 is EndPtr, set to end of array
-	ADDI	Zero,S1,13		 						; S1 is the current value of the array element for initialization
+	ADDI	Zero,S1,13								; S1 is the current value of the array element for initialization
 	XOR		A1,S1,A0
 Init:
 	SW		S1,0(T0)									; Store value into an element
@@ -75,7 +75,6 @@ MainLoop:
 	ADDI  Zero,S0,4000000
 DoneSorting:
 	ADDI	S0,S0,-1
-	SW		S0,HEX(Zero)
 	BEQ   S0,Zero,ShowMedian
 	JMP DoneSorting(Zero)
 
@@ -84,16 +83,10 @@ DoneSorting:
 ; -----------------------------------------------------------------
 ; Shows Median on HEX
 ShowMedian:
-	ADDI  Zero,S1,0xDAB
-	SW		S1,HEX(Zero)
 	ADDI	Zero,A0,Array
 	LW		A1,ArrayBytesVal(Zero)			; A1 size of the array
-	ADDI	Zero,T0,1
-	ADDI  Zero,S1,0xCAB
-	SW		S1,HEX(Zero)
+	ADDI	Zero,T0,3
 	RSHF	A1,A1,T0										; A1 now is divided by eight (*4 each element size, *2 to find element)
-	ADDI  Zero,S1,0xDAD
-	SW		S1,HEX(Zero)
 	ADD   A1,A1,	A0
 	LW		T0,0(A1)
 	SW		T0,HEX(Zero)
@@ -115,7 +108,6 @@ LoopChkAsc:
 	LW		T0,0(A0)
 	BEQ		T0,A2,GoodChkAsc
 ErrChkAsc:
-	ADDI	Zero,T0,5
 	SW		T0,HEX(Zero)				; Put value we read on HEX
 	ADDI	Zero,T1,ErrAsc
 	SW		T1,LEDR(Zero)				; Turn on upper half of LEDR

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Project
-Thu Mar 09 04:00:40 2017
+Mon Mar 13 21:15:27 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -62,13 +62,13 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Mar 09 04:00:40 2017      ;
+; Analysis & Synthesis Status     ; Successful - Mon Mar 13 21:15:27 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 841                                        ;
+; Total registers                 ; 837                                        ;
 ; Total pins                      ; 68                                         ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 524,288                                    ;
@@ -213,16 +213,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 1364                                                               ;
+; Estimate of Logic utilization (ALMs needed) ; 1074                                                               ;
 ;                                             ;                                                                    ;
-; Combinational ALUT usage for logic          ; 1858                                                               ;
-;     -- 7 input functions                    ; 10                                                                 ;
-;     -- 6 input functions                    ; 832                                                                ;
-;     -- 5 input functions                    ; 190                                                                ;
-;     -- 4 input functions                    ; 225                                                                ;
-;     -- <=3 input functions                  ; 601                                                                ;
+; Combinational ALUT usage for logic          ; 1351                                                               ;
+;     -- 7 input functions                    ; 31                                                                 ;
+;     -- 6 input functions                    ; 689                                                                ;
+;     -- 5 input functions                    ; 167                                                                ;
+;     -- 4 input functions                    ; 254                                                                ;
+;     -- <=3 input functions                  ; 210                                                                ;
 ;                                             ;                                                                    ;
-; Dedicated logic registers                   ; 841                                                                ;
+; Dedicated logic registers                   ; 837                                                                ;
 ;                                             ;                                                                    ;
 ; I/O pins                                    ; 68                                                                 ;
 ; Total MLAB memory bits                      ; 0                                                                  ;
@@ -232,9 +232,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;     -- PLLs                                 ; 1                                                                  ;
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 949                                                                ;
-; Total fan-out                               ; 12725                                                              ;
-; Average fan-out                             ; 4.39                                                               ;
+; Maximum fan-out                             ; 920                                                                ;
+; Total fan-out                               ; 11201                                                              ;
+; Average fan-out                             ; 4.69                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
 
@@ -243,7 +243,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                              ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
-; |Project                               ; 1858 (1813)       ; 841 (838)    ; 524288            ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
+; |Project                               ; 1351 (1306)       ; 837 (834)    ; 524288            ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
 ;    |Pll:myPll|                         ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll                                                               ; Pll          ;
 ;       |Pll_0002:pll_inst|              ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst                                             ; Pll          ;
 ;          |altera_pll:altera_pll_i|     ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i                     ; work         ;
@@ -278,15 +278,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+--------------------+-----------------+
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; keyval[4..31]                          ; Stuck at GND due to stuck port data_in ;
-; IR[24]                                 ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 29 ;                                        ;
-+----------------------------------------+----------------------------------------+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; IR[24]                                ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 1 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -294,12 +293,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 841   ;
+; Total registers                              ; 837   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 723   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 756   ;
+; Number of registers using Clock Enable       ; 752   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -309,32 +308,32 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------+---------+
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
-; IR[0]                                   ; 67      ;
-; IR[2]                                   ; 84      ;
-; IR[3]                                   ; 84      ;
-; IR[15]                                  ; 6       ;
-; IR[23]                                  ; 9       ;
-; IR[21]                                  ; 79      ;
-; IR[16]                                  ; 3       ;
+; IR[0]                                   ; 63      ;
+; IR[2]                                   ; 63      ;
+; IR[3]                                   ; 63      ;
+; IR[15]                                  ; 5       ;
+; IR[21]                                  ; 91      ;
 ; IR[14]                                  ; 3       ;
 ; IR[11]                                  ; 4       ;
 ; IR[10]                                  ; 4       ;
 ; IR[9]                                   ; 4       ;
+; IR[23]                                  ; 9       ;
+; IR[16]                                  ; 3       ;
 ; IR[12]                                  ; 3       ;
-; IR[19]                                  ; 22      ;
-; IR[18]                                  ; 91      ;
+; IR[19]                                  ; 20      ;
+; IR[18]                                  ; 86      ;
 ; IR[5]                                   ; 3       ;
 ; IR[7]                                   ; 3       ;
-; IR[31]                                  ; 15      ;
+; IR[31]                                  ; 17      ;
 ; IR[25]                                  ; 4       ;
-; IR[27]                                  ; 41      ;
-; IR[28]                                  ; 11      ;
-; IR[30]                                  ; 13      ;
+; IR[27]                                  ; 42      ;
+; IR[28]                                  ; 12      ;
+; IR[30]                                  ; 14      ;
 ; IR[26]                                  ; 41      ;
 ; dmem~1                                  ; 1       ;
 ; dmem_rtl_0_bypass[30]                   ; 1       ;
 ; dmem_rtl_0_bypass[29]                   ; 1       ;
-; PC[8]                                   ; 30      ;
+; PC[8]                                   ; 24      ;
 ; dmem_rtl_0_bypass[76]                   ; 1       ;
 ; dmem_rtl_0_bypass[74]                   ; 1       ;
 ; dmem_rtl_0_bypass[72]                   ; 1       ;
@@ -343,14 +342,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; dmem_rtl_0_bypass[86]                   ; 1       ;
 ; dmem_rtl_0_bypass[84]                   ; 1       ;
 ; dmem_rtl_0_bypass[82]                   ; 1       ;
-; dmem_rtl_0_bypass[80]                   ; 1       ;
-; dmem_rtl_0_bypass[78]                   ; 1       ;
 ; dmem_rtl_0_bypass[68]                   ; 1       ;
 ; dmem_rtl_0_bypass[66]                   ; 1       ;
-; dmem_rtl_0_bypass[92]                   ; 1       ;
-; dmem_rtl_0_bypass[90]                   ; 1       ;
 ; dmem_rtl_0_bypass[64]                   ; 1       ;
 ; dmem_rtl_0_bypass[62]                   ; 1       ;
+; dmem_rtl_0_bypass[92]                   ; 1       ;
+; dmem_rtl_0_bypass[90]                   ; 1       ;
+; dmem_rtl_0_bypass[80]                   ; 1       ;
+; dmem_rtl_0_bypass[78]                   ; 1       ;
 ; dmem_rtl_0_bypass[32]                   ; 1       ;
 ; dmem~3                                  ; 1       ;
 ; dmem_rtl_0_bypass[34]                   ; 1       ;
@@ -374,10 +373,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; dmem_rtl_0_bypass[50]                   ; 1       ;
 ; dmem_rtl_0_bypass[49]                   ; 1       ;
 ; dmem~12                                 ; 1       ;
-; dmem_rtl_0_bypass[52]                   ; 1       ;
+; dmem_rtl_0_bypass[52]                   ; 2       ;
 ; dmem_rtl_0_bypass[51]                   ; 1       ;
 ; dmem~13                                 ; 1       ;
-; dmem_rtl_0_bypass[54]                   ; 1       ;
+; dmem_rtl_0_bypass[54]                   ; 2       ;
 ; dmem_rtl_0_bypass[53]                   ; 1       ;
 ; dmem_rtl_0_bypass[56]                   ; 1       ;
 ; dmem~15                                 ; 1       ;
@@ -496,43 +495,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
-; 3:1                ; 29 bits   ; 58 LEs        ; 0 LEs                ; 58 LEs                 ; Yes        ; |Project|PC[14]               ;
-; 16:1               ; 14 bits   ; 140 LEs       ; 140 LEs              ; 0 LEs                  ; Yes        ; |Project|HEXout[20]           ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[15][17]         ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[15][1]          ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[14][16]         ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[14][2]          ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[13][16]         ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[13][1]          ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[12][16]         ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[12][0]          ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[11][31]         ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[11][3]          ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[10][22]         ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[10][1]          ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[9][7]           ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[9][0]           ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[8][4]           ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[8][0]           ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[7][26]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[7][1]           ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[6][18]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[6][2]           ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[5][19]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[5][3]           ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[4][12]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[4][3]           ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[3][12]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[3][2]           ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[2][16]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[2][1]           ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[1][15]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[1][2]           ;
-; 5:1                ; 28 bits   ; 84 LEs        ; 0 LEs                ; 84 LEs                 ; Yes        ; |Project|regs[0][10]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Project|regs[0][2]           ;
-; 95:1               ; 3 bits    ; 189 LEs       ; 60 LEs               ; 129 LEs                ; Yes        ; |Project|state[0]             ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft1           ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft1           ;
+; 3:1                ; 29 bits   ; 58 LEs        ; 0 LEs                ; 58 LEs                 ; Yes        ; |Project|PC[23]               ;
+; 16:1               ; 14 bits   ; 140 LEs       ; 140 LEs              ; 0 LEs                  ; Yes        ; |Project|HEXout[21]           ;
+; 95:1               ; 3 bits    ; 189 LEs       ; 60 LEs               ; 129 LEs                ; Yes        ; |Project|state[1]             ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft0           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft0           ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftRight0          ;
 ; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |Project|ShiftRight0          ;
 ; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|ShiftRight0          ;
@@ -542,11 +509,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:Hex3Out|OUT ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:Hex4Out|OUT ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:Hex5Out|OUT ;
-; 16:1               ; 10 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|Mux52                ;
-; 13:1               ; 4 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; No         ; |Project|Selector71           ;
+; 16:1               ; 10 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|Mux55                ;
+; 13:1               ; 4 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; No         ; |Project|Selector69           ;
 ; 196:1              ; 12 bits   ; 1560 LEs      ; 360 LEs              ; 1200 LEs               ; No         ; |Project|Selector46           ;
 ; 196:1              ; 11 bits   ; 1430 LEs      ; 330 LEs              ; 1100 LEs               ; No         ; |Project|Selector49           ;
-; 199:1              ; 3 bits    ; 396 LEs       ; 96 LEs               ; 300 LEs                ; No         ; |Project|Selector34           ;
+; 199:1              ; 3 bits    ; 396 LEs       ; 96 LEs               ; 300 LEs                ; No         ; |Project|Selector35           ;
 ; 199:1              ; 3 bits    ; 396 LEs       ; 96 LEs               ; 300 LEs                ; No         ; |Project|Selector62           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
 
@@ -1045,24 +1012,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 841                         ;
+; arriav_ff             ; 837                         ;
 ;     CLR               ; 5                           ;
-;     ENA               ; 38                          ;
+;     ENA               ; 34                          ;
 ;     ENA CLR           ; 718                         ;
 ;     plain             ; 80                          ;
-; arriav_lcell_comb     ; 1864                        ;
+; arriav_lcell_comb     ; 1357                        ;
 ;     arith             ; 62                          ;
 ;         1 data inputs ; 30                          ;
 ;         2 data inputs ; 32                          ;
-;     extend            ; 10                          ;
-;         7 data inputs ; 10                          ;
-;     normal            ; 1760                        ;
-;         1 data inputs ; 31                          ;
-;         2 data inputs ; 392                         ;
-;         3 data inputs ; 90                          ;
-;         4 data inputs ; 225                         ;
-;         5 data inputs ; 190                         ;
-;         6 data inputs ; 832                         ;
+;     extend            ; 31                          ;
+;         7 data inputs ; 31                          ;
+;     normal            ; 1232                        ;
+;         1 data inputs ; 29                          ;
+;         2 data inputs ; 25                          ;
+;         3 data inputs ; 68                          ;
+;         4 data inputs ; 254                         ;
+;         5 data inputs ; 167                         ;
+;         6 data inputs ; 689                         ;
 ;     shared            ; 32                          ;
 ;         2 data inputs ; 32                          ;
 ; boundary_port         ; 68                          ;
@@ -1070,7 +1037,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; stratixv_ram_block    ; 64                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 11.00                       ;
-; Average LUT depth     ; 5.70                        ;
+; Average LUT depth     ; 5.52                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1089,7 +1056,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Thu Mar 09 04:00:28 2017
+    Info: Processing started: Mon Mar 13 21:15:15 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Project -c Project
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 2 entities, in source file project.v
@@ -1102,6 +1069,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
     Info (12023): Found entity 1: Pll_0002
 Info (12127): Elaborating entity "Project" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at Project.v(392): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(393): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(394): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(395): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(396): truncated value with size 32 to match size of target (5)
@@ -1126,18 +1095,15 @@ Warning (10230): Verilog HDL assignment warning at Project.v(414): truncated val
 Warning (10230): Verilog HDL assignment warning at Project.v(415): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(416): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at Project.v(417): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(418): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(419): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at Project.v(422): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at Project.v(420): truncated value with size 32 to match size of target (5)
 Warning (10858): Verilog HDL warning at Project.v(141): object imem used but never assigned
-Warning (10764): Verilog HDL warning at Project.v(182): converting signed shift amount to unsigned
+Warning (10230): Verilog HDL assignment warning at Project.v(183): truncated value with size 34 to match size of target (32)
 Warning (10240): Verilog HDL Always Construct warning at Project.v(198): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
-Warning (10764): Verilog HDL warning at Project.v(286): converting signed shift amount to unsigned
-Warning (10764): Verilog HDL warning at Project.v(289): converting signed shift amount to unsigned
-Warning (10230): Verilog HDL assignment warning at Project.v(438): truncated value with size 6 to match size of target (4)
-Warning (10270): Verilog HDL Case Statement warning at Project.v(447): incomplete case statement has no default case item
-Warning (10230): Verilog HDL assignment warning at Project.v(618): truncated value with size 32 to match size of target (24)
-Warning (10230): Verilog HDL assignment warning at Project.v(620): truncated value with size 32 to match size of target (10)
+Warning (10764): Verilog HDL warning at Project.v(284): converting signed shift amount to unsigned
+Warning (10764): Verilog HDL warning at Project.v(287): converting signed shift amount to unsigned
+Warning (10270): Verilog HDL Case Statement warning at Project.v(445): incomplete case statement has no default case item
+Warning (10230): Verilog HDL assignment warning at Project.v(616): truncated value with size 32 to match size of target (24)
+Warning (10230): Verilog HDL assignment warning at Project.v(618): truncated value with size 32 to match size of target (10)
 Info (12128): Elaborating entity "Pll" for hierarchy "Pll:myPll"
 Info (12128): Elaborating entity "Pll_0002" for hierarchy "Pll:myPll|Pll_0002:pll_inst"
 Info (12128): Elaborating entity "altera_pll" for hierarchy "Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i"
@@ -1300,15 +1266,15 @@ Warning (21074): Design contains 10 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 2278 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2219 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 2145 logic cells
+    Info (21061): Implemented 2086 logic cells
     Info (21064): Implemented 64 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 83 warnings
-    Info: Peak virtual memory: 691 megabytes
-    Info: Processing ended: Thu Mar 09 04:00:40 2017
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 82 warnings
+    Info: Peak virtual memory: 788 megabytes
+    Info: Processing ended: Mon Mar 13 21:15:27 2017
     Info: Elapsed time: 00:00:12
     Info: Total CPU time (on all processors): 00:00:12
 

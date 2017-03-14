@@ -1,5 +1,5 @@
 Archive Project report for Project
-Wed Feb 22 08:30:12 2017
+Mon Mar 13 11:18:13 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ agreement for further details.
 +----------------------------------------------------------------+
 ; Archive Project Summary                                        ;
 +------------------------+---------------------------------------+
-; Archive Project Status ; Successful - Wed Feb 22 08:30:12 2017 ;
+; Archive Project Status ; Successful - Mon Mar 13 11:18:13 2017 ;
 ; Revision Name          ; Project                               ;
 ; Top-level Entity Name  ; Project                               ;
 ; Family                 ; Cyclone V                             ;
@@ -49,59 +49,51 @@ agreement for further details.
 Info: File Set 'Source control' contains:
     Info: Project source and settings files
     Info: Automatically detected source files
-Critical Warning: Analysis & Elaboration was not run successfully
-    Critical Warning: The 'Automatically detected source files' file subset will attempt to guess which files are needed. The archive file will likely be larger than required and may still be incomplete.
-Warning (225010): Analysis was not performed on the current project. The Quartus II software may not be able to automatically locate all project files.
+Warning: Excluding 'Automatically detected source files' 
+        The Quartus II software may not be able to automatically locate all project files.
 Info: Parsing: Project.v
-Info: Discovered: ./inclass-feg10.mif
+Info: Parsing: SevenSeg.v
+Info: Parsing: Pll.v
+Info: Parsing: Pll/Pll_0002.v
 Info: Archive will store files relative to the closest common parent directory
-Info (13213): Using common directory C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/
+Info (13213): Using common directory C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/
 Info: ----------------------------------------------------------
 Info: ----------------------------------------------------------
-Info: Generated archive 'C:/Users/corai/Downloads/Assignment2_frame_2017-3_restored/Assignment_frame_2017-4.qar'
+Info: Generated archive 'C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/assignment2_submission.qar'
 Info: ----------------------------------------------------------
 Info: ----------------------------------------------------------
 Info: Generated report 'Project.archive.rpt'
-Error (23031): Evaluation of Tcl script c:/altera/14.0/quartus/common/tcl/apps/qpm/qar.tcl unsuccessful
-Error: Quartus II 64-Bit Shell was unsuccessful. 5 errors, 4 warnings
-    Error: Peak virtual memory: 423 megabytes
-    Error: Processing ended: Wed Feb 22 08:30:12 2017
-    Error: Elapsed time: 00:00:05
-    Error: Total CPU time (on all processors): 00:00:04
+Info (23030): Evaluation of Tcl script c:/altera/14.0/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus II 64-Bit Shell was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 401 megabytes
+    Info: Processing ended: Mon Mar 13 11:18:13 2017
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
 
 
-+--------------------------------+
-; Files Archived                 ;
-+--------------------------------+
-; File Name                      ;
-+--------------------------------+
-; __Project.auto.qarlog          ;
-; assignment_defaults.qdf        ;
-; Assignment_frame_2017-4.qarlog ;
-; Debug.qsf                      ;
-; Debug_assignment_defaults.qdf  ;
-; inclass-feg10.asm              ;
-; inclass-feg10.mif              ;
-; Pll.cmp                        ;
-; Pll.qip                        ;
-; Pll.sip                        ;
-; Pll.spd                        ;
-; Pll.v                          ;
-; Pll/Pll_0002.qip               ;
-; Pll/Pll_0002.v                 ;
-; Pll_sim/Pll.vo                 ;
-; Project.archive.rpt            ;
-; Project.flow.rpt               ;
-; Project.map.rpt                ;
-; Project.map.smsg               ;
-; Project.map.summary            ;
-; Project.qpf                    ;
-; Project.qsf                    ;
-; Project.restore.rpt            ;
-; Project.sdc                    ;
-; Project.v                      ;
-; SevenSeg.v                     ;
-; Test.mif                       ;
-+--------------------------------+
++-------------------------------+
+; Files Archived                ;
++-------------------------------+
+; File Name                     ;
++-------------------------------+
+; assignment_defaults.qdf       ;
+; Debug.qsf                     ;
+; Debug_assignment_defaults.qdf ;
+; inclass-feg10.asm             ;
+; inclass-feg10.mif             ;
+; Pll.cmp                       ;
+; Pll.qip                       ;
+; Pll.sip                       ;
+; Pll.spd                       ;
+; Pll.v                         ;
+; Pll/Pll_0002.qip              ;
+; Pll/Pll_0002.v                ;
+; Pll_sim/Pll.vo                ;
+; Project.qpf                   ;
+; Project.qsf                   ;
+; Project.sdc                   ;
+; Project.v                     ;
+; SevenSeg.v                    ;
++-------------------------------+
 
 
