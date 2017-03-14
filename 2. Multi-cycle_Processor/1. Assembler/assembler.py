@@ -162,7 +162,7 @@ def branch_gtge(statement):
                             pack_imm(opcode, imm, rt, rs),
                             statement[1].strip()])
 
-### Base + offset instructions/pseudoinstructions (JAL and LW/SW)
+### Base + offset instructions/pseudoinstructions (JAL)
 def base_offset_jal(statement):
     opcode = get_opcode(statement[1])
     params = statement[1].partition(opcode)[2].split(",")
@@ -176,6 +176,19 @@ def base_offset_jal(statement):
                             pack_imm(opcode, imm, rs, rt),
                             statement[1].strip()])
 							
+def base_offset_mem(statement):
+    opcode = get_opcode(statement[1])
+    params = statement[1].partition(opcode)[2].split(",")
+    rt = registers[params[0].strip().lower()]
+    imm = params[1].strip().partition("(")[0]
+    rs = registers[params[1].strip().partition("(")[2].partition(")")[0].lower()]
+    if imm in labels: imm = 4 * int(labels[imm])
+    elif imm in names: imm = int(names[imm])
+    else: imm = offset(imm)
+    output_statements.append([statement[0],
+                            pack_imm(opcode, imm, rs, rt),
+                            statement[1].strip()])
+
 def base_offset_mem(statement):
     opcode = get_opcode(statement[1])
     params = statement[1].partition(opcode)[2].split(",")
