@@ -1,5 +1,5 @@
 Archive Project report for Project
-Mon Mar 13 11:18:13 2017
+Mon Mar 13 22:44:51 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ agreement for further details.
 +----------------------------------------------------------------+
 ; Archive Project Summary                                        ;
 +------------------------+---------------------------------------+
-; Archive Project Status ; Successful - Mon Mar 13 11:18:13 2017 ;
+; Archive Project Status ; Successful - Mon Mar 13 22:44:51 2017 ;
 ; Revision Name          ; Project                               ;
 ; Top-level Entity Name  ; Project                               ;
 ; Family                 ; Cyclone V                             ;
@@ -49,24 +49,18 @@ agreement for further details.
 Info: File Set 'Source control' contains:
     Info: Project source and settings files
     Info: Automatically detected source files
-Warning: Excluding 'Automatically detected source files' 
-        The Quartus II software may not be able to automatically locate all project files.
-Info: Parsing: Project.v
-Info: Parsing: SevenSeg.v
-Info: Parsing: Pll.v
-Info: Parsing: Pll/Pll_0002.v
 Info: Archive will store files relative to the closest common parent directory
 Info (13213): Using common directory C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/
 Info: ----------------------------------------------------------
 Info: ----------------------------------------------------------
-Info: Generated archive 'C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/assignment2_submission.qar'
+Info: Generated archive 'C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Project.qar'
 Info: ----------------------------------------------------------
 Info: ----------------------------------------------------------
 Info: Generated report 'Project.archive.rpt'
 Info (23030): Evaluation of Tcl script c:/altera/14.0/quartus/common/tcl/apps/qpm/qar.tcl was successful
-Info: Quartus II 64-Bit Shell was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 401 megabytes
-    Info: Processing ended: Mon Mar 13 11:18:13 2017
+Info: Quartus II 64-Bit Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 405 megabytes
+    Info: Processing ended: Mon Mar 13 22:44:51 2017
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
@@ -79,6 +73,7 @@ Info: Quartus II 64-Bit Shell was successful. 0 errors, 1 warning
 ; assignment_defaults.qdf       ;
 ; Debug.qsf                     ;
 ; Debug_assignment_defaults.qdf ;
+; fmedian.mif                   ;
 ; inclass-feg10.asm             ;
 ; inclass-feg10.mif             ;
 ; Pll.cmp                       ;
@@ -94,6 +89,7 @@ Info: Quartus II 64-Bit Shell was successful. 0 errors, 1 warning
 ; Project.sdc                   ;
 ; Project.v                     ;
 ; SevenSeg.v                    ;
+; Test.mif                      ;
 +-------------------------------+
 
 

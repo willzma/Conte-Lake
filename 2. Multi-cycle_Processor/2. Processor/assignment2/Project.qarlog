@@ -1,0 +1,31 @@
+Quartus II Archive log --	C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Project.qarlog
+
+Archive:	C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Project.qar
+Date:		Mon Mar 13 22:44:51 2017
+Quartus II 64-Bit		14.0.0 Build 200 06/17/2014 SJ Web Edition
+
+	=========== Files Selected: ===========
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Debug.qsf
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Debug_assignment_defaults.qdf
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Pll.cmp
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Pll.qip
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Pll.sip
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Pll.spd
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Pll.v
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Pll/Pll_0002.qip
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Pll/Pll_0002.v
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Pll_sim/Pll.vo
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Project.qpf
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Project.qsf
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Project.sdc
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Project.v
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/SevenSeg.v
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/Test.mif
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/assignment_defaults.qdf
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/fmedian.mif
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/inclass-feg10.asm
+C:/Users/Nick/Desktop/Conte-Lake/2. Multi-cycle_Processor/2. Processor/assignment2/inclass-feg10.mif
+	======= Total: 20 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
