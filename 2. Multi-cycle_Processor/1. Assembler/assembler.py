@@ -162,14 +162,27 @@ def branch_gtge(statement):
                             pack_imm(opcode, imm, rt, rs),
                             statement[1].strip()])
 
-### Base + offset instructions/pseudoinstructions (JAL and LW/SW)
-def base_offset(statement):
+### Base + offset instructions/pseudoinstructions (JAL)
+def base_offset_jal(statement):
     opcode = get_opcode(statement[1])
     params = statement[1].partition(opcode)[2].split(",")
     rt = registers[params[0].strip().lower()]
     imm = params[1].strip().partition("(")[0]
     rs = registers[params[1].strip().partition("(")[2].partition(")")[0].lower()]
     if imm in labels: imm = int(labels[imm])
+    elif imm in names: imm = int(names[imm])
+    else: imm = offset(imm)
+    output_statements.append([statement[0],
+                            pack_imm(opcode, imm, rs, rt),
+                            statement[1].strip()])
+
+def base_offset_mem(statement):
+    opcode = get_opcode(statement[1])
+    params = statement[1].partition(opcode)[2].split(",")
+    rt = registers[params[0].strip().lower()]
+    imm = params[1].strip().partition("(")[0]
+    rs = registers[params[1].strip().partition("(")[2].partition(")")[0].lower()]
+    if imm in labels: imm = 4 * int(labels[imm])
     elif imm in names: imm = int(names[imm])
     else: imm = offset(imm)
     output_statements.append([statement[0],
@@ -256,7 +269,7 @@ opcodes_functions = { # Map opcodes to their respective assembler functions
     "nand": ext, "nor": ext, "nxor": ext, "rshf": ext, "lshf": ext, ".word": word,
     "beq": branch, "blt": branch, "ble": branch, "bne": branch, "jmp": base_offset_jmp,
     "br": branch_br, "bgt": branch_gtge, "bge": branch_gtge, "call": base_offset_call,
-    "jal": base_offset, "ret": base_offset_ret, "lw": base_offset, "sw": base_offset,
+    "jal": base_offset_jal, "ret": base_offset_ret, "lw": base_offset_mem, "sw": base_offset_mem,
     "addi": alui, "andi": alui, "ori": alui, "xori": alui, "subi": alui_subi }
 
 ### Below code defines the main assembler code (calls instruction specific code)
