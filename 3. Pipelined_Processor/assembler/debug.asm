@@ -1,0 +1,18 @@
+; Addresses for I/O
+.NAME	HEX= 0xFFFFF000
+.NAME	LEDR=0xFFFFF020
+.NAME	KEY= 0xFFFFF080
+.NAME	SW=  0xFFFFF090
+
+.ORIG 0x100
+
+ADDI Zero,T0,5
+SW		T0,HEX(Zero)
+SW		T0,HEX(Zero)
+SW		T0,HEX(Zero)
+SW		T0,HEX(Zero)
+SW		T0,HEX(Zero)
+SW		T0,HEX(Zero)
+SW		T0,HEX(Zero)
+SW		T0,HEX(Zero)
+SW		T0,HEX(Zero)

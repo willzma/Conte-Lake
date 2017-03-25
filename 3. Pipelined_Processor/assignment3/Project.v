@@ -24,7 +24,7 @@ module Project(
   parameter ADDRKEY  =32'hFFFFF080;
   parameter ADDRSW   =32'hFFFFF090;
     // Change this to fmedian2.mif before submitting
-  parameter IMEMINITFILE="Test.mif";
+  parameter IMEMINITFILE="debug.mif";
   
   parameter IMEMADDRBITS=16;
   parameter IMEMWORDBITS=2;
@@ -72,7 +72,7 @@ module Project(
   parameter LEDRBITS = 10;
   
 
-
+/*
   
   // The reset signal comes from the reset button on the DE0-CV board
   // RESET_N is active-low, so we flip its value ("reset" is active-high)
@@ -84,6 +84,36 @@ module Project(
 	 .outclk_0 (clk),
     .locked   (locked)
   );
+  */
+  
+   
+  wire clk2;
+  Pll myPll(
+    .refclk(CLOCK_50),
+	 .rst      (!RESET_N),
+	 .outclk_0 (clk2),
+    .locked   (locked)
+  );
+  reg [31:0] buffer = 32'd0;
+  reg [31:0] cap = 32'd40500000;
+  reg clk; 
+ 
+  always@(posedge clk2 or posedge reset) begin
+	if (reset) begin
+		buffer <= 0;
+		clk <= 0;
+	end
+	else if (buffer < cap)
+		buffer <= buffer + 1;
+	else begin
+		buffer <= 0;
+		clk <= ~clk;
+		end
+  end
+  
+  
+  
+  
   
   wire reset=!locked;
 
@@ -92,18 +122,29 @@ module Project(
   	/**** FETCH STAGE ****/ 
   
 	// The PC register and update logic
-	 reg [(DBITS-1):0] PC;
-	always @(posedge clk) begin
-	if(reset)
+	reg [(DBITS-1):0] PC;
+	
+	always @(posedge clk or posedge reset) begin
+	if(reset) begin
 		PC<=STARTPC; // Initial step
+	end else begin
+		PC<=pcpred_F; // Proceed 1 step
+	end
+		
+	// Unimplemented. Uncomment to edit, also delete the subsequent else statement.
+	/*
 	else if(mispred_B)
 		PC<=pcgood_B; // Jump to correct step
 	else if(!stall_F)
 		PC<=pcpred_F; // Proceed 1 step
+		*/
+	
+		
 	// If you failed all conditions, you are stalled. Stay on this step.
 	end
 	// This is the value of "incremented PC", computed in stage 1
 	wire [(DBITS-1):0] pcplus_F=PC+INSTSIZE;
+	wire [(DBITS-1):0] pcpred_F;
 	// This is the predicted value of the PC
 	// that we used to fetch the next instruction
 	assign pcpred_F=pcplus_F;
@@ -119,6 +160,7 @@ module Project(
 		$readmemh("Test_mini.hex", imem);
 	end
         */
+	wire [(DBITS-1):0] inst_F;
 	assign inst_F=imem[PC[(IMEMADDRBITS-1):IMEMWORDBITS]];
 	
 	
@@ -148,12 +190,12 @@ module Project(
 	wire [(DBITS-1): 0] sxtimm;
 	
 	// Here I am manually hooking up these wires
-	assign op1_D = IR[31:26];
-	assign op2_D = IR[25:18];
-	assign rs_D = IR[7:4];
-	assign rd_D = IR[11:8];
-	assign rt_D = IR[3:0];
-	assign rawimm_D = IR[23:8];
+	assign op1_D = inst_D[31:26];
+	assign op2_D = inst_D[25:18];
+	assign rs_D = inst_D[7:4];
+	assign rd_D = inst_D[11:8];
+	assign rt_D = inst_D[3:0];
+	assign rawimm_D = inst_D[23:8];
 	// Instantiate SXT module
 	SXT #(IMMBITS, DBITS) sxt(rawimm_D, sxtimm);
 	
@@ -161,55 +203,61 @@ module Project(
 	reg [(DBITS-1):0] regs[(REGWORDS-1):0];
 	// Two read ports, always using rs and rt for register numbers
 	wire [(REGNOBITS-1):0] rregno1_D=rs_D, rregno2_D=rt_D;
-	wire [(DBITS-1):0] regval1_D=regs[rregno1_D]; // Holds RS value
-	wire [(DBITS-1):0] regval2_D=regs[rregno2_D]; // Holds RT value
+	wire [(DBITS-1):0] RSval_D=regs[rregno1_D]; // Holds RS value
+	wire [(DBITS-1):0] RTval_D=regs[rregno2_D]; // Holds RT value
 
 
 	reg aluimm_D; // If enabled, aluin2 is the sxtimm. Otherwise its regval2.
 	reg [OP2BITS:0] alufunc_D; // ALU func
-	reg isbranch_D;
-	reg isjump_D;
-	reg isnop_D;
-	reg wrmem_D; // Write to mem?
-	reg selaluout_D;
-	reg selmemout_D;
-	reg selpcplus_D;
-	reg [REGNOBITS:0] wregno_D; // The destination register in this context
-	reg wrreg_D; // Write to wregno_D?
-	reg flush_D;
+	//reg isbranch_D;
+	//reg isjump_D;
+	reg isnop_D; // Unimplemented
+	reg [REGNOBITS:0] destreg_D; // The destination register in this context
+	reg wrmem_D; // Write RT to mem at aluout address?
+	reg ldmem_D; // Load from aluout address into destreg_D?
+	reg wrreg_D; // Write to destreg_D?
+	reg flush_D; // Unimplemented
 	
 	// Control signals 
 	always @* begin
-		{aluimm_D,      alufunc_D}=
-		{    1'bX,{OP2BITS{1'bX}}};
-		{isbranch_D,isjump_D,isnop_D,wrmem_D}=
-		{      1'b0,    1'b0,   1'b0,   1'b0};
-		{selaluout_D,selmemout_D,selpcplus_D,wregno_D,          wrreg_D}=
-		{       1'bX,       1'bX,       1'bX,{REGNOBITS{1'bX}},   1'b0};
-		
-		
+
+		aluimm_D = 1'b0;
+		alufunc_D = {OP2BITS{1'bX}};
+		//isbranch_D = 1'b0;
+		//isjump_D = 1'b0;
+		isnop_D = 1'b0;
+		destreg_D = {REGNOBITS{1'bX}};
+		wrreg_D = 1'b0;
+		wrmem_D = 1'b0;
+		ldmem_D = 1'b0;
 		
 		if(reset|flush_D)
 			isnop_D=1'b1;
 		else case(op1_D)
 			// All OP2
-			OP1_EXT begin:
+			OP1_EXT: begin
 				case(op2_D)
-					OP2_SUB,OP2_NAND,OP2_NOR,OP2_NXOR,OP2_EQ,OP2_LT,OP2_LE,OP2_NE,OP2_ADD,OP2_AND,OP2_OR,OP2_XOR,OP2_RSHF,OP2_LSHF:
-					{aluimm_D,alufunc_D,selaluout_D,selmemout_D,selpcplus_D,wregno_D,wrreg_D}=
-					{    1'b0,    op2_D,       1'b1,       1'b0,       1'b0,    rd_D,   1'b1};
+					OP2_SUB,OP2_NAND,OP2_NOR,OP2_NXOR,OP2_EQ,OP2_LT,OP2_LE,OP2_NE,OP2_ADD,OP2_AND,OP2_OR,OP2_XOR,OP2_RSHF,OP2_LSHF: begin
+						alufunc_D = op2_D;
+						destreg_D = rd_D;
+						wrreg_D = 1'b1;
+					end
 					default:  ;
 				endcase
 			end
-			// Immediate arithmetic
-			OP1_ADDI,OP1_ANDI,OP1_ORI,OP1_XORI:
-				{aluimm_D,alufunc_D,selaluout_D,selmemout_D,selpcplus_D,wregno_D,wrreg_D}=
-				{    1'b1,    op1_D,       1'b1,       1'b0,       1'b0,    rt_D,   1'b1};
-			// Store word
-			OP1_SW:
-				{aluimm_D,alufunc_D,selaluout_D,selmemout_D,selpcplus_D,wregno_D,wrreg_D}=
-				{    1'b1,    op1_D,       1'b1,       1'b0,       1'b0,    rt_D,   1'b1};
-
+			// Immediate arithmetic. Notice how alufunc is handled - concat 2 0's
+			OP1_ADDI,OP1_ANDI,OP1_ORI,OP1_XORI: begin
+				aluimm_D = 1'b1;
+				alufunc_D = {2'b0, op1_D};
+				destreg_D = rt_D;
+				wrreg_D = 1'b1;
+			end
+			// Store word: Use imm, add to RS, use this as address. Store RT here.
+			OP1_SW: begin
+				aluimm_D = 1'b1;
+				alufunc_D = OP2_ADD;
+				wrmem_D = 1'b1;
+			end
 			// TODO: Write the rest of the decoding code
 			default:  ;
 			endcase
@@ -221,9 +269,28 @@ module Project(
 
 	reg signed [(DBITS-1):0] aluin1_A;
 	reg signed [(DBITS-1):0] aluin2_A;
-	reg signed [(DBITS-1):0] aluout_A;
 	reg [OP2BITS:0] alufunc_A;
+	reg wrreg_A;
+	reg wrmem_A;
+	reg ldmem_A;
+	reg [REGNOBITS:0] destreg_A;
+	reg [(DBITS-1):0] RTval_A;
 	
+	// AHA - we don't want these in the same stage. Always block added.
+	
+	always @(posedge clk) begin
+		aluin1_A <= RSval_D; // Always load RS into 1st input
+		aluin2_A <= aluimm_D?sxtimm:rt_D; // Perhaps load sxtimm into 2nd input, otherwise RT.
+		alufunc_A <= alufunc_D;
+		wrreg_A <= wrreg_D;
+		wrmem_A <= wrmem_D;
+		ldmem_A <= ldmem_D;
+		destreg_A <= destreg_D;
+		RTval_A <= RTval_D;
+	end
+		
+	reg signed [(DBITS-1):0] aluout_A;
+
 	always @(alufunc_A or aluin1_A or aluin2_A)
 	case(alufunc_A)
 		OP2_EQ:  aluout_A={31'b0,aluin1_A==aluin2_A};
@@ -244,14 +311,10 @@ module Project(
 	endcase
 
 	
-	reg dobranch_A;
-	reg brtarg_A;
-	reg jmptarg_A;
-	wire [(DBITS-1):0] isjump_A=isjump_D;
-	wire [(DBITS-1):0] pcplus_A=pcplus_D;
-	wire [(DBITS-1):0] pcpred_A=pcpred_D;
-	wire [(DBITS-1):0] isnop_A=isnop_D;
 	// TODO: Generate the dobranch, brtarg, isjump, and jmptarg signals somehow...
+	
+	// Unimplemented. Uncomment to work on this.
+	/*
 	wire [(DBITS-1):0] pcgood_A=
 		dobranch_A?brtarg_A:
 		isjump_A?jmptarg_A:
@@ -259,23 +322,35 @@ module Project(
 	wire mispred_A=(pcgood_A!=pcpred_A);
 	wire mispred_B=mispred_A&&!isnop_A;
 	wire [(DBITS-1):0] pcgood_B=pcgood_A;
+	*/
+	
 	// TODO: This is a good place to generate the flush_? signals
-
+	// Unimplemented
 
 	
 	/*** MEM STAGE ****/ 
 
 	// TODO: Write code that produces wmemval_M, wrmem_M, wrreg_M, etc.
 	
-	reg [(DBITS-1):0] aluout_M,pcplus_M;
+	reg signed [(DBITS-1):0] memaddr_M;
+	reg wrmem_M;
+	reg ldmem_M;
+	reg wrreg_M;
+	reg ldreg_M;
+	reg [REGNOBITS:0] destreg_M;
+	reg [(DBITS-1):0] wmemval_M;
 
-	always @(posedge clk)
-		{aluout_M,pcplus_M}<=
-		{aluout_A,pcplus_A};
+	always @(posedge clk) begin
+		memaddr_M <= aluout_A;
+		wrmem_M <= wrmem_A;
+		ldmem_M <= ldmem_A;
+		wrreg_M <= wrreg_A;
+		wrreg_M <= wrreg_A;
+		destreg_M <= destreg_A;
+		wmemval_M <= RTval_A;
+	end
 
-
-
-       // Create and connect HEX register
+   // Create and connect HEX register
 	reg [23:0] HexOut;
 	SevenSeg ss5(.OUT(HEX5),.IN(HexOut[23:20]));
 	SevenSeg ss4(.OUT(HEX4),.IN(HexOut[19:16]));
@@ -285,11 +360,12 @@ module Project(
 	SevenSeg ss0(.OUT(HEX0),.IN(HexOut[3:0]));
 	always @(posedge clk or posedge reset)
 		if(reset)
-			HexOut<=24'hFEDEAD;
+			HexOut<=24'hDDEADD;
 		else if(wrmem_M&&(memaddr_M==ADDRHEX))
 			HexOut <= wmemval_M[23:0];
 
 	// TODO: Write the code for LEDR here
+	// Unimplemented
 
 	// Now the real data memory
 	wire MemEnable=!(memaddr_M[(DBITS-1):DMEMADDRBITS]);
@@ -301,23 +377,26 @@ module Project(
 			dmem[memaddr_M[(DMEMADDRBITS-1):DMEMWORDBITS]]<=wmemval_M;
 
 	wire [(DBITS-1):0] MemVal=MemWE?{DBITS{1'bX}}:dmem[memaddr_M[(DMEMADDRBITS-1):DMEMWORDBITS]];
-
+	
 	// Connect memory and input devices to the bus
-// you might need to change the following statement. 
+	// you might need to change the following statement. 
 	wire [(DBITS-1):0] memout_M=
 		MemEnable?MemVal:
 		(memaddr_M==ADDRKEY)?{28'b0,~KEY}:
 		(memaddr_M==ADDRSW)? { 20'b0,SW}:
 		32'hDEADDEAD;
+		
+	// Determine register write value
+	wire [(DBITS-1):0] wregval_M = ldmem_M?memout_M:memaddr_M;
 
 	// TODO: Decide what gets written into the destination register (wregval_M),
-	// when it gets written (wrreg_M) and to which register it gets written (wregno_M)
+	// when it gets written (wrreg_M) and to which register it gets written (destreg_M)
 
 	/*** Write Back Stage *****/ 
 
 	always @(posedge clk)
 		if(wrreg_M&&!reset)
-			regs[wregno_M]<=wregval_M;
+			regs[destreg_M]<=wregval_M;
 
 	
 	
