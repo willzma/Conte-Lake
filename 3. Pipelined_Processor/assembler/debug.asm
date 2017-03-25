@@ -10,9 +10,13 @@ ADDI Zero,T0,5
 SW		T0,HEX(Zero)
 SW		T0,HEX(Zero)
 SW		T0,HEX(Zero)
+ADDI T0,T0,5
 SW		T0,HEX(Zero)
 SW		T0,HEX(Zero)
 SW		T0,HEX(Zero)
+LW T0,4(Zero)
 SW		T0,HEX(Zero)
 SW		T0,HEX(Zero)
 SW		T0,HEX(Zero)
+SW		T0,LEDR(Zero)
+
