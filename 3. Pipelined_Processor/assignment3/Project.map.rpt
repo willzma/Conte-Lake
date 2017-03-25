@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Project
-Fri Mar 24 17:42:09 2017
+Fri Mar 24 19:53:37 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +--------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                             ;
 +-----------------------------+--------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Fri Mar 24 17:42:09 2017          ;
+; Analysis & Synthesis Status ; Failed - Fri Mar 24 19:53:37 2017          ;
 ; Quartus II 64-Bit Version   ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name               ; Project                                    ;
 ; Top-level Entity Name       ; Project                                    ;
@@ -157,7 +157,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Fri Mar 24 17:42:08 2017
+    Info: Processing started: Fri Mar 24 19:53:36 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Project -c Project
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 2 entities, in source file project.v
@@ -171,28 +171,22 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll/pll
     Info (12023): Found entity 1: Pll_0002
 Warning (10236): Verilog HDL Implicit Net warning at Project.v(109): created implicit net for "pcpred_F"
 Warning (10236): Verilog HDL Implicit Net warning at Project.v(122): created implicit net for "inst_F"
-Error (10161): Verilog HDL error at Project.v(215): object "dobranch_A" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 215
-Error (10161): Verilog HDL error at Project.v(215): object "brtarg_A" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 215
-Error (10161): Verilog HDL error at Project.v(216): object "isjump_A" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 216
-Error (10161): Verilog HDL error at Project.v(216): object "jmptarg_A" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 216
-Error (10161): Verilog HDL error at Project.v(217): object "pcplus_A" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 217
-Error (10161): Verilog HDL error at Project.v(218): object "pcpred_A" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 218
-Error (10161): Verilog HDL error at Project.v(219): object "isnop_A" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 219
-Error (10161): Verilog HDL error at Project.v(233): object "pcplus_A" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 233
-Error (10161): Verilog HDL error at Project.v(248): object "wrmem_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 248
-Error (10161): Verilog HDL error at Project.v(248): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 248
-Error (10161): Verilog HDL error at Project.v(249): object "wmemval_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 249
-Error (10161): Verilog HDL error at Project.v(254): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 254
 Error (10161): Verilog HDL error at Project.v(255): object "wrmem_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 255
-Error (10161): Verilog HDL error at Project.v(260): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 260
-Error (10161): Verilog HDL error at Project.v(260): object "wmemval_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 260
-Error (10161): Verilog HDL error at Project.v(262): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 262
-Error (10161): Verilog HDL error at Project.v(268): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 268
+Error (10161): Verilog HDL error at Project.v(255): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 255
+Error (10161): Verilog HDL error at Project.v(256): object "wmemval_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 256
+Error (10161): Verilog HDL error at Project.v(261): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 261
+Error (10161): Verilog HDL error at Project.v(262): object "wrmem_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 262
+Error (10161): Verilog HDL error at Project.v(267): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 267
+Error (10161): Verilog HDL error at Project.v(267): object "wmemval_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 267
 Error (10161): Verilog HDL error at Project.v(269): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 269
-Error (10161): Verilog HDL error at Project.v(278): object "wrreg_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 278
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 19 errors, 3 warnings
+Error (10161): Verilog HDL error at Project.v(275): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 275
+Error (10161): Verilog HDL error at Project.v(276): object "memaddr_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 276
+Error (10161): Verilog HDL error at Project.v(285): object "wrreg_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 285
+Error (10161): Verilog HDL error at Project.v(286): object "wregno_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 286
+Error (10161): Verilog HDL error at Project.v(286): object "wregval_M" is not declared File: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3_restored/Project.v Line: 286
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 13 errors, 3 warnings
     Error: Peak virtual memory: 592 megabytes
-    Error: Processing ended: Fri Mar 24 17:42:09 2017
+    Error: Processing ended: Fri Mar 24 19:53:37 2017
     Error: Elapsed time: 00:00:01
     Error: Total CPU time (on all processors): 00:00:01
 

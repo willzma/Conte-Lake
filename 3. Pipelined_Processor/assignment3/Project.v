@@ -93,14 +93,14 @@ module Project(
   
 	// The PC register and update logic
 	 reg [(DBITS-1):0] PC;
-	 reg stall_F;
 	always @(posedge clk) begin
 	if(reset)
-		PC<=STARTPC;
+		PC<=STARTPC; // Initial step
 	else if(mispred_B)
-		PC<=pcgood_B;
+		PC<=pcgood_B; // Jump to correct step
 	else if(!stall_F)
-		PC<=pcpred_F;
+		PC<=pcpred_F; // Proceed 1 step
+	// If you failed all conditions, you are stalled. Stay on this step.
 	end
 	// This is the value of "incremented PC", computed in stage 1
 	wire [(DBITS-1):0] pcplus_F=PC+INSTSIZE;
@@ -126,27 +126,46 @@ module Project(
 
 	// If fetch and decoding stages are the same stage,
 	// just connect signals from fetch to decode
-	wire [(DBITS-1):0] inst_D=inst_F;
-	wire [(DBITS-1):0] pcplus_D=pcplus_F;
-	wire [(DBITS-1):0] pcpred_D=pcpred_F;
+	// AHA - we don't want these in the same stage. Always block added.
+	
+	reg [(DBITS-1):0] inst_D;
+	reg [(DBITS-1):0] pcplus_D;
+	reg [(DBITS-1):0] pcpred_D;
+	always @(posedge clk) begin
+		inst_D <= inst_F;
+		pcplus_D <= pcplus_F;
+		pcpred_D <= pcpred_F;
+	end
+		
 	// Instruction decoding
 	// These have zero delay from inst_D
 	// because they are just new names for those signals
 	wire [(OP1BITS-1):0]   op1_D;
 	wire [(REGNOBITS-1):0] rs_D,rt_D,rd_D;
-	
 	wire [(OP2BITS-1):0] op2_D;
 	wire [(IMMBITS-1):0] rawimm_D;
+	// I added this VVVV
+	wire [(DBITS-1): 0] sxtimm;
+	
+	// Here I am manually hooking up these wires
+	assign op1_D = IR[31:26];
+	assign op2_D = IR[25:18];
+	assign rs_D = IR[7:4];
+	assign rd_D = IR[11:8];
+	assign rt_D = IR[3:0];
+	assign rawimm_D = IR[23:8];
+	// Instantiate SXT module
+	SXT #(IMMBITS, DBITS) sxt(imm, sxtimm);
 	
 	// Register-read
 	reg [(DBITS-1):0] regs[(REGWORDS-1):0];
 	// Two read ports, always using rs and rt for register numbers
 	wire [(REGNOBITS-1):0] rregno1_D=rs_D, rregno2_D=rt_D;
-	wire [(DBITS-1):0] regval1_D=regs[rregno1_D];
-	wire [(DBITS-1):0] regval2_D=regs[rregno2_D];
+	wire [(DBITS-1):0] regval1_D=regs[rregno1_D]; // Holds RS value
+	wire [(DBITS-1):0] regval2_D=regs[rregno2_D]; // Holds RT value
 
 
-	reg aluimm_D;
+	reg aluimm_D; // If enabled, aluin2 is the sxtimm. Otherwise its regval2.
 	reg [OP2BITS:0] alufunc_D;
 	reg isbranch_D;
 	reg isjump_D;
@@ -176,6 +195,7 @@ module Project(
 		OP1_ALUR:
 			{aluimm_D,alufunc_D,selaluout_D,selmemout_D,selpcplus_D,wregno_D,wrreg_D}=
 			{    1'b0,    op2_D,       1'b1,       1'b0,       1'b0,    rd_D,   1'b1};
+
 		// TODO: Write the rest of the decoding code
 		default:  ;
 		endcase
@@ -209,7 +229,14 @@ module Project(
 		default: aluout_A={DBITS{1'bX}};
 	endcase
 
-		
+	
+	reg dobranch_A;
+	reg brtarg_A;
+	reg jmptarg_A;
+	wire [(DBITS-1):0] isjump_A=isjump_D;
+	wire [(DBITS-1):0] pcplus_A=pcplus_D;
+	wire [(DBITS-1):0] pcpred_A=pcpred_D;
+	wire [(DBITS-1):0] isnop_A=isnop_D;
 	// TODO: Generate the dobranch, brtarg, isjump, and jmptarg signals somehow...
 	wire [(DBITS-1):0] pcgood_A=
 		dobranch_A?brtarg_A:
@@ -278,10 +305,6 @@ module Project(
 		if(wrreg_M&&!reset)
 			regs[wregno_M]<=wregval_M;
 
-
-
-
-	
 	
 	
 endmodule
