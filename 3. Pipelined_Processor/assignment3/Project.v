@@ -35,7 +35,7 @@ module Project(
   
  
   parameter OP1BITS  =6;
-  parameter OP1_ALUR =6'b000000;
+  parameter OP1_EXT =6'b000000;
   parameter OP1_BEQ  =6'b001000;
   parameter OP1_BLT  =6'b001001;
   parameter OP1_BLE  =6'b001010;
@@ -155,7 +155,7 @@ module Project(
 	assign rt_D = IR[3:0];
 	assign rawimm_D = IR[23:8];
 	// Instantiate SXT module
-	SXT #(IMMBITS, DBITS) sxt(imm, sxtimm);
+	SXT #(IMMBITS, DBITS) sxt(rawimm_D, sxtimm);
 	
 	// Register-read
 	reg [(DBITS-1):0] regs[(REGWORDS-1):0];
@@ -166,16 +166,16 @@ module Project(
 
 
 	reg aluimm_D; // If enabled, aluin2 is the sxtimm. Otherwise its regval2.
-	reg [OP2BITS:0] alufunc_D;
+	reg [OP2BITS:0] alufunc_D; // ALU func
 	reg isbranch_D;
 	reg isjump_D;
 	reg isnop_D;
-	reg wrmem_D;
+	reg wrmem_D; // Write to mem?
 	reg selaluout_D;
 	reg selmemout_D;
 	reg selpcplus_D;
-	reg [REGNOBITS:0] wregno_D;
-	reg wrreg_D;
+	reg [REGNOBITS:0] wregno_D; // The destination register in this context
+	reg wrreg_D; // Write to wregno_D?
 	reg flush_D;
 	
 	// Control signals 
@@ -192,14 +192,28 @@ module Project(
 		if(reset|flush_D)
 			isnop_D=1'b1;
 		else case(op1_D)
-		OP1_ALUR:
-			{aluimm_D,alufunc_D,selaluout_D,selmemout_D,selpcplus_D,wregno_D,wrreg_D}=
-			{    1'b0,    op2_D,       1'b1,       1'b0,       1'b0,    rd_D,   1'b1};
+			// All OP2
+			OP1_EXT begin:
+				case(op2_D)
+					OP2_SUB,OP2_NAND,OP2_NOR,OP2_NXOR,OP2_EQ,OP2_LT,OP2_LE,OP2_NE,OP2_ADD,OP2_AND,OP2_OR,OP2_XOR,OP2_RSHF,OP2_LSHF:
+					{aluimm_D,alufunc_D,selaluout_D,selmemout_D,selpcplus_D,wregno_D,wrreg_D}=
+					{    1'b0,    op2_D,       1'b1,       1'b0,       1'b0,    rd_D,   1'b1};
+					default:  ;
+				endcase
+			end
+			// Immediate arithmetic
+			OP1_ADDI,OP1_ANDI,OP1_ORI,OP1_XORI:
+				{aluimm_D,alufunc_D,selaluout_D,selmemout_D,selpcplus_D,wregno_D,wrreg_D}=
+				{    1'b1,    op1_D,       1'b1,       1'b0,       1'b0,    rt_D,   1'b1};
+			// Store word
+			OP1_SW:
+				{aluimm_D,alufunc_D,selaluout_D,selmemout_D,selpcplus_D,wregno_D,wrreg_D}=
+				{    1'b1,    op1_D,       1'b1,       1'b0,       1'b0,    rt_D,   1'b1};
 
-		// TODO: Write the rest of the decoding code
-		default:  ;
-		endcase
-	end
+			// TODO: Write the rest of the decoding code
+			default:  ;
+			endcase
+		end
 	
 		
 
