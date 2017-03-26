@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Project
-Sat Mar 25 01:45:43 2017
+Sat Mar 25 16:28:46 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Sat Mar 25 01:45:43 2017 ;
+; EDA Netlist Writer Status ; Successful - Sat Mar 25 16:28:46 2017 ;
 ; Revision Name             ; Project                               ;
 ; Top-level Entity Name     ; Project                               ;
 ; Family                    ; Cyclone V                             ;
@@ -82,13 +82,13 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Sat Mar 25 01:45:41 2017
+    Info: Processing started: Sat Mar 25 16:28:44 2017
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off Project -c Project
 Warning (10905): Generated the EDA functional simulation files although EDA timing simulation option is chosen.
 Info (204019): Generated file Project.vo in folder "D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 626 megabytes
-    Info: Processing ended: Sat Mar 25 01:45:43 2017
+    Info: Peak virtual memory: 637 megabytes
+    Info: Processing ended: Sat Mar 25 16:28:46 2017
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

@@ -95,7 +95,7 @@ module Project(
     .locked   (locked)
   );
   reg [31:0] buffer = 32'd0;
-  reg [31:0] cap = 32'd40500000;
+  reg [31:0] cap = 32'd20000000;
   reg clk; 
  
   always@(posedge clk2 or posedge reset) begin
@@ -123,7 +123,6 @@ module Project(
   
 	// The PC register and update logic
 	reg [(DBITS-1):0] PC;
-	
 	always @(posedge clk or posedge reset) begin
 	if(reset) begin
 		PC<=STARTPC; // Initial step
@@ -173,10 +172,18 @@ module Project(
 	reg [(DBITS-1):0] inst_D;
 	reg [(DBITS-1):0] pcplus_D;
 	reg [(DBITS-1):0] pcpred_D;
-	always @(posedge clk) begin
-		inst_D <= inst_F;
-		pcplus_D <= pcplus_F;
-		pcpred_D <= pcpred_F;
+	reg isnop_D;
+
+	always @(posedge clk or posedge reset) begin
+		if (reset) begin
+			isnop_D <= 1'b1;
+		end
+		else begin
+			inst_D <= inst_F;
+			pcplus_D <= pcplus_F;
+			pcpred_D <= pcpred_F;
+			isnop_D <= 1'b0;
+		end
 	end
 		
 	// Instruction decoding
@@ -211,10 +218,9 @@ module Project(
 	reg [OP2BITS:0] alufunc_D; // ALU func
 	//reg isbranch_D;
 	//reg isjump_D;
-	reg isnop_D; // Unimplemented
 	reg [REGNOBITS:0] destreg_D; // The destination register in this context
 	reg wrmem_D; // Write RT to mem at aluout address?
-	reg ldmem_D; // Load from aluout address into destreg_D?
+	reg ldmem_D; // Set reg write value to value at aluout address?
 	reg wrreg_D; // Write to destreg_D?
 	reg flush_D; // Unimplemented
 	
@@ -225,15 +231,12 @@ module Project(
 		alufunc_D = {OP2BITS{1'bX}};
 		//isbranch_D = 1'b0;
 		//isjump_D = 1'b0;
-		isnop_D = 1'b0;
 		destreg_D = {REGNOBITS{1'bX}};
 		wrreg_D = 1'b0;
 		wrmem_D = 1'b0;
 		ldmem_D = 1'b0;
 		
-		if(reset|flush_D)
-			isnop_D=1'b1;
-		else case(op1_D)
+	case(op1_D)
 			// All OP2
 			OP1_EXT: begin
 				case(op2_D)
@@ -258,6 +261,14 @@ module Project(
 				alufunc_D = OP2_ADD;
 				wrmem_D = 1'b1;
 			end
+			// Load word
+			OP1_LW: begin
+				aluimm_D = 1'b1;
+				alufunc_D = OP2_ADD;
+				ldmem_D = 1'b1;
+				destreg_D = rt_D;
+				wrreg_D = 1'b1;
+			end
 			// TODO: Write the rest of the decoding code
 			default:  ;
 			endcase
@@ -273,20 +284,27 @@ module Project(
 	reg wrreg_A;
 	reg wrmem_A;
 	reg ldmem_A;
+	reg isnop_A;
 	reg [REGNOBITS:0] destreg_A;
 	reg [(DBITS-1):0] RTval_A;
 	
 	// AHA - we don't want these in the same stage. Always block added.
 	
-	always @(posedge clk) begin
-		aluin1_A <= RSval_D; // Always load RS into 1st input
-		aluin2_A <= aluimm_D?sxtimm:rt_D; // Perhaps load sxtimm into 2nd input, otherwise RT.
-		alufunc_A <= alufunc_D;
-		wrreg_A <= wrreg_D;
-		wrmem_A <= wrmem_D;
-		ldmem_A <= ldmem_D;
-		destreg_A <= destreg_D;
-		RTval_A <= RTval_D;
+	always @(posedge clk or posedge reset) begin
+		if (reset) begin
+			isnop_A <= 1'b1;
+		end
+		else begin
+			aluin1_A <= RSval_D; // Always load RS into 1st input
+			aluin2_A <= aluimm_D?sxtimm:RTval_D; // Perhaps load sxtimm into 2nd input, otherwise RT.
+			alufunc_A <= alufunc_D;
+			wrreg_A <= wrreg_D;
+			wrmem_A <= wrmem_D;
+			ldmem_A <= ldmem_D;
+			destreg_A <= destreg_D;
+			RTval_A <= RTval_D;
+			isnop_A <= isnop_D;
+		end
 	end
 		
 	reg signed [(DBITS-1):0] aluout_A;
@@ -337,39 +355,53 @@ module Project(
 	reg ldmem_M;
 	reg wrreg_M;
 	reg ldreg_M;
+	reg isnop_M;
 	reg [REGNOBITS:0] destreg_M;
 	reg [(DBITS-1):0] wmemval_M;
 
-	always @(posedge clk) begin
-		memaddr_M <= aluout_A;
-		wrmem_M <= wrmem_A;
-		ldmem_M <= ldmem_A;
-		wrreg_M <= wrreg_A;
-		wrreg_M <= wrreg_A;
-		destreg_M <= destreg_A;
-		wmemval_M <= RTval_A;
+	always @(posedge clk or posedge reset) begin
+		if(reset) begin
+			isnop_M <= 1'b1;
+		end
+		else begin
+			memaddr_M <= aluout_A;
+			wrmem_M <= wrmem_A;
+			ldmem_M <= ldmem_A;
+			wrreg_M <= wrreg_A;
+			destreg_M <= destreg_A;
+			wmemval_M <= RTval_A;
+			isnop_M <= isnop_A;
+		end
 	end
 
    // Create and connect HEX register
-	reg [23:0] HexOut;
-	SevenSeg ss5(.OUT(HEX5),.IN(HexOut[23:20]));
-	SevenSeg ss4(.OUT(HEX4),.IN(HexOut[19:16]));
-	SevenSeg ss3(.OUT(HEX3),.IN(HexOut[15:12]));
-	SevenSeg ss2(.OUT(HEX2),.IN(HexOut[11:8]));
-	SevenSeg ss1(.OUT(HEX1),.IN(HexOut[7:4]));
-	SevenSeg ss0(.OUT(HEX0),.IN(HexOut[3:0]));
-	always @(posedge clk or posedge reset)
+	reg [23:0] HEXout;
+	reg [9:0] LEDRout;
+	assign LEDR = LEDRout[9:0];
+	SevenSeg ss5(.OUT(HEX5),.IN(HEXout[23:20]));
+	SevenSeg ss4(.OUT(HEX4),.IN(HEXout[19:16]));
+	SevenSeg ss3(.OUT(HEX3),.IN(HEXout[15:12]));
+	SevenSeg ss2(.OUT(HEX2),.IN(HEXout[11:8]));
+	SevenSeg ss1(.OUT(HEX1),.IN(HEXout[7:4]));
+	SevenSeg ss0(.OUT(HEX0),.IN(HEXout[3:0]));
+	always @(posedge clk or posedge reset) begin
 		if(reset)
-			HexOut<=24'hDDEADD;
-		else if(wrmem_M&&(memaddr_M==ADDRHEX))
-			HexOut <= wmemval_M[23:0];
-
-	// TODO: Write the code for LEDR here
-	// Unimplemented
+			LEDRout<={isnop_D,isnop_A,isnop_M};
+		else if (wrmem_M&&(memaddr_M==ADDRLEDR)&&!isnop_M) // NOP check - Don't display HEX on NOP
+			LEDRout<=wmemval_M[9:0];
+		else
+			LEDRout<=({isnop_D,isnop_A,isnop_M});
+	end
+	always @(posedge clk or posedge reset) begin
+		if(reset)
+			HEXout<=24'hFEDEAD;
+		else if(wrmem_M&&(memaddr_M==ADDRHEX)&&!isnop_M) // NOP check - Don't display LEDR on NOP
+			HEXout <= wmemval_M[23:0];
+	end
 
 	// Now the real data memory
 	wire MemEnable=!(memaddr_M[(DBITS-1):DMEMADDRBITS]);
-	wire MemWE=(!reset)&wrmem_M&MemEnable;
+	wire MemWE=(!reset)&wrmem_M&MemEnable&!isnop_M; // NOP check - Don't write to mem on NOP
 	(* ram_init_file = IMEMINITFILE, ramstyle="no_rw_check" *)
 	reg [(DBITS-1):0] dmem[(DMEMWORDS-1):0];
 	always @(posedge clk)
@@ -393,11 +425,17 @@ module Project(
 	// when it gets written (wrreg_M) and to which register it gets written (destreg_M)
 
 	/*** Write Back Stage *****/ 
-
-	always @(posedge clk)
-		if(wrreg_M&&!reset)
+	
+	integer r;
+   integer i;
+	always @(posedge clk or posedge reset) begin
+		if (reset) begin
+			for (i=0; i<16; i=i+1) regs[i] <= 0;
+		end
+		else if(wrreg_M&&!reset&&!isnop_M) begin // NOP check - Don't write to reg on NOP
 			regs[destreg_M]<=wregval_M;
-
+		end
+	end
 	
 	
 endmodule

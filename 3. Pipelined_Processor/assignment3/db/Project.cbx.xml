@@ -1,8 +1,7 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="Project">
-		<CBX_INST_ENTRY INSTANCE_NAME="|Project|altsyncram:imem_rtl_0" CBX_FILE_NAME="altsyncram_9la1.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|Project|altsyncram:regs_rtl_0" CBX_FILE_NAME="altsyncram_03n1.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|Project|altsyncram:regs_rtl_1" CBX_FILE_NAME="altsyncram_03n1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Project|altsyncram:imem_rtl_0" CBX_FILE_NAME="altsyncram_oeb1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Project|altsyncram:dmem_rtl_0" CBX_FILE_NAME="altsyncram_kdm1.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
