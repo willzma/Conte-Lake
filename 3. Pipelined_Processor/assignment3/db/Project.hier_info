@@ -255,6 +255,42 @@ cascade_out[0] <= <GND>
 zdbfbclk <> <GND>
 
 
+|Project|STALL_CTRL:stall_ctrl
+RREG1_D[0] => Equal0.IN3
+RREG1_D[0] => Equal1.IN3
+RREG1_D[1] => Equal0.IN2
+RREG1_D[1] => Equal1.IN2
+RREG1_D[2] => Equal0.IN1
+RREG1_D[2] => Equal1.IN1
+RREG1_D[3] => Equal0.IN0
+RREG1_D[3] => Equal1.IN0
+RREG2_D[0] => Equal2.IN3
+RREG2_D[0] => Equal3.IN3
+RREG2_D[1] => Equal2.IN2
+RREG2_D[1] => Equal3.IN2
+RREG2_D[2] => Equal2.IN1
+RREG2_D[2] => Equal3.IN1
+RREG2_D[3] => Equal2.IN0
+RREG2_D[3] => Equal3.IN0
+DREG_A[0] => Equal0.IN7
+DREG_A[0] => Equal2.IN7
+DREG_A[1] => Equal0.IN6
+DREG_A[1] => Equal2.IN6
+DREG_A[2] => Equal0.IN5
+DREG_A[2] => Equal2.IN5
+DREG_A[3] => Equal0.IN4
+DREG_A[3] => Equal2.IN4
+DREG_MEM[0] => Equal1.IN7
+DREG_MEM[0] => Equal3.IN7
+DREG_MEM[1] => Equal1.IN6
+DREG_MEM[1] => Equal3.IN6
+DREG_MEM[2] => Equal1.IN5
+DREG_MEM[2] => Equal3.IN5
+DREG_MEM[3] => Equal1.IN4
+DREG_MEM[3] => Equal3.IN4
+STALL <= STALL.DB_MAX_OUTPUT_PORT_TYPE
+
+
 |Project|SXT:sxt
 IN[0] => OUT[0].DATAIN
 IN[1] => OUT[1].DATAIN

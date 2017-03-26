@@ -17,7 +17,7 @@
 // PROGRAM "Quartus II 64-Bit"
 // VERSION "Version 14.0.0 Build 200 06/17/2014 SJ Web Edition"
 
-// DATE "03/25/2017 16:28:46"
+// DATE "03/26/2017 05:48:29"
 
 // 
 // Device: Altera 5CEBA4F23C7 Package FBGA484
@@ -2403,6 +2403,7 @@ wire [31:0] RTval_A;
 wire [31:0] PC;
 wire [9:0] LEDRout;
 wire [23:0] HEXout;
+wire [0:0] \imem_rtl_0|auto_generated|address_reg_a ;
 wire [0:0] \dmem_rtl_0|auto_generated|addrstall_reg_b ;
 wire [0:0] \dmem_rtl_0|auto_generated|address_reg_b ;
 wire [0:0] \dmem_rtl_0|auto_generated|addr_store_b ;
@@ -2411,7 +2412,6 @@ wire [0:92] dmem_rtl_0_bypass;
 wire [0:0] \myPll|pll_inst|altera_pll_i|fboutclk_wire ;
 wire [0:0] \myPll|pll_inst|altera_pll_i|locked_wire ;
 wire [0:0] \myPll|pll_inst|altera_pll_i|outclk_wire ;
-wire [0:0] \imem_rtl_0|auto_generated|address_reg_a ;
 
 wire [0:0] \imem_rtl_0|auto_generated|ram_block1a34_PORTADATAOUT_bus ;
 wire [0:0] \imem_rtl_0|auto_generated|ram_block1a2_PORTADATAOUT_bus ;

@@ -1,5 +1,5 @@
 Design Assistant report for Project
-Sat Mar 25 16:28:43 2017
+Sun Mar 26 05:48:25 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +-------------------------------------------------------------------------+
 ; Design Assistant Summary                                                ;
 +-----------------------------------+-------------------------------------+
-; Design Assistant Status           ; Analyzed - Sat Mar 25 16:28:43 2017 ;
+; Design Assistant Status           ; Analyzed - Sun Mar 26 05:48:25 2017 ;
 ; Revision Name                     ; Project                             ;
 ; Top-level Entity Name             ; Project                             ;
 ; Family                            ; Cyclone V                           ;
@@ -320,7 +320,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Design Assistant
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Sat Mar 25 16:28:41 2017
+    Info: Processing started: Sun Mar 26 05:48:22 2017
 Info: Command: quartus_drc --read_settings_files=off --write_settings_files=off Project -c Project
 Warning (335093): TimeQuest Timing Analyzer is analyzing 3 combinational loops as latches.
 Info (332104): Reading SDC File: 'Project.sdc'
@@ -410,9 +410,9 @@ Info (308044): (Information) Rule T102: Top nodes with the highest number of fan
     Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
 Info (308007): Design Assistant information: finished post-fitting analysis of current design -- generated 170 information messages and 5 warning messages
 Info: Quartus II 64-Bit Design Assistant was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 584 megabytes
-    Info: Processing ended: Sat Mar 25 16:28:43 2017
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 582 megabytes
+    Info: Processing ended: Sun Mar 26 05:48:25 2017
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 
