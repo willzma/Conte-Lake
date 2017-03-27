@@ -72,19 +72,20 @@ module Project(
 	parameter HEXBITS = 24;
 	parameter LEDRBITS = 10;
 
-	/*
+	
 	  // The reset signal comes from the reset button on the DE0-CV board
 	  // RESET_N is active-low, so we flip its value ("reset" is active-high)
-	  wire clk, locked;
+	  wire clk2, locked;
 	  // The PLL is wired to produce clk and locked signals for our logic
 		Pll myPll(
 			.refclk(CLOCK_50),
 			.rst      (!RESET_N),
-			.outclk_0 (clk),
+			.outclk_0 (clk2),
 			.locked   (locked)
 	  );
-	*/
+	assign clk = ~KEY;
 
+	/*
 	wire clk2;
 	Pll myPll(
 		.refclk(CLOCK_50),
@@ -93,7 +94,7 @@ module Project(
 		.locked   (locked)
 	);
 	reg [31:0] buffer = 32'd0;
-	reg [31:0] cap = 32'd20000000;
+	reg [31:0] cap = 32'd10000000;
 	reg clk;
 
 	always @(posedge clk2 or posedge reset) begin
@@ -108,22 +109,10 @@ module Project(
 			buffer <= 0;
 			clk <= ~clk;
 		end
-	end
+	end*/
 
 	wire reset = !locked;
-
-	// Stall controller
-	wire stall;
-	wire rreg1_D; // Assign both rreg1_D and rreg2_D in decode,
-	wire rreg2_D; // from rd, rs, rt, based off opcode
-	STALL_CTRL #(REGNOBITS) stall_ctrl(
-		.RREG1_D(rreg1_D),
-		.RREG2_D(rreg2_D),
-		.DREG_A(destreg_A),
-		.DREG_MEM(destreg_M),
-		.STALL(stall)
-	);
-
+	
 	/**** FETCH STAGE ****/
 	// The PC register and update logic
 	reg [(DBITS - 1):0] PC;
@@ -131,7 +120,7 @@ module Project(
 		if (reset) begin
 			PC <= STARTPC; // Initial step
 		end
-		else begin
+		else if (!stall) begin
 			PC <= pcpred_F; // Proceed 1 step
 		end
 
@@ -177,17 +166,27 @@ module Project(
 	reg [(DBITS - 1):0] pcpred_D;
 	reg isnop_D;
 
-	always @(posedge clk or posedge reset) begin
-		if (reset) begin
-			isnop_D <= 1'b1;
-		end
-		else begin
+	always @(posedge clk) begin
 			inst_D <= inst_F;
 			pcplus_D <= pcplus_F;
 			pcpred_D <= pcpred_F;
-			isnop_D <= 1'b0;
-		end
 	end
+	
+	// Stall controller
+	wire stall;
+	wire rs_dependency;
+	wire rd_dependency;
+	wire rs_A;
+	wire rs_M;
+	wire rt_A;
+	wire rt_M;
+	assign rs_A = (rs_D===destreg_A);
+	assign rs_M = (rs_D===destreg_M);
+	assign rt_A = (rt_D===destreg_A);
+	assign rt_M = (rt_D===destreg_M);
+	assign rs_dependency = (~isnop_A)&rs_A | (~isnop_M)&rs_M;
+	assign rt_dependency = (~single_reg)&((~isnop_A)&rt_A | (~isnop_M)&rt_M);
+	assign stall = rs_dependency || rt_dependency;
 
 	// Instruction decoding
 	// These have zero delay from inst_D
@@ -221,14 +220,17 @@ module Project(
 	reg [OP2BITS:0] alufunc_D; // ALU func
 	//reg isbranch_D;
 	//reg isjump_D;
-	reg [REGNOBITS:0] destreg_D; // The destination register in this context
+	reg [(REGNOBITS - 1):0] destreg_D; // The destination register in this context
 	reg wrmem_D; // Write RT to mem at aluout address?
 	reg ldmem_D; // Set reg write value to value at aluout address?
 	reg wrreg_D; // Write to destreg_D?
+	reg single_reg; // Write to destreg_D?
 	reg flush_D; // Unimplemented
 
 	// Control signals
-	always @* begin
+	always @(*) begin
+	
+		isnop_D = stall | reset;
 		aluimm_D = 1'b0;
 		alufunc_D = {OP2BITS{1'bX}};
 		//isbranch_D = 1'b0;
@@ -237,6 +239,7 @@ module Project(
 		wrreg_D = 1'b0;
 		wrmem_D = 1'b0;
 		ldmem_D = 1'b0;
+		single_reg = 1'b0;
 
 		case (op1_D)
 			// All OP2
@@ -257,6 +260,7 @@ module Project(
 				alufunc_D = {2'b0, op1_D};
 				destreg_D = rt_D;
 				wrreg_D = 1'b1;
+				single_reg = 1'b1;
 			end
 			// Store word: Use imm, add to RS, use this as address. Store RT here.
 			OP1_SW: begin
@@ -271,6 +275,7 @@ module Project(
 				ldmem_D = 1'b1;
 				destreg_D = rt_D;
 				wrreg_D = 1'b1;
+				single_reg = 1'b1;
 			end
 			// TODO: Write the rest of the decoding code
 			default: ;
@@ -287,7 +292,7 @@ module Project(
 	reg wrmem_A;
 	reg ldmem_A;
 	reg isnop_A;
-	reg [REGNOBITS:0] destreg_A;
+	reg [(REGNOBITS - 1):0] destreg_A;
 	reg [(DBITS - 1):0] RTval_A;
 
 	// AHA - we don't want these in the same stage. Always block added.
@@ -358,7 +363,7 @@ module Project(
 	reg wrreg_M;
 	reg ldreg_M;
 	reg isnop_M;
-	reg [REGNOBITS:0] destreg_M;
+	reg [(REGNOBITS - 1):0] destreg_M;
 	reg [(DBITS - 1):0] wmemval_M;
 
 	always @(posedge clk or posedge reset) begin
@@ -389,25 +394,27 @@ module Project(
 
 	always @(posedge clk or posedge reset) begin
 		if (reset) begin
-			LEDRout <= {isnop_D, isnop_A, isnop_M};
+			LEDRout <= {isnop_D, isnop_A, isnop_M, {4{1'b0}}, rs_dependency, rt_dependency, stall};
 		end
 		else if (wrmem_M && (memaddr_M == ADDRLEDR) && !isnop_M) begin
 			// NOP check - Don't display HEX on NOP
 			LEDRout <= wmemval_M[9:0];
 		end
 		else begin
-			LEDRout <= ({isnop_D, isnop_A, isnop_M});
+			LEDRout <= {isnop_D, isnop_A, isnop_M, rs_A, rs_M, rt_A, rt_M, rs_dependency, rt_dependency, stall};
 		end
 	end
 
 	always @(posedge clk or posedge reset) begin
-		if (reset) begin
+		/*if (reset) begin
 			HEXout <= 24'hFEDEAD;
 		end
 		else if (wrmem_M && (memaddr_M == ADDRHEX) && !isnop_M) begin
 				// NOP check - Don't display LEDR on NOP
 				HEXout <= wmemval_M[23:0];
 		end
+		else*/
+			HEXout <= { {8{1'b0}}, rs_D, rt_D, destreg_A, destreg_M};
 	end
 
 	// Now the real data memory
@@ -461,12 +468,4 @@ module SXT(IN,OUT);
 	input  [(IBITS - 1):0] IN;
   output [(OBITS - 1):0] OUT;
   assign OUT = {{(OBITS - IBITS){IN[IBITS - 1]}}, IN};
-endmodule
-
-module STALL_CTRL(RREG1_D, RREG2_D, DREG_A, DREG_MEM, STALL);
-	parameter REGNOBITS;
-	input [(REGNOBITS - 1):0] RREG1_D, RREG2_D, DREG_A, DREG_MEM;
-	output STALL;
-	assign STALL = RREG1_D == DREG_A || RREG1_D == DREG_MEM
-							|| RREG2_D == DREG_A || RREG2_D == DREG_MEM;
 endmodule

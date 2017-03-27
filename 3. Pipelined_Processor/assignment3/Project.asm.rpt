@@ -1,5 +1,5 @@
 Assembler report for Project
-Sun Mar 26 05:47:47 2017
+Mon Mar 27 02:31:27 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -10,7 +10,7 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: D:/Users/theun/Desktop/GitWork/CS3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.sof
+  5. Assembler Device Options: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.sof
   6. Assembler Messages
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Mar 26 05:47:47 2017 ;
+; Assembler Status      ; Successful - Mon Mar 27 02:31:27 2017 ;
 ; Revision Name         ; Project                               ;
 ; Top-level Entity Name ; Project                               ;
 ; Family                ; Cyclone V                             ;
@@ -53,24 +53,24 @@ agreement for further details.
 +--------+---------+---------------+
 
 
-+-------------------------------------------------------------------------------------------------+
-; Assembler Generated Files                                                                       ;
-+-------------------------------------------------------------------------------------------------+
-; File Name                                                                                       ;
-+-------------------------------------------------------------------------------------------------+
-; D:/Users/theun/Desktop/GitWork/CS3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.sof ;
-+-------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------+
+; Assembler Generated Files                                                   ;
++-----------------------------------------------------------------------------+
+; File Name                                                                   ;
++-----------------------------------------------------------------------------+
+; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.sof ;
++-----------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: D:/Users/theun/Desktop/GitWork/CS3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.sof ;
-+----------------+----------------------------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                                                  ;
-+----------------+----------------------------------------------------------------------------------------------------------+
-; Device         ; 5CEBA4F23C7                                                                                              ;
-; JTAG usercode  ; 0x024AD164                                                                                               ;
-; Checksum       ; 0x024AD164                                                                                               ;
-+----------------+----------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.sof ;
++----------------+--------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                              ;
++----------------+--------------------------------------------------------------------------------------+
+; Device         ; 5CEBA4F23C7                                                                          ;
+; JTAG usercode  ; 0x0247B5D2                                                                           ;
+; Checksum       ; 0x0247B5D2                                                                           ;
++----------------+--------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -79,13 +79,13 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Sun Mar 26 05:47:34 2017
+    Info: Processing started: Mon Mar 27 02:31:20 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Project -c Project
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 678 megabytes
-    Info: Processing ended: Sun Mar 26 05:47:47 2017
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Peak virtual memory: 670 megabytes
+    Info: Processing ended: Mon Mar 27 02:31:27 2017
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:06
 
 
