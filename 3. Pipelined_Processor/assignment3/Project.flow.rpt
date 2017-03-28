@@ -1,5 +1,5 @@
 Flow report for Project
-Tue Mar 28 00:39:41 2017
+Tue Mar 28 10:48:59 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -41,15 +41,15 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +---------------------------------+--------------------------------------------+
-; Flow Status                     ; Successful - Tue Mar 28 00:39:41 2017      ;
+; Flow Status                     ; Successful - Tue Mar 28 10:48:59 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
 ; Family                          ; Cyclone V                                  ;
 ; Device                          ; 5CEBA4F23C7                                ;
 ; Timing Models                   ; Final                                      ;
-; Logic utilization (in ALMs)     ; 139 / 18,480 ( < 1 % )                     ;
-; Total registers                 ; 299                                        ;
+; Logic utilization (in ALMs)     ; 1 / 18,480 ( < 1 % )                       ;
+; Total registers                 ; 0                                          ;
 ; Total pins                      ; 68 / 224 ( 30 % )                          ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 0 / 3,153,920 ( 0 % )                      ;
@@ -58,7 +58,7 @@ agreement for further details.
 ; Total HSSI PMA RX Deserializers ; 0                                          ;
 ; Total HSSI TX PCSs              ; 0                                          ;
 ; Total HSSI PMA TX Serializers   ; 0                                          ;
-; Total PLLs                      ; 1 / 4 ( 25 % )                             ;
+; Total PLLs                      ; 0 / 4 ( 0 % )                              ;
 ; Total DLLs                      ; 0 / 4 ( 0 % )                              ;
 +---------------------------------+--------------------------------------------+
 
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/28/2017 00:38:44 ;
+; Start date & time ; 03/28/2017 10:48:22 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Project             ;
 +-------------------+---------------------+
@@ -81,7 +81,7 @@ agreement for further details.
 +----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+----------------+
 ; ALM_REGISTER_PACKING_EFFORT                  ; Low                                                                                                                              ; Medium        ; --          ; --             ;
 ; AUTO_DELAY_CHAINS_FOR_HIGH_FANOUT_INPUT_PINS ; On                                                                                                                               ; Off           ; --          ; --             ;
-; COMPILER_SIGNATURE_ID                        ; 238368713506016.149067592428996                                                                                                  ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                        ; 30902508553329.149071250104456                                                                                                   ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME                     ; NA                                                                                                                               ; --            ; --          ; ProjectTest    ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH         ; ProjectTest                                                                                                                      ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT                       ; Verilog Hdl                                                                                                                      ; --            ; --          ; eda_simulation ;
@@ -153,13 +153,13 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 640 MB              ; 00:00:04                           ;
-; Fitter                    ; 00:00:28     ; 1.0                     ; 1442 MB             ; 00:00:28                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 657 MB              ; 00:00:05                           ;
-; TimeQuest Timing Analyzer ; 00:00:08     ; 1.0                     ; 868 MB              ; 00:00:07                           ;
-; Design Assistant          ; 00:00:01     ; 1.0                     ; 556 MB              ; 00:00:01                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 614 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:47     ; --                      ; --                  ; 00:00:46                           ;
+; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 788 MB              ; 00:00:02                           ;
+; Fitter                    ; 00:00:19     ; 1.0                     ; 1320 MB             ; 00:00:19                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 658 MB              ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:05     ; 1.0                     ; 832 MB              ; 00:00:04                           ;
+; Design Assistant          ; 00:00:01     ; 1.0                     ; 545 MB              ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:00     ; 1.0                     ; 545 MB              ; 00:00:01                           ;
+; Total                     ; 00:00:31     ; --                      ; --                  ; 00:00:31                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -168,12 +168,12 @@ agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; Nick-PC          ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; Nick-PC          ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; Nick-PC          ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; Nick-PC          ; Windows 7 ; 6.2        ; x86_64         ;
-; Design Assistant          ; Nick-PC          ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; Nick-PC          ; Windows 7 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; Meme-Machine     ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; Meme-Machine     ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; Meme-Machine     ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; Meme-Machine     ; Windows 7 ; 6.2        ; x86_64         ;
+; Design Assistant          ; Meme-Machine     ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; Meme-Machine     ; Windows 7 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

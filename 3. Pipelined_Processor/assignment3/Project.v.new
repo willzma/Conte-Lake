@@ -207,7 +207,7 @@ module Project(
 	wire [(DBITS - 1):0] RTval_D = regs[rregno2_D]; // Holds RT value
 
 	reg aluimm_D; // If enabled, aluin2 is the sxtimm. Otherwise its regval2.
-	reg [(OP2BITS - 1):0] alufunc_D; // ALU func
+	reg [OP2BITS:0] alufunc_D; // ALU func
 	//reg isbranch_D;
 	//reg isjump_D;
 	reg [(REGNOBITS - 1):0] destreg_D; // The destination register in this context
@@ -293,8 +293,8 @@ module Project(
 
     /**** AGEN/EXEC STAGE ****/
     reg signed [(DBITS - 1):0] RTval_A;
-    reg signed [(DBITS - 1):0] aluin1_A;
-	reg signed [(DBITS - 1):0] aluin2_A;
+    //reg signed [(DBITS - 1):0] aluin1_A;
+	//reg signed [(DBITS - 1):0] aluin2_A;
 	reg signed [(DBITS - 1):0] sxtimm_A;
     reg [(REGNOBITS - 1):0] destreg_A;
     reg [(OP2BITS - 1):0] alufunc_A;
@@ -310,8 +310,8 @@ module Project(
     //wire jmp_targ = jmp_targ_buffer;
     //wire ldPC = ldPC_buffer;
 
-    //reg signed [(DBITS - 1):0] aluin1_A = RSval_D;
-    //reg signed [(DBITS - 1):0] aluin2_A = aluimm_D ? sxtimm_D : RTval_D;
+    wire signed [(DBITS - 1):0] aluin1_A = RSval_D;
+    wire signed [(DBITS - 1):0] aluin2_A = aluimm_D ? sxtimm_D : RTval_D;
 
     // AHA - we don't want these in the same stage. Always block added.
     always @(posedge clk or posedge reset) begin
@@ -320,8 +320,6 @@ module Project(
         end
         else begin
             RTval_A <= RTval_D;
-			aluin1_A <= RSval_D;
-			aluin2_A <= aluimm_D ? sxtimm_D : RTval_D;
             sxtimm_A <= sxtimm_D;
             destreg_A <= destreg_D;
             alufunc_A <= alufunc_D;
@@ -340,22 +338,22 @@ module Project(
     // Branch and immediate instructions handled through use of sign-extended OP1
     always @(alufunc_A or aluin1_A or aluin2_A) begin
         case (alufunc_A)
-            OP2_EQ: aluout_A = {31'b0, aluin1_A == aluin2_A};
-            OP2_LT: aluout_A = {31'b0, aluin1_A < aluin2_A};
-            OP2_LE: aluout_A = {31'b0, aluin1_A <= aluin2_A};
-            OP2_NE: aluout_A = {31'b0, aluin1_A != aluin2_A};
-            OP2_ADD: aluout_A = aluin1_A + aluin2_A;
-            OP2_AND: aluout_A = aluin1_A & aluin2_A;
-            OP2_OR: aluout_A = aluin1_A | aluin2_A;
-            OP2_XOR: aluout_A = aluin1_A ^ aluin2_A;
-            OP2_SUB: aluout_A = aluin1_A - aluin2_A;
-            OP2_NAND: aluout_A = ~(aluin1_A & aluin2_A);
-            OP2_NOR: aluout_A = ~(aluin1_A | aluin2_A);
-            OP2_NXOR: aluout_A = ~(aluin1_A ^ aluin2_A);
-            OP2_RSHF: aluout_A = (aluin1_A >>> aluin2_A);
-            OP2_LSHF: aluout_A = (aluin1_A << aluin2_A);
-            {2'b0, OP1_JAL}: aluout_A = pcpred_A;
-            default: aluout_A = {DBITS{1'bX}};
+            OP2_EQ: aluout_A <= {31'b0, aluin1_A == aluin2_A};
+            OP2_LT: aluout_A <= {31'b0, aluin1_A < aluin2_A};
+            OP2_LE: aluout_A <= {31'b0, aluin1_A <= aluin2_A};
+            OP2_NE: aluout_A <= {31'b0, aluin1_A != aluin2_A};
+            OP2_ADD: aluout_A <= aluin1_A + aluin2_A;
+            OP2_AND: aluout_A <= aluin1_A & aluin2_A;
+            OP2_OR: aluout_A <= aluin1_A | aluin2_A;
+            OP2_XOR: aluout_A <= aluin1_A ^ aluin2_A;
+            OP2_SUB: aluout_A <= aluin1_A - aluin2_A;
+            OP2_NAND: aluout_A <= ~(aluin1_A & aluin2_A);
+            OP2_NOR: aluout_A <= ~(aluin1_A | aluin2_A);
+            OP2_NXOR: aluout_A <= ~(aluin1_A ^ aluin2_A);
+            OP2_RSHF: aluout_A <= (aluin1_A >>> aluin2_A);
+            OP2_LSHF: aluout_A <= (aluin1_A << aluin2_A);
+            {2'b0, OP1_JAL}: aluout_A <= pcpred_A;
+            default: aluout_A <= {DBITS{1'bX}};
         endcase
     end
 

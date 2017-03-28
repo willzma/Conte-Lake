@@ -1,2 +1,1 @@
-Warning (10268): Verilog HDL information at Project.v(303): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at Project.v(376): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at Project.v(224): always construct contains both blocking and non-blocking assignments
