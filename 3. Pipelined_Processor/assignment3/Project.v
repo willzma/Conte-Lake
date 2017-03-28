@@ -17,7 +17,7 @@ module Project(
 	parameter INSTBITS = 32;
 	parameter REGNOBITS = 4;
 	parameter REGWORDS = (1 << REGNOBITS);
-	parameter IMMBITS = 14;
+	parameter IMMBITS = 16;
 	parameter STARTPC = 32'h100;
 	parameter ADDRHEX = 32'hFFFFF000;
 	parameter ADDRLEDR = 32'hFFFFF020;
@@ -166,12 +166,6 @@ module Project(
 	reg [(DBITS - 1):0] pcpred_D;
 	reg isnop_D;
 
-	always @(posedge clk) begin
-			inst_D <= inst_F;
-			pcplus_D <= pcplus_F;
-			pcpred_D <= pcpred_F;
-	end
-	
 	// Stall controller
 	wire stall;
 	wire rs_dependency;
@@ -180,10 +174,10 @@ module Project(
 	wire rs_M;
 	wire rt_A;
 	wire rt_M;
-	assign rs_A = (rs_D===destreg_A);
-	assign rs_M = (rs_D===destreg_M);
-	assign rt_A = (rt_D===destreg_A);
-	assign rt_M = (rt_D===destreg_M);
+	assign rs_A = (rs_D===destreg_D);
+	assign rs_M = (rs_D===destreg_A);
+	assign rt_A = (rt_D===destreg_D);
+	assign rt_M = (rt_D===destreg_A);
 	assign rs_dependency = (~isnop_A)&rs_A | (~isnop_M)&rs_M;
 	assign rt_dependency = (~single_reg)&((~isnop_A)&rt_A | (~isnop_M)&rt_M);
 	assign stall = rs_dependency || rt_dependency;
@@ -230,7 +224,8 @@ module Project(
 	// Control signals
 	always @(*) begin
 	
-		isnop_D = stall | reset;
+	
+		isnop_D = 1'b0;
 		aluimm_D = 1'b0;
 		alufunc_D = {OP2BITS{1'bX}};
 		//isbranch_D = 1'b0;
@@ -240,7 +235,15 @@ module Project(
 		wrmem_D = 1'b0;
 		ldmem_D = 1'b0;
 		single_reg = 1'b0;
-
+		inst_D = inst_F;
+		pcplus_D = pcplus_F;
+		pcpred_D = pcpred_F;
+			
+	
+		if (reset) begin
+		isnop_D = 1'b1;		
+		end else if(!stall) begin
+		
 		case (op1_D)
 			// All OP2
 			OP1_EXT: begin
@@ -282,11 +285,12 @@ module Project(
 		endcase
 	end
 
-
+end
 
 	/**** AGEN/EXEC STAGE ****/
 	reg signed [(DBITS - 1):0] aluin1_A;
 	reg signed [(DBITS - 1):0] aluin2_A;
+	reg [(DBITS - 1):0] inst_A;
 	reg [OP2BITS:0] alufunc_A;
 	reg wrreg_A;
 	reg wrmem_A;
@@ -299,6 +303,7 @@ module Project(
 	always @(posedge clk or posedge reset) begin
 		if (reset) begin
 			isnop_A <= 1'b1;
+			inst_A = {DBITS{1'b0}};
 		end
 		else begin
 				aluin1_A <= RSval_D; // Always load RS into 1st input
@@ -309,7 +314,8 @@ module Project(
 				ldmem_A <= ldmem_D;
 				destreg_A <= destreg_D;
 				RTval_A <= RTval_D;
-				isnop_A <= isnop_D;
+				isnop_A <= stall ? 1'b1 : isnop_D;
+				inst_A <= inst_D;
 		end
 	end
 
@@ -358,6 +364,7 @@ module Project(
 	// TODO: Write code that produces wmemval_M, wrmem_M, wrreg_M, etc.
 
 	reg signed [(DBITS-1):0] memaddr_M;
+	reg [(DBITS-1):0] inst_M;
 	reg wrmem_M;
 	reg ldmem_M;
 	reg wrreg_M;
@@ -369,6 +376,7 @@ module Project(
 	always @(posedge clk or posedge reset) begin
 		if (reset) begin
 			isnop_M <= 1'b1;
+			inst_M = {DBITS{1'b0}};
 		end
 		else begin
 				memaddr_M <= aluout_A;
@@ -378,9 +386,10 @@ module Project(
 				destreg_M <= destreg_A;
 				wmemval_M <= RTval_A;
 				isnop_M <= isnop_A;
+				inst_M <= inst_A;
 		end
 	end
-
+	
 	// Create and connect HEX register
 	reg [23:0] HEXout;
 	reg [9:0] LEDRout;
@@ -393,28 +402,27 @@ module Project(
 	SevenSeg ss0(.OUT(HEX0), .IN(HEXout[3:0]));
 
 	always @(posedge clk or posedge reset) begin
-		if (reset) begin
+		/*if (reset) begin
 			LEDRout <= {isnop_D, isnop_A, isnop_M, {4{1'b0}}, rs_dependency, rt_dependency, stall};
 		end
 		else if (wrmem_M && (memaddr_M == ADDRLEDR) && !isnop_M) begin
 			// NOP check - Don't display HEX on NOP
 			LEDRout <= wmemval_M[9:0];
-		end
-		else begin
-			LEDRout <= {isnop_D, isnop_A, isnop_M, rs_A, rs_M, rt_A, rt_M, rs_dependency, rt_dependency, stall};
-		end
+		end*/
+			LEDRout <= {aluimm_D};
 	end
 
 	always @(posedge clk or posedge reset) begin
-		/*if (reset) begin
+		if (reset) begin
 			HEXout <= 24'hFEDEAD;
 		end
 		else if (wrmem_M && (memaddr_M == ADDRHEX) && !isnop_M) begin
 				// NOP check - Don't display LEDR on NOP
 				HEXout <= wmemval_M[23:0];
 		end
-		else*/
-			HEXout <= { {8{1'b0}}, rs_D, rt_D, destreg_A, destreg_M};
+	
+			//HEXout <= { inst_D[31:28], inst_D[3:0],inst_A[31:28], inst_A[3:0],inst_M[31:28], inst_M[3:0], };
+			//HEXout <=  sxtimm[23:0];
 	end
 
 	// Now the real data memory

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Project
-Mon Mar 27 02:30:22 2017
+Tue Mar 28 00:38:48 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -13,32 +13,31 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis RAM Summary
-  9. Analysis & Synthesis IP Cores Summary
+  8. Analysis & Synthesis IP Cores Summary
+  9. Logic Cells Representing Combinational Loops
  10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Registers Packed Into Inferred Megafunctions
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
  14. Registers Added for RAM Pass-Through Logic
  15. Multiplexer Restructuring Statistics (No Restructuring Performed)
- 16. Source assignments for altsyncram:imem_rtl_0|altsyncram_9la1:auto_generated
- 17. Source assignments for altsyncram:dmem_rtl_0|altsyncram_kdm1:auto_generated
- 18. Parameter Settings for User Entity Instance: Top-level Entity: |Project
- 19. Parameter Settings for User Entity Instance: Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i
- 20. Parameter Settings for User Entity Instance: SXT:sxt
- 21. Parameter Settings for Inferred Entity Instance: altsyncram:imem_rtl_0
- 22. Parameter Settings for Inferred Entity Instance: altsyncram:dmem_rtl_0
- 23. altsyncram Parameter Settings by Entity Instance
- 24. Port Connectivity Checks: "SevenSeg:ss0"
- 25. Port Connectivity Checks: "SevenSeg:ss1"
- 26. Port Connectivity Checks: "SevenSeg:ss2"
- 27. Port Connectivity Checks: "SevenSeg:ss3"
- 28. Port Connectivity Checks: "SevenSeg:ss4"
- 29. Port Connectivity Checks: "SevenSeg:ss5"
- 30. Port Connectivity Checks: "Pll:myPll"
- 31. Post-Synthesis Netlist Statistics for Top Partition
- 32. Elapsed Time Per Partition
- 33. Analysis & Synthesis Messages
+ 16. Source assignments for altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated
+ 17. Parameter Settings for User Entity Instance: Top-level Entity: |Project
+ 18. Parameter Settings for User Entity Instance: Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i
+ 19. Parameter Settings for User Entity Instance: SXT:sxt
+ 20. Parameter Settings for Inferred Entity Instance: altsyncram:dmem_rtl_0
+ 21. altsyncram Parameter Settings by Entity Instance
+ 22. Port Connectivity Checks: "SevenSeg:ss0"
+ 23. Port Connectivity Checks: "SevenSeg:ss1"
+ 24. Port Connectivity Checks: "SevenSeg:ss2"
+ 25. Port Connectivity Checks: "SevenSeg:ss3"
+ 26. Port Connectivity Checks: "SevenSeg:ss4"
+ 27. Port Connectivity Checks: "SevenSeg:ss5"
+ 28. Port Connectivity Checks: "Pll:myPll"
+ 29. Post-Synthesis Netlist Statistics for Top Partition
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
+ 32. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -65,16 +64,16 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Mar 27 02:30:22 2017      ;
+; Analysis & Synthesis Status     ; Successful - Tue Mar 28 00:38:48 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 817                                        ;
+; Total registers                 ; 291                                        ;
 ; Total pins                      ; 68                                         ;
 ; Total virtual pins              ; 0                                          ;
-; Total block memory bits         ; 1,048,576                                  ;
+; Total block memory bits         ; 0                                          ;
 ; Total DSP Blocks                ; 0                                          ;
 ; Total HSSI RX PCSs              ; 0                                          ;
 ; Total HSSI PMA RX Deserializers ; 0                                          ;
@@ -203,76 +202,59 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/altrom.inc                              ;         ;
 ; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/altram.inc                              ;         ;
 ; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/altdpram.inc                            ;         ;
-; db/altsyncram_9la1.tdf           ; yes             ; Auto-Generated Megafunction            ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/altsyncram_9la1.tdf ;         ;
+; db/altsyncram_23m1.tdf           ; yes             ; Auto-Generated Megafunction            ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/altsyncram_23m1.tdf ;         ;
 ; debug.mif                        ; yes             ; Auto-Found Memory Initialization File  ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/debug.mif              ;         ;
+; db/decode_5la.tdf                ; yes             ; Auto-Generated Megafunction            ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/decode_5la.tdf      ;         ;
 ; db/decode_u0a.tdf                ; yes             ; Auto-Generated Megafunction            ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/decode_u0a.tdf      ;         ;
 ; db/mux_2hb.tdf                   ; yes             ; Auto-Generated Megafunction            ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/mux_2hb.tdf         ;         ;
-; db/altsyncram_kdm1.tdf           ; yes             ; Auto-Generated Megafunction            ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/altsyncram_kdm1.tdf ;         ;
-; db/decode_5la.tdf                ; yes             ; Auto-Generated Megafunction            ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/decode_5la.tdf      ;         ;
 +----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                ;
-+---------------------------------------------+--------------+
-; Resource                                    ; Usage        ;
-+---------------------------------------------+--------------+
-; Estimate of Logic utilization (ALMs needed) ; 913          ;
-;                                             ;              ;
-; Combinational ALUT usage for logic          ; 1138         ;
-;     -- 7 input functions                    ; 38           ;
-;     -- 6 input functions                    ; 570          ;
-;     -- 5 input functions                    ; 149          ;
-;     -- 4 input functions                    ; 114          ;
-;     -- <=3 input functions                  ; 267          ;
-;                                             ;              ;
-; Dedicated logic registers                   ; 817          ;
-;                                             ;              ;
-; I/O pins                                    ; 68           ;
-; Total MLAB memory bits                      ; 0            ;
-; Total block memory bits                     ; 1048576      ;
-; Total DSP Blocks                            ; 0            ;
-; Total PLLs                                  ; 1            ;
-;     -- PLLs                                 ; 1            ;
-;                                             ;              ;
-; Maximum fan-out node                        ; KEY[0]~input ;
-; Maximum fan-out                             ; 946          ;
-; Total fan-out                               ; 11663        ;
-; Average fan-out                             ; 5.25         ;
-+---------------------------------------------+--------------+
++------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                      ;
++---------------------------------------------+--------------------------------------------------------------------+
+; Resource                                    ; Usage                                                              ;
++---------------------------------------------+--------------------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 167                                                                ;
+;                                             ;                                                                    ;
+; Combinational ALUT usage for logic          ; 238                                                                ;
+;     -- 7 input functions                    ; 0                                                                  ;
+;     -- 6 input functions                    ; 69                                                                 ;
+;     -- 5 input functions                    ; 45                                                                 ;
+;     -- 4 input functions                    ; 50                                                                 ;
+;     -- <=3 input functions                  ; 74                                                                 ;
+;                                             ;                                                                    ;
+; Dedicated logic registers                   ; 291                                                                ;
+;                                             ;                                                                    ;
+; I/O pins                                    ; 68                                                                 ;
+; Total DSP Blocks                            ; 0                                                                  ;
+; Total PLLs                                  ; 1                                                                  ;
+;     -- PLLs                                 ; 1                                                                  ;
+;                                             ;                                                                    ;
+; Maximum fan-out node                        ; Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
+; Maximum fan-out                             ; 330                                                                ;
+; Total fan-out                               ; 2159                                                               ;
+; Average fan-out                             ; 3.24                                                               ;
++---------------------------------------------+--------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                              ; Library Name ;
-+----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
-; |Project                               ; 1138 (1062)       ; 817 (813)    ; 1048576           ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
-;    |Pll:myPll|                         ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll                                                               ; Pll          ;
-;       |Pll_0002:pll_inst|              ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst                                             ; Pll          ;
-;          |altera_pll:altera_pll_i|     ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i                     ; work         ;
-;    |SevenSeg:ss0|                      ; 27 (27)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss0                                                            ; work         ;
-;    |SevenSeg:ss1|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss1                                                            ; work         ;
-;    |SevenSeg:ss2|                      ; 9 (9)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss2                                                            ; work         ;
-;    |SevenSeg:ss3|                      ; 9 (9)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss3                                                            ; work         ;
-;    |altsyncram:dmem_rtl_0|             ; 4 (0)             ; 3 (0)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0                                                   ; work         ;
-;       |altsyncram_kdm1:auto_generated| ; 4 (2)             ; 3 (3)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_kdm1:auto_generated                    ; work         ;
-;          |decode_5la:decode2|          ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_kdm1:auto_generated|decode_5la:decode2 ; work         ;
-;    |altsyncram:imem_rtl_0|             ; 20 (0)            ; 1 (0)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:imem_rtl_0                                                   ; work         ;
-;       |altsyncram_9la1:auto_generated| ; 20 (0)            ; 1 (1)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:imem_rtl_0|altsyncram_9la1:auto_generated                    ; work         ;
-;          |mux_2hb:mux2|                ; 20 (20)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|altsyncram:imem_rtl_0|altsyncram_9la1:auto_generated|mux_2hb:mux2       ; work         ;
-+----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                        ;
++------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node         ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                          ; Library Name ;
++------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
+; |Project                           ; 238 (196)         ; 291 (291)    ; 0                 ; 0          ; 68   ; 0            ; |Project                                                     ; work         ;
+;    |Pll:myPll|                     ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll                                           ; Pll          ;
+;       |Pll_0002:pll_inst|          ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst                         ; Pll          ;
+;          |altera_pll:altera_pll_i| ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i ; work         ;
+;    |SevenSeg:ss0|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss0                                        ; work         ;
+;    |SevenSeg:ss1|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss1                                        ; work         ;
+;    |SevenSeg:ss2|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss2                                        ; work         ;
+;    |SevenSeg:ss3|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss3                                        ; work         ;
+;    |SevenSeg:ss4|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss4                                        ; work         ;
+;    |SevenSeg:ss5|                  ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss5                                        ; work         ;
++------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                           ;
-+-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-----------+
-; Name                                                            ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF       ;
-+-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-----------+
-; altsyncram:dmem_rtl_0|altsyncram_kdm1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16384        ; 32           ; 16384        ; 32           ; 524288 ; debug.mif ;
-; altsyncram:imem_rtl_0|altsyncram_9la1:auto_generated|ALTSYNCRAM ; AUTO ; ROM              ; 16384        ; 32           ; --           ; --           ; 524288 ; debug.mif ;
-+-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-----------+
 
 
 +------------------------------------------------------------------------------------------------------+
@@ -284,15 +266,519 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+--------------------+-----------------+
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; alufunc_A[8]                           ; Stuck at GND due to stuck port data_in ;
-; PC[16..31]                             ; Lost fanout                            ;
-; Total Number of Removed Registers = 17 ;                                        ;
-+----------------------------------------+----------------------------------------+
++------------------------------------------------------------+
+; Logic Cells Representing Combinational Loops               ;
++--------------------------------------------------------+---+
+; Logic Cell Name                                        ;   ;
++--------------------------------------------------------+---+
+; isnop_A~1                                              ;   ;
+; Number of logic cells representing combinational loops ; 1 ;
++--------------------------------------------------------+---+
+Note: All cells listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                    ;
++-------------------------------------------------------------------------+---------------------------------------------+
+; Register name                                                           ; Reason for Removal                          ;
++-------------------------------------------------------------------------+---------------------------------------------+
+; alufunc_A[8]                                                            ; Stuck at GND due to stuck port data_in      ;
+; regs[11][31]                                                            ; Lost fanout                                 ;
+; regs[8][31]                                                             ; Lost fanout                                 ;
+; regs[9][31]                                                             ; Lost fanout                                 ;
+; regs[14][31]                                                            ; Lost fanout                                 ;
+; regs[12][31]                                                            ; Lost fanout                                 ;
+; regs[3][31]                                                             ; Lost fanout                                 ;
+; regs[1][31]                                                             ; Lost fanout                                 ;
+; regs[6][31]                                                             ; Lost fanout                                 ;
+; regs[7][31]                                                             ; Lost fanout                                 ;
+; regs[4][31]                                                             ; Lost fanout                                 ;
+; regs[11][30]                                                            ; Lost fanout                                 ;
+; regs[8][30]                                                             ; Lost fanout                                 ;
+; regs[9][30]                                                             ; Lost fanout                                 ;
+; regs[14][30]                                                            ; Lost fanout                                 ;
+; regs[12][30]                                                            ; Lost fanout                                 ;
+; regs[3][30]                                                             ; Lost fanout                                 ;
+; regs[1][30]                                                             ; Lost fanout                                 ;
+; regs[6][30]                                                             ; Lost fanout                                 ;
+; regs[7][30]                                                             ; Lost fanout                                 ;
+; regs[4][30]                                                             ; Lost fanout                                 ;
+; regs[11][29]                                                            ; Lost fanout                                 ;
+; regs[8][29]                                                             ; Lost fanout                                 ;
+; regs[9][29]                                                             ; Lost fanout                                 ;
+; regs[14][29]                                                            ; Lost fanout                                 ;
+; regs[12][29]                                                            ; Lost fanout                                 ;
+; regs[3][29]                                                             ; Lost fanout                                 ;
+; regs[1][29]                                                             ; Lost fanout                                 ;
+; regs[6][29]                                                             ; Lost fanout                                 ;
+; regs[7][29]                                                             ; Lost fanout                                 ;
+; regs[4][29]                                                             ; Lost fanout                                 ;
+; regs[11][28]                                                            ; Lost fanout                                 ;
+; regs[8][28]                                                             ; Lost fanout                                 ;
+; regs[9][28]                                                             ; Lost fanout                                 ;
+; regs[14][28]                                                            ; Lost fanout                                 ;
+; regs[12][28]                                                            ; Lost fanout                                 ;
+; regs[3][28]                                                             ; Lost fanout                                 ;
+; regs[1][28]                                                             ; Lost fanout                                 ;
+; regs[6][28]                                                             ; Lost fanout                                 ;
+; regs[7][28]                                                             ; Lost fanout                                 ;
+; regs[4][28]                                                             ; Lost fanout                                 ;
+; regs[11][27]                                                            ; Lost fanout                                 ;
+; regs[8][27]                                                             ; Lost fanout                                 ;
+; regs[9][27]                                                             ; Lost fanout                                 ;
+; regs[14][27]                                                            ; Lost fanout                                 ;
+; regs[12][27]                                                            ; Lost fanout                                 ;
+; regs[3][27]                                                             ; Lost fanout                                 ;
+; regs[1][27]                                                             ; Lost fanout                                 ;
+; regs[6][27]                                                             ; Lost fanout                                 ;
+; regs[7][27]                                                             ; Lost fanout                                 ;
+; regs[4][27]                                                             ; Lost fanout                                 ;
+; regs[11][26]                                                            ; Lost fanout                                 ;
+; regs[8][26]                                                             ; Lost fanout                                 ;
+; regs[9][26]                                                             ; Lost fanout                                 ;
+; regs[14][26]                                                            ; Lost fanout                                 ;
+; regs[12][26]                                                            ; Lost fanout                                 ;
+; regs[3][26]                                                             ; Lost fanout                                 ;
+; regs[1][26]                                                             ; Lost fanout                                 ;
+; regs[6][26]                                                             ; Lost fanout                                 ;
+; regs[7][26]                                                             ; Lost fanout                                 ;
+; regs[4][26]                                                             ; Lost fanout                                 ;
+; regs[11][25]                                                            ; Lost fanout                                 ;
+; regs[8][25]                                                             ; Lost fanout                                 ;
+; regs[9][25]                                                             ; Lost fanout                                 ;
+; regs[14][25]                                                            ; Lost fanout                                 ;
+; regs[12][25]                                                            ; Lost fanout                                 ;
+; regs[3][25]                                                             ; Lost fanout                                 ;
+; regs[1][25]                                                             ; Lost fanout                                 ;
+; regs[6][25]                                                             ; Lost fanout                                 ;
+; regs[7][25]                                                             ; Lost fanout                                 ;
+; regs[4][25]                                                             ; Lost fanout                                 ;
+; regs[11][24]                                                            ; Lost fanout                                 ;
+; regs[8][24]                                                             ; Lost fanout                                 ;
+; regs[9][24]                                                             ; Lost fanout                                 ;
+; regs[14][24]                                                            ; Lost fanout                                 ;
+; regs[12][24]                                                            ; Lost fanout                                 ;
+; regs[3][24]                                                             ; Lost fanout                                 ;
+; regs[1][24]                                                             ; Lost fanout                                 ;
+; regs[6][24]                                                             ; Lost fanout                                 ;
+; regs[7][24]                                                             ; Lost fanout                                 ;
+; regs[4][24]                                                             ; Lost fanout                                 ;
+; regs[11][23]                                                            ; Lost fanout                                 ;
+; regs[8][23]                                                             ; Lost fanout                                 ;
+; regs[9][23]                                                             ; Lost fanout                                 ;
+; regs[14][23]                                                            ; Lost fanout                                 ;
+; regs[12][23]                                                            ; Lost fanout                                 ;
+; regs[3][23]                                                             ; Lost fanout                                 ;
+; regs[1][23]                                                             ; Lost fanout                                 ;
+; regs[6][23]                                                             ; Lost fanout                                 ;
+; regs[7][23]                                                             ; Lost fanout                                 ;
+; regs[4][23]                                                             ; Lost fanout                                 ;
+; regs[11][22]                                                            ; Lost fanout                                 ;
+; regs[8][22]                                                             ; Lost fanout                                 ;
+; regs[9][22]                                                             ; Lost fanout                                 ;
+; regs[14][22]                                                            ; Lost fanout                                 ;
+; regs[12][22]                                                            ; Lost fanout                                 ;
+; regs[3][22]                                                             ; Lost fanout                                 ;
+; regs[1][22]                                                             ; Lost fanout                                 ;
+; regs[6][22]                                                             ; Lost fanout                                 ;
+; regs[7][22]                                                             ; Lost fanout                                 ;
+; regs[4][22]                                                             ; Lost fanout                                 ;
+; regs[11][21]                                                            ; Lost fanout                                 ;
+; regs[8][21]                                                             ; Lost fanout                                 ;
+; regs[9][21]                                                             ; Lost fanout                                 ;
+; regs[14][21]                                                            ; Lost fanout                                 ;
+; regs[12][21]                                                            ; Lost fanout                                 ;
+; regs[3][21]                                                             ; Lost fanout                                 ;
+; regs[1][21]                                                             ; Lost fanout                                 ;
+; regs[6][21]                                                             ; Lost fanout                                 ;
+; regs[7][21]                                                             ; Lost fanout                                 ;
+; regs[4][21]                                                             ; Lost fanout                                 ;
+; regs[11][20]                                                            ; Lost fanout                                 ;
+; regs[8][20]                                                             ; Lost fanout                                 ;
+; regs[9][20]                                                             ; Lost fanout                                 ;
+; regs[14][20]                                                            ; Lost fanout                                 ;
+; regs[12][20]                                                            ; Lost fanout                                 ;
+; regs[3][20]                                                             ; Lost fanout                                 ;
+; regs[1][20]                                                             ; Lost fanout                                 ;
+; regs[6][20]                                                             ; Lost fanout                                 ;
+; regs[7][20]                                                             ; Lost fanout                                 ;
+; regs[4][20]                                                             ; Lost fanout                                 ;
+; regs[11][19]                                                            ; Lost fanout                                 ;
+; regs[8][19]                                                             ; Lost fanout                                 ;
+; regs[9][19]                                                             ; Lost fanout                                 ;
+; regs[14][19]                                                            ; Lost fanout                                 ;
+; regs[12][19]                                                            ; Lost fanout                                 ;
+; regs[3][19]                                                             ; Lost fanout                                 ;
+; regs[1][19]                                                             ; Lost fanout                                 ;
+; regs[6][19]                                                             ; Lost fanout                                 ;
+; regs[7][19]                                                             ; Lost fanout                                 ;
+; regs[4][19]                                                             ; Lost fanout                                 ;
+; regs[11][18]                                                            ; Lost fanout                                 ;
+; regs[8][18]                                                             ; Lost fanout                                 ;
+; regs[9][18]                                                             ; Lost fanout                                 ;
+; regs[14][18]                                                            ; Lost fanout                                 ;
+; regs[12][18]                                                            ; Lost fanout                                 ;
+; regs[3][18]                                                             ; Lost fanout                                 ;
+; regs[1][18]                                                             ; Lost fanout                                 ;
+; regs[6][18]                                                             ; Lost fanout                                 ;
+; regs[7][18]                                                             ; Lost fanout                                 ;
+; regs[4][18]                                                             ; Lost fanout                                 ;
+; regs[11][17]                                                            ; Lost fanout                                 ;
+; regs[8][17]                                                             ; Lost fanout                                 ;
+; regs[9][17]                                                             ; Lost fanout                                 ;
+; regs[14][17]                                                            ; Lost fanout                                 ;
+; regs[12][17]                                                            ; Lost fanout                                 ;
+; regs[3][17]                                                             ; Lost fanout                                 ;
+; regs[1][17]                                                             ; Lost fanout                                 ;
+; regs[6][17]                                                             ; Lost fanout                                 ;
+; regs[7][17]                                                             ; Lost fanout                                 ;
+; regs[4][17]                                                             ; Lost fanout                                 ;
+; regs[11][16]                                                            ; Lost fanout                                 ;
+; regs[8][16]                                                             ; Lost fanout                                 ;
+; regs[9][16]                                                             ; Lost fanout                                 ;
+; regs[14][16]                                                            ; Lost fanout                                 ;
+; regs[12][16]                                                            ; Lost fanout                                 ;
+; regs[3][16]                                                             ; Lost fanout                                 ;
+; regs[1][16]                                                             ; Lost fanout                                 ;
+; regs[6][16]                                                             ; Lost fanout                                 ;
+; regs[7][16]                                                             ; Lost fanout                                 ;
+; regs[4][16]                                                             ; Lost fanout                                 ;
+; regs[11][15]                                                            ; Lost fanout                                 ;
+; regs[8][15]                                                             ; Lost fanout                                 ;
+; regs[9][15]                                                             ; Lost fanout                                 ;
+; regs[14][15]                                                            ; Lost fanout                                 ;
+; regs[12][15]                                                            ; Lost fanout                                 ;
+; regs[3][15]                                                             ; Lost fanout                                 ;
+; regs[1][15]                                                             ; Lost fanout                                 ;
+; regs[6][15]                                                             ; Lost fanout                                 ;
+; regs[7][15]                                                             ; Lost fanout                                 ;
+; regs[4][15]                                                             ; Lost fanout                                 ;
+; regs[11][14]                                                            ; Lost fanout                                 ;
+; regs[8][14]                                                             ; Lost fanout                                 ;
+; regs[9][14]                                                             ; Lost fanout                                 ;
+; regs[14][14]                                                            ; Lost fanout                                 ;
+; regs[12][14]                                                            ; Lost fanout                                 ;
+; regs[3][14]                                                             ; Lost fanout                                 ;
+; regs[1][14]                                                             ; Lost fanout                                 ;
+; regs[6][14]                                                             ; Lost fanout                                 ;
+; regs[7][14]                                                             ; Lost fanout                                 ;
+; regs[4][14]                                                             ; Lost fanout                                 ;
+; regs[11][13]                                                            ; Lost fanout                                 ;
+; regs[8][13]                                                             ; Lost fanout                                 ;
+; regs[9][13]                                                             ; Lost fanout                                 ;
+; regs[14][13]                                                            ; Lost fanout                                 ;
+; regs[12][13]                                                            ; Lost fanout                                 ;
+; regs[3][13]                                                             ; Lost fanout                                 ;
+; regs[1][13]                                                             ; Lost fanout                                 ;
+; regs[6][13]                                                             ; Lost fanout                                 ;
+; regs[7][13]                                                             ; Lost fanout                                 ;
+; regs[4][13]                                                             ; Lost fanout                                 ;
+; regs[11][12]                                                            ; Lost fanout                                 ;
+; regs[8][12]                                                             ; Lost fanout                                 ;
+; regs[9][12]                                                             ; Lost fanout                                 ;
+; regs[14][12]                                                            ; Lost fanout                                 ;
+; regs[12][12]                                                            ; Lost fanout                                 ;
+; regs[3][12]                                                             ; Lost fanout                                 ;
+; regs[1][12]                                                             ; Lost fanout                                 ;
+; regs[6][12]                                                             ; Lost fanout                                 ;
+; regs[7][12]                                                             ; Lost fanout                                 ;
+; regs[4][12]                                                             ; Lost fanout                                 ;
+; regs[11][11]                                                            ; Lost fanout                                 ;
+; regs[8][11]                                                             ; Lost fanout                                 ;
+; regs[9][11]                                                             ; Lost fanout                                 ;
+; regs[14][11]                                                            ; Lost fanout                                 ;
+; regs[12][11]                                                            ; Lost fanout                                 ;
+; regs[3][11]                                                             ; Lost fanout                                 ;
+; regs[1][11]                                                             ; Lost fanout                                 ;
+; regs[6][11]                                                             ; Lost fanout                                 ;
+; regs[7][11]                                                             ; Lost fanout                                 ;
+; regs[4][11]                                                             ; Lost fanout                                 ;
+; regs[11][10]                                                            ; Lost fanout                                 ;
+; regs[8][10]                                                             ; Lost fanout                                 ;
+; regs[9][10]                                                             ; Lost fanout                                 ;
+; regs[14][10]                                                            ; Lost fanout                                 ;
+; regs[12][10]                                                            ; Lost fanout                                 ;
+; regs[3][10]                                                             ; Lost fanout                                 ;
+; regs[1][10]                                                             ; Lost fanout                                 ;
+; regs[6][10]                                                             ; Lost fanout                                 ;
+; regs[7][10]                                                             ; Lost fanout                                 ;
+; regs[4][10]                                                             ; Lost fanout                                 ;
+; regs[11][9]                                                             ; Lost fanout                                 ;
+; regs[8][9]                                                              ; Lost fanout                                 ;
+; regs[9][9]                                                              ; Lost fanout                                 ;
+; regs[14][9]                                                             ; Lost fanout                                 ;
+; regs[12][9]                                                             ; Lost fanout                                 ;
+; regs[3][9]                                                              ; Lost fanout                                 ;
+; regs[1][9]                                                              ; Lost fanout                                 ;
+; regs[6][9]                                                              ; Lost fanout                                 ;
+; regs[7][9]                                                              ; Lost fanout                                 ;
+; regs[4][9]                                                              ; Lost fanout                                 ;
+; regs[11][8]                                                             ; Lost fanout                                 ;
+; regs[8][8]                                                              ; Lost fanout                                 ;
+; regs[9][8]                                                              ; Lost fanout                                 ;
+; regs[14][8]                                                             ; Lost fanout                                 ;
+; regs[12][8]                                                             ; Lost fanout                                 ;
+; regs[3][8]                                                              ; Lost fanout                                 ;
+; regs[1][8]                                                              ; Lost fanout                                 ;
+; regs[6][8]                                                              ; Lost fanout                                 ;
+; regs[7][8]                                                              ; Lost fanout                                 ;
+; regs[4][8]                                                              ; Lost fanout                                 ;
+; regs[11][7]                                                             ; Lost fanout                                 ;
+; regs[8][7]                                                              ; Lost fanout                                 ;
+; regs[9][7]                                                              ; Lost fanout                                 ;
+; regs[14][7]                                                             ; Lost fanout                                 ;
+; regs[12][7]                                                             ; Lost fanout                                 ;
+; regs[3][7]                                                              ; Lost fanout                                 ;
+; regs[1][7]                                                              ; Lost fanout                                 ;
+; regs[6][7]                                                              ; Lost fanout                                 ;
+; regs[7][7]                                                              ; Lost fanout                                 ;
+; regs[4][7]                                                              ; Lost fanout                                 ;
+; regs[11][6]                                                             ; Lost fanout                                 ;
+; regs[8][6]                                                              ; Lost fanout                                 ;
+; regs[9][6]                                                              ; Lost fanout                                 ;
+; regs[14][6]                                                             ; Lost fanout                                 ;
+; regs[12][6]                                                             ; Lost fanout                                 ;
+; regs[3][6]                                                              ; Lost fanout                                 ;
+; regs[1][6]                                                              ; Lost fanout                                 ;
+; regs[6][6]                                                              ; Lost fanout                                 ;
+; regs[7][6]                                                              ; Lost fanout                                 ;
+; regs[4][6]                                                              ; Lost fanout                                 ;
+; regs[11][5]                                                             ; Lost fanout                                 ;
+; regs[8][5]                                                              ; Lost fanout                                 ;
+; regs[9][5]                                                              ; Lost fanout                                 ;
+; regs[14][5]                                                             ; Lost fanout                                 ;
+; regs[12][5]                                                             ; Lost fanout                                 ;
+; regs[3][5]                                                              ; Lost fanout                                 ;
+; regs[1][5]                                                              ; Lost fanout                                 ;
+; regs[6][5]                                                              ; Lost fanout                                 ;
+; regs[7][5]                                                              ; Lost fanout                                 ;
+; regs[4][5]                                                              ; Lost fanout                                 ;
+; regs[11][4]                                                             ; Lost fanout                                 ;
+; regs[8][4]                                                              ; Lost fanout                                 ;
+; regs[9][4]                                                              ; Lost fanout                                 ;
+; regs[14][4]                                                             ; Lost fanout                                 ;
+; regs[12][4]                                                             ; Lost fanout                                 ;
+; regs[3][4]                                                              ; Lost fanout                                 ;
+; regs[1][4]                                                              ; Lost fanout                                 ;
+; regs[6][4]                                                              ; Lost fanout                                 ;
+; regs[7][4]                                                              ; Lost fanout                                 ;
+; regs[4][4]                                                              ; Lost fanout                                 ;
+; regs[11][3]                                                             ; Lost fanout                                 ;
+; regs[8][3]                                                              ; Lost fanout                                 ;
+; regs[9][3]                                                              ; Lost fanout                                 ;
+; regs[14][3]                                                             ; Lost fanout                                 ;
+; regs[12][3]                                                             ; Lost fanout                                 ;
+; regs[3][3]                                                              ; Lost fanout                                 ;
+; regs[1][3]                                                              ; Lost fanout                                 ;
+; regs[6][3]                                                              ; Lost fanout                                 ;
+; regs[7][3]                                                              ; Lost fanout                                 ;
+; regs[4][3]                                                              ; Lost fanout                                 ;
+; regs[11][2]                                                             ; Lost fanout                                 ;
+; regs[8][2]                                                              ; Lost fanout                                 ;
+; regs[9][2]                                                              ; Lost fanout                                 ;
+; regs[14][2]                                                             ; Lost fanout                                 ;
+; regs[12][2]                                                             ; Lost fanout                                 ;
+; regs[3][2]                                                              ; Lost fanout                                 ;
+; regs[1][2]                                                              ; Lost fanout                                 ;
+; regs[6][2]                                                              ; Lost fanout                                 ;
+; regs[7][2]                                                              ; Lost fanout                                 ;
+; regs[4][2]                                                              ; Lost fanout                                 ;
+; regs[11][1]                                                             ; Lost fanout                                 ;
+; regs[8][1]                                                              ; Lost fanout                                 ;
+; regs[9][1]                                                              ; Lost fanout                                 ;
+; regs[14][1]                                                             ; Lost fanout                                 ;
+; regs[12][1]                                                             ; Lost fanout                                 ;
+; regs[3][1]                                                              ; Lost fanout                                 ;
+; regs[1][1]                                                              ; Lost fanout                                 ;
+; regs[6][1]                                                              ; Lost fanout                                 ;
+; regs[7][1]                                                              ; Lost fanout                                 ;
+; regs[4][1]                                                              ; Lost fanout                                 ;
+; regs[11][0]                                                             ; Lost fanout                                 ;
+; regs[8][0]                                                              ; Lost fanout                                 ;
+; regs[9][0]                                                              ; Lost fanout                                 ;
+; regs[14][0]                                                             ; Lost fanout                                 ;
+; regs[12][0]                                                             ; Lost fanout                                 ;
+; regs[3][0]                                                              ; Lost fanout                                 ;
+; regs[1][0]                                                              ; Lost fanout                                 ;
+; regs[6][0]                                                              ; Lost fanout                                 ;
+; regs[7][0]                                                              ; Lost fanout                                 ;
+; regs[4][0]                                                              ; Lost fanout                                 ;
+; ldmem_A                                                                 ; Stuck at GND due to stuck port data_in      ;
+; ldmem_M                                                                 ; Stuck at GND due to stuck port data_in      ;
+; dmem_rtl_0_bypass[0..92]                                                ; Lost fanout                                 ;
+; alufunc_A[6,7]                                                          ; Stuck at GND due to stuck port data_in      ;
+; regs[2][31]                                                             ; Lost fanout                                 ;
+; regs[2][30]                                                             ; Lost fanout                                 ;
+; regs[2][29]                                                             ; Lost fanout                                 ;
+; regs[2][28]                                                             ; Lost fanout                                 ;
+; regs[2][27]                                                             ; Lost fanout                                 ;
+; regs[2][26]                                                             ; Lost fanout                                 ;
+; regs[2][25]                                                             ; Lost fanout                                 ;
+; regs[2][24]                                                             ; Lost fanout                                 ;
+; regs[2][23]                                                             ; Lost fanout                                 ;
+; regs[2][22]                                                             ; Lost fanout                                 ;
+; regs[2][21]                                                             ; Lost fanout                                 ;
+; regs[2][20]                                                             ; Lost fanout                                 ;
+; regs[2][19]                                                             ; Lost fanout                                 ;
+; regs[2][18]                                                             ; Lost fanout                                 ;
+; regs[2][17]                                                             ; Lost fanout                                 ;
+; regs[2][16]                                                             ; Lost fanout                                 ;
+; regs[2][15]                                                             ; Lost fanout                                 ;
+; regs[2][14]                                                             ; Lost fanout                                 ;
+; regs[2][13]                                                             ; Lost fanout                                 ;
+; regs[2][12]                                                             ; Lost fanout                                 ;
+; regs[2][11]                                                             ; Lost fanout                                 ;
+; regs[2][10]                                                             ; Lost fanout                                 ;
+; regs[2][9]                                                              ; Lost fanout                                 ;
+; regs[2][8]                                                              ; Lost fanout                                 ;
+; regs[2][7]                                                              ; Lost fanout                                 ;
+; regs[2][6]                                                              ; Lost fanout                                 ;
+; regs[2][5]                                                              ; Lost fanout                                 ;
+; regs[2][4]                                                              ; Lost fanout                                 ;
+; regs[2][3]                                                              ; Lost fanout                                 ;
+; regs[2][2]                                                              ; Lost fanout                                 ;
+; regs[2][1]                                                              ; Lost fanout                                 ;
+; regs[2][0]                                                              ; Lost fanout                                 ;
+; destreg_A[2]                                                            ; Stuck at VCC due to stuck port data_in      ;
+; destreg_M[2]                                                            ; Stuck at VCC due to stuck port data_in      ;
+; regs[0][31]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][31]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][30]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][30]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][29]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][29]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][28]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][28]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][27]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][27]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][26]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][26]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][25]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][25]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][24]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][24]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][23]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][23]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][22]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][22]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][21]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][21]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][20]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][20]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][19]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][19]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][18]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][18]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][17]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][17]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][16]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][16]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][15]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][15]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][14]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][14]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][13]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][13]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][12]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][12]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][11]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][11]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][10]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][10]                                                            ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][9]                                                              ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][9]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][8]                                                              ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][8]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][7]                                                              ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][7]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][6]                                                              ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][6]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][5]                                                              ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][5]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][4]                                                              ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][4]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][3]                                                              ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][3]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][2]                                                              ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][2]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][1]                                                              ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][1]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; regs[0][0]                                                              ; Stuck at GND due to stuck port clock_enable ;
+; regs[10][0]                                                             ; Stuck at GND due to stuck port clock_enable ;
+; alufunc_A[0..4]                                                         ; Stuck at GND due to stuck port data_in      ;
+; PC[16..31]                                                              ; Lost fanout                                 ;
+; wmemval_M[24]                                                           ; Lost fanout                                 ;
+; RTval_A[24]                                                             ; Lost fanout                                 ;
+; wmemval_M[25]                                                           ; Lost fanout                                 ;
+; RTval_A[25]                                                             ; Lost fanout                                 ;
+; wmemval_M[26]                                                           ; Lost fanout                                 ;
+; RTval_A[26]                                                             ; Lost fanout                                 ;
+; wmemval_M[27]                                                           ; Lost fanout                                 ;
+; RTval_A[27]                                                             ; Lost fanout                                 ;
+; wmemval_M[28]                                                           ; Lost fanout                                 ;
+; RTval_A[28]                                                             ; Lost fanout                                 ;
+; wmemval_M[29]                                                           ; Lost fanout                                 ;
+; RTval_A[29]                                                             ; Lost fanout                                 ;
+; wmemval_M[30]                                                           ; Lost fanout                                 ;
+; RTval_A[30]                                                             ; Lost fanout                                 ;
+; altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|addrstall_reg_b[0] ; Lost fanout                                 ;
+; wmemval_M[31]                                                           ; Lost fanout                                 ;
+; RTval_A[31]                                                             ; Lost fanout                                 ;
+; Total Number of Removed Registers = 554                                 ;                                             ;
++-------------------------------------------------------------------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                               ;
++---------------+---------------------------+-----------------------------------------------------------------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register                                                        ;
++---------------+---------------------------+-----------------------------------------------------------------------------------------------+
+; ldmem_A       ; Stuck at GND              ; ldmem_M, regs[0][31], regs[10][31], regs[0][30], regs[10][30], regs[0][29], regs[10][29],     ;
+;               ; due to stuck port data_in ; regs[0][28], regs[10][28], regs[0][27], regs[10][27], regs[0][26], regs[10][26], regs[0][25], ;
+;               ;                           ; regs[10][25], regs[0][24], regs[10][24], regs[0][23], regs[10][23], regs[0][22],              ;
+;               ;                           ; regs[10][22], regs[0][21], regs[10][21], regs[0][20], regs[10][20], regs[0][19],              ;
+;               ;                           ; regs[10][19], regs[0][18], regs[10][18], regs[0][17], regs[10][17], regs[0][16],              ;
+;               ;                           ; regs[10][16], regs[0][15], regs[10][15], regs[0][14], regs[10][14], regs[0][13],              ;
+;               ;                           ; regs[10][13], regs[0][12], regs[10][12], regs[0][11], regs[10][11], regs[0][10],              ;
+;               ;                           ; regs[10][10], regs[0][9], regs[10][9], regs[0][8], regs[10][8], regs[0][7], regs[10][7],      ;
+;               ;                           ; regs[0][6], regs[10][6], regs[0][5], regs[10][5], regs[0][4], regs[10][4], regs[0][3],        ;
+;               ;                           ; regs[10][3], regs[0][2], regs[10][2], regs[0][1], regs[10][1], regs[0][0], regs[10][0]        ;
+; regs[11][31]  ; Lost Fanouts              ; dmem_rtl_0_bypass[91], dmem_rtl_0_bypass[92], dmem_rtl_0_bypass[0], wmemval_M[31],            ;
+;               ;                           ; RTval_A[31]                                                                                   ;
+; regs[11][30]  ; Lost Fanouts              ; dmem_rtl_0_bypass[89], dmem_rtl_0_bypass[90], wmemval_M[30], RTval_A[30]                      ;
+; regs[11][29]  ; Lost Fanouts              ; dmem_rtl_0_bypass[87], dmem_rtl_0_bypass[88], wmemval_M[29], RTval_A[29]                      ;
+; regs[11][28]  ; Lost Fanouts              ; dmem_rtl_0_bypass[85], dmem_rtl_0_bypass[86], wmemval_M[28], RTval_A[28]                      ;
+; regs[11][27]  ; Lost Fanouts              ; dmem_rtl_0_bypass[83], dmem_rtl_0_bypass[84], wmemval_M[27], RTval_A[27]                      ;
+; regs[11][26]  ; Lost Fanouts              ; dmem_rtl_0_bypass[81], dmem_rtl_0_bypass[82], wmemval_M[26], RTval_A[26]                      ;
+; regs[11][25]  ; Lost Fanouts              ; dmem_rtl_0_bypass[79], dmem_rtl_0_bypass[80], wmemval_M[25], RTval_A[25]                      ;
+; regs[11][24]  ; Lost Fanouts              ; dmem_rtl_0_bypass[77], dmem_rtl_0_bypass[78], wmemval_M[24], RTval_A[24]                      ;
+; regs[11][22]  ; Lost Fanouts              ; dmem_rtl_0_bypass[73], dmem_rtl_0_bypass[74]                                                  ;
+; regs[11][21]  ; Lost Fanouts              ; dmem_rtl_0_bypass[71], dmem_rtl_0_bypass[72]                                                  ;
+; regs[11][20]  ; Lost Fanouts              ; dmem_rtl_0_bypass[69], dmem_rtl_0_bypass[70]                                                  ;
+; regs[11][19]  ; Lost Fanouts              ; dmem_rtl_0_bypass[67], dmem_rtl_0_bypass[68]                                                  ;
+; regs[11][18]  ; Lost Fanouts              ; dmem_rtl_0_bypass[65], dmem_rtl_0_bypass[66]                                                  ;
+; regs[11][17]  ; Lost Fanouts              ; dmem_rtl_0_bypass[63], dmem_rtl_0_bypass[64]                                                  ;
+; regs[11][16]  ; Lost Fanouts              ; dmem_rtl_0_bypass[61], dmem_rtl_0_bypass[62]                                                  ;
+; regs[11][15]  ; Lost Fanouts              ; dmem_rtl_0_bypass[59], dmem_rtl_0_bypass[60]                                                  ;
+; regs[11][14]  ; Lost Fanouts              ; dmem_rtl_0_bypass[57], dmem_rtl_0_bypass[58]                                                  ;
+; regs[11][13]  ; Lost Fanouts              ; dmem_rtl_0_bypass[55], dmem_rtl_0_bypass[56]                                                  ;
+; regs[11][12]  ; Lost Fanouts              ; dmem_rtl_0_bypass[53], dmem_rtl_0_bypass[54]                                                  ;
+; regs[11][11]  ; Lost Fanouts              ; dmem_rtl_0_bypass[51], dmem_rtl_0_bypass[52]                                                  ;
+; regs[11][10]  ; Lost Fanouts              ; dmem_rtl_0_bypass[49], dmem_rtl_0_bypass[50]                                                  ;
+; regs[11][9]   ; Lost Fanouts              ; dmem_rtl_0_bypass[47], dmem_rtl_0_bypass[48]                                                  ;
+; regs[11][8]   ; Lost Fanouts              ; dmem_rtl_0_bypass[45], dmem_rtl_0_bypass[46]                                                  ;
+; regs[11][7]   ; Lost Fanouts              ; dmem_rtl_0_bypass[43], dmem_rtl_0_bypass[44]                                                  ;
+; regs[11][6]   ; Lost Fanouts              ; dmem_rtl_0_bypass[41], dmem_rtl_0_bypass[42]                                                  ;
+; regs[11][5]   ; Lost Fanouts              ; dmem_rtl_0_bypass[39], dmem_rtl_0_bypass[40]                                                  ;
+; regs[11][4]   ; Lost Fanouts              ; dmem_rtl_0_bypass[37], dmem_rtl_0_bypass[38]                                                  ;
+; regs[11][3]   ; Lost Fanouts              ; dmem_rtl_0_bypass[35], dmem_rtl_0_bypass[36]                                                  ;
+; regs[11][2]   ; Lost Fanouts              ; dmem_rtl_0_bypass[33], dmem_rtl_0_bypass[34]                                                  ;
+; regs[11][1]   ; Lost Fanouts              ; dmem_rtl_0_bypass[31], dmem_rtl_0_bypass[32]                                                  ;
+; regs[11][0]   ; Lost Fanouts              ; dmem_rtl_0_bypass[29], dmem_rtl_0_bypass[30]                                                  ;
+; regs[11][23]  ; Lost Fanouts              ; dmem_rtl_0_bypass[75], dmem_rtl_0_bypass[76]                                                  ;
+; destreg_A[2]  ; Stuck at VCC              ; destreg_M[2]                                                                                  ;
+;               ; due to stuck port data_in ;                                                                                               ;
++---------------+---------------------------+-----------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -300,12 +786,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 817   ;
-; Number of registers using Synchronous Clear  ; 46    ;
-; Number of registers using Synchronous Load   ; 47    ;
-; Number of registers using Asynchronous Clear ; 538   ;
+; Total registers                              ; 291   ;
+; Number of registers using Synchronous Clear  ; 32    ;
+; Number of registers using Synchronous Load   ; 2     ;
+; Number of registers using Asynchronous Clear ; 136   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 724   ;
+; Number of registers using Clock Enable       ; 289   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -315,64 +801,29 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------+---------+
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
-; isnop_M                                 ; 11      ;
-; isnop_A                                 ; 6       ;
-; LEDRout[9]                              ; 1       ;
+; HEXout[0]                               ; 7       ;
+; HEXout[2]                               ; 7       ;
+; HEXout[3]                               ; 7       ;
+; HEXout[5]                               ; 7       ;
+; HEXout[7]                               ; 7       ;
+; HEXout[9]                               ; 7       ;
+; HEXout[10]                              ; 7       ;
+; HEXout[11]                              ; 7       ;
+; HEXout[12]                              ; 7       ;
+; HEXout[14]                              ; 7       ;
+; HEXout[15]                              ; 7       ;
+; HEXout[17]                              ; 7       ;
+; HEXout[18]                              ; 7       ;
+; HEXout[19]                              ; 7       ;
+; HEXout[20]                              ; 7       ;
+; HEXout[21]                              ; 7       ;
+; HEXout[22]                              ; 7       ;
+; HEXout[23]                              ; 7       ;
 ; PC[8]                                   ; 2       ;
-; dmem_rtl_0_bypass[30]                   ; 1       ;
-; dmem_rtl_0_bypass[29]                   ; 1       ;
-; dmem_rtl_0_bypass[38]                   ; 1       ;
-; dmem_rtl_0_bypass[92]                   ; 1       ;
-; dmem_rtl_0_bypass[90]                   ; 1       ;
-; dmem_rtl_0_bypass[88]                   ; 1       ;
-; dmem_rtl_0_bypass[86]                   ; 1       ;
-; dmem_rtl_0_bypass[84]                   ; 1       ;
-; dmem_rtl_0_bypass[82]                   ; 1       ;
-; dmem_rtl_0_bypass[80]                   ; 1       ;
-; dmem_rtl_0_bypass[78]                   ; 1       ;
-; dmem_rtl_0_bypass[76]                   ; 1       ;
-; dmem_rtl_0_bypass[74]                   ; 1       ;
-; dmem_rtl_0_bypass[72]                   ; 1       ;
-; dmem_rtl_0_bypass[70]                   ; 1       ;
-; dmem_rtl_0_bypass[68]                   ; 1       ;
-; dmem_rtl_0_bypass[66]                   ; 1       ;
-; dmem_rtl_0_bypass[64]                   ; 1       ;
-; dmem_rtl_0_bypass[62]                   ; 1       ;
-; dmem_rtl_0_bypass[56]                   ; 1       ;
-; dmem_rtl_0_bypass[54]                   ; 1       ;
-; dmem_rtl_0_bypass[53]                   ; 1       ;
-; dmem_rtl_0_bypass[48]                   ; 1       ;
-; dmem_rtl_0_bypass[47]                   ; 1       ;
-; dmem_rtl_0_bypass[46]                   ; 1       ;
-; dmem_rtl_0_bypass[60]                   ; 1       ;
-; dmem_rtl_0_bypass[59]                   ; 1       ;
-; dmem_rtl_0_bypass[58]                   ; 1       ;
-; dmem_rtl_0_bypass[57]                   ; 1       ;
-; dmem_rtl_0_bypass[52]                   ; 1       ;
-; dmem_rtl_0_bypass[51]                   ; 1       ;
-; dmem_rtl_0_bypass[50]                   ; 1       ;
-; dmem_rtl_0_bypass[49]                   ; 1       ;
-; dmem_rtl_0_bypass[44]                   ; 1       ;
-; dmem_rtl_0_bypass[43]                   ; 1       ;
-; dmem_rtl_0_bypass[42]                   ; 1       ;
-; dmem_rtl_0_bypass[40]                   ; 1       ;
-; dmem_rtl_0_bypass[39]                   ; 1       ;
-; dmem_rtl_0_bypass[32]                   ; 1       ;
-; dmem_rtl_0_bypass[34]                   ; 1       ;
-; dmem_rtl_0_bypass[33]                   ; 1       ;
-; dmem_rtl_0_bypass[36]                   ; 1       ;
-; dmem_rtl_0_bypass[35]                   ; 1       ;
-; Total number of inverted registers = 47 ;         ;
+; isnop_M                                 ; 5       ;
+; isnop_A                                 ; 2       ;
+; Total number of inverted registers = 21 ;         ;
 +-----------------------------------------+---------+
-
-
-+----------------------------------------------+
-; Registers Packed Into Inferred Megafunctions ;
-+---------------+--------------+---------------+
-; Register Name ; Megafunction ; Type          ;
-+---------------+--------------+---------------+
-; inst_D[0..31] ; imem_rtl_0   ; RAM           ;
-+---------------+--------------+---------------+
 
 
 +--------------------------------------------+
@@ -481,36 +932,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 16:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; Yes        ; |Project|aluin1_A[29]      ;
-; 7:1                ; 6 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |Project|alufunc_A[1]      ;
-; 21:1               ; 12 bits   ; 168 LEs       ; 120 LEs              ; 48 LEs                 ; Yes        ; |Project|memaddr_M[17]     ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |Project|aluin1_A[23]      ;
+; 21:1               ; 12 bits   ; 168 LEs       ; 120 LEs              ; 48 LEs                 ; Yes        ; |Project|memaddr_M[21]     ;
 ; 24:1               ; 3 bits    ; 48 LEs        ; 39 LEs               ; 9 LEs                  ; Yes        ; |Project|memaddr_M[28]     ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft0        ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft0        ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftRight0       ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |Project|ShiftRight0       ;
-; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|ShiftLeft0        ;
-; 16:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; No         ; |Project|Mux44             ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |Project|ShiftLeft0        ;
+; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|ShiftRight0       ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss0|OUT  ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss1|OUT  ;
-; 13:1               ; 5 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |Project|SevenSeg:ss2|OUT  ;
-; 13:1               ; 5 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |Project|SevenSeg:ss3|OUT  ;
-; 21:1               ; 11 bits   ; 154 LEs       ; 132 LEs              ; 22 LEs                 ; No         ; |Project|Selector52        ;
-; 24:1               ; 2 bits    ; 32 LEs        ; 28 LEs               ; 4 LEs                  ; No         ; |Project|Selector55        ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss2|OUT  ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss3|OUT  ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss4|OUT  ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss5|OUT  ;
+; 21:1               ; 11 bits   ; 154 LEs       ; 132 LEs              ; 22 LEs                 ; No         ; |Project|Selector50        ;
+; 24:1               ; 2 bits    ; 32 LEs        ; 28 LEs               ; 4 LEs                  ; No         ; |Project|Selector56        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +-----------------------------------------------------------------------------+
-; Source assignments for altsyncram:imem_rtl_0|altsyncram_9la1:auto_generated ;
-+---------------------------------+--------------------+------+---------------+
-; Assignment                      ; Value              ; From ; To            ;
-+---------------------------------+--------------------+------+---------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -             ;
-+---------------------------------+--------------------+------+---------------+
-
-
-+-----------------------------------------------------------------------------+
-; Source assignments for altsyncram:dmem_rtl_0|altsyncram_kdm1:auto_generated ;
+; Source assignments for altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated ;
 +---------------------------------+--------------------+------+---------------+
 ; Assignment                      ; Value              ; From ; To            ;
 +---------------------------------+--------------------+------+---------------+
@@ -528,7 +970,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; INSTBITS       ; 32                               ; Signed Integer      ;
 ; REGNOBITS      ; 4                                ; Signed Integer      ;
 ; REGWORDS       ; 16                               ; Signed Integer      ;
-; IMMBITS        ; 14                               ; Signed Integer      ;
+; IMMBITS        ; 16                               ; Signed Integer      ;
 ; STARTPC        ; 00000000000000000000000100000000 ; Unsigned Binary     ;
 ; ADDRHEX        ; 11111111111111111111000000000000 ; Unsigned Binary     ;
 ; ADDRLEDR       ; 11111111111111111111000000100000 ; Unsigned Binary     ;
@@ -826,70 +1268,9 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+-----------------------------+
 ; Parameter Name ; Value ; Type                        ;
 +----------------+-------+-----------------------------+
-; IBITS          ; 14    ; Signed Integer              ;
+; IBITS          ; 16    ; Signed Integer              ;
 ; OBITS          ; 32    ; Signed Integer              ;
 +----------------+-------+-----------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+----------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: altsyncram:imem_rtl_0     ;
-+------------------------------------+----------------------+----------------+
-; Parameter Name                     ; Value                ; Type           ;
-+------------------------------------+----------------------+----------------+
-; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped        ;
-; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY     ;
-; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY   ;
-; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE   ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE ;
-; WIDTH_BYTEENA                      ; 1                    ; Untyped        ;
-; OPERATION_MODE                     ; ROM                  ; Untyped        ;
-; WIDTH_A                            ; 32                   ; Untyped        ;
-; WIDTHAD_A                          ; 14                   ; Untyped        ;
-; NUMWORDS_A                         ; 16384                ; Untyped        ;
-; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped        ;
-; ADDRESS_ACLR_A                     ; NONE                 ; Untyped        ;
-; OUTDATA_ACLR_A                     ; NONE                 ; Untyped        ;
-; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped        ;
-; INDATA_ACLR_A                      ; NONE                 ; Untyped        ;
-; BYTEENA_ACLR_A                     ; NONE                 ; Untyped        ;
-; WIDTH_B                            ; 1                    ; Untyped        ;
-; WIDTHAD_B                          ; 1                    ; Untyped        ;
-; NUMWORDS_B                         ; 1                    ; Untyped        ;
-; INDATA_REG_B                       ; CLOCK1               ; Untyped        ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped        ;
-; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped        ;
-; ADDRESS_REG_B                      ; CLOCK1               ; Untyped        ;
-; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped        ;
-; BYTEENA_REG_B                      ; CLOCK1               ; Untyped        ;
-; INDATA_ACLR_B                      ; NONE                 ; Untyped        ;
-; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped        ;
-; ADDRESS_ACLR_B                     ; NONE                 ; Untyped        ;
-; OUTDATA_ACLR_B                     ; NONE                 ; Untyped        ;
-; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped        ;
-; BYTEENA_ACLR_B                     ; NONE                 ; Untyped        ;
-; WIDTH_BYTEENA_A                    ; 1                    ; Untyped        ;
-; WIDTH_BYTEENA_B                    ; 1                    ; Untyped        ;
-; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped        ;
-; BYTE_SIZE                          ; 8                    ; Untyped        ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped        ;
-; INIT_FILE                          ; debug.mif            ; Untyped        ;
-; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped        ;
-; MAXIMUM_DEPTH                      ; 0                    ; Untyped        ;
-; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped        ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped        ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped        ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped        ;
-; ENABLE_ECC                         ; FALSE                ; Untyped        ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped        ;
-; WIDTH_ECCSTATUS                    ; 3                    ; Untyped        ;
-; DEVICE_FAMILY                      ; Cyclone V            ; Untyped        ;
-; CBXI_PARAMETER                     ; altsyncram_9la1      ; Untyped        ;
-+------------------------------------+----------------------+----------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -949,7 +1330,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped        ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped        ;
 ; DEVICE_FAMILY                      ; Cyclone V            ; Untyped        ;
-; CBXI_PARAMETER                     ; altsyncram_kdm1      ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_23m1      ; Untyped        ;
 +------------------------------------+----------------------+----------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -959,18 +1340,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+-----------------------+
 ; Name                                      ; Value                 ;
 +-------------------------------------------+-----------------------+
-; Number of entity instances                ; 2                     ;
-; Entity Instance                           ; altsyncram:imem_rtl_0 ;
-;     -- OPERATION_MODE                     ; ROM                   ;
-;     -- WIDTH_A                            ; 32                    ;
-;     -- NUMWORDS_A                         ; 16384                 ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED          ;
-;     -- WIDTH_B                            ; 1                     ;
-;     -- NUMWORDS_B                         ; 1                     ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED          ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                  ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE             ;
+; Number of entity instances                ; 1                     ;
 ; Entity Instance                           ; altsyncram:dmem_rtl_0 ;
 ;     -- OPERATION_MODE                     ; DUAL_PORT             ;
 ;     -- WIDTH_A                            ; 32                    ;
@@ -1026,7 +1396,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port ; Type  ; Severity ; Details                                                                                                                                      ;
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; IN   ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
 ; OFF  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -1036,7 +1405,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port ; Type  ; Severity ; Details                                                                                                                                      ;
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; IN   ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
 ; OFF  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -1055,35 +1423,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 817                         ;
-;     CLR               ; 12                          ;
-;     ENA               ; 151                         ;
-;     ENA CLR           ; 526                         ;
-;     ENA SCLR SLD      ; 46                          ;
-;     ENA SLD           ; 1                           ;
-;     plain             ; 81                          ;
-; arriav_lcell_comb     ; 1142                        ;
+; arriav_ff             ; 291                         ;
+;     CLR               ; 2                           ;
+;     ENA               ; 121                         ;
+;     ENA CLR           ; 134                         ;
+;     ENA SCLR          ; 32                          ;
+;     ENA SLD           ; 2                           ;
+; arriav_lcell_comb     ; 244                         ;
 ;     arith             ; 45                          ;
 ;         1 data inputs ; 12                          ;
 ;         2 data inputs ; 33                          ;
-;     extend            ; 38                          ;
-;         7 data inputs ; 38                          ;
-;     normal            ; 1027                        ;
-;         0 data inputs ; 2                           ;
-;         1 data inputs ; 17                          ;
-;         2 data inputs ; 36                          ;
-;         3 data inputs ; 139                         ;
-;         4 data inputs ; 114                         ;
-;         5 data inputs ; 149                         ;
-;         6 data inputs ; 570                         ;
-;     shared            ; 32                          ;
-;         2 data inputs ; 32                          ;
+;     normal            ; 199                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 27                          ;
+;         3 data inputs ; 7                           ;
+;         4 data inputs ; 50                          ;
+;         5 data inputs ; 45                          ;
+;         6 data inputs ; 69                          ;
 ; boundary_port         ; 68                          ;
 ; generic_pll           ; 1                           ;
-; stratixv_ram_block    ; 128                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 3.48                        ;
+; Max LUT depth         ; 4.10                        ;
+; Average LUT depth     ; 2.09                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1092,7 +1453,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:04     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -1102,7 +1463,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Mon Mar 27 02:30:15 2017
+    Info: Processing started: Tue Mar 28 00:38:44 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Project -c Project
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 2 entities, in source file project.v
@@ -1115,17 +1476,17 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
     Info (12023): Found entity 1: Pll_0002
 Warning (10236): Verilog HDL Implicit Net warning at Project.v(86): created implicit net for "clk"
-Warning (10236): Verilog HDL Implicit Net warning at Project.v(188): created implicit net for "rt_dependency"
+Warning (10236): Verilog HDL Implicit Net warning at Project.v(182): created implicit net for "rt_dependency"
 Info (12127): Elaborating entity "Project" for the top level hierarchy
 Warning (10858): Verilog HDL warning at Project.v(148): object imem used but never assigned
 Warning (10036): Verilog HDL or VHDL warning at Project.v(165): object "pcplus_D" assigned a value but never read
 Warning (10036): Verilog HDL or VHDL warning at Project.v(166): object "pcpred_D" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Project.v(367): object "inst_M" assigned a value but never read
 Warning (10230): Verilog HDL assignment warning at Project.v(86): truncated value with size 4 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at Project.v(207): truncated value with size 16 to match size of target (14)
-Warning (10764): Verilog HDL warning at Project.v(332): converting signed shift amount to unsigned
-Warning (10764): Verilog HDL warning at Project.v(333): converting signed shift amount to unsigned
-Critical Warning (10237): Verilog HDL warning at Project.v(417): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead
-Warning (10240): Verilog HDL Always Construct warning at Project.v(452): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
+Warning (10764): Verilog HDL warning at Project.v(338): converting signed shift amount to unsigned
+Warning (10764): Verilog HDL warning at Project.v(339): converting signed shift amount to unsigned
+Critical Warning (10237): Verilog HDL warning at Project.v(412): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead
+Warning (10240): Verilog HDL Always Construct warning at Project.v(460): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
 Info (12128): Elaborating entity "Pll" for hierarchy "Pll:myPll"
 Info (12128): Elaborating entity "Pll_0002" for hierarchy "Pll:myPll|Pll_0002:pll_inst"
 Info (12128): Elaborating entity "altera_pll" for hierarchy "Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i"
@@ -1195,18 +1556,9 @@ Info (12133): Instantiated megafunction "Pll:myPll|Pll_0002:pll_inst|altera_pll:
 Info (12128): Elaborating entity "SXT" for hierarchy "SXT:sxt"
 Info (12128): Elaborating entity "SevenSeg" for hierarchy "SevenSeg:ss5"
 Warning (276020): Inferred RAM node "dmem_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
-Info (19000): Inferred 2 megafunctions from design logic
-    Info (276029): Inferred altsyncram megafunction from the following design logic: "imem_rtl_0" 
-        Info (286033): Parameter OPERATION_MODE set to ROM
-        Info (286033): Parameter WIDTH_A set to 32
-        Info (286033): Parameter WIDTHAD_A set to 14
-        Info (286033): Parameter NUMWORDS_A set to 16384
-        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
-        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
-        Info (286033): Parameter OUTDATA_ACLR_A set to NONE
-        Info (286033): Parameter INDATA_ACLR_A set to NONE
-        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
-        Info (286033): Parameter INIT_FILE set to debug.mif
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "imem" is uninferred due to asynchronous read logic
+Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "dmem_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
         Info (286033): Parameter WIDTH_A set to 32
@@ -1223,24 +1575,6 @@ Info (19000): Inferred 2 megafunctions from design logic
         Info (286033): Parameter INDATA_ACLR_A set to NONE
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
         Info (286033): Parameter INIT_FILE set to debug.mif
-Info (12130): Elaborated megafunction instantiation "altsyncram:imem_rtl_0"
-Info (12133): Instantiated megafunction "altsyncram:imem_rtl_0" with the following parameter:
-    Info (12134): Parameter "OPERATION_MODE" = "ROM"
-    Info (12134): Parameter "WIDTH_A" = "32"
-    Info (12134): Parameter "WIDTHAD_A" = "14"
-    Info (12134): Parameter "NUMWORDS_A" = "16384"
-    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
-    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
-    Info (12134): Parameter "OUTDATA_ACLR_A" = "NONE"
-    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
-    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
-    Info (12134): Parameter "INIT_FILE" = "debug.mif"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_9la1.tdf
-    Info (12023): Found entity 1: altsyncram_9la1
-Info (12021): Found 1 design units, including 1 entities, in source file db/decode_u0a.tdf
-    Info (12023): Found entity 1: decode_u0a
-Info (12021): Found 1 design units, including 1 entities, in source file db/mux_2hb.tdf
-    Info (12023): Found entity 1: mux_2hb
 Info (12130): Elaborated megafunction instantiation "altsyncram:dmem_rtl_0"
 Info (12133): Instantiated megafunction "altsyncram:dmem_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
@@ -1258,50 +1592,127 @@ Info (12133): Instantiated megafunction "altsyncram:dmem_rtl_0" with the followi
     Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "debug.mif"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kdm1.tdf
-    Info (12023): Found entity 1: altsyncram_kdm1
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_23m1.tdf
+    Info (12023): Found entity 1: altsyncram_23m1
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_5la.tdf
     Info (12023): Found entity 1: decode_5la
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_u0a.tdf
+    Info (12023): Found entity 1: decode_u0a
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_2hb.tdf
+    Info (12023): Found entity 1: mux_2hb
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a0"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a1"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a2"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a3"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a4"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a5"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a6"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a7"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a8"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a9"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a10"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a11"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a12"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a13"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a14"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a15"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a16"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a17"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a18"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a19"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a20"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a21"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a22"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a23"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a24"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a25"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a26"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a27"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a28"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a29"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a30"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a31"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a32"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a33"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a34"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a35"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a36"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a37"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a38"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a39"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a40"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a41"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a42"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a43"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a44"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a45"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a46"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a47"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a48"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a49"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a50"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a51"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a52"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a53"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a54"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a55"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a56"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a57"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a58"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a59"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a60"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a61"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a62"
+        Warning (14320): Synthesized away node "altsyncram:dmem_rtl_0|altsyncram_23m1:auto_generated|ram_block1a63"
 Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info (13000): Registers with preset signals will power-up high
-Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
-Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
-    Warning (13310): Register "LEDRout[0]" is converted into an equivalent circuit using register "LEDRout[0]~_emulated" and latch "LEDRout[0]~1"
-    Warning (13310): Register "LEDRout[1]" is converted into an equivalent circuit using register "LEDRout[1]~_emulated" and latch "LEDRout[1]~5"
-    Warning (13310): Register "LEDRout[2]" is converted into an equivalent circuit using register "LEDRout[2]~_emulated" and latch "LEDRout[2]~9"
-    Warning (13310): Register "LEDRout[7]" is converted into an equivalent circuit using register "LEDRout[7]~_emulated" and latch "LEDRout[7]~13"
-    Warning (13310): Register "LEDRout[8]" is converted into an equivalent circuit using register "LEDRout[8]~_emulated" and latch "LEDRout[8]~17"
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX4[0]" is stuck at GND
-    Warning (13410): Pin "HEX4[1]" is stuck at GND
-    Warning (13410): Pin "HEX4[2]" is stuck at GND
-    Warning (13410): Pin "HEX4[3]" is stuck at GND
-    Warning (13410): Pin "HEX4[4]" is stuck at GND
-    Warning (13410): Pin "HEX4[5]" is stuck at GND
-    Warning (13410): Pin "HEX4[6]" is stuck at VCC
-    Warning (13410): Pin "HEX5[0]" is stuck at GND
-    Warning (13410): Pin "HEX5[1]" is stuck at GND
-    Warning (13410): Pin "HEX5[2]" is stuck at GND
-    Warning (13410): Pin "HEX5[3]" is stuck at GND
-    Warning (13410): Pin "HEX5[4]" is stuck at GND
-    Warning (13410): Pin "HEX5[5]" is stuck at GND
-    Warning (13410): Pin "HEX5[6]" is stuck at VCC
+    Warning (13410): Pin "LEDR[1]" is stuck at GND
+    Warning (13410): Pin "LEDR[2]" is stuck at GND
+    Warning (13410): Pin "LEDR[3]" is stuck at GND
+    Warning (13410): Pin "LEDR[4]" is stuck at GND
+    Warning (13410): Pin "LEDR[5]" is stuck at GND
+    Warning (13410): Pin "LEDR[6]" is stuck at GND
+    Warning (13410): Pin "LEDR[7]" is stuck at GND
+    Warning (13410): Pin "LEDR[8]" is stuck at GND
+    Warning (13410): Pin "LEDR[9]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 16 registers lost all their fanouts during netlist optimizations.
+Info (17049): 478 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning: OUTCLK port on the PLL is not properly connected on instance Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The output clock port on the PLL must be connected.
     Info: Must be connected
-Info (21057): Implemented 2017 device resources after synthesis - the final resource count might be different
+Warning (21074): Design contains 13 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[1]"
+    Warning (15610): No output dependent on input pin "KEY[2]"
+    Warning (15610): No output dependent on input pin "KEY[3]"
+    Warning (15610): No output dependent on input pin "SW[0]"
+    Warning (15610): No output dependent on input pin "SW[1]"
+    Warning (15610): No output dependent on input pin "SW[2]"
+    Warning (15610): No output dependent on input pin "SW[3]"
+    Warning (15610): No output dependent on input pin "SW[4]"
+    Warning (15610): No output dependent on input pin "SW[5]"
+    Warning (15610): No output dependent on input pin "SW[6]"
+    Warning (15610): No output dependent on input pin "SW[7]"
+    Warning (15610): No output dependent on input pin "SW[8]"
+    Warning (15610): No output dependent on input pin "SW[9]"
+Info (21057): Implemented 466 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 1820 logic cells
-    Info (21064): Implemented 128 RAM segments
+    Info (21061): Implemented 397 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 36 warnings
-    Info: Peak virtual memory: 788 megabytes
-    Info: Processing ended: Mon Mar 27 02:30:22 2017
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:07
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 105 warnings
+    Info: Peak virtual memory: 654 megabytes
+    Info: Processing ended: Tue Mar 28 00:38:48 2017
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.map.smsg.
 
 
