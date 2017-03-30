@@ -25,7 +25,7 @@ module Project(
 	parameter ADDRSW = 32'hFFFFF090;
 
 	// Change this to fmedian2.mif before submitting
-	parameter IMEMINITFILE = "fmedian2.mif";
+	parameter IMEMINITFILE = "test.mif";
 
 	parameter IMEMADDRBITS = 16;
 	parameter IMEMWORDBITS = 2;
@@ -52,6 +52,8 @@ module Project(
 	// Add parameters for secondary opcode values
 
 	/* OP2 */
+	parameter JAL_FUNC = 8'b00001100;
+
 	parameter OP2BITS = 8;
 	parameter OP2_EQ = 8'b00001000;
 	parameter OP2_LT = 8'b00001001;
@@ -72,20 +74,20 @@ module Project(
 	parameter HEXBITS = 24;
 	parameter LEDRBITS = 10;
 
-    // The reset signal comes from the reset button on the DE0-CV board
-	// RESET_N is active-low, so we flip its value ("reset" is active-high)
-	wire clk2, locked;
-	// The PLL is wired to produce clk and locked signals for our logic
-	Pll myPll(
-		.refclk(CLOCK_50),
-		.rst      (!RESET_N),
-		.outclk_0 (clk2),
-		.locked   (locked)
-	);
-	assign clk = ~KEY;
 
-	/*
-	wire clk2;
+	 wire clk, locked;
+		Pll myPll(
+			.refclk(CLOCK_50),
+			.rst      (!RESET_N),
+			.outclk_0 (clk),
+			.locked   (locked)
+	  );
+	
+
+	//assign clk = ~KEY;
+	
+	
+	/*wire clk2, locked;
 	Pll myPll(
 		.refclk(CLOCK_50),
 		.rst      (!RESET_N),
@@ -93,9 +95,8 @@ module Project(
 		.locked   (locked)
 	);
 	reg [31:0] buffer = 32'd0;
-	reg [31:0] cap = 32'd10000000;
+	reg [31:0] cap = 32'd500000;
 	reg clk;
-
 	always @(posedge clk2 or posedge reset) begin
 		if (reset) begin
 			buffer <= 0;
@@ -109,27 +110,30 @@ module Project(
 			clk <= ~clk;
 		end
 	end*/
-
+	
+	
 	wire reset = !locked;
-	//wire branch =
-
-
-
-    /**** FETCH STAGE ****/
+	
+	/**** FETCH STAGE ****/
 	// The PC register and update logic
 	reg [(DBITS - 1):0] PC;
-    reg isnop_F;
 	always @(posedge clk or posedge reset) begin
-        isnop_F <= ldPC_flush;
 		if (reset) begin
 			PC <= STARTPC; // Initial step
-		end
-		else if (!stall) begin
+		end else if(mispred) begin
+			PC <= destination;
+		end else if (!stall) begin
 			PC <= pcpred_F; // Proceed 1 step
 		end
-		else if (ldPC_flush) begin
-			PC <= jmp_targ;
-		end
+
+	// Unimplemented. Uncomment to edit, also delete the subsequent else statement.
+	/*
+		else if(mispred_B)
+			PC<=pcgood_B; // Jump to correct step
+		else if(!stall_F)
+			PC<=pcpred_F; // Proceed 1 step
+	*/
+
 	// If you failed all conditions, you are stalled. Stay on this step.
 	end
 
@@ -144,38 +148,15 @@ module Project(
 	// Instruction-fetch
 	(* ram_init_file = IMEMINITFILE *)
 	reg [(DBITS - 1):0] imem[(IMEMWORDS - 1):0];
-	/*
-	initial
-	begin
-		$readmemh("Test_mini.hex", imem);
-	end
-	*/
-	wire [(DBITS - 1):0] inst_F = imem[PC[(IMEMADDRBITS - 1):IMEMWORDBITS]];
+	wire [(DBITS - 1):0] inst_F;
+	assign inst_F = imem[PC[(IMEMADDRBITS - 1):IMEMWORDBITS]];
 
 
-
-    /*** DECODE STAGE ***/
+	/*** DECODE STAGE ***/
 	// If fetch and decoding stages are the same stage,
 	// just connect signals from fetch to decode
 	// AHA - we don't want these in the same stage. Always block added.
-
-    // Stall logic
-	wire stall;
-	wire rs_dependency;
-	wire rd_dependency;
-	wire rs_A;
-	wire rs_M;
-	wire rt_A;
-	wire rt_M;
-	assign rs_A = (rs_D === destreg_D);
-	assign rs_M = (rs_D === destreg_A);
-	assign rt_A = (rt_D === destreg_D);
-	assign rt_M = (rt_D === destreg_A);
-	assign rs_dependency = ~isnop_A & rs_A | ~isnop_M & rs_M;
-	assign rt_dependency = ~single_reg & (~isnop_A & rt_A | ~isnop_M & rt_M);
-	assign stall = rs_dependency || rt_dependency;
-
-    reg [(DBITS - 1):0] inst_D;
+	reg [(DBITS - 1):0] inst_D;
 	reg [(DBITS - 1):0] pcpred_D;
 	reg isnop_D;
 
@@ -186,7 +167,8 @@ module Project(
 	wire [(REGNOBITS - 1):0] rs_D, rt_D, rd_D;
 	wire [(OP2BITS - 1):0] op2_D;
 	wire [(IMMBITS - 1):0] rawimm_D;
-	wire [(DBITS - 1): 0] sxtimm_D;
+	// I added this VVVV
+	wire [(DBITS - 1): 0] sxtimm;
 
 	// Here I am manually hooking up these wires
 	assign op1_D = inst_D[31:26];
@@ -197,7 +179,7 @@ module Project(
 	assign rawimm_D = inst_D[23:8];
 
 	// Instantiate SXT module
-	SXT #(IMMBITS, DBITS) sxt(rawimm_D, sxtimm_D);
+	SXT #(IMMBITS, DBITS) sxt(rawimm_D, sxtimm);
 
 	// Register-read
 	reg [(DBITS - 1):0] regs[(REGWORDS - 1):0];
@@ -207,170 +189,180 @@ module Project(
 	wire [(DBITS - 1):0] RTval_D = regs[rregno2_D]; // Holds RT value
 
 	reg aluimm_D; // If enabled, aluin2 is the sxtimm. Otherwise its regval2.
-	reg [(OP2BITS - 1):0] alufunc_D; // ALU func
-	//reg isbranch_D;
-	//reg isjump_D;
+	reg [OP2BITS:0] alufunc_D; // ALU func
+	reg isbranch_D;
+	reg isjump_D;
 	reg [(REGNOBITS - 1):0] destreg_D; // The destination register in this context
 	reg wrmem_D; // Write RT to mem at aluout address?
 	reg ldmem_D; // Set reg write value to value at aluout address?
 	reg wrreg_D; // Write to destreg_D?
-	reg single_reg; // Write to destreg_D?
-	//reg flush_D; // Unimplemented
-	reg jmp_D;
-	reg branch_D;
+	reg single_reg_D; // Write to destreg_D?
+	reg flush_D; // Unimplemented
 
 	// Control signals
-    always @(*) begin
-		isnop_D = isnop_F;
+	always @(*) begin
+	
+	
+		isnop_D = 1'b0;
 		aluimm_D = 1'b0;
 		alufunc_D = {OP2BITS{1'bX}};
-		//isbranch_D = 1'b0;
-		//isjump_D = 1'b0;
+		isbranch_D = 1'b0;
+		isjump_D = 1'b0;
 		destreg_D = {REGNOBITS{1'bX}};
 		wrreg_D = 1'b0;
 		wrmem_D = 1'b0;
 		ldmem_D = 1'b0;
-		single_reg = 1'b0;
+		single_reg_D = 1'b0;
+		inst_D = inst_F;
 		pcpred_D = pcpred_F;
+			
+	
+		if (reset | mispred) begin
+		isnop_D = 1'b1;		
+		end else if(!stall) begin
+		
+		case (op1_D)
+			// All OP2
+			OP1_EXT: begin
+				case (op2_D)
+					OP2_SUB, OP2_NAND, OP2_NOR, OP2_NXOR, OP2_EQ, OP2_LT, OP2_LE, OP2_NE,
+					OP2_ADD, OP2_AND, OP2_OR, OP2_XOR, OP2_RSHF, OP2_LSHF: begin
+						alufunc_D = op2_D;
+						destreg_D = rd_D;
+						wrreg_D = 1'b1;
+					end
+					default: ;
+				endcase
+			end
+			// Immediate arithmetic. Notice how alufunc is handled - concat 2 0's
+			OP1_ADDI, OP1_ANDI, OP1_ORI, OP1_XORI: begin
+				aluimm_D = 1'b1;
+				alufunc_D = {2'b0, op1_D};
+				destreg_D = rt_D;
+				wrreg_D = 1'b1;
+				single_reg_D = 1'b1;
+			end
+			// Branches
+			OP1_BEQ, OP1_BLE, OP1_BLT, OP1_BNE: begin
+				alufunc_D = {2'b0, op1_D};
+				isbranch_D = 1'b1;
+			end
+			// JAL
+			OP1_JAL: begin
+				alufunc_D = JAL_FUNC;
+				isjump_D = 1'b1;
+				destreg_D = rt_D;
+				single_reg_D = 1'b1;
+				wrreg_D = 1'b1;
+			end
+			// Store word: Use imm, add to RS, use this as address. Store RT here.
+			OP1_SW: begin
+				aluimm_D = 1'b1;
+				alufunc_D = OP2_ADD;
+				wrmem_D = 1'b1;
+			end
+			// Load word
+			OP1_LW: begin
+				aluimm_D = 1'b1;
+				alufunc_D = OP2_ADD;
+				ldmem_D = 1'b1;
+				destreg_D = rt_D;
+				wrreg_D = 1'b1;
+				single_reg_D = 1'b1;
+			end
+			// TODO: Write the rest of the decoding code
+			default: ;
+		endcase
+	end
 
+end
+
+	/**** AGEN/EXEC STAGE ****/
+	reg signed [(DBITS - 1):0] aluin1_A;
+	reg signed [(DBITS - 1):0] aluin2_A;
+	reg signed [(DBITS - 1):0] sxtimm_A;
+	reg [(DBITS - 1):0] inst_A;
+	reg [(DBITS - 1):0] pcpred_A;
+	reg [OP2BITS:0] alufunc_A;
+	reg wrreg_A;
+	reg wrmem_A;
+	reg ldmem_A;
+	reg isnop_A;
+	reg [(REGNOBITS - 1):0] destreg_A;
+	reg [(DBITS - 1):0] RTval_A;
+	reg isbranch_A;
+	reg isjump_A;
+	reg single_reg_A;
+	
+	// Stall controller
+	wire stall;
+	wire rs_dependency;
+	wire rt_dependency;
+	assign rs_dependency = (~isnop_A)&(rs_D === destreg_A) | (~isnop_M)&(rs_D === destreg_M);
+	assign rt_dependency = (~isnop_A)&(rt_D === destreg_A) | (~isnop_M)&(rt_D === destreg_M);
+	assign stall = rs_dependency || rt_dependency;
+
+
+	// AHA - we don't want these in the same stage. Always block added.
+	always @(posedge clk or posedge reset) begin
 		if (reset) begin
-			isnop_D = 1'b1;
+			isnop_A <= 1'b1;
+			inst_A = {DBITS{1'b0}};
 		end
-		else if (!stall && !isnop_D) begin
-			case (op1_D)
-				// All OP2
-				OP1_EXT: begin
-					case (op2_D)
-						OP2_SUB, OP2_NAND, OP2_NOR, OP2_NXOR, OP2_EQ, OP2_LT, OP2_LE, OP2_NE,
-						OP2_ADD, OP2_AND, OP2_OR, OP2_XOR, OP2_RSHF, OP2_LSHF: begin
-							alufunc_D = op2_D;
-							destreg_D = rd_D;
-							wrreg_D = 1'b1;
-						end
-						default: ;
-					endcase
-				end
-				// Immediate arithmetic. Notice how alufunc is handled - concat 2 0's
-				OP1_ADDI, OP1_ANDI, OP1_ORI, OP1_XORI: begin
-					aluimm_D = 1'b1;
-					alufunc_D = {2'b0, op1_D};
-					destreg_D = rt_D;
-					wrreg_D = 1'b1;
-					single_reg = 1'b1;
-				end
-				// Store word: Use imm, add to RS, use this as address. Store RT here.
-				OP1_SW: begin
-					aluimm_D = 1'b1;
-					alufunc_D = OP2_ADD;
-					wrmem_D = 1'b1;
-				end
-				// Load word
-				OP1_LW: begin
-					aluimm_D = 1'b1;
-					alufunc_D = OP2_ADD;
-					ldmem_D = 1'b1;
-					destreg_D = rt_D;
-					wrreg_D = 1'b1;
-					single_reg = 1'b1;
-				end
-				OP1_JAL: begin
-                    alufunc_D = {2'b0, op1_D};
-					jmp_D = 1'b1;
-					destreg_D = rt_D;
-					wrreg_D = 1'b1;
-                    single_reg = 1'b1;
-				end
-				OP1_BEQ, OP1_BLT, OP1_BLE, OP1_BNE: begin
-                    alufunc_D = {2'b0, op1_D};
-					branch_D = 1'b1;
-				end
-				default: ;
-			endcase
+		else begin
+				aluin1_A <= RSval_D; // Always load RS into 1st input
+				aluin2_A <= aluimm_D ? sxtimm : RTval_D; // Perhaps load sxtimm into 2nd input, otherwise RT.
+				sxtimm_A <= sxtimm; // Perhaps load sxtimm into 2nd input, otherwise RT.
+				alufunc_A <= alufunc_D;
+				wrreg_A <= wrreg_D;
+				wrmem_A <= wrmem_D;
+				ldmem_A <= ldmem_D;
+				destreg_A <= destreg_D;
+				RTval_A <= RTval_D;
+				isnop_A <= isnop_D | stall;
+				inst_A <= inst_D;
+				isbranch_A <= isbranch_D;
+				isjump_A <= isjump_D;
+				pcpred_A <= pcpred_D;
+				single_reg_A <= single_reg_D;
 		end
 	end
 
+	reg signed [(DBITS - 1):0] aluout_A;
+
+	always @(alufunc_A or aluin1_A or aluin2_A) begin
+		case (alufunc_A)
+			OP2_EQ: aluout_A = {31'b0, aluin1_A == aluin2_A};
+			OP2_LT: aluout_A = {31'b0, aluin1_A < aluin2_A};
+			OP2_LE: aluout_A = {31'b0, aluin1_A <= aluin2_A};
+			OP2_NE: aluout_A = {31'b0, aluin1_A != aluin2_A};
+			OP2_ADD: aluout_A = aluin1_A + aluin2_A;
+			OP2_AND: aluout_A = aluin1_A & aluin2_A;
+			OP2_OR: aluout_A = aluin1_A | aluin2_A;
+			OP2_XOR: aluout_A = aluin1_A ^ aluin2_A;
+			OP2_SUB: aluout_A = aluin1_A - aluin2_A;
+			OP2_NAND: aluout_A = ~(aluin1_A & aluin2_A);
+			OP2_NOR: aluout_A = ~(aluin1_A | aluin2_A);
+			OP2_NXOR: aluout_A = ~(aluin1_A  ^aluin2_A);
+			OP2_RSHF: aluout_A = (aluin1_A >>> aluin2_A);
+			OP2_LSHF: aluout_A = (aluin1_A << aluin2_A);
+			JAL_FUNC: aluout_A = pcpred_A;
+			default: aluout_A = {DBITS{1'bX}};
+		endcase
+	end
+
+	wire dobranch = aluout_A[0:0] & ~isnop_A & isbranch_A;
+	wire dojump = ~isnop_A & isjump_A;
+	wire [(DBITS - 1):0] destination = dobranch ? (pcpred_A + (sxtimm_A<<2)) : dojump ? (aluin1_A + (sxtimm_A<<2)) : pcpred_A;
+	wire mispred = dobranch | dojump;
 
 
-    /**** AGEN/EXEC STAGE ****/
-    reg signed [(DBITS - 1):0] RTval_A;
-    reg signed [(DBITS - 1):0] aluin1_A;
-	reg signed [(DBITS - 1):0] aluin2_A;
-	reg signed [(DBITS - 1):0] sxtimm_A;
-    reg [(REGNOBITS - 1):0] destreg_A;
-    reg [(OP2BITS - 1):0] alufunc_A;
-    reg wrreg_A;
-    reg wrmem_A;
-    reg ldmem_A;
-    reg isnop_A;
-    reg jmp_A;
-	reg branch_A;
-    //reg ldPC_buffer;
-    reg [(DBITS - 1):0] pcpred_A;
-    //reg [(DBITS - 1):0] jmp_targ_buffer;
-    //wire jmp_targ = jmp_targ_buffer;
-    //wire ldPC = ldPC_buffer;
+	/*** MEM STAGE ****/
 
-    //reg signed [(DBITS - 1):0] aluin1_A = RSval_D;
-    //reg signed [(DBITS - 1):0] aluin2_A = aluimm_D ? sxtimm_D : RTval_D;
+	// TODO: Write code that produces wmemval_M, wrmem_M, wrreg_M, etc.
 
-    // AHA - we don't want these in the same stage. Always block added.
-    always @(posedge clk or posedge reset) begin
-        if (reset) begin
-            isnop_A <= 1'b1;
-        end
-        else begin
-            RTval_A <= RTval_D;
-			aluin1_A <= RSval_D;
-			aluin2_A <= aluimm_D ? sxtimm_D : RTval_D;
-            sxtimm_A <= sxtimm_D;
-            destreg_A <= destreg_D;
-            alufunc_A <= alufunc_D;
-            wrreg_A <= wrreg_D;
-            wrmem_A <= wrmem_D;
-            ldmem_A <= ldmem_D;
-            isnop_A <= stall ? 1'b1 : isnop_D;
-            jmp_A <= jmp_D;
-            branch_A <= branch_D;
-            pcpred_A <= pcpred_D;
-        end
-    end
-
-    reg signed [(DBITS - 1):0] aluout_A;
-
-    // Branch and immediate instructions handled through use of sign-extended OP1
-    always @(alufunc_A or aluin1_A or aluin2_A) begin
-        case (alufunc_A)
-            OP2_EQ: aluout_A = {31'b0, aluin1_A == aluin2_A};
-            OP2_LT: aluout_A = {31'b0, aluin1_A < aluin2_A};
-            OP2_LE: aluout_A = {31'b0, aluin1_A <= aluin2_A};
-            OP2_NE: aluout_A = {31'b0, aluin1_A != aluin2_A};
-            OP2_ADD: aluout_A = aluin1_A + aluin2_A;
-            OP2_AND: aluout_A = aluin1_A & aluin2_A;
-            OP2_OR: aluout_A = aluin1_A | aluin2_A;
-            OP2_XOR: aluout_A = aluin1_A ^ aluin2_A;
-            OP2_SUB: aluout_A = aluin1_A - aluin2_A;
-            OP2_NAND: aluout_A = ~(aluin1_A & aluin2_A);
-            OP2_NOR: aluout_A = ~(aluin1_A | aluin2_A);
-            OP2_NXOR: aluout_A = ~(aluin1_A ^ aluin2_A);
-            OP2_RSHF: aluout_A = (aluin1_A >>> aluin2_A);
-            OP2_LSHF: aluout_A = (aluin1_A << aluin2_A);
-            {2'b0, OP1_JAL}: aluout_A = pcpred_A;
-            default: aluout_A = {DBITS{1'bX}};
-        endcase
-    end
-
-    wire ldPC_flush = jmp_A ? 1'b1 : branch_A ? aluout_A[0:0] : 1'b0;
-    wire jmp_targ = jmp_A ? (aluin1_A + (sxtimm_A << 2)) :
-                    branch_A ? (pcpred_A + (sxtimm_A << 2)) : {DBITS{1'bX}};
-
-    /*always @(posedge clk or posedge reset) begin
-        ldPC_buffer <= jmp_A ? 1'b1 : branch_A ? aluout_A[0:0] : 1'b0;
-        jmp_targ_buffer <= jmp_A ? (aluin1_A + (sxtimm_A << 2)) :
-                        branch_A ? (pcpred_A + (sxtimm_A << 2)) : 32'bX;
-    end*/
-
-    /*** MEM STAGE ****/
-	reg signed [(DBITS - 1):0] memaddr_M;
+	reg signed [(DBITS-1):0] memaddr_M;
+	reg [(DBITS-1):0] inst_M;
 	reg wrmem_M;
 	reg ldmem_M;
 	reg wrreg_M;
@@ -382,18 +374,20 @@ module Project(
 	always @(posedge clk or posedge reset) begin
 		if (reset) begin
 			isnop_M <= 1'b1;
+			inst_M = {DBITS{1'b0}};
 		end
 		else begin
-			memaddr_M <= aluout_A;
-			wrmem_M <= wrmem_A;
-			ldmem_M <= ldmem_A;
-			wrreg_M <= wrreg_A;
-			destreg_M <= destreg_A;
-			wmemval_M <= RTval_A;
-			isnop_M <= isnop_A;
+				memaddr_M <= aluout_A;
+				wrmem_M <= wrmem_A;
+				ldmem_M <= ldmem_A;
+				wrreg_M <= wrreg_A;
+				destreg_M <= destreg_A;
+				wmemval_M <= RTval_A;
+				isnop_M <= isnop_A;
+				inst_M <= inst_A;
 		end
 	end
-
+	
 	// Create and connect HEX register
 	reg [23:0] HEXout;
 	reg [9:0] LEDRout;
@@ -406,14 +400,14 @@ module Project(
 	SevenSeg ss0(.OUT(HEX0), .IN(HEXout[3:0]));
 
 	always @(posedge clk or posedge reset) begin
-		/*if (reset) begin
-			LEDRout <= {isnop_D, isnop_A, isnop_M, {4{1'b0}}, rs_dependency, rt_dependency, stall};
+		if (reset) begin
+			//LEDRout <= {isnop_D, isnop_A, isnop_M, {4{1'b0}}, rs_dependency, rt_dependency, stall};
 		end
 		else if (wrmem_M && (memaddr_M == ADDRLEDR) && !isnop_M) begin
 			// NOP check - Don't display HEX on NOP
 			LEDRout <= wmemval_M[9:0];
-		end*/
-		LEDRout <= {aluimm_D};
+		end
+			//LEDRout <= {isnop_D, isnop_A, isnop_M, {6{1'b0}}, stall};
 	end
 
 	always @(posedge clk or posedge reset) begin
@@ -421,11 +415,12 @@ module Project(
 			HEXout <= 24'hFEDEAD;
 		end
 		else if (wrmem_M && (memaddr_M == ADDRHEX) && !isnop_M) begin
-			// NOP check - Don't display LEDR on NOP
-			HEXout <= wmemval_M[23:0];
+				// NOP check - Don't display LEDR on NOP
+				HEXout <= wmemval_M[23:0];
 		end
-		//HEXout <= { inst_D[31:28], inst_D[3:0],inst_A[31:28], inst_A[3:0],inst_M[31:28], inst_M[3:0], };
-		//HEXout <=  sxtimm[23:0];
+	
+			//HEXout <= { inst_D[31:28], inst_D[3:0],inst_A[31:28], inst_A[3:0],inst_M[31:28], inst_M[3:0], };
+			//HEXout <=  aluin2_A[23:0];
 	end
 
 	// Now the real data memory
@@ -445,8 +440,8 @@ module Project(
 	// Connect memory and input devices to the bus
 	// you might need to change the following statement.
 	wire [(DBITS - 1):0] memout_M = MemEnable ? MemVal :
-									(memaddr_M == ADDRKEY) ? {28'b0, ~KEY}:
-									(memaddr_M == ADDRSW) ? {20'b0, SW}: 32'hDEADDEAD;
+	(memaddr_M == ADDRKEY) ? {28'b0, ~KEY} :
+	(memaddr_M == ADDRSW) ? {20'b0, SW}: 32'hDEADDEAD;
 
 	// Determine register write value
 	wire [(DBITS - 1):0] wregval_M = ldmem_M ? memout_M : memaddr_M;
@@ -456,7 +451,7 @@ module Project(
 
 
 
-    /*** Write Back Stage *****/
+	/*** Write Back Stage *****/
 	integer r;
 	integer i;
 	always @(posedge clk or posedge reset) begin

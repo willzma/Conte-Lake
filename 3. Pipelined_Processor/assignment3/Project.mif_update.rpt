@@ -1,5 +1,5 @@
 MIF/HEX Update report for Project
-Sat Mar 25 11:27:54 2017
+Tue Mar 28 23:46:41 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; MIF/HEX Update Summary                                        ;
 +-----------------------+---------------------------------------+
-; MIF/HEX Update Status ; Successful - Sat Mar 25 11:27:54 2017 ;
+; MIF/HEX Update Status ; Successful - Tue Mar 28 23:46:41 2017 ;
 ; Revision Name         ; Project                               ;
 ; Top-level Entity Name ; Project                               ;
 ; Family                ; Cyclone V                             ;
@@ -59,14 +59,14 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit MIF/HEX Update
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Sat Mar 25 11:27:51 2017
+    Info: Processing started: Tue Mar 28 23:46:36 2017
 Info: Command: quartus_cdb Project -c Project --update_mif
 Info (39024): Processed the following Memory Initialization File(s)
     Info (39025): Processed Memory Initialization File D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/debug.mif
 Info: Quartus II 64-Bit MIF/HEX Update was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 665 megabytes
-    Info: Processing ended: Sat Mar 25 11:27:54 2017
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Peak virtual memory: 674 megabytes
+    Info: Processing ended: Tue Mar 28 23:46:41 2017
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:04
 
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Project
-Tue Mar 28 10:48:23 2017
+Wed Mar 29 20:52:19 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -13,24 +13,29 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis IP Cores Summary
-  9. Registers Removed During Synthesis
- 10. Removed Registers Triggering Further Register Optimizations
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. Registers Removed During Synthesis
  11. General Register Statistics
- 12. Parameter Settings for User Entity Instance: Top-level Entity: |Project
- 13. Parameter Settings for User Entity Instance: Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i
- 14. Parameter Settings for User Entity Instance: SXT:sxt
- 15. Port Connectivity Checks: "SevenSeg:ss0"
- 16. Port Connectivity Checks: "SevenSeg:ss1"
- 17. Port Connectivity Checks: "SevenSeg:ss2"
- 18. Port Connectivity Checks: "SevenSeg:ss3"
- 19. Port Connectivity Checks: "SevenSeg:ss4"
- 20. Port Connectivity Checks: "SevenSeg:ss5"
- 21. Port Connectivity Checks: "SXT:sxt"
- 22. Port Connectivity Checks: "Pll:myPll"
- 23. Post-Synthesis Netlist Statistics for Top Partition
- 24. Elapsed Time Per Partition
- 25. Analysis & Synthesis Messages
+ 12. Inverted Register Statistics
+ 13. Registers Added for RAM Pass-Through Logic
+ 14. Multiplexer Restructuring Statistics (No Restructuring Performed)
+ 15. Source assignments for altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated
+ 16. Parameter Settings for User Entity Instance: Top-level Entity: |Project
+ 17. Parameter Settings for User Entity Instance: Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i
+ 18. Parameter Settings for User Entity Instance: SXT:sxt
+ 19. Parameter Settings for Inferred Entity Instance: altsyncram:dmem_rtl_0
+ 20. altsyncram Parameter Settings by Entity Instance
+ 21. Port Connectivity Checks: "SevenSeg:ss0"
+ 22. Port Connectivity Checks: "SevenSeg:ss1"
+ 23. Port Connectivity Checks: "SevenSeg:ss2"
+ 24. Port Connectivity Checks: "SevenSeg:ss3"
+ 25. Port Connectivity Checks: "SevenSeg:ss4"
+ 26. Port Connectivity Checks: "SevenSeg:ss5"
+ 27. Post-Synthesis Netlist Statistics for Top Partition
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
+ 30. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -57,22 +62,22 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Mar 28 10:48:23 2017      ;
+; Analysis & Synthesis Status     ; Successful - Wed Mar 29 20:52:19 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 0                                          ;
+; Total registers                 ; 906                                        ;
 ; Total pins                      ; 68                                         ;
 ; Total virtual pins              ; 0                                          ;
-; Total block memory bits         ; 0                                          ;
+; Total block memory bits         ; 524,288                                    ;
 ; Total DSP Blocks                ; 0                                          ;
 ; Total HSSI RX PCSs              ; 0                                          ;
 ; Total HSSI PMA RX Deserializers ; 0                                          ;
 ; Total HSSI TX PCSs              ; 0                                          ;
 ; Total HSSI PMA TX Serializers   ; 0                                          ;
-; Total PLLs                      ; 0                                          ;
+; Total PLLs                      ; 1                                          ;
 ; Total DLLs                      ; 0                                          ;
 +---------------------------------+--------------------------------------------+
 
@@ -176,52 +181,92 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                          ;
-+----------------------------------+-----------------+-----------------------------+----------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                   ; File Name with Absolute Path                                                                       ; Library ;
-+----------------------------------+-----------------+-----------------------------+----------------------------------------------------------------------------------------------------+---------+
-; Project.v                        ; yes             ; User Verilog HDL File       ; D:/Users/theon/Desktop/GitWork/CS3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.v      ;         ;
-; SevenSeg.v                       ; yes             ; User Verilog HDL File       ; D:/Users/theon/Desktop/GitWork/CS3220/Conte-Lake/3. Pipelined_Processor/assignment3/SevenSeg.v     ;         ;
-; Pll.v                            ; yes             ; User Wizard-Generated File  ; D:/Users/theon/Desktop/GitWork/CS3220/Conte-Lake/3. Pipelined_Processor/assignment3/Pll.v          ; Pll     ;
-; Pll/Pll_0002.v                   ; yes             ; User Verilog HDL File       ; D:/Users/theon/Desktop/GitWork/CS3220/Conte-Lake/3. Pipelined_Processor/assignment3/Pll/Pll_0002.v ; Pll     ;
-; altera_pll.v                     ; yes             ; Megafunction                ; d:/altera/14.0/quartus/libraries/megafunctions/altera_pll.v                                        ;         ;
-+----------------------------------+-----------------+-----------------------------+----------------------------------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                   ;
++----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                                           ; Library ;
++----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------------------+---------+
+; Project.v                        ; yes             ; User Verilog HDL File            ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.v              ;         ;
+; SevenSeg.v                       ; yes             ; User Verilog HDL File            ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/SevenSeg.v             ;         ;
+; Pll.v                            ; yes             ; User Wizard-Generated File       ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Pll.v                  ; Pll     ;
+; Pll/Pll_0002.v                   ; yes             ; User Verilog HDL File            ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Pll/Pll_0002.v         ; Pll     ;
+; Test.mif                         ; yes             ; User Memory Initialization File  ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Test.mif               ;         ;
+; altera_pll.v                     ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/altera_pll.v                            ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/altsyncram.tdf                          ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/stratix_ram_block.inc                   ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/lpm_mux.inc                             ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/lpm_decode.inc                          ;         ;
+; aglobal140.inc                   ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/aglobal140.inc                          ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/a_rdenreg.inc                           ;         ;
+; altrom.inc                       ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/altrom.inc                              ;         ;
+; altram.inc                       ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/altram.inc                              ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                     ; c:/altera/14.0/quartus/libraries/megafunctions/altdpram.inc                            ;         ;
+; db/altsyncram_dbm1.tdf           ; yes             ; Auto-Generated Megafunction      ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/altsyncram_dbm1.tdf ;         ;
+; db/decode_5la.tdf                ; yes             ; Auto-Generated Megafunction      ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/decode_5la.tdf      ;         ;
+; db/decode_u0a.tdf                ; yes             ; Auto-Generated Megafunction      ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/decode_u0a.tdf      ;         ;
+; db/mux_2hb.tdf                   ; yes             ; Auto-Generated Megafunction      ; D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/db/mux_2hb.tdf         ;         ;
++----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimate of Logic utilization (ALMs needed) ; 0        ;
-;                                             ;          ;
-; Combinational ALUT usage for logic          ; 0        ;
-;     -- 7 input functions                    ; 0        ;
-;     -- 6 input functions                    ; 0        ;
-;     -- 5 input functions                    ; 0        ;
-;     -- 4 input functions                    ; 0        ;
-;     -- <=3 input functions                  ; 0        ;
-;                                             ;          ;
-; Dedicated logic registers                   ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 68       ;
-; Total DSP Blocks                            ; 0        ;
-; Maximum fan-out node                        ; CLOCK_50 ;
-; Maximum fan-out                             ; 1        ;
-; Total fan-out                               ; 68       ;
-; Average fan-out                             ; 0.50     ;
-+---------------------------------------------+----------+
++------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                      ;
++---------------------------------------------+--------------------------------------------------------------------+
+; Resource                                    ; Usage                                                              ;
++---------------------------------------------+--------------------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 1102                                                               ;
+;                                             ;                                                                    ;
+; Combinational ALUT usage for logic          ; 1389                                                               ;
+;     -- 7 input functions                    ; 33                                                                 ;
+;     -- 6 input functions                    ; 711                                                                ;
+;     -- 5 input functions                    ; 203                                                                ;
+;     -- 4 input functions                    ; 170                                                                ;
+;     -- <=3 input functions                  ; 272                                                                ;
+;                                             ;                                                                    ;
+; Dedicated logic registers                   ; 906                                                                ;
+;                                             ;                                                                    ;
+; I/O pins                                    ; 68                                                                 ;
+; Total MLAB memory bits                      ; 0                                                                  ;
+; Total block memory bits                     ; 524288                                                             ;
+; Total DSP Blocks                            ; 0                                                                  ;
+; Total PLLs                                  ; 1                                                                  ;
+;     -- PLLs                                 ; 1                                                                  ;
+;                                             ;                                                                    ;
+; Maximum fan-out node                        ; Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
+; Maximum fan-out                             ; 1014                                                               ;
+; Total fan-out                               ; 11255                                                              ;
+; Average fan-out                             ; 4.51                                                               ;
++---------------------------------------------+--------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                       ;
-+----------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------+--------------+
-; |Project                   ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 68   ; 0            ; |Project            ; work         ;
-+----------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
++----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                              ; Library Name ;
++----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
+; |Project                               ; 1389 (1342)       ; 906 (903)    ; 524288            ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
+;    |Pll:myPll|                         ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll                                                               ; Pll          ;
+;       |Pll_0002:pll_inst|              ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst                                             ; Pll          ;
+;          |altera_pll:altera_pll_i|     ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i                     ; work         ;
+;    |SevenSeg:ss0|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss0                                                            ; work         ;
+;    |SevenSeg:ss1|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss1                                                            ; work         ;
+;    |SevenSeg:ss2|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss2                                                            ; work         ;
+;    |SevenSeg:ss3|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss3                                                            ; work         ;
+;    |SevenSeg:ss4|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss4                                                            ; work         ;
+;    |SevenSeg:ss5|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss5                                                            ; work         ;
+;    |altsyncram:dmem_rtl_0|             ; 5 (0)             ; 3 (0)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0                                                   ; work         ;
+;       |altsyncram_dbm1:auto_generated| ; 5 (3)             ; 3 (3)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated                    ; work         ;
+;          |decode_5la:decode2|          ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|decode_5la:decode2 ; work         ;
++----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                          ;
++-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------+
+; Name                                                            ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF      ;
++-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------+
+; altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16384        ; 32           ; 16384        ; 32           ; 524288 ; test.mif ;
++-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------+
 
 
 +------------------------------------------------------------------------------------------------------+
@@ -233,215 +278,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+--------------------+-----------------+
 
 
-+---------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                    ;
-+-----------------------------------------+---------------------------------------------+
-; Register name                           ; Reason for Removal                          ;
-+-----------------------------------------+---------------------------------------------+
-; alufunc_A[0..7]                         ; Stuck at GND due to stuck port data_in      ;
-; wrreg_A                                 ; Stuck at GND due to stuck port data_in      ;
-; wrmem_A                                 ; Stuck at GND due to stuck port data_in      ;
-; ldmem_A                                 ; Stuck at GND due to stuck port data_in      ;
-; jmp_A                                   ; Stuck at VCC due to stuck port data_in      ;
-; branch_A                                ; Stuck at VCC due to stuck port data_in      ;
-; pcpred_A[0]                             ; Lost fanout                                 ;
-; wrmem_M                                 ; Stuck at GND due to stuck port data_in      ;
-; ldmem_M                                 ; Stuck at GND due to stuck port data_in      ;
-; wrreg_M                                 ; Stuck at GND due to stuck port data_in      ;
-; wmemval_M[0]                            ; Lost fanout                                 ;
-; RTval_A[0]                              ; Lost fanout                                 ;
-; wmemval_M[1]                            ; Lost fanout                                 ;
-; RTval_A[1]                              ; Lost fanout                                 ;
-; wmemval_M[2]                            ; Lost fanout                                 ;
-; RTval_A[2]                              ; Lost fanout                                 ;
-; wmemval_M[3]                            ; Lost fanout                                 ;
-; RTval_A[3]                              ; Lost fanout                                 ;
-; wmemval_M[4]                            ; Lost fanout                                 ;
-; RTval_A[4]                              ; Lost fanout                                 ;
-; wmemval_M[5]                            ; Lost fanout                                 ;
-; RTval_A[5]                              ; Lost fanout                                 ;
-; wmemval_M[6]                            ; Lost fanout                                 ;
-; RTval_A[6]                              ; Lost fanout                                 ;
-; wmemval_M[7]                            ; Lost fanout                                 ;
-; RTval_A[7]                              ; Lost fanout                                 ;
-; wmemval_M[8]                            ; Lost fanout                                 ;
-; RTval_A[8]                              ; Lost fanout                                 ;
-; wmemval_M[9]                            ; Lost fanout                                 ;
-; RTval_A[9]                              ; Lost fanout                                 ;
-; wmemval_M[10]                           ; Lost fanout                                 ;
-; RTval_A[10]                             ; Lost fanout                                 ;
-; wmemval_M[11]                           ; Lost fanout                                 ;
-; RTval_A[11]                             ; Lost fanout                                 ;
-; wmemval_M[12]                           ; Lost fanout                                 ;
-; RTval_A[12]                             ; Lost fanout                                 ;
-; wmemval_M[13]                           ; Lost fanout                                 ;
-; RTval_A[13]                             ; Lost fanout                                 ;
-; wmemval_M[14]                           ; Lost fanout                                 ;
-; RTval_A[14]                             ; Lost fanout                                 ;
-; wmemval_M[15]                           ; Lost fanout                                 ;
-; RTval_A[15]                             ; Lost fanout                                 ;
-; wmemval_M[16]                           ; Lost fanout                                 ;
-; RTval_A[16]                             ; Lost fanout                                 ;
-; wmemval_M[17]                           ; Lost fanout                                 ;
-; RTval_A[17]                             ; Lost fanout                                 ;
-; wmemval_M[18]                           ; Lost fanout                                 ;
-; RTval_A[18]                             ; Lost fanout                                 ;
-; wmemval_M[19]                           ; Lost fanout                                 ;
-; RTval_A[19]                             ; Lost fanout                                 ;
-; wmemval_M[20]                           ; Lost fanout                                 ;
-; RTval_A[20]                             ; Lost fanout                                 ;
-; wmemval_M[21]                           ; Lost fanout                                 ;
-; RTval_A[21]                             ; Lost fanout                                 ;
-; wmemval_M[22]                           ; Lost fanout                                 ;
-; RTval_A[22]                             ; Lost fanout                                 ;
-; wmemval_M[23]                           ; Lost fanout                                 ;
-; RTval_A[23]                             ; Lost fanout                                 ;
-; wmemval_M[24]                           ; Lost fanout                                 ;
-; RTval_A[24]                             ; Lost fanout                                 ;
-; wmemval_M[25]                           ; Lost fanout                                 ;
-; RTval_A[25]                             ; Lost fanout                                 ;
-; wmemval_M[26]                           ; Lost fanout                                 ;
-; RTval_A[26]                             ; Lost fanout                                 ;
-; wmemval_M[27]                           ; Lost fanout                                 ;
-; RTval_A[27]                             ; Lost fanout                                 ;
-; wmemval_M[28]                           ; Lost fanout                                 ;
-; RTval_A[28]                             ; Lost fanout                                 ;
-; wmemval_M[29]                           ; Lost fanout                                 ;
-; RTval_A[29]                             ; Lost fanout                                 ;
-; wmemval_M[30]                           ; Lost fanout                                 ;
-; RTval_A[30]                             ; Lost fanout                                 ;
-; wmemval_M[31]                           ; Lost fanout                                 ;
-; RTval_A[31]                             ; Lost fanout                                 ;
-; regs[0][0]                              ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[0]                            ; Lost fanout                                 ;
-; regs[0][31]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[31]                           ; Lost fanout                                 ;
-; regs[0][30]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[30]                           ; Lost fanout                                 ;
-; regs[0][29]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[29]                           ; Lost fanout                                 ;
-; regs[0][28]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[28]                           ; Lost fanout                                 ;
-; regs[0][27]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[27]                           ; Lost fanout                                 ;
-; regs[0][26]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[26]                           ; Lost fanout                                 ;
-; regs[0][25]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[25]                           ; Lost fanout                                 ;
-; regs[0][24]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[24]                           ; Lost fanout                                 ;
-; regs[0][23]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[23]                           ; Lost fanout                                 ;
-; regs[0][22]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[22]                           ; Lost fanout                                 ;
-; regs[0][21]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[21]                           ; Lost fanout                                 ;
-; regs[0][20]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[20]                           ; Lost fanout                                 ;
-; regs[0][19]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[19]                           ; Lost fanout                                 ;
-; regs[0][18]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[18]                           ; Lost fanout                                 ;
-; regs[0][17]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[17]                           ; Lost fanout                                 ;
-; regs[0][16]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[16]                           ; Lost fanout                                 ;
-; regs[0][15]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[15]                           ; Lost fanout                                 ;
-; regs[0][14]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[14]                           ; Lost fanout                                 ;
-; regs[0][13]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[13]                           ; Lost fanout                                 ;
-; regs[0][12]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[12]                           ; Lost fanout                                 ;
-; regs[0][11]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[11]                           ; Lost fanout                                 ;
-; regs[0][10]                             ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[10]                           ; Lost fanout                                 ;
-; regs[0][9]                              ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[9]                            ; Lost fanout                                 ;
-; regs[0][8]                              ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[8]                            ; Lost fanout                                 ;
-; regs[0][7]                              ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[7]                            ; Lost fanout                                 ;
-; regs[0][6]                              ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[6]                            ; Lost fanout                                 ;
-; regs[0][5]                              ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[5]                            ; Lost fanout                                 ;
-; regs[0][4]                              ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[4]                            ; Lost fanout                                 ;
-; regs[0][3]                              ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[3]                            ; Lost fanout                                 ;
-; regs[0][2]                              ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[2]                            ; Lost fanout                                 ;
-; regs[0][1]                              ; Stuck at GND due to stuck port clock_enable ;
-; memaddr_M[1]                            ; Lost fanout                                 ;
-; destreg_M[0..3]                         ; Lost fanout                                 ;
-; PC[0]                                   ; Lost fanout                                 ;
-; PC[1]                                   ; Stuck at GND due to stuck port data_in      ;
-; isnop_A                                 ; Stuck at VCC due to stuck port data_in      ;
-; aluin1_A[0..31]                         ; Stuck at GND due to stuck port data_in      ;
-; aluin2_A[0..31]                         ; Stuck at GND due to stuck port data_in      ;
-; pcpred_A[1..31]                         ; Lost fanout                                 ;
-; isnop_M                                 ; Stuck at VCC due to stuck port data_in      ;
-; destreg_A[0..3]                         ; Lost fanout                                 ;
-; PC[2..31]                               ; Lost fanout                                 ;
-; HEXout[0,2,3,5,7,9..12,14,15,17..22]    ; Merged with HEXout[23]                      ;
-; HEXout[1,4,6,8,13]                      ; Merged with HEXout[16]                      ;
-; HEXout[23]                              ; Stuck at VCC due to stuck port data_in      ;
-; HEXout[16]                              ; Stuck at GND due to stuck port data_in      ;
-; Total Number of Removed Registers = 306 ;                                             ;
-+-----------------------------------------+---------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                               ;
-+---------------+---------------------------+-----------------------------------------------------------------------------------------------+
-; Register name ; Reason for Removal        ; Registers Removed due to This Register                                                        ;
-+---------------+---------------------------+-----------------------------------------------------------------------------------------------+
-; ldmem_A       ; Stuck at GND              ; ldmem_M, regs[0][31], regs[0][30], regs[0][29], regs[0][28], regs[0][27], regs[0][26],        ;
-;               ; due to stuck port data_in ; regs[0][25], regs[0][24], memaddr_M[24], regs[0][23], memaddr_M[23], regs[0][22],             ;
-;               ;                           ; memaddr_M[22], regs[0][21], memaddr_M[21], regs[0][20], memaddr_M[20], regs[0][19],           ;
-;               ;                           ; memaddr_M[19], regs[0][18], memaddr_M[18], regs[0][17], memaddr_M[17], regs[0][16],           ;
-;               ;                           ; memaddr_M[16], regs[0][15], memaddr_M[15], regs[0][14], memaddr_M[14], regs[0][13],           ;
-;               ;                           ; memaddr_M[13], regs[0][12], memaddr_M[12], regs[0][11], memaddr_M[11], regs[0][10],           ;
-;               ;                           ; memaddr_M[10], regs[0][9], memaddr_M[9], regs[0][8], memaddr_M[8], regs[0][7], memaddr_M[7],  ;
-;               ;                           ; regs[0][6], memaddr_M[6], regs[0][5], memaddr_M[5], regs[0][4], memaddr_M[4], regs[0][3],     ;
-;               ;                           ; destreg_M[3], destreg_M[2], destreg_M[1], destreg_M[0], aluin1_A[31], aluin1_A[30],           ;
-;               ;                           ; aluin1_A[29], aluin1_A[28], aluin1_A[27], aluin1_A[26], aluin1_A[25], aluin1_A[24],           ;
-;               ;                           ; aluin1_A[23], aluin1_A[22], aluin1_A[21], aluin1_A[20], aluin1_A[19], aluin1_A[18],           ;
-;               ;                           ; aluin1_A[17], aluin1_A[16], aluin1_A[15], aluin1_A[14], aluin1_A[13], aluin1_A[12],           ;
-;               ;                           ; aluin1_A[11], aluin1_A[10], aluin1_A[9], aluin1_A[8], aluin1_A[7], aluin1_A[6], aluin1_A[5],  ;
-;               ;                           ; aluin1_A[4], aluin1_A[3], aluin2_A[31], aluin2_A[30], aluin2_A[29], aluin2_A[28],             ;
-;               ;                           ; aluin2_A[27], aluin2_A[26], aluin2_A[25], aluin2_A[24], aluin2_A[23], aluin2_A[22],           ;
-;               ;                           ; aluin2_A[21], aluin2_A[20], aluin2_A[19], aluin2_A[18], aluin2_A[17], aluin2_A[16],           ;
-;               ;                           ; aluin2_A[15], aluin2_A[14], aluin2_A[13], aluin2_A[12], aluin2_A[11], aluin2_A[10],           ;
-;               ;                           ; aluin2_A[9], aluin2_A[8], aluin2_A[7], aluin2_A[6], aluin2_A[5], aluin2_A[4], aluin2_A[3],    ;
-;               ;                           ; destreg_A[3], destreg_A[2], destreg_A[1], destreg_A[0]                                        ;
-; wrmem_A       ; Stuck at GND              ; wrmem_M, wmemval_M[0], RTval_A[0], wmemval_M[1], RTval_A[1], wmemval_M[2], RTval_A[2],        ;
-;               ; due to stuck port data_in ; wmemval_M[3], RTval_A[3], wmemval_M[4], RTval_A[4], wmemval_M[5], RTval_A[5], wmemval_M[6],   ;
-;               ;                           ; RTval_A[6], wmemval_M[7], RTval_A[7], wmemval_M[8], RTval_A[8], wmemval_M[9], RTval_A[9],     ;
-;               ;                           ; wmemval_M[10], RTval_A[10], wmemval_M[11], RTval_A[11], wmemval_M[12], RTval_A[12],           ;
-;               ;                           ; wmemval_M[13], RTval_A[13], wmemval_M[14], RTval_A[14], wmemval_M[15], RTval_A[15],           ;
-;               ;                           ; wmemval_M[16], RTval_A[16], wmemval_M[17], RTval_A[17], wmemval_M[18], RTval_A[18],           ;
-;               ;                           ; wmemval_M[19], RTval_A[19], wmemval_M[20], RTval_A[20], wmemval_M[21], RTval_A[21],           ;
-;               ;                           ; wmemval_M[22], RTval_A[22], wmemval_M[23], RTval_A[23], regs[0][0], memaddr_M[0],             ;
-;               ;                           ; memaddr_M[31], memaddr_M[30], memaddr_M[29], memaddr_M[28], memaddr_M[27], memaddr_M[26],     ;
-;               ;                           ; memaddr_M[25], memaddr_M[3], regs[0][2], memaddr_M[2], regs[0][1], memaddr_M[1], aluin1_A[2], ;
-;               ;                           ; aluin1_A[1], aluin1_A[0], aluin2_A[2], aluin2_A[1], aluin2_A[0], HEXout[23], HEXout[16]       ;
-; alufunc_A[7]  ; Stuck at GND              ; pcpred_A[0], PC[0], PC[1], isnop_A, isnop_M                                                   ;
-;               ; due to stuck port data_in ;                                                                                               ;
-; wrreg_A       ; Stuck at GND              ; wrreg_M                                                                                       ;
-;               ; due to stuck port data_in ;                                                                                               ;
-; wmemval_M[24] ; Lost Fanouts              ; RTval_A[24]                                                                                   ;
-; wmemval_M[25] ; Lost Fanouts              ; RTval_A[25]                                                                                   ;
-; wmemval_M[26] ; Lost Fanouts              ; RTval_A[26]                                                                                   ;
-; wmemval_M[27] ; Lost Fanouts              ; RTval_A[27]                                                                                   ;
-; wmemval_M[28] ; Lost Fanouts              ; RTval_A[28]                                                                                   ;
-; wmemval_M[29] ; Lost Fanouts              ; RTval_A[29]                                                                                   ;
-; wmemval_M[30] ; Lost Fanouts              ; RTval_A[30]                                                                                   ;
-; wmemval_M[31] ; Lost Fanouts              ; RTval_A[31]                                                                                   ;
-+---------------+---------------------------+-----------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; alufunc_A[8]                           ; Stuck at GND due to stuck port data_in ;
+; sxtimm_A[15..28]                       ; Merged with sxtimm_A[29]               ;
+; alufunc_A[6,7]                         ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 17 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -449,14 +295,217 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 906   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 570   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 794   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; HEXout[0]                               ; 7       ;
+; HEXout[2]                               ; 7       ;
+; HEXout[3]                               ; 7       ;
+; HEXout[5]                               ; 7       ;
+; HEXout[7]                               ; 7       ;
+; HEXout[9]                               ; 7       ;
+; HEXout[10]                              ; 7       ;
+; HEXout[11]                              ; 7       ;
+; HEXout[12]                              ; 7       ;
+; HEXout[14]                              ; 7       ;
+; HEXout[15]                              ; 7       ;
+; HEXout[17]                              ; 7       ;
+; HEXout[18]                              ; 7       ;
+; HEXout[19]                              ; 7       ;
+; HEXout[20]                              ; 7       ;
+; HEXout[21]                              ; 7       ;
+; HEXout[22]                              ; 7       ;
+; HEXout[23]                              ; 7       ;
+; isnop_M                                 ; 5       ;
+; isnop_A                                 ; 5       ;
+; PC[8]                                   ; 100     ;
+; dmem_rtl_0_bypass[30]                   ; 1       ;
+; dmem_rtl_0_bypass[38]                   ; 1       ;
+; dmem_rtl_0_bypass[92]                   ; 1       ;
+; dmem_rtl_0_bypass[90]                   ; 1       ;
+; dmem_rtl_0_bypass[88]                   ; 1       ;
+; dmem_rtl_0_bypass[87]                   ; 1       ;
+; dmem_rtl_0_bypass[86]                   ; 1       ;
+; dmem_rtl_0_bypass[84]                   ; 1       ;
+; dmem_rtl_0_bypass[82]                   ; 1       ;
+; dmem_rtl_0_bypass[80]                   ; 1       ;
+; dmem_rtl_0_bypass[78]                   ; 1       ;
+; dmem_rtl_0_bypass[76]                   ; 1       ;
+; dmem_rtl_0_bypass[74]                   ; 1       ;
+; dmem_rtl_0_bypass[72]                   ; 1       ;
+; dmem_rtl_0_bypass[70]                   ; 1       ;
+; dmem_rtl_0_bypass[64]                   ; 1       ;
+; dmem_rtl_0_bypass[62]                   ; 1       ;
+; dmem_rtl_0_bypass[60]                   ; 1       ;
+; dmem_rtl_0_bypass[58]                   ; 1       ;
+; dmem_rtl_0_bypass[52]                   ; 1       ;
+; dmem_rtl_0_bypass[51]                   ; 1       ;
+; dmem_rtl_0_bypass[50]                   ; 1       ;
+; dmem_rtl_0_bypass[42]                   ; 1       ;
+; dmem_rtl_0_bypass[56]                   ; 1       ;
+; dmem_rtl_0_bypass[54]                   ; 1       ;
+; dmem_rtl_0_bypass[48]                   ; 1       ;
+; dmem_rtl_0_bypass[46]                   ; 1       ;
+; dmem_rtl_0_bypass[68]                   ; 1       ;
+; dmem_rtl_0_bypass[66]                   ; 1       ;
+; dmem_rtl_0_bypass[44]                   ; 1       ;
+; dmem_rtl_0_bypass[40]                   ; 2       ;
+; dmem_rtl_0_bypass[32]                   ; 1       ;
+; dmem_rtl_0_bypass[34]                   ; 1       ;
+; dmem_rtl_0_bypass[36]                   ; 1       ;
+; Total number of inverted registers = 55 ;         ;
++-----------------------------------------+---------+
+
+
++--------------------------------------------+
+; Registers Added for RAM Pass-Through Logic ;
++-----------------------+--------------------+
+; Register Name         ; RAM Name           ;
++-----------------------+--------------------+
+; dmem_rtl_0_bypass[0]  ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[1]  ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[2]  ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[3]  ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[4]  ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[5]  ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[6]  ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[7]  ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[8]  ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[9]  ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[10] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[11] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[12] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[13] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[14] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[15] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[16] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[17] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[18] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[19] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[20] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[21] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[22] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[23] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[24] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[25] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[26] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[27] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[28] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[29] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[30] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[31] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[32] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[33] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[34] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[35] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[36] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[37] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[38] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[39] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[40] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[41] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[42] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[43] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[44] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[45] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[46] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[47] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[48] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[49] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[50] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[51] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[52] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[53] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[54] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[55] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[56] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[57] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[58] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[59] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[60] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[61] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[62] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[63] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[64] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[65] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[66] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[67] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[68] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[69] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[70] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[71] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[72] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[73] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[74] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[75] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[76] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[77] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[78] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[79] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[80] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[81] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[82] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[83] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[84] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[85] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[86] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[87] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[88] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[89] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[90] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[91] ; dmem_rtl_0         ;
+; dmem_rtl_0_bypass[92] ; dmem_rtl_0         ;
++-----------------------+--------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (No Restructuring Performed)                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Project|PC[1]             ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Project|wrmem_A           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; Yes        ; |Project|aluin1_A[10]      ;
+; 5:1                ; 29 bits   ; 87 LEs        ; 58 LEs               ; 29 LEs                 ; Yes        ; |Project|PC[21]            ;
+; 12:1               ; 6 bits    ; 48 LEs        ; 42 LEs               ; 6 LEs                  ; Yes        ; |Project|alufunc_A[2]      ;
+; 22:1               ; 12 bits   ; 168 LEs       ; 120 LEs              ; 48 LEs                 ; Yes        ; |Project|memaddr_M[23]     ;
+; 25:1               ; 3 bits    ; 48 LEs        ; 42 LEs               ; 6 LEs                  ; Yes        ; |Project|memaddr_M[28]     ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft0        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft0        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftRight0       ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |Project|ShiftRight0       ;
+; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|ShiftLeft0        ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss0|OUT  ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss1|OUT  ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss2|OUT  ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss3|OUT  ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss4|OUT  ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss5|OUT  ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; No         ; |Project|Mux39             ;
+; 22:1               ; 11 bits   ; 154 LEs       ; 132 LEs              ; 22 LEs                 ; No         ; |Project|Selector49        ;
+; 25:1               ; 2 bits    ; 32 LEs        ; 28 LEs               ; 4 LEs                  ; No         ; |Project|Selector56        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Source assignments for altsyncram:dmem_rtl_0|altsyncram_dbm1:auto_generated ;
++---------------------------------+--------------------+------+---------------+
+; Assignment                      ; Value              ; From ; To            ;
++---------------------------------+--------------------+------+---------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -             ;
++---------------------------------+--------------------+------+---------------+
 
 
 +-------------------------------------------------------------------------+
@@ -475,7 +524,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; ADDRLEDR       ; 11111111111111111111000000100000 ; Unsigned Binary     ;
 ; ADDRKEY        ; 11111111111111111111000010000000 ; Unsigned Binary     ;
 ; ADDRSW         ; 11111111111111111111000010010000 ; Unsigned Binary     ;
-; IMEMINITFILE   ; fmedian2.mif                     ; String              ;
+; IMEMINITFILE   ; test.mif                         ; String              ;
 ; IMEMADDRBITS   ; 16                               ; Signed Integer      ;
 ; IMEMWORDBITS   ; 2                                ; Signed Integer      ;
 ; IMEMWORDS      ; 16384                            ; Signed Integer      ;
@@ -495,6 +544,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; OP1_ANDI       ; 100100                           ; Unsigned Binary     ;
 ; OP1_ORI        ; 100101                           ; Unsigned Binary     ;
 ; OP1_XORI       ; 100110                           ; Unsigned Binary     ;
+; JAL_FUNC       ; 00001100                         ; Unsigned Binary     ;
 ; OP2BITS        ; 8                                ; Signed Integer      ;
 ; OP2_EQ         ; 00001000                         ; Unsigned Binary     ;
 ; OP2_LT         ; 00001001                         ; Unsigned Binary     ;
@@ -773,6 +823,87 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: altsyncram:dmem_rtl_0     ;
++------------------------------------+----------------------+----------------+
+; Parameter Name                     ; Value                ; Type           ;
++------------------------------------+----------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped        ;
+; WIDTH_A                            ; 32                   ; Untyped        ;
+; WIDTHAD_A                          ; 14                   ; Untyped        ;
+; NUMWORDS_A                         ; 16384                ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped        ;
+; WIDTH_B                            ; 32                   ; Untyped        ;
+; WIDTHAD_B                          ; 14                   ; Untyped        ;
+; NUMWORDS_B                         ; 16384                ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped        ;
+; BYTE_SIZE                          ; 8                    ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped        ;
+; INIT_FILE                          ; test.mif             ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_dbm1      ; Untyped        ;
++------------------------------------+----------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                  ;
++-------------------------------------------+-----------------------+
+; Name                                      ; Value                 ;
++-------------------------------------------+-----------------------+
+; Number of entity instances                ; 1                     ;
+; Entity Instance                           ; altsyncram:dmem_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT             ;
+;     -- WIDTH_A                            ; 32                    ;
+;     -- NUMWORDS_A                         ; 16384                 ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED          ;
+;     -- WIDTH_B                            ; 32                    ;
+;     -- NUMWORDS_B                         ; 16384                 ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE             ;
++-------------------------------------------+-----------------------+
+
+
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "SevenSeg:ss0"                                                                                                                               ;
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
@@ -827,37 +958,37 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "SXT:sxt"                                                                            ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; IN   ; Input  ; Info     ; Stuck at GND                                                                        ;
-; OUT  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Pll:myPll"                                                                              ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                             ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; outclk_0 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_lcell_comb     ; 2                           ;
-;     normal            ; 2                           ;
-;         0 data inputs ; 2                           ;
+; arriav_ff             ; 906                         ;
+;     CLR               ; 32                          ;
+;     ENA               ; 256                         ;
+;     ENA CLR           ; 538                         ;
+;     plain             ; 80                          ;
+; arriav_lcell_comb     ; 1395                        ;
+;     arith             ; 122                         ;
+;         1 data inputs ; 30                          ;
+;         2 data inputs ; 92                          ;
+;     extend            ; 33                          ;
+;         7 data inputs ; 33                          ;
+;     normal            ; 1208                        ;
+;         1 data inputs ; 26                          ;
+;         2 data inputs ; 49                          ;
+;         3 data inputs ; 49                          ;
+;         4 data inputs ; 170                         ;
+;         5 data inputs ; 203                         ;
+;         6 data inputs ; 711                         ;
+;     shared            ; 32                          ;
+;         2 data inputs ; 32                          ;
 ; boundary_port         ; 68                          ;
+; generic_pll           ; 1                           ;
+; stratixv_ram_block    ; 64                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 0.00                        ;
-; Average LUT depth     ; 0.00                        ;
+; Max LUT depth         ; 7.00                        ;
+; Average LUT depth     ; 4.26                        ;
 +-----------------------+-----------------------------+
 
 
@@ -866,7 +997,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:08     ;
 +----------------+--------------+
 
 
@@ -876,7 +1007,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Tue Mar 28 10:48:21 2017
+    Info: Processing started: Wed Mar 29 20:52:07 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Project -c Project
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 2 entities, in source file project.v
@@ -888,25 +1019,14 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
     Info (12023): Found entity 1: Pll
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
     Info (12023): Found entity 1: Pll_0002
-Warning (10236): Verilog HDL Implicit Net warning at Project.v(85): created implicit net for "clk"
-Warning (10236): Verilog HDL Implicit Net warning at Project.v(175): created implicit net for "rt_dependency"
 Info (12127): Elaborating entity "Project" for the top level hierarchy
-Warning (10858): Verilog HDL warning at Project.v(146): object imem used but never assigned
-Warning (10036): Verilog HDL or VHDL warning at Project.v(153): object "inst_F" assigned a value but never read
-Warning (10858): Verilog HDL warning at Project.v(178): object inst_D used but never assigned
-Warning (10230): Verilog HDL assignment warning at Project.v(85): truncated value with size 4 to match size of target (1)
-Critical Warning (10237): Verilog HDL warning at Project.v(123): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead
-Warning (10240): Verilog HDL Always Construct warning at Project.v(224): inferring latch(es) for variable "jmp_D", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at Project.v(224): inferring latch(es) for variable "branch_D", which holds its previous value in one or more paths through the always construct
-Warning (10764): Verilog HDL warning at Project.v(355): converting signed shift amount to unsigned
-Warning (10764): Verilog HDL warning at Project.v(356): converting signed shift amount to unsigned
-Warning (10235): Verilog HDL Always Construct warning at Project.v(357): variable "pcpred_A" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10230): Verilog HDL assignment warning at Project.v(363): truncated value with size 32 to match size of target (1)
-Critical Warning (10237): Verilog HDL warning at Project.v(416): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead
-Warning (10240): Verilog HDL Always Construct warning at Project.v(462): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
-Warning (10030): Net "inst_D" at Project.v(178) has no driver or initial value, using a default initial value '0'
-Info (10041): Inferred latch for "branch_D" at Project.v(239)
-Info (10041): Inferred latch for "jmp_D" at Project.v(239)
+Warning (10858): Verilog HDL warning at Project.v(150): object imem used but never assigned
+Warning (10036): Verilog HDL or VHDL warning at Project.v(295): object "single_reg_A" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Project.v(365): object "inst_M" assigned a value but never read
+Warning (10764): Verilog HDL warning at Project.v(347): converting signed shift amount to unsigned
+Warning (10764): Verilog HDL warning at Project.v(348): converting signed shift amount to unsigned
+Warning (10235): Verilog HDL Always Construct warning at Project.v(349): variable "pcpred_A" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at Project.v(457): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
 Info (12128): Elaborating entity "Pll" for hierarchy "Pll:myPll"
 Info (12128): Elaborating entity "Pll_0002" for hierarchy "Pll:myPll|Pll_0002:pll_inst"
 Info (12128): Elaborating entity "altera_pll" for hierarchy "Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i"
@@ -975,90 +1095,72 @@ Info (12133): Instantiated megafunction "Pll:myPll|Pll_0002:pll_inst|altera_pll:
     Info (12134): Parameter "pll_subtype" = "General"
 Info (12128): Elaborating entity "SXT" for hierarchy "SXT:sxt"
 Info (12128): Elaborating entity "SevenSeg" for hierarchy "SevenSeg:ss5"
-Warning (14284): Synthesized away the following node(s):
-    Warning (14285): Synthesized away the following PLL node(s):
-        Warning (14320): Synthesized away node "Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0]"
+Warning (276020): Inferred RAM node "dmem_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "imem" is uninferred due to asynchronous read logic
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "dmem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 14
+        Info (286033): Parameter NUMWORDS_A set to 16384
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 14
+        Info (286033): Parameter NUMWORDS_B set to 16384
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to test.mif
+Info (12130): Elaborated megafunction instantiation "altsyncram:dmem_rtl_0"
+Info (12133): Instantiated megafunction "altsyncram:dmem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "14"
+    Info (12134): Parameter "NUMWORDS_A" = "16384"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "14"
+    Info (12134): Parameter "NUMWORDS_B" = "16384"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "test.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_dbm1.tdf
+    Info (12023): Found entity 1: altsyncram_dbm1
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_5la.tdf
+    Info (12023): Found entity 1: decode_5la
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_u0a.tdf
+    Info (12023): Found entity 1: decode_u0a
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_2hb.tdf
+    Info (12023): Found entity 1: mux_2hb
 Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX0[0]" is stuck at VCC
-    Warning (13410): Pin "HEX0[1]" is stuck at GND
-    Warning (13410): Pin "HEX0[2]" is stuck at GND
-    Warning (13410): Pin "HEX0[3]" is stuck at GND
-    Warning (13410): Pin "HEX0[4]" is stuck at GND
-    Warning (13410): Pin "HEX0[5]" is stuck at VCC
-    Warning (13410): Pin "HEX0[6]" is stuck at GND
-    Warning (13410): Pin "HEX1[0]" is stuck at GND
-    Warning (13410): Pin "HEX1[1]" is stuck at GND
-    Warning (13410): Pin "HEX1[2]" is stuck at GND
-    Warning (13410): Pin "HEX1[3]" is stuck at VCC
-    Warning (13410): Pin "HEX1[4]" is stuck at GND
-    Warning (13410): Pin "HEX1[5]" is stuck at GND
-    Warning (13410): Pin "HEX1[6]" is stuck at GND
-    Warning (13410): Pin "HEX2[0]" is stuck at GND
-    Warning (13410): Pin "HEX2[1]" is stuck at VCC
-    Warning (13410): Pin "HEX2[2]" is stuck at VCC
-    Warning (13410): Pin "HEX2[3]" is stuck at GND
-    Warning (13410): Pin "HEX2[4]" is stuck at GND
-    Warning (13410): Pin "HEX2[5]" is stuck at GND
-    Warning (13410): Pin "HEX2[6]" is stuck at GND
-    Warning (13410): Pin "HEX3[0]" is stuck at VCC
-    Warning (13410): Pin "HEX3[1]" is stuck at GND
-    Warning (13410): Pin "HEX3[2]" is stuck at GND
-    Warning (13410): Pin "HEX3[3]" is stuck at GND
-    Warning (13410): Pin "HEX3[4]" is stuck at GND
-    Warning (13410): Pin "HEX3[5]" is stuck at VCC
-    Warning (13410): Pin "HEX3[6]" is stuck at GND
-    Warning (13410): Pin "HEX4[0]" is stuck at GND
-    Warning (13410): Pin "HEX4[1]" is stuck at VCC
-    Warning (13410): Pin "HEX4[2]" is stuck at VCC
-    Warning (13410): Pin "HEX4[3]" is stuck at GND
-    Warning (13410): Pin "HEX4[4]" is stuck at GND
-    Warning (13410): Pin "HEX4[5]" is stuck at GND
-    Warning (13410): Pin "HEX4[6]" is stuck at GND
-    Warning (13410): Pin "HEX5[0]" is stuck at GND
-    Warning (13410): Pin "HEX5[1]" is stuck at VCC
-    Warning (13410): Pin "HEX5[2]" is stuck at VCC
-    Warning (13410): Pin "HEX5[3]" is stuck at VCC
-    Warning (13410): Pin "HEX5[4]" is stuck at GND
-    Warning (13410): Pin "HEX5[5]" is stuck at GND
-    Warning (13410): Pin "HEX5[6]" is stuck at GND
-    Warning (13410): Pin "LEDR[0]" is stuck at GND
-    Warning (13410): Pin "LEDR[1]" is stuck at GND
-    Warning (13410): Pin "LEDR[2]" is stuck at GND
-    Warning (13410): Pin "LEDR[3]" is stuck at GND
-    Warning (13410): Pin "LEDR[4]" is stuck at GND
-    Warning (13410): Pin "LEDR[5]" is stuck at GND
-    Warning (13410): Pin "LEDR[6]" is stuck at GND
-    Warning (13410): Pin "LEDR[7]" is stuck at GND
-    Warning (13410): Pin "LEDR[8]" is stuck at GND
-    Warning (13410): Pin "LEDR[9]" is stuck at GND
-Info (17049): 167 registers lost all their fanouts during netlist optimizations.
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 16 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "CLOCK_50"
-    Warning (15610): No output dependent on input pin "RESET_N"
-    Warning (15610): No output dependent on input pin "KEY[0]"
-    Warning (15610): No output dependent on input pin "KEY[1]"
-    Warning (15610): No output dependent on input pin "KEY[2]"
-    Warning (15610): No output dependent on input pin "KEY[3]"
-    Warning (15610): No output dependent on input pin "SW[0]"
-    Warning (15610): No output dependent on input pin "SW[1]"
-    Warning (15610): No output dependent on input pin "SW[2]"
-    Warning (15610): No output dependent on input pin "SW[3]"
-    Warning (15610): No output dependent on input pin "SW[4]"
-    Warning (15610): No output dependent on input pin "SW[5]"
-    Warning (15610): No output dependent on input pin "SW[6]"
-    Warning (15610): No output dependent on input pin "SW[7]"
-    Warning (15610): No output dependent on input pin "SW[8]"
-    Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 68 device resources after synthesis - the final resource count might be different
+    Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2278 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 52 output pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 91 warnings
+    Info (21061): Implemented 2145 logic cells
+    Info (21064): Implemented 64 RAM segments
+    Info (21065): Implemented 1 PLLs
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 10 warnings
     Info: Peak virtual memory: 788 megabytes
-    Info: Processing ended: Tue Mar 28 10:48:23 2017
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Processing ended: Wed Mar 29 20:52:19 2017
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:11
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Project.map.smsg.
 
 

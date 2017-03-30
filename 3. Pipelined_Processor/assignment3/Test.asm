@@ -1,7 +1,7 @@
 ; Addresses for I/O
 .NAME	HEX= 0xFFFFF000
 .NAME	LEDR=0xFFFFF020
-.NAME	KEY= 0xFFFFF080C
+.NAME	KEY= 0xFFFFF080
 .NAME	SW=  0xFFFFF090
 
 	; This should never be executed
@@ -209,7 +209,7 @@ JalRet:
 	br		JalWorks
 JalTarg:
 	bne		t0,t1,JalFailed
-	jal		t1,0(t0) 
+	jal		t1,0(t0)
 JalFailed:
 	; Display what's in t0
 	sw		t0,HEX(Zero)

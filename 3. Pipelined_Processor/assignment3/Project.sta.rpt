@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for Project
-Tue Mar 28 10:48:55 2017
+Wed Mar 29 20:54:10 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -18,42 +18,59 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
  10. Slow 1100mV 85C Model Recovery Summary
  11. Slow 1100mV 85C Model Removal Summary
  12. Slow 1100mV 85C Model Minimum Pulse Width Summary
- 13. Slow 1100mV 85C Model Datasheet Report
- 14. Slow 1100mV 85C Model Metastability Report
- 15. Slow 1100mV 0C Model Fmax Summary
- 16. Slow 1100mV 0C Model Setup Summary
- 17. Slow 1100mV 0C Model Hold Summary
- 18. Slow 1100mV 0C Model Recovery Summary
- 19. Slow 1100mV 0C Model Removal Summary
- 20. Slow 1100mV 0C Model Minimum Pulse Width Summary
- 21. Slow 1100mV 0C Model Datasheet Report
- 22. Slow 1100mV 0C Model Metastability Report
- 23. Fast 1100mV 85C Model Setup Summary
- 24. Fast 1100mV 85C Model Hold Summary
- 25. Fast 1100mV 85C Model Recovery Summary
- 26. Fast 1100mV 85C Model Removal Summary
- 27. Fast 1100mV 85C Model Minimum Pulse Width Summary
- 28. Fast 1100mV 85C Model Datasheet Report
- 29. Fast 1100mV 85C Model Metastability Report
- 30. Fast 1100mV 0C Model Setup Summary
- 31. Fast 1100mV 0C Model Hold Summary
- 32. Fast 1100mV 0C Model Recovery Summary
- 33. Fast 1100mV 0C Model Removal Summary
- 34. Fast 1100mV 0C Model Minimum Pulse Width Summary
- 35. Fast 1100mV 0C Model Datasheet Report
- 36. Fast 1100mV 0C Model Metastability Report
- 37. Multicorner Timing Analysis Summary
- 38. Board Trace Model Assignments
- 39. Input Transition Times
- 40. Signal Integrity Metrics (Slow 1100mv 0c Model)
- 41. Signal Integrity Metrics (Slow 1100mv 85c Model)
- 42. Signal Integrity Metrics (Fast 1100mv 0c Model)
- 43. Signal Integrity Metrics (Fast 1100mv 85c Model)
- 44. Clock Transfers
- 45. Report TCCS
- 46. Report RSKM
- 47. Unconstrained Paths
- 48. TimeQuest Timing Analyzer Messages
+ 13. Setup Times
+ 14. Hold Times
+ 15. Clock to Output Times
+ 16. Minimum Clock to Output Times
+ 17. Slow 1100mV 85C Model Metastability Report
+ 18. Slow 1100mV 0C Model Fmax Summary
+ 19. Slow 1100mV 0C Model Setup Summary
+ 20. Slow 1100mV 0C Model Hold Summary
+ 21. Slow 1100mV 0C Model Recovery Summary
+ 22. Slow 1100mV 0C Model Removal Summary
+ 23. Slow 1100mV 0C Model Minimum Pulse Width Summary
+ 24. Setup Times
+ 25. Hold Times
+ 26. Clock to Output Times
+ 27. Minimum Clock to Output Times
+ 28. Slow 1100mV 0C Model Metastability Report
+ 29. Fast 1100mV 85C Model Setup Summary
+ 30. Fast 1100mV 85C Model Hold Summary
+ 31. Fast 1100mV 85C Model Recovery Summary
+ 32. Fast 1100mV 85C Model Removal Summary
+ 33. Fast 1100mV 85C Model Minimum Pulse Width Summary
+ 34. Setup Times
+ 35. Hold Times
+ 36. Clock to Output Times
+ 37. Minimum Clock to Output Times
+ 38. Fast 1100mV 85C Model Metastability Report
+ 39. Fast 1100mV 0C Model Setup Summary
+ 40. Fast 1100mV 0C Model Hold Summary
+ 41. Fast 1100mV 0C Model Recovery Summary
+ 42. Fast 1100mV 0C Model Removal Summary
+ 43. Fast 1100mV 0C Model Minimum Pulse Width Summary
+ 44. Setup Times
+ 45. Hold Times
+ 46. Clock to Output Times
+ 47. Minimum Clock to Output Times
+ 48. Fast 1100mV 0C Model Metastability Report
+ 49. Multicorner Timing Analysis Summary
+ 50. Setup Times
+ 51. Hold Times
+ 52. Clock to Output Times
+ 53. Minimum Clock to Output Times
+ 54. Board Trace Model Assignments
+ 55. Input Transition Times
+ 56. Signal Integrity Metrics (Slow 1100mv 0c Model)
+ 57. Signal Integrity Metrics (Slow 1100mv 85c Model)
+ 58. Signal Integrity Metrics (Fast 1100mv 0c Model)
+ 59. Signal Integrity Metrics (Fast 1100mv 85c Model)
+ 60. Setup Transfers
+ 61. Hold Transfers
+ 62. Report TCCS
+ 63. Report RSKM
+ 64. Unconstrained Paths
+ 65. TimeQuest Timing Analyzer Messages
 
 
 
@@ -106,23 +123,29 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------+--------+--------------------------+
 ; SDC File Path ; Status ; Read at                  ;
 +---------------+--------+--------------------------+
-; Project.sdc   ; OK     ; Tue Mar 28 10:48:52 2017 ;
+; Project.sdc   ; OK     ; Wed Mar 29 20:53:55 2017 ;
 +---------------+--------+--------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clocks                                                                                                                                                                               ;
-+------------+------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
-; Clock Name ; Type ; Period ; Frequency ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets      ;
-+------------+------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
-; CLOCK_50   ; Base ; 20.000 ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK_50 } ;
-+------------+------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
++-----------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------+
+; Clock Name                                                            ; Type      ; Period ; Frequency ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master                                                              ; Source                                                                   ; Targets                                                                   ;
++-----------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------+
+; CLOCK_50                                                              ; Base      ; 20.000 ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                     ;                                                                          ; { CLOCK_50 }                                                              ;
+; myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; Generated ; 3.333  ; 300.0 MHz ; 0.000 ; 1.666  ; 50.00      ; 2         ; 12          ;       ;        ;           ;            ; false    ; CLOCK_50                                                            ; myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin      ; { myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] }   ;
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; Generated ; 20.000 ; 50.0 MHz  ; 0.000 ; 10.000 ; 50.00      ; 6         ; 1           ;       ;        ;           ;            ; false    ; myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|vco0ph[0] ; { myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk } ;
++-----------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------+
 
 
---------------------------------------
-; Slow 1100mV 85C Model Fmax Summary ;
---------------------------------------
-No paths to report.
++------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Fmax Summary                                                                         ;
++-----------+-----------------+-----------------------------------------------------------------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name                                                            ; Note ;
++-----------+-----------------+-----------------------------------------------------------------------+------+
+; 89.11 MHz ; 89.11 MHz       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
++-----------+-----------------+-----------------------------------------------------------------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
 ----------------------------------
@@ -131,16 +154,22 @@ No paths to report.
 HTML report is unavailable in plain text report export.
 
 
----------------------------------------
-; Slow 1100mV 85C Model Setup Summary ;
----------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Setup Summary                                                           ;
++-----------------------------------------------------------------------+-------+---------------+
+; Clock                                                                 ; Slack ; End Point TNS ;
++-----------------------------------------------------------------------+-------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8.778 ; 0.000         ;
++-----------------------------------------------------------------------+-------+---------------+
 
 
---------------------------------------
-; Slow 1100mV 85C Model Hold Summary ;
---------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Hold Summary                                                            ;
++-----------------------------------------------------------------------+-------+---------------+
+; Clock                                                                 ; Slack ; End Point TNS ;
++-----------------------------------------------------------------------+-------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.430 ; 0.000         ;
++-----------------------------------------------------------------------+-------+---------------+
 
 
 ------------------------------------------
@@ -155,16 +184,197 @@ No paths to report.
 No paths to report.
 
 
------------------------------------------------------
-; Slow 1100mV 85C Model Minimum Pulse Width Summary ;
------------------------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Minimum Pulse Width Summary                                             ;
++-----------------------------------------------------------------------+-------+---------------+
+; Clock                                                                 ; Slack ; End Point TNS ;
++-----------------------------------------------------------------------+-------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666 ; 0.000         ;
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8.596 ; 0.000         ;
+; CLOCK_50                                                              ; 9.731 ; 0.000         ;
++-----------------------------------------------------------------------+-------+---------------+
 
 
-------------------------------------------
-; Slow 1100mV 85C Model Datasheet Report ;
-------------------------------------------
-Nothing to report.
++-------------------------------------------------------------------------------------------------------------------------------+
+; Setup Times                                                                                                                   ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; KEY[*]    ; CLOCK_50   ; 4.694  ; 4.994  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[0]   ; CLOCK_50   ; 0.665  ; 0.894  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[1]   ; CLOCK_50   ; 4.694  ; 4.994  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[2]   ; CLOCK_50   ; -0.258 ; 0.091  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[3]   ; CLOCK_50   ; -0.150 ; 0.282  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; SW[*]     ; CLOCK_50   ; 4.195  ; 4.966  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[0]    ; CLOCK_50   ; 4.195  ; 4.966  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[1]    ; CLOCK_50   ; 0.337  ; 1.026  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[2]    ; CLOCK_50   ; -0.252 ; 0.367  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[3]    ; CLOCK_50   ; -0.621 ; 0.055  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[4]    ; CLOCK_50   ; 3.373  ; 4.327  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[5]    ; CLOCK_50   ; 0.097  ; 0.790  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[6]    ; CLOCK_50   ; -0.835 ; -0.111 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[7]    ; CLOCK_50   ; 3.319  ; 4.249  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[8]    ; CLOCK_50   ; -0.877 ; -0.293 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[9]    ; CLOCK_50   ; 2.992  ; 3.780  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Hold Times                                                                                                                    ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; KEY[*]    ; CLOCK_50   ; 3.475  ; 3.069  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[0]   ; CLOCK_50   ; 2.324  ; 1.841  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[1]   ; CLOCK_50   ; -0.759 ; -1.146 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[2]   ; CLOCK_50   ; 3.475  ; 3.069  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[3]   ; CLOCK_50   ; 3.327  ; 2.789  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; SW[*]     ; CLOCK_50   ; 3.997  ; 3.570  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[0]    ; CLOCK_50   ; -1.208 ; -1.635 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[1]    ; CLOCK_50   ; 3.114  ; 2.550  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[2]    ; CLOCK_50   ; 3.516  ; 3.088  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[3]    ; CLOCK_50   ; 3.585  ; 3.117  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[4]    ; CLOCK_50   ; -0.176 ; -0.802 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[5]    ; CLOCK_50   ; 3.268  ; 2.891  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[6]    ; CLOCK_50   ; 3.793  ; 3.268  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[7]    ; CLOCK_50   ; 0.452  ; -0.141 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[8]    ; CLOCK_50   ; 3.997  ; 3.570  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[9]    ; CLOCK_50   ; 0.074  ; -0.459 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                                                         ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; HEX0[*]   ; CLOCK_50   ; 12.333 ; 12.428 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[0]  ; CLOCK_50   ; 12.333 ; 12.428 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[1]  ; CLOCK_50   ; 12.042 ; 12.081 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[2]  ; CLOCK_50   ; 11.828 ; 11.842 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[3]  ; CLOCK_50   ; 12.061 ; 12.105 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[4]  ; CLOCK_50   ; 11.820 ; 11.846 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[5]  ; CLOCK_50   ; 12.182 ; 12.292 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[6]  ; CLOCK_50   ; 12.204 ; 12.121 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX1[*]   ; CLOCK_50   ; 12.235 ; 12.232 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[0]  ; CLOCK_50   ; 11.936 ; 12.031 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[1]  ; CLOCK_50   ; 11.907 ; 12.000 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[2]  ; CLOCK_50   ; 12.079 ; 12.203 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[3]  ; CLOCK_50   ; 12.126 ; 12.232 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[4]  ; CLOCK_50   ; 11.816 ; 11.863 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[5]  ; CLOCK_50   ; 11.945 ; 12.055 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[6]  ; CLOCK_50   ; 12.235 ; 12.115 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX2[*]   ; CLOCK_50   ; 12.746 ; 12.574 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[0]  ; CLOCK_50   ; 12.099 ; 12.195 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[1]  ; CLOCK_50   ; 12.049 ; 12.164 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[2]  ; CLOCK_50   ; 12.000 ; 12.154 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[3]  ; CLOCK_50   ; 11.952 ; 12.037 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[4]  ; CLOCK_50   ; 11.650 ; 11.648 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[5]  ; CLOCK_50   ; 12.023 ; 12.045 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[6]  ; CLOCK_50   ; 12.746 ; 12.574 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX3[*]   ; CLOCK_50   ; 12.105 ; 12.208 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[0]  ; CLOCK_50   ; 11.941 ; 11.995 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[1]  ; CLOCK_50   ; 12.047 ; 12.208 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[2]  ; CLOCK_50   ; 11.656 ; 11.665 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[3]  ; CLOCK_50   ; 12.017 ; 12.075 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[4]  ; CLOCK_50   ; 11.845 ; 11.895 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[5]  ; CLOCK_50   ; 12.015 ; 12.138 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[6]  ; CLOCK_50   ; 12.105 ; 12.013 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX4[*]   ; CLOCK_50   ; 12.536 ; 12.839 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[0]  ; CLOCK_50   ; 12.018 ; 12.071 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[1]  ; CLOCK_50   ; 12.313 ; 12.389 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[2]  ; CLOCK_50   ; 12.045 ; 12.162 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[3]  ; CLOCK_50   ; 12.536 ; 12.839 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[4]  ; CLOCK_50   ; 12.098 ; 12.241 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[5]  ; CLOCK_50   ; 12.258 ; 12.421 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[6]  ; CLOCK_50   ; 11.996 ; 11.897 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX5[*]   ; CLOCK_50   ; 13.329 ; 13.669 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[0]  ; CLOCK_50   ; 11.685 ; 11.764 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[1]  ; CLOCK_50   ; 11.907 ; 12.016 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[2]  ; CLOCK_50   ; 11.952 ; 12.040 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[3]  ; CLOCK_50   ; 12.147 ; 12.213 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[4]  ; CLOCK_50   ; 13.329 ; 13.669 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[5]  ; CLOCK_50   ; 13.035 ; 13.198 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[6]  ; CLOCK_50   ; 11.994 ; 11.914 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]   ; CLOCK_50   ; 12.400 ; 12.496 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[0]  ; CLOCK_50   ; 12.027 ; 12.098 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[1]  ; CLOCK_50   ; 11.974 ; 12.049 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[2]  ; CLOCK_50   ; 11.964 ; 11.975 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[3]  ; CLOCK_50   ; 11.917 ; 11.999 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[4]  ; CLOCK_50   ; 11.979 ; 12.003 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[5]  ; CLOCK_50   ; 11.932 ; 12.005 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[6]  ; CLOCK_50   ; 11.581 ; 11.579 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[7]  ; CLOCK_50   ; 11.921 ; 11.964 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[8]  ; CLOCK_50   ; 12.200 ; 12.355 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[9]  ; CLOCK_50   ; 12.400 ; 12.496 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                                                                 ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; HEX0[*]   ; CLOCK_50   ; 10.674 ; 10.697 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[0]  ; CLOCK_50   ; 11.097 ; 11.172 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[1]  ; CLOCK_50   ; 10.869 ; 10.892 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[2]  ; CLOCK_50   ; 10.684 ; 10.697 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[3]  ; CLOCK_50   ; 10.887 ; 10.914 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[4]  ; CLOCK_50   ; 10.674 ; 10.697 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[5]  ; CLOCK_50   ; 10.967 ; 11.066 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[6]  ; CLOCK_50   ; 11.005 ; 10.926 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX1[*]   ; CLOCK_50   ; 10.672 ; 10.714 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[0]  ; CLOCK_50   ; 10.786 ; 10.875 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[1]  ; CLOCK_50   ; 10.748 ; 10.830 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[2]  ; CLOCK_50   ; 10.907 ; 11.008 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[3]  ; CLOCK_50   ; 10.919 ; 11.016 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[4]  ; CLOCK_50   ; 10.672 ; 10.714 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[5]  ; CLOCK_50   ; 10.776 ; 10.869 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[6]  ; CLOCK_50   ; 11.020 ; 10.911 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX2[*]   ; CLOCK_50   ; 10.507 ; 10.502 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[0]  ; CLOCK_50   ; 10.903 ; 10.958 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[1]  ; CLOCK_50   ; 10.848 ; 10.952 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[2]  ; CLOCK_50   ; 10.802 ; 10.941 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[3]  ; CLOCK_50   ; 10.788 ; 10.865 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[4]  ; CLOCK_50   ; 10.507 ; 10.502 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[5]  ; CLOCK_50   ; 10.856 ; 10.868 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[6]  ; CLOCK_50   ; 11.467 ; 11.301 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX3[*]   ; CLOCK_50   ; 10.513 ; 10.521 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[0]  ; CLOCK_50   ; 10.744 ; 10.790 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[1]  ; CLOCK_50   ; 10.852 ; 10.974 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[2]  ; CLOCK_50   ; 10.513 ; 10.521 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[3]  ; CLOCK_50   ; 10.839 ; 10.880 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[4]  ; CLOCK_50   ; 10.673 ; 10.705 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[5]  ; CLOCK_50   ; 10.806 ; 10.918 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[6]  ; CLOCK_50   ; 10.889 ; 10.807 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX4[*]   ; CLOCK_50   ; 10.788 ; 10.701 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[0]  ; CLOCK_50   ; 10.846 ; 10.881 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[1]  ; CLOCK_50   ; 11.071 ; 11.127 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[2]  ; CLOCK_50   ; 10.837 ; 10.941 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[3]  ; CLOCK_50   ; 11.257 ; 11.424 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[4]  ; CLOCK_50   ; 10.885 ; 10.969 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[5]  ; CLOCK_50   ; 11.043 ; 11.141 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[6]  ; CLOCK_50   ; 10.788 ; 10.701 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX5[*]   ; CLOCK_50   ; 10.543 ; 10.618 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[0]  ; CLOCK_50   ; 10.543 ; 10.618 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[1]  ; CLOCK_50   ; 10.711 ; 10.807 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[2]  ; CLOCK_50   ; 10.750 ; 10.827 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[3]  ; CLOCK_50   ; 10.921 ; 10.968 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[4]  ; CLOCK_50   ; 12.027 ; 12.210 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[5]  ; CLOCK_50   ; 11.761 ; 11.832 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[6]  ; CLOCK_50   ; 10.791 ; 10.718 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]   ; CLOCK_50   ; 10.468 ; 10.469 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[0]  ; CLOCK_50   ; 10.870 ; 10.913 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[1]  ; CLOCK_50   ; 10.810 ; 10.850 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[2]  ; CLOCK_50   ; 10.796 ; 10.785 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[3]  ; CLOCK_50   ; 10.755 ; 10.805 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[4]  ; CLOCK_50   ; 10.811 ; 10.813 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[5]  ; CLOCK_50   ; 10.766 ; 10.805 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[6]  ; CLOCK_50   ; 10.468 ; 10.469 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[7]  ; CLOCK_50   ; 10.762 ; 10.776 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[8]  ; CLOCK_50   ; 11.013 ; 11.118 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[9]  ; CLOCK_50   ; 11.202 ; 11.243 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
 
 
 ----------------------------------------------
@@ -173,22 +383,32 @@ Nothing to report.
 No synchronizer chains to report.
 
 
--------------------------------------
-; Slow 1100mV 0C Model Fmax Summary ;
--------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary                                                                         ;
++----------+-----------------+-----------------------------------------------------------------------+------+
+; Fmax     ; Restricted Fmax ; Clock Name                                                            ; Note ;
++----------+-----------------+-----------------------------------------------------------------------+------+
+; 94.2 MHz ; 94.2 MHz        ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
++----------+-----------------+-----------------------------------------------------------------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
---------------------------------------
-; Slow 1100mV 0C Model Setup Summary ;
---------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Setup Summary                                                            ;
++-----------------------------------------------------------------------+-------+---------------+
+; Clock                                                                 ; Slack ; End Point TNS ;
++-----------------------------------------------------------------------+-------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 9.384 ; 0.000         ;
++-----------------------------------------------------------------------+-------+---------------+
 
 
--------------------------------------
-; Slow 1100mV 0C Model Hold Summary ;
--------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Hold Summary                                                             ;
++-----------------------------------------------------------------------+-------+---------------+
+; Clock                                                                 ; Slack ; End Point TNS ;
++-----------------------------------------------------------------------+-------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.443 ; 0.000         ;
++-----------------------------------------------------------------------+-------+---------------+
 
 
 -----------------------------------------
@@ -203,16 +423,197 @@ No paths to report.
 No paths to report.
 
 
-----------------------------------------------------
-; Slow 1100mV 0C Model Minimum Pulse Width Summary ;
-----------------------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Minimum Pulse Width Summary                                              ;
++-----------------------------------------------------------------------+-------+---------------+
+; Clock                                                                 ; Slack ; End Point TNS ;
++-----------------------------------------------------------------------+-------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666 ; 0.000         ;
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8.557 ; 0.000         ;
+; CLOCK_50                                                              ; 9.741 ; 0.000         ;
++-----------------------------------------------------------------------+-------+---------------+
 
 
------------------------------------------
-; Slow 1100mV 0C Model Datasheet Report ;
------------------------------------------
-Nothing to report.
++-------------------------------------------------------------------------------------------------------------------------------+
+; Setup Times                                                                                                                   ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; KEY[*]    ; CLOCK_50   ; 4.014  ; 4.360  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[0]   ; CLOCK_50   ; 0.345  ; 0.612  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[1]   ; CLOCK_50   ; 4.014  ; 4.360  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[2]   ; CLOCK_50   ; -0.436 ; -0.022 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[3]   ; CLOCK_50   ; -0.406 ; 0.023  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; SW[*]     ; CLOCK_50   ; 3.451  ; 4.325  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[0]    ; CLOCK_50   ; 3.451  ; 4.325  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[1]    ; CLOCK_50   ; 0.066  ; 0.835  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[2]    ; CLOCK_50   ; -0.437 ; 0.264  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[3]    ; CLOCK_50   ; -0.906 ; -0.135 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[4]    ; CLOCK_50   ; 2.737  ; 3.792  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[5]    ; CLOCK_50   ; -0.227 ; 0.607  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[6]    ; CLOCK_50   ; -0.982 ; -0.232 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[7]    ; CLOCK_50   ; 2.696  ; 3.727  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[8]    ; CLOCK_50   ; -1.025 ; -0.394 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[9]    ; CLOCK_50   ; 2.381  ; 3.275  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Hold Times                                                                                                                    ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; KEY[*]    ; CLOCK_50   ; 3.549  ; 3.082  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[0]   ; CLOCK_50   ; 2.482  ; 1.969  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[1]   ; CLOCK_50   ; -0.268 ; -0.693 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[2]   ; CLOCK_50   ; 3.549  ; 3.082  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[3]   ; CLOCK_50   ; 3.444  ; 2.885  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; SW[*]     ; CLOCK_50   ; 4.043  ; 3.588  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[0]    ; CLOCK_50   ; -0.696 ; -1.224 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[1]    ; CLOCK_50   ; 3.221  ; 2.601  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[2]    ; CLOCK_50   ; 3.609  ; 3.162  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[3]    ; CLOCK_50   ; 3.701  ; 3.180  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[4]    ; CLOCK_50   ; 0.270  ; -0.394 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[5]    ; CLOCK_50   ; 3.393  ; 2.946  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[6]    ; CLOCK_50   ; 3.829  ; 3.284  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[7]    ; CLOCK_50   ; 0.901  ; 0.245  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[8]    ; CLOCK_50   ; 4.043  ; 3.588  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[9]    ; CLOCK_50   ; 0.547  ; -0.060 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                                                         ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; HEX0[*]   ; CLOCK_50   ; 12.020 ; 12.094 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[0]  ; CLOCK_50   ; 12.020 ; 12.094 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[1]  ; CLOCK_50   ; 11.742 ; 11.776 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[2]  ; CLOCK_50   ; 11.540 ; 11.546 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[3]  ; CLOCK_50   ; 11.762 ; 11.798 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[4]  ; CLOCK_50   ; 11.534 ; 11.549 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[5]  ; CLOCK_50   ; 11.883 ; 11.960 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[6]  ; CLOCK_50   ; 11.887 ; 11.822 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX1[*]   ; CLOCK_50   ; 11.910 ; 11.927 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[0]  ; CLOCK_50   ; 11.660 ; 11.738 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[1]  ; CLOCK_50   ; 11.634 ; 11.694 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[2]  ; CLOCK_50   ; 11.784 ; 11.890 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[3]  ; CLOCK_50   ; 11.829 ; 11.927 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[4]  ; CLOCK_50   ; 11.534 ; 11.570 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[5]  ; CLOCK_50   ; 11.645 ; 11.738 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[6]  ; CLOCK_50   ; 11.910 ; 11.814 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX2[*]   ; CLOCK_50   ; 12.394 ; 12.287 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[0]  ; CLOCK_50   ; 11.779 ; 11.873 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[1]  ; CLOCK_50   ; 11.753 ; 11.849 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[2]  ; CLOCK_50   ; 11.703 ; 11.824 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[3]  ; CLOCK_50   ; 11.642 ; 11.727 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[4]  ; CLOCK_50   ; 11.348 ; 11.342 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[5]  ; CLOCK_50   ; 11.727 ; 11.746 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[6]  ; CLOCK_50   ; 12.394 ; 12.287 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX3[*]   ; CLOCK_50   ; 11.778 ; 11.869 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[0]  ; CLOCK_50   ; 11.626 ; 11.677 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[1]  ; CLOCK_50   ; 11.725 ; 11.869 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[2]  ; CLOCK_50   ; 11.364 ; 11.366 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[3]  ; CLOCK_50   ; 11.705 ; 11.765 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[4]  ; CLOCK_50   ; 11.540 ; 11.581 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[5]  ; CLOCK_50   ; 11.709 ; 11.811 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[6]  ; CLOCK_50   ; 11.778 ; 11.695 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX4[*]   ; CLOCK_50   ; 12.182 ; 12.475 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[0]  ; CLOCK_50   ; 11.718 ; 11.767 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[1]  ; CLOCK_50   ; 11.982 ; 12.052 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[2]  ; CLOCK_50   ; 11.739 ; 11.835 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[3]  ; CLOCK_50   ; 12.182 ; 12.475 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[4]  ; CLOCK_50   ; 11.785 ; 11.918 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[5]  ; CLOCK_50   ; 11.914 ; 12.072 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[6]  ; CLOCK_50   ; 11.678 ; 11.587 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX5[*]   ; CLOCK_50   ; 12.940 ; 13.283 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[0]  ; CLOCK_50   ; 11.397 ; 11.462 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[1]  ; CLOCK_50   ; 11.589 ; 11.685 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[2]  ; CLOCK_50   ; 11.638 ; 11.718 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[3]  ; CLOCK_50   ; 11.818 ; 11.883 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[4]  ; CLOCK_50   ; 12.940 ; 13.283 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[5]  ; CLOCK_50   ; 12.623 ; 12.829 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[6]  ; CLOCK_50   ; 11.670 ; 11.605 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]   ; CLOCK_50   ; 12.075 ; 12.168 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[0]  ; CLOCK_50   ; 11.743 ; 11.791 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[1]  ; CLOCK_50   ; 11.687 ; 11.743 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[2]  ; CLOCK_50   ; 11.671 ; 11.665 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[3]  ; CLOCK_50   ; 11.624 ; 11.677 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[4]  ; CLOCK_50   ; 11.707 ; 11.709 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[5]  ; CLOCK_50   ; 11.646 ; 11.701 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[6]  ; CLOCK_50   ; 11.315 ; 11.294 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[7]  ; CLOCK_50   ; 11.623 ; 11.649 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[8]  ; CLOCK_50   ; 11.899 ; 12.032 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[9]  ; CLOCK_50   ; 12.075 ; 12.168 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                                                                 ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; HEX0[*]   ; CLOCK_50   ; 10.495 ; 10.509 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[0]  ; CLOCK_50   ; 10.888 ; 10.949 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[1]  ; CLOCK_50   ; 10.676 ; 10.700 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[2]  ; CLOCK_50   ; 10.503 ; 10.510 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[3]  ; CLOCK_50   ; 10.693 ; 10.721 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[4]  ; CLOCK_50   ; 10.495 ; 10.509 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[5]  ; CLOCK_50   ; 10.772 ; 10.844 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[6]  ; CLOCK_50   ; 10.795 ; 10.733 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX1[*]   ; CLOCK_50   ; 10.495 ; 10.529 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[0]  ; CLOCK_50   ; 10.616 ; 10.690 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[1]  ; CLOCK_50   ; 10.579 ; 10.635 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[2]  ; CLOCK_50   ; 10.719 ; 10.809 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[3]  ; CLOCK_50   ; 10.727 ; 10.818 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[4]  ; CLOCK_50   ; 10.495 ; 10.529 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[5]  ; CLOCK_50   ; 10.581 ; 10.663 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[6]  ; CLOCK_50   ; 10.804 ; 10.716 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX2[*]   ; CLOCK_50   ; 10.311 ; 10.306 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[0]  ; CLOCK_50   ; 10.688 ; 10.755 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[1]  ; CLOCK_50   ; 10.658 ; 10.746 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[2]  ; CLOCK_50   ; 10.611 ; 10.721 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[3]  ; CLOCK_50   ; 10.586 ; 10.663 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[4]  ; CLOCK_50   ; 10.311 ; 10.306 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[5]  ; CLOCK_50   ; 10.667 ; 10.681 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[6]  ; CLOCK_50   ; 11.228 ; 11.122 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX3[*]   ; CLOCK_50   ; 10.327 ; 10.330 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[0]  ; CLOCK_50   ; 10.535 ; 10.580 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[1]  ; CLOCK_50   ; 10.635 ; 10.751 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[2]  ; CLOCK_50   ; 10.327 ; 10.330 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[3]  ; CLOCK_50   ; 10.633 ; 10.684 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[4]  ; CLOCK_50   ; 10.474 ; 10.505 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[5]  ; CLOCK_50   ; 10.606 ; 10.700 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[6]  ; CLOCK_50   ; 10.671 ; 10.596 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX4[*]   ; CLOCK_50   ; 10.579 ; 10.497 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[0]  ; CLOCK_50   ; 10.651 ; 10.689 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[1]  ; CLOCK_50   ; 10.844 ; 10.902 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[2]  ; CLOCK_50   ; 10.636 ; 10.722 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[3]  ; CLOCK_50   ; 11.015 ; 11.197 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[4]  ; CLOCK_50   ; 10.679 ; 10.765 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[5]  ; CLOCK_50   ; 10.808 ; 10.920 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[6]  ; CLOCK_50   ; 10.579 ; 10.497 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX5[*]   ; CLOCK_50   ; 10.363 ; 10.424 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[0]  ; CLOCK_50   ; 10.363 ; 10.424 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[1]  ; CLOCK_50   ; 10.500 ; 10.586 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[2]  ; CLOCK_50   ; 10.542 ; 10.612 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[3]  ; CLOCK_50   ; 10.698 ; 10.751 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[4]  ; CLOCK_50   ; 11.748 ; 11.962 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[5]  ; CLOCK_50   ; 11.464 ; 11.590 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[6]  ; CLOCK_50   ; 10.576 ; 10.516 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]   ; CLOCK_50   ; 10.309 ; 10.292 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[0]  ; CLOCK_50   ; 10.698 ; 10.725 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[1]  ; CLOCK_50   ; 10.635 ; 10.663 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[2]  ; CLOCK_50   ; 10.615 ; 10.593 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[3]  ; CLOCK_50   ; 10.575 ; 10.603 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[4]  ; CLOCK_50   ; 10.649 ; 10.635 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[5]  ; CLOCK_50   ; 10.591 ; 10.619 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[6]  ; CLOCK_50   ; 10.309 ; 10.292 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[7]  ; CLOCK_50   ; 10.574 ; 10.579 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[8]  ; CLOCK_50   ; 10.824 ; 10.916 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[9]  ; CLOCK_50   ; 10.985 ; 11.042 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
 
 
 ---------------------------------------------
@@ -221,16 +622,22 @@ Nothing to report.
 No synchronizer chains to report.
 
 
----------------------------------------
-; Fast 1100mV 85C Model Setup Summary ;
----------------------------------------
-No paths to report.
++------------------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Setup Summary                                                            ;
++-----------------------------------------------------------------------+--------+---------------+
+; Clock                                                                 ; Slack  ; End Point TNS ;
++-----------------------------------------------------------------------+--------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 12.547 ; 0.000         ;
++-----------------------------------------------------------------------+--------+---------------+
 
 
---------------------------------------
-; Fast 1100mV 85C Model Hold Summary ;
---------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Hold Summary                                                            ;
++-----------------------------------------------------------------------+-------+---------------+
+; Clock                                                                 ; Slack ; End Point TNS ;
++-----------------------------------------------------------------------+-------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.180 ; 0.000         ;
++-----------------------------------------------------------------------+-------+---------------+
 
 
 ------------------------------------------
@@ -245,16 +652,197 @@ No paths to report.
 No paths to report.
 
 
------------------------------------------------------
-; Fast 1100mV 85C Model Minimum Pulse Width Summary ;
------------------------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Minimum Pulse Width Summary                                             ;
++-----------------------------------------------------------------------+-------+---------------+
+; Clock                                                                 ; Slack ; End Point TNS ;
++-----------------------------------------------------------------------+-------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666 ; 0.000         ;
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8.883 ; 0.000         ;
+; CLOCK_50                                                              ; 9.336 ; 0.000         ;
++-----------------------------------------------------------------------+-------+---------------+
 
 
-------------------------------------------
-; Fast 1100mV 85C Model Datasheet Report ;
-------------------------------------------
-Nothing to report.
++------------------------------------------------------------------------------------------------------------------------------+
+; Setup Times                                                                                                                  ;
++-----------+------------+--------+-------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall  ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+-------+------------+-----------------------------------------------------------------------+
+; KEY[*]    ; CLOCK_50   ; 2.022  ; 2.715 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[0]   ; CLOCK_50   ; 0.352  ; 1.015 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[1]   ; CLOCK_50   ; 2.022  ; 2.715 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[2]   ; CLOCK_50   ; -0.263 ; 0.485 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[3]   ; CLOCK_50   ; -0.140 ; 0.636 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; SW[*]     ; CLOCK_50   ; 1.799  ; 2.932 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[0]    ; CLOCK_50   ; 1.799  ; 2.932 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[1]    ; CLOCK_50   ; -0.047 ; 1.146 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[2]    ; CLOCK_50   ; -0.362 ; 0.663 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[3]    ; CLOCK_50   ; -0.437 ; 0.577 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[4]    ; CLOCK_50   ; 1.323  ; 2.609 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[5]    ; CLOCK_50   ; -0.126 ; 0.951 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[6]    ; CLOCK_50   ; -0.551 ; 0.588 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[7]    ; CLOCK_50   ; 1.279  ; 2.527 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[8]    ; CLOCK_50   ; -0.659 ; 0.348 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[9]    ; CLOCK_50   ; 1.078  ; 2.220 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+-------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Hold Times                                                                                                                    ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; KEY[*]    ; CLOCK_50   ; 1.852  ; 1.003  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[0]   ; CLOCK_50   ; 1.219  ; 0.306  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[1]   ; CLOCK_50   ; -0.141 ; -0.958 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[2]   ; CLOCK_50   ; 1.852  ; 1.003  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[3]   ; CLOCK_50   ; 1.784  ; 0.859  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; SW[*]     ; CLOCK_50   ; 2.134  ; 1.295  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[0]    ; CLOCK_50   ; -0.413 ; -1.235 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[1]    ; CLOCK_50   ; 1.651  ; 0.659  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[2]    ; CLOCK_50   ; 1.877  ; 1.039  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[3]    ; CLOCK_50   ; 1.879  ; 1.077  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[4]    ; CLOCK_50   ; 0.139  ; -0.829 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[5]    ; CLOCK_50   ; 1.747  ; 0.968  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[6]    ; CLOCK_50   ; 1.971  ; 1.046  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[7]    ; CLOCK_50   ; 0.467  ; -0.471 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[8]    ; CLOCK_50   ; 2.134  ; 1.295  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[9]    ; CLOCK_50   ; 0.312  ; -0.618 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                                                       ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+; HEX0[*]   ; CLOCK_50   ; 6.563 ; 6.633 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[0]  ; CLOCK_50   ; 6.563 ; 6.633 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[1]  ; CLOCK_50   ; 6.389 ; 6.468 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[2]  ; CLOCK_50   ; 6.263 ; 6.313 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[3]  ; CLOCK_50   ; 6.390 ; 6.472 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[4]  ; CLOCK_50   ; 6.283 ; 6.336 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[5]  ; CLOCK_50   ; 6.465 ; 6.535 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[6]  ; CLOCK_50   ; 6.483 ; 6.426 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX1[*]   ; CLOCK_50   ; 6.532 ; 6.574 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[0]  ; CLOCK_50   ; 6.352 ; 6.463 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[1]  ; CLOCK_50   ; 6.344 ; 6.447 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[2]  ; CLOCK_50   ; 6.436 ; 6.574 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[3]  ; CLOCK_50   ; 6.430 ; 6.509 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[4]  ; CLOCK_50   ; 6.264 ; 6.335 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[5]  ; CLOCK_50   ; 6.345 ; 6.470 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[6]  ; CLOCK_50   ; 6.532 ; 6.454 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX2[*]   ; CLOCK_50   ; 6.806 ; 6.713 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[0]  ; CLOCK_50   ; 6.441 ; 6.567 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[1]  ; CLOCK_50   ; 6.397 ; 6.477 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[2]  ; CLOCK_50   ; 6.379 ; 6.480 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[3]  ; CLOCK_50   ; 6.374 ; 6.484 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[4]  ; CLOCK_50   ; 6.177 ; 6.209 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[5]  ; CLOCK_50   ; 6.392 ; 6.459 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[6]  ; CLOCK_50   ; 6.806 ; 6.713 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX3[*]   ; CLOCK_50   ; 6.450 ; 6.573 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[0]  ; CLOCK_50   ; 6.336 ; 6.369 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[1]  ; CLOCK_50   ; 6.402 ; 6.573 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[2]  ; CLOCK_50   ; 6.177 ; 6.220 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[3]  ; CLOCK_50   ; 6.406 ; 6.498 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[4]  ; CLOCK_50   ; 6.287 ; 6.371 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[5]  ; CLOCK_50   ; 6.392 ; 6.474 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[6]  ; CLOCK_50   ; 6.450 ; 6.387 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX4[*]   ; CLOCK_50   ; 6.717 ; 7.008 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[0]  ; CLOCK_50   ; 6.376 ; 6.467 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[1]  ; CLOCK_50   ; 6.548 ; 6.605 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[2]  ; CLOCK_50   ; 6.416 ; 6.498 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[3]  ; CLOCK_50   ; 6.717 ; 7.008 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[4]  ; CLOCK_50   ; 6.450 ; 6.609 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[5]  ; CLOCK_50   ; 6.523 ; 6.709 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[6]  ; CLOCK_50   ; 6.391 ; 6.328 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX5[*]   ; CLOCK_50   ; 7.197 ; 7.557 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[0]  ; CLOCK_50   ; 6.233 ; 6.324 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[1]  ; CLOCK_50   ; 6.338 ; 6.409 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[2]  ; CLOCK_50   ; 6.343 ; 6.401 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[3]  ; CLOCK_50   ; 6.436 ; 6.493 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[4]  ; CLOCK_50   ; 7.197 ; 7.557 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[5]  ; CLOCK_50   ; 6.909 ; 7.151 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[6]  ; CLOCK_50   ; 6.384 ; 6.327 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]   ; CLOCK_50   ; 6.588 ; 6.720 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[0]  ; CLOCK_50   ; 6.407 ; 6.498 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[1]  ; CLOCK_50   ; 6.409 ; 6.500 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[2]  ; CLOCK_50   ; 6.400 ; 6.445 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[3]  ; CLOCK_50   ; 6.373 ; 6.467 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[4]  ; CLOCK_50   ; 6.356 ; 6.407 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[5]  ; CLOCK_50   ; 6.357 ; 6.447 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[6]  ; CLOCK_50   ; 6.165 ; 6.178 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[7]  ; CLOCK_50   ; 6.367 ; 6.434 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[8]  ; CLOCK_50   ; 6.483 ; 6.640 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[9]  ; CLOCK_50   ; 6.588 ; 6.720 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                                                               ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+; HEX0[*]   ; CLOCK_50   ; 5.799 ; 5.846 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[0]  ; CLOCK_50   ; 6.052 ; 6.112 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[1]  ; CLOCK_50   ; 5.909 ; 5.975 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[2]  ; CLOCK_50   ; 5.799 ; 5.846 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[3]  ; CLOCK_50   ; 5.908 ; 5.978 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[4]  ; CLOCK_50   ; 5.818 ; 5.868 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[5]  ; CLOCK_50   ; 5.968 ; 6.034 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[6]  ; CLOCK_50   ; 5.996 ; 5.940 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX1[*]   ; CLOCK_50   ; 5.797 ; 5.864 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[0]  ; CLOCK_50   ; 5.884 ; 5.989 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[1]  ; CLOCK_50   ; 5.869 ; 5.965 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[2]  ; CLOCK_50   ; 5.958 ; 6.078 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[3]  ; CLOCK_50   ; 5.935 ; 6.009 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[4]  ; CLOCK_50   ; 5.797 ; 5.864 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[5]  ; CLOCK_50   ; 5.865 ; 5.978 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[6]  ; CLOCK_50   ; 6.035 ; 5.961 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX2[*]   ; CLOCK_50   ; 5.713 ; 5.743 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[0]  ; CLOCK_50   ; 5.946 ; 6.042 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[1]  ; CLOCK_50   ; 5.906 ; 5.982 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[2]  ; CLOCK_50   ; 5.887 ; 5.981 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[3]  ; CLOCK_50   ; 5.900 ; 6.002 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[4]  ; CLOCK_50   ; 5.713 ; 5.743 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[5]  ; CLOCK_50   ; 5.916 ; 5.973 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[6]  ; CLOCK_50   ; 6.274 ; 6.177 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX3[*]   ; CLOCK_50   ; 5.712 ; 5.753 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[0]  ; CLOCK_50   ; 5.848 ; 5.878 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[1]  ; CLOCK_50   ; 5.907 ; 6.051 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[2]  ; CLOCK_50   ; 5.712 ; 5.753 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[3]  ; CLOCK_50   ; 5.923 ; 6.001 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[4]  ; CLOCK_50   ; 5.807 ; 5.877 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[5]  ; CLOCK_50   ; 5.897 ; 5.974 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[6]  ; CLOCK_50   ; 5.953 ; 5.895 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX4[*]   ; CLOCK_50   ; 5.894 ; 5.838 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[0]  ; CLOCK_50   ; 5.894 ; 5.970 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[1]  ; CLOCK_50   ; 6.034 ; 6.080 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[2]  ; CLOCK_50   ; 5.921 ; 5.996 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[3]  ; CLOCK_50   ; 6.170 ; 6.367 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[4]  ; CLOCK_50   ; 5.942 ; 6.060 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[5]  ; CLOCK_50   ; 6.020 ; 6.156 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[6]  ; CLOCK_50   ; 5.897 ; 5.838 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX5[*]   ; CLOCK_50   ; 5.769 ; 5.841 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[0]  ; CLOCK_50   ; 5.769 ; 5.855 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[1]  ; CLOCK_50   ; 5.847 ; 5.914 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[2]  ; CLOCK_50   ; 5.851 ; 5.905 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[3]  ; CLOCK_50   ; 5.932 ; 5.978 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[4]  ; CLOCK_50   ; 6.638 ; 6.893 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[5]  ; CLOCK_50   ; 6.376 ; 6.564 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[6]  ; CLOCK_50   ; 5.895 ; 5.841 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]   ; CLOCK_50   ; 5.716 ; 5.729 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[0]  ; CLOCK_50   ; 5.932 ; 6.002 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[1]  ; CLOCK_50   ; 5.927 ; 5.991 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[2]  ; CLOCK_50   ; 5.917 ; 5.945 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[3]  ; CLOCK_50   ; 5.894 ; 5.964 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[4]  ; CLOCK_50   ; 5.874 ; 5.909 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[5]  ; CLOCK_50   ; 5.874 ; 5.938 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[6]  ; CLOCK_50   ; 5.716 ; 5.729 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[7]  ; CLOCK_50   ; 5.890 ; 5.937 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[8]  ; CLOCK_50   ; 5.988 ; 6.111 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[9]  ; CLOCK_50   ; 6.090 ; 6.187 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
 
 
 ----------------------------------------------
@@ -263,16 +851,22 @@ Nothing to report.
 No synchronizer chains to report.
 
 
---------------------------------------
-; Fast 1100mV 0C Model Setup Summary ;
---------------------------------------
-No paths to report.
++------------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Setup Summary                                                             ;
++-----------------------------------------------------------------------+--------+---------------+
+; Clock                                                                 ; Slack  ; End Point TNS ;
++-----------------------------------------------------------------------+--------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 12.801 ; 0.000         ;
++-----------------------------------------------------------------------+--------+---------------+
 
 
--------------------------------------
-; Fast 1100mV 0C Model Hold Summary ;
--------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Hold Summary                                                             ;
++-----------------------------------------------------------------------+-------+---------------+
+; Clock                                                                 ; Slack ; End Point TNS ;
++-----------------------------------------------------------------------+-------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.173 ; 0.000         ;
++-----------------------------------------------------------------------+-------+---------------+
 
 
 -----------------------------------------
@@ -287,16 +881,197 @@ No paths to report.
 No paths to report.
 
 
-----------------------------------------------------
-; Fast 1100mV 0C Model Minimum Pulse Width Summary ;
-----------------------------------------------------
-No paths to report.
++-----------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Minimum Pulse Width Summary                                              ;
++-----------------------------------------------------------------------+-------+---------------+
+; Clock                                                                 ; Slack ; End Point TNS ;
++-----------------------------------------------------------------------+-------+---------------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666 ; 0.000         ;
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8.883 ; 0.000         ;
+; CLOCK_50                                                              ; 9.286 ; 0.000         ;
++-----------------------------------------------------------------------+-------+---------------+
 
 
------------------------------------------
-; Fast 1100mV 0C Model Datasheet Report ;
------------------------------------------
-Nothing to report.
++------------------------------------------------------------------------------------------------------------------------------+
+; Setup Times                                                                                                                  ;
++-----------+------------+--------+-------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall  ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+-------+------------+-----------------------------------------------------------------------+
+; KEY[*]    ; CLOCK_50   ; 1.821  ; 2.573 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[0]   ; CLOCK_50   ; 0.117  ; 0.856 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[1]   ; CLOCK_50   ; 1.821  ; 2.573 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[2]   ; CLOCK_50   ; -0.416 ; 0.387 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[3]   ; CLOCK_50   ; -0.340 ; 0.485 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; SW[*]     ; CLOCK_50   ; 1.598  ; 2.732 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[0]    ; CLOCK_50   ; 1.598  ; 2.732 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[1]    ; CLOCK_50   ; -0.225 ; 0.948 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[2]    ; CLOCK_50   ; -0.492 ; 0.568 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[3]    ; CLOCK_50   ; -0.594 ; 0.436 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[4]    ; CLOCK_50   ; 1.229  ; 2.479 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[5]    ; CLOCK_50   ; -0.302 ; 0.803 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[6]    ; CLOCK_50   ; -0.641 ; 0.469 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[7]    ; CLOCK_50   ; 1.190  ; 2.410 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[8]    ; CLOCK_50   ; -0.750 ; 0.270 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[9]    ; CLOCK_50   ; 1.003  ; 2.149 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+-------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Hold Times                                                                                                                    ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; KEY[*]    ; CLOCK_50   ; 1.883  ; 0.999  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[0]   ; CLOCK_50   ; 1.293  ; 0.358  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[1]   ; CLOCK_50   ; -0.090 ; -0.947 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[2]   ; CLOCK_50   ; 1.883  ; 0.999  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[3]   ; CLOCK_50   ; 1.834  ; 0.885  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; SW[*]     ; CLOCK_50   ; 2.111  ; 1.245  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[0]    ; CLOCK_50   ; -0.322 ; -1.200 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[1]    ; CLOCK_50   ; 1.691  ; 0.693  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[2]    ; CLOCK_50   ; 1.903  ; 1.025  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[3]    ; CLOCK_50   ; 1.912  ; 1.069  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[4]    ; CLOCK_50   ; 0.127  ; -0.849 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[5]    ; CLOCK_50   ; 1.782  ; 0.948  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[6]    ; CLOCK_50   ; 1.946  ; 1.021  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[7]    ; CLOCK_50   ; 0.440  ; -0.517 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[8]    ; CLOCK_50   ; 2.111  ; 1.245  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[9]    ; CLOCK_50   ; 0.299  ; -0.654 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                                                       ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+; HEX0[*]   ; CLOCK_50   ; 6.173 ; 6.222 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[0]  ; CLOCK_50   ; 6.173 ; 6.222 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[1]  ; CLOCK_50   ; 6.028 ; 6.086 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[2]  ; CLOCK_50   ; 5.915 ; 5.949 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[3]  ; CLOCK_50   ; 6.031 ; 6.089 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[4]  ; CLOCK_50   ; 5.922 ; 5.959 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[5]  ; CLOCK_50   ; 6.090 ; 6.136 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[6]  ; CLOCK_50   ; 6.105 ; 6.062 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX1[*]   ; CLOCK_50   ; 6.134 ; 6.160 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[0]  ; CLOCK_50   ; 5.996 ; 6.074 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[1]  ; CLOCK_50   ; 5.981 ; 6.053 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[2]  ; CLOCK_50   ; 6.060 ; 6.160 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[3]  ; CLOCK_50   ; 6.067 ; 6.127 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[4]  ; CLOCK_50   ; 5.913 ; 5.963 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[5]  ; CLOCK_50   ; 5.975 ; 6.068 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[6]  ; CLOCK_50   ; 6.134 ; 6.075 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX2[*]   ; CLOCK_50   ; 6.386 ; 6.325 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[0]  ; CLOCK_50   ; 6.047 ; 6.142 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[1]  ; CLOCK_50   ; 6.020 ; 6.081 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[2]  ; CLOCK_50   ; 6.001 ; 6.076 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[3]  ; CLOCK_50   ; 5.982 ; 6.062 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[4]  ; CLOCK_50   ; 5.801 ; 5.823 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[5]  ; CLOCK_50   ; 6.019 ; 6.066 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[6]  ; CLOCK_50   ; 6.386 ; 6.325 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX3[*]   ; CLOCK_50   ; 6.044 ; 6.139 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[0]  ; CLOCK_50   ; 5.947 ; 5.975 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[1]  ; CLOCK_50   ; 6.008 ; 6.139 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[2]  ; CLOCK_50   ; 5.806 ; 5.836 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[3]  ; CLOCK_50   ; 6.012 ; 6.079 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[4]  ; CLOCK_50   ; 5.905 ; 5.964 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[5]  ; CLOCK_50   ; 6.001 ; 6.064 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[6]  ; CLOCK_50   ; 6.044 ; 5.996 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX4[*]   ; CLOCK_50   ; 6.282 ; 6.508 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[0]  ; CLOCK_50   ; 6.018 ; 6.080 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[1]  ; CLOCK_50   ; 6.145 ; 6.186 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[2]  ; CLOCK_50   ; 6.027 ; 6.088 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[3]  ; CLOCK_50   ; 6.282 ; 6.508 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[4]  ; CLOCK_50   ; 6.051 ; 6.170 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[5]  ; CLOCK_50   ; 6.112 ; 6.254 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[6]  ; CLOCK_50   ; 5.987 ; 5.938 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX5[*]   ; CLOCK_50   ; 6.722 ; 7.015 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[0]  ; CLOCK_50   ; 5.854 ; 5.920 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[1]  ; CLOCK_50   ; 5.945 ; 6.002 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[2]  ; CLOCK_50   ; 5.955 ; 6.000 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[3]  ; CLOCK_50   ; 6.036 ; 6.082 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[4]  ; CLOCK_50   ; 6.722 ; 7.015 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[5]  ; CLOCK_50   ; 6.475 ; 6.691 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[6]  ; CLOCK_50   ; 5.988 ; 5.944 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]   ; CLOCK_50   ; 6.182 ; 6.288 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[0]  ; CLOCK_50   ; 6.050 ; 6.113 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[1]  ; CLOCK_50   ; 6.037 ; 6.100 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[2]  ; CLOCK_50   ; 6.014 ; 6.038 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[3]  ; CLOCK_50   ; 5.991 ; 6.054 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[4]  ; CLOCK_50   ; 6.003 ; 6.033 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[5]  ; CLOCK_50   ; 5.986 ; 6.049 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[6]  ; CLOCK_50   ; 5.807 ; 5.808 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[7]  ; CLOCK_50   ; 5.984 ; 6.029 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[8]  ; CLOCK_50   ; 6.112 ; 6.230 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[9]  ; CLOCK_50   ; 6.182 ; 6.288 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                                                               ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+; HEX0[*]   ; CLOCK_50   ; 5.487 ; 5.518 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[0]  ; CLOCK_50   ; 5.700 ; 5.743 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[1]  ; CLOCK_50   ; 5.585 ; 5.634 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[2]  ; CLOCK_50   ; 5.487 ; 5.518 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[3]  ; CLOCK_50   ; 5.586 ; 5.635 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[4]  ; CLOCK_50   ; 5.492 ; 5.526 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[5]  ; CLOCK_50   ; 5.629 ; 5.673 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[6]  ; CLOCK_50   ; 5.653 ; 5.611 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX1[*]   ; CLOCK_50   ; 5.483 ; 5.529 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[0]  ; CLOCK_50   ; 5.563 ; 5.635 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[1]  ; CLOCK_50   ; 5.543 ; 5.608 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[2]  ; CLOCK_50   ; 5.616 ; 5.704 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[3]  ; CLOCK_50   ; 5.609 ; 5.665 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[4]  ; CLOCK_50   ; 5.483 ; 5.529 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[5]  ; CLOCK_50   ; 5.532 ; 5.614 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[6]  ; CLOCK_50   ; 5.674 ; 5.618 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX2[*]   ; CLOCK_50   ; 5.374 ; 5.392 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[0]  ; CLOCK_50   ; 5.591 ; 5.667 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[1]  ; CLOCK_50   ; 5.566 ; 5.623 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[2]  ; CLOCK_50   ; 5.545 ; 5.615 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[3]  ; CLOCK_50   ; 5.543 ; 5.614 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[4]  ; CLOCK_50   ; 5.374 ; 5.392 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[5]  ; CLOCK_50   ; 5.578 ; 5.619 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[6]  ; CLOCK_50   ; 5.895 ; 5.835 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX3[*]   ; CLOCK_50   ; 5.377 ; 5.404 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[0]  ; CLOCK_50   ; 5.495 ; 5.520 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[1]  ; CLOCK_50   ; 5.552 ; 5.663 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[2]  ; CLOCK_50   ; 5.377 ; 5.404 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[3]  ; CLOCK_50   ; 5.566 ; 5.622 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[4]  ; CLOCK_50   ; 5.461 ; 5.511 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[5]  ; CLOCK_50   ; 5.542 ; 5.601 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[6]  ; CLOCK_50   ; 5.583 ; 5.540 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX4[*]   ; CLOCK_50   ; 5.531 ; 5.486 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[0]  ; CLOCK_50   ; 5.572 ; 5.626 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[1]  ; CLOCK_50   ; 5.670 ; 5.704 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[2]  ; CLOCK_50   ; 5.570 ; 5.624 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[3]  ; CLOCK_50   ; 5.781 ; 5.941 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[4]  ; CLOCK_50   ; 5.584 ; 5.674 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[5]  ; CLOCK_50   ; 5.650 ; 5.763 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[6]  ; CLOCK_50   ; 5.531 ; 5.486 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX5[*]   ; CLOCK_50   ; 5.426 ; 5.487 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[0]  ; CLOCK_50   ; 5.426 ; 5.487 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[1]  ; CLOCK_50   ; 5.492 ; 5.543 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[2]  ; CLOCK_50   ; 5.500 ; 5.541 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[3]  ; CLOCK_50   ; 5.570 ; 5.608 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[4]  ; CLOCK_50   ; 6.210 ; 6.431 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[5]  ; CLOCK_50   ; 5.988 ; 6.159 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[6]  ; CLOCK_50   ; 5.534 ; 5.493 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]   ; CLOCK_50   ; 5.392 ; 5.394 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[0]  ; CLOCK_50   ; 5.611 ; 5.659 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[1]  ; CLOCK_50   ; 5.592 ; 5.635 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[2]  ; CLOCK_50   ; 5.568 ; 5.579 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[3]  ; CLOCK_50   ; 5.549 ; 5.595 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[4]  ; CLOCK_50   ; 5.559 ; 5.576 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[5]  ; CLOCK_50   ; 5.541 ; 5.583 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[6]  ; CLOCK_50   ; 5.392 ; 5.394 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[7]  ; CLOCK_50   ; 5.544 ; 5.573 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[8]  ; CLOCK_50   ; 5.656 ; 5.747 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[9]  ; CLOCK_50   ; 5.725 ; 5.811 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
 
 
 ---------------------------------------------
@@ -305,14 +1080,202 @@ Nothing to report.
 No synchronizer chains to report.
 
 
-+----------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                        ;
-+------------------+-------+------+----------+---------+---------------------+
-; Clock            ; Setup ; Hold ; Recovery ; Removal ; Minimum Pulse Width ;
-+------------------+-------+------+----------+---------+---------------------+
-; Worst-case Slack ; N/A   ; N/A  ; N/A      ; N/A     ; N/A                 ;
-; Design-wide TNS  ; 0.0   ; 0.0  ; 0.0      ; 0.0     ; 0.0                 ;
-+------------------+-------+------+----------+---------+---------------------+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                                               ;
++------------------------------------------------------------------------+-------+-------+----------+---------+---------------------+
+; Clock                                                                  ; Setup ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------------------------------------------------------------+-------+-------+----------+---------+---------------------+
+; Worst-case Slack                                                       ; 8.778 ; 0.173 ; N/A      ; N/A     ; 1.666               ;
+;  CLOCK_50                                                              ; N/A   ; N/A   ; N/A      ; N/A     ; 9.286               ;
+;  myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A   ; N/A   ; N/A      ; N/A     ; 1.666               ;
+;  myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8.778 ; 0.173 ; N/A      ; N/A     ; 8.557               ;
+; Design-wide TNS                                                        ; 0.0   ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+;  CLOCK_50                                                              ; N/A   ; N/A   ; N/A      ; N/A     ; 0.000               ;
+;  myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A   ; N/A   ; N/A      ; N/A     ; 0.000               ;
+;  myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.000 ; 0.000 ; N/A      ; N/A     ; 0.000               ;
++------------------------------------------------------------------------+-------+-------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Setup Times                                                                                                                  ;
++-----------+------------+--------+-------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall  ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+-------+------------+-----------------------------------------------------------------------+
+; KEY[*]    ; CLOCK_50   ; 4.694  ; 4.994 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[0]   ; CLOCK_50   ; 0.665  ; 1.015 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[1]   ; CLOCK_50   ; 4.694  ; 4.994 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[2]   ; CLOCK_50   ; -0.258 ; 0.485 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[3]   ; CLOCK_50   ; -0.140 ; 0.636 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; SW[*]     ; CLOCK_50   ; 4.195  ; 4.966 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[0]    ; CLOCK_50   ; 4.195  ; 4.966 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[1]    ; CLOCK_50   ; 0.337  ; 1.146 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[2]    ; CLOCK_50   ; -0.252 ; 0.663 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[3]    ; CLOCK_50   ; -0.437 ; 0.577 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[4]    ; CLOCK_50   ; 3.373  ; 4.327 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[5]    ; CLOCK_50   ; 0.097  ; 0.951 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[6]    ; CLOCK_50   ; -0.551 ; 0.588 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[7]    ; CLOCK_50   ; 3.319  ; 4.249 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[8]    ; CLOCK_50   ; -0.659 ; 0.348 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[9]    ; CLOCK_50   ; 2.992  ; 3.780 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+-------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Hold Times                                                                                                                    ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; KEY[*]    ; CLOCK_50   ; 3.549  ; 3.082  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[0]   ; CLOCK_50   ; 2.482  ; 1.969  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[1]   ; CLOCK_50   ; -0.090 ; -0.693 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[2]   ; CLOCK_50   ; 3.549  ; 3.082  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  KEY[3]   ; CLOCK_50   ; 3.444  ; 2.885  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; SW[*]     ; CLOCK_50   ; 4.043  ; 3.588  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[0]    ; CLOCK_50   ; -0.322 ; -1.200 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[1]    ; CLOCK_50   ; 3.221  ; 2.601  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[2]    ; CLOCK_50   ; 3.609  ; 3.162  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[3]    ; CLOCK_50   ; 3.701  ; 3.180  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[4]    ; CLOCK_50   ; 0.270  ; -0.394 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[5]    ; CLOCK_50   ; 3.393  ; 2.946  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[6]    ; CLOCK_50   ; 3.829  ; 3.284  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[7]    ; CLOCK_50   ; 0.901  ; 0.245  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[8]    ; CLOCK_50   ; 4.043  ; 3.588  ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  SW[9]    ; CLOCK_50   ; 0.547  ; -0.060 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                                                         ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+; HEX0[*]   ; CLOCK_50   ; 12.333 ; 12.428 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[0]  ; CLOCK_50   ; 12.333 ; 12.428 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[1]  ; CLOCK_50   ; 12.042 ; 12.081 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[2]  ; CLOCK_50   ; 11.828 ; 11.842 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[3]  ; CLOCK_50   ; 12.061 ; 12.105 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[4]  ; CLOCK_50   ; 11.820 ; 11.846 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[5]  ; CLOCK_50   ; 12.182 ; 12.292 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[6]  ; CLOCK_50   ; 12.204 ; 12.121 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX1[*]   ; CLOCK_50   ; 12.235 ; 12.232 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[0]  ; CLOCK_50   ; 11.936 ; 12.031 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[1]  ; CLOCK_50   ; 11.907 ; 12.000 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[2]  ; CLOCK_50   ; 12.079 ; 12.203 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[3]  ; CLOCK_50   ; 12.126 ; 12.232 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[4]  ; CLOCK_50   ; 11.816 ; 11.863 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[5]  ; CLOCK_50   ; 11.945 ; 12.055 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[6]  ; CLOCK_50   ; 12.235 ; 12.115 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX2[*]   ; CLOCK_50   ; 12.746 ; 12.574 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[0]  ; CLOCK_50   ; 12.099 ; 12.195 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[1]  ; CLOCK_50   ; 12.049 ; 12.164 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[2]  ; CLOCK_50   ; 12.000 ; 12.154 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[3]  ; CLOCK_50   ; 11.952 ; 12.037 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[4]  ; CLOCK_50   ; 11.650 ; 11.648 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[5]  ; CLOCK_50   ; 12.023 ; 12.045 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[6]  ; CLOCK_50   ; 12.746 ; 12.574 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX3[*]   ; CLOCK_50   ; 12.105 ; 12.208 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[0]  ; CLOCK_50   ; 11.941 ; 11.995 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[1]  ; CLOCK_50   ; 12.047 ; 12.208 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[2]  ; CLOCK_50   ; 11.656 ; 11.665 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[3]  ; CLOCK_50   ; 12.017 ; 12.075 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[4]  ; CLOCK_50   ; 11.845 ; 11.895 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[5]  ; CLOCK_50   ; 12.015 ; 12.138 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[6]  ; CLOCK_50   ; 12.105 ; 12.013 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX4[*]   ; CLOCK_50   ; 12.536 ; 12.839 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[0]  ; CLOCK_50   ; 12.018 ; 12.071 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[1]  ; CLOCK_50   ; 12.313 ; 12.389 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[2]  ; CLOCK_50   ; 12.045 ; 12.162 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[3]  ; CLOCK_50   ; 12.536 ; 12.839 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[4]  ; CLOCK_50   ; 12.098 ; 12.241 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[5]  ; CLOCK_50   ; 12.258 ; 12.421 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[6]  ; CLOCK_50   ; 11.996 ; 11.897 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX5[*]   ; CLOCK_50   ; 13.329 ; 13.669 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[0]  ; CLOCK_50   ; 11.685 ; 11.764 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[1]  ; CLOCK_50   ; 11.907 ; 12.016 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[2]  ; CLOCK_50   ; 11.952 ; 12.040 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[3]  ; CLOCK_50   ; 12.147 ; 12.213 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[4]  ; CLOCK_50   ; 13.329 ; 13.669 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[5]  ; CLOCK_50   ; 13.035 ; 13.198 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[6]  ; CLOCK_50   ; 11.994 ; 11.914 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]   ; CLOCK_50   ; 12.400 ; 12.496 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[0]  ; CLOCK_50   ; 12.027 ; 12.098 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[1]  ; CLOCK_50   ; 11.974 ; 12.049 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[2]  ; CLOCK_50   ; 11.964 ; 11.975 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[3]  ; CLOCK_50   ; 11.917 ; 11.999 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[4]  ; CLOCK_50   ; 11.979 ; 12.003 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[5]  ; CLOCK_50   ; 11.932 ; 12.005 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[6]  ; CLOCK_50   ; 11.581 ; 11.579 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[7]  ; CLOCK_50   ; 11.921 ; 11.964 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[8]  ; CLOCK_50   ; 12.200 ; 12.355 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[9]  ; CLOCK_50   ; 12.400 ; 12.496 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+--------+--------+------------+-----------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                                                               ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference                                                       ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
+; HEX0[*]   ; CLOCK_50   ; 5.487 ; 5.518 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[0]  ; CLOCK_50   ; 5.700 ; 5.743 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[1]  ; CLOCK_50   ; 5.585 ; 5.634 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[2]  ; CLOCK_50   ; 5.487 ; 5.518 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[3]  ; CLOCK_50   ; 5.586 ; 5.635 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[4]  ; CLOCK_50   ; 5.492 ; 5.526 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[5]  ; CLOCK_50   ; 5.629 ; 5.673 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX0[6]  ; CLOCK_50   ; 5.653 ; 5.611 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX1[*]   ; CLOCK_50   ; 5.483 ; 5.529 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[0]  ; CLOCK_50   ; 5.563 ; 5.635 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[1]  ; CLOCK_50   ; 5.543 ; 5.608 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[2]  ; CLOCK_50   ; 5.616 ; 5.704 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[3]  ; CLOCK_50   ; 5.609 ; 5.665 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[4]  ; CLOCK_50   ; 5.483 ; 5.529 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[5]  ; CLOCK_50   ; 5.532 ; 5.614 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX1[6]  ; CLOCK_50   ; 5.674 ; 5.618 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX2[*]   ; CLOCK_50   ; 5.374 ; 5.392 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[0]  ; CLOCK_50   ; 5.591 ; 5.667 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[1]  ; CLOCK_50   ; 5.566 ; 5.623 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[2]  ; CLOCK_50   ; 5.545 ; 5.615 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[3]  ; CLOCK_50   ; 5.543 ; 5.614 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[4]  ; CLOCK_50   ; 5.374 ; 5.392 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[5]  ; CLOCK_50   ; 5.578 ; 5.619 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX2[6]  ; CLOCK_50   ; 5.895 ; 5.835 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX3[*]   ; CLOCK_50   ; 5.377 ; 5.404 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[0]  ; CLOCK_50   ; 5.495 ; 5.520 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[1]  ; CLOCK_50   ; 5.552 ; 5.663 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[2]  ; CLOCK_50   ; 5.377 ; 5.404 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[3]  ; CLOCK_50   ; 5.566 ; 5.622 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[4]  ; CLOCK_50   ; 5.461 ; 5.511 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[5]  ; CLOCK_50   ; 5.542 ; 5.601 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX3[6]  ; CLOCK_50   ; 5.583 ; 5.540 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX4[*]   ; CLOCK_50   ; 5.531 ; 5.486 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[0]  ; CLOCK_50   ; 5.572 ; 5.626 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[1]  ; CLOCK_50   ; 5.670 ; 5.704 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[2]  ; CLOCK_50   ; 5.570 ; 5.624 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[3]  ; CLOCK_50   ; 5.781 ; 5.941 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[4]  ; CLOCK_50   ; 5.584 ; 5.674 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[5]  ; CLOCK_50   ; 5.650 ; 5.763 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX4[6]  ; CLOCK_50   ; 5.531 ; 5.486 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; HEX5[*]   ; CLOCK_50   ; 5.426 ; 5.487 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[0]  ; CLOCK_50   ; 5.426 ; 5.487 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[1]  ; CLOCK_50   ; 5.492 ; 5.543 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[2]  ; CLOCK_50   ; 5.500 ; 5.541 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[3]  ; CLOCK_50   ; 5.570 ; 5.608 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[4]  ; CLOCK_50   ; 6.210 ; 6.431 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[5]  ; CLOCK_50   ; 5.988 ; 6.159 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  HEX5[6]  ; CLOCK_50   ; 5.534 ; 5.493 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+; LEDR[*]   ; CLOCK_50   ; 5.392 ; 5.394 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[0]  ; CLOCK_50   ; 5.611 ; 5.659 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[1]  ; CLOCK_50   ; 5.592 ; 5.635 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[2]  ; CLOCK_50   ; 5.568 ; 5.579 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[3]  ; CLOCK_50   ; 5.549 ; 5.595 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[4]  ; CLOCK_50   ; 5.559 ; 5.576 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[5]  ; CLOCK_50   ; 5.541 ; 5.583 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[6]  ; CLOCK_50   ; 5.392 ; 5.394 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[7]  ; CLOCK_50   ; 5.544 ; 5.573 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[8]  ; CLOCK_50   ; 5.656 ; 5.747 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
+;  LEDR[9]  ; CLOCK_50   ; 5.725 ; 5.811 ; Rise       ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;
++-----------+------------+-------+-------+------------+-----------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -383,19 +1346,19 @@ No synchronizer chains to report.
 ; CLOCK_50 ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; RESET_N  ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; KEY[0]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; KEY[1]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; KEY[2]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; KEY[3]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[0]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[1]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[2]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[3]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[4]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[5]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[6]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[7]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[8]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[9]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[8]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[7]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[5]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; KEY[1]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[1]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; KEY[2]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[2]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; KEY[3]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[3]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 +----------+--------------+-----------------+-----------------+
 
 
@@ -639,10 +1602,24 @@ No synchronizer chains to report.
 +---------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
--------------------
-; Clock Transfers ;
--------------------
-Nothing to report.
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                                                                                                           ;
++-----------------------------------------------------------------------+-----------------------------------------------------------------------+----------+----------+----------+----------+
+; From Clock                                                            ; To Clock                                                              ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++-----------------------------------------------------------------------+-----------------------------------------------------------------------+----------+----------+----------+----------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 454187   ; 0        ; 0        ; 0        ;
++-----------------------------------------------------------------------+-----------------------------------------------------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                                                                                                            ;
++-----------------------------------------------------------------------+-----------------------------------------------------------------------+----------+----------+----------+----------+
+; From Clock                                                            ; To Clock                                                              ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++-----------------------------------------------------------------------+-----------------------------------------------------------------------+----------+----------+----------+----------+
+; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 454187   ; 0        ; 0        ; 0        ;
++-----------------------------------------------------------------------+-----------------------------------------------------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
 ---------------
@@ -677,62 +1654,116 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Tue Mar 28 10:48:50 2017
+    Info: Processing started: Wed Mar 29 20:53:52 2017
 Info: Command: quartus_sta Project -c Project
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Info (332104): Reading SDC File: 'Project.sdc'
+Info (332110): Deriving PLL clocks
+    Info (332110): create_generated_clock -source {myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin} -divide_by 2 -multiply_by 12 -duty_cycle 50.00 -name {myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]} {myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}
+    Info (332110): create_generated_clock -source {myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|vco0ph[0]} -divide_by 6 -duty_cycle 50.00 -name {myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk} {myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}
 Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
-Warning (332174): Ignored filter at Project.sdc(13): *clk could not be matched with a clock
-Warning (332049): Ignored set_input_delay at Project.sdc(13): Argument -clock is an empty collection
-    Info (332050): set_input_delay -clock [get_clocks *clk] -max 3 [all_inputs]
-Warning (332049): Ignored set_input_delay at Project.sdc(15): Argument -clock is an empty collection
-    Info (332050): set_input_delay -clock [get_clocks *clk] -min 2 [all_inputs]
-Warning (332049): Ignored set_output_delay at Project.sdc(19): Argument -clock is an empty collection
-    Info (332050): set_output_delay -clock [get_clocks *clk] 0 [all_outputs]
-Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
-Info (332140): No fmax paths to report
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
+Info (332146): Worst-case setup slack is 8.778
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     8.778               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.430
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.430               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Info (332146): Worst-case minimum pulse width slack is 1.666
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.666               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
+    Info (332119):     8.596               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     9.731               0.000 CLOCK_50 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
-Info (332140): No fmax paths to report
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info (332146): Worst-case setup slack is 9.384
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     9.384               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.443
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.443               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Info (332146): Worst-case minimum pulse width slack is 1.666
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.666               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
+    Info (332119):     8.557               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     9.741               0.000 CLOCK_50 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info (332146): Worst-case setup slack is 12.547
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    12.547               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.180
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.180               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Info (332146): Worst-case minimum pulse width slack is 1.666
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.666               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
+    Info (332119):     8.883               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     9.336               0.000 CLOCK_50 
 Info: Analyzing Fast 1100mV 0C Model
-Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info (332146): Worst-case setup slack is 12.801
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    12.801               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.173
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.173               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Info (332146): Worst-case minimum pulse width slack is 1.666
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.666               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
+    Info (332119):     8.883               0.000 myPll|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     9.286               0.000 CLOCK_50 
 Info (332101): Design is fully constrained for setup requirements
 Info (332101): Design is fully constrained for hold requirements
-Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 832 megabytes
-    Info: Processing ended: Tue Mar 28 10:48:55 2017
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:04
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 942 megabytes
+    Info: Processing ended: Wed Mar 29 20:54:10 2017
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:17
 
 

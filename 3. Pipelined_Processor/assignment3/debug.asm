@@ -6,18 +6,16 @@
 
 .ORIG 0x100
 
-ADDI T0,T0,5
-ADD T0,T0,T0
-ADDI T0,T0,5
-ADD T0,T0,T0
-ADDI T0,T0,5
-ADD T0,T0,T0
-ADD T0,T0,T0
-ADD T0,T0,T0
+jal	RA,func(Zero)
+addi Zero,T1,1
+addi Zero,T1,1
+addi Zero,T1,1
+br end
+func:
+sw RA, HEX(Zero)
+sw Zero, HEX(Zero)
 
-;SW T0,4(Zero)
-;LW T1,4(Zero)
-;ADDI T1,T1,1
-;ADD T0,T0,T1
-SW		T0,HEX(Zero)
-
+ret
+end:
+sw T1, HEX(Zero)
+br end
