@@ -25,7 +25,7 @@ module Project(
 	parameter ADDRSW = 32'hFFFFF090;
 
 	// Change this to fmedian2.mif before submitting
-	parameter IMEMINITFILE = "test.mif";
+	parameter IMEMINITFILE = "fmedian2.mif";
 
 	parameter IMEMADDRBITS = 16;
 	parameter IMEMWORDBITS = 2;
