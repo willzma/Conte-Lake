@@ -1,7 +1,17 @@
+#!/usr/bin/env python
+"""Assembler script to generate MIF files from ASM files written in the CS3220 ISA."""
+
 from pathlib import Path
 
 import argparse
 import sys
+
+__author__ = "William Ma"
+__credits__ = ["William Ma", "Nicholas Petosa"]
+
+__maintainer__ = "William Ma"
+__email__ = "willzma15@gmail.com"
+__status__ = "Production"
 
 # Assembler global variables/resources (used in every section of code)
 orig_address = 0  # Keep track of the orig address; for WORD vs BYTE
