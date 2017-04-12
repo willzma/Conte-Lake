@@ -120,14 +120,19 @@ module Project(
 	assign rt_dependency = (~isnop_A) & (rt_D === destreg_A) | (~isnop_M) & (rt_D === destreg_M);
 	assign stall = rs_dependency || rt_dependency;
 
+	/**** DATA FORWARDING CONTROLLER ****/
+	/*wire rs_match_A = (~isnop_A) & (rs_D === destreg_A);
+	wire rs_match_M = (~isnop_M) & (rs_D === destreg_M);
+	wire rt_match_A = (~isnop_A) & (rt_D === destreg_A);
+	wire rt_match_M = (~isnop_M) & (rt_D === destreg_M);
+	wire stall = ldmem_A && rs_match_A;*/
+
 	/**** BRANCH PREDICTION ****/
-	//wire pred_target = pcpred_D + sxtimm_D;
+	wire [(DBITS - 1):0] target = isbranch_D ? pcpred_D + (sxtimm_D << 2) : isjump_D ? RSval_D + (sxtimm_D << 2) : pcpred_D;
+	wire ldPC_D = !isnop_D && (isbranch_D || isjump_D);
 
 	/**** BRANCH RESOLUTION ****/
-	wire dobranch = aluout_A[0:0] & ~isnop_A & isbranch_A;
-	wire dojump = ~isnop_A & isjump_A;
-	wire [(DBITS - 1):0] destination = dobranch ? (pcpred_A + (sxtimm_A << 2)) : dojump ? (aluin1_A + (sxtimm_A << 2)) : pcpred_A;
-	wire mispred = dobranch | dojump;
+	wire mispred = !aluout_A[0:0] && !isnop_A && isbranch_A;
 
 
 
@@ -137,8 +142,10 @@ module Project(
 	always @(posedge clk or posedge reset) begin
 		if (reset) begin
 			PC <= STARTPC; // Initial step
+		end else if (ldPC_D) begin
+			PC <= target;
 		end else if (mispred) begin
-			PC <= destination;
+			PC <= pcpred_A;
 		end else if (!stall) begin
 			PC <= pcpred_F; // Proceed 1 step
 		end
@@ -194,7 +201,7 @@ module Project(
 	reg [(DBITS - 1):0] regs[(REGWORDS - 1):0];
 	// Two read ports, always using rs and rt for register numbers
 	wire [(REGNOBITS - 1):0] rregno1_D = rs_D, rregno2_D = rt_D;
-	wire [(DBITS - 1):0] RSval_D = regs[rregno1_D]; // Holds RS value
+	wire [(DBITS - 1):0] RSval_D = /*rs_match_A ? aluout_A :  rs_match_M ?*/ regs[rregno1_D]; // Holds RS value
 	wire [(DBITS - 1):0] RTval_D = regs[rregno2_D]; // Holds RT value
 
 	reg aluimm_D; // If enabled, aluin2 is the sxtimm_D. Otherwise its regval2.
@@ -205,7 +212,6 @@ module Project(
 	reg wrmem_D; // Write RT to mem at aluout address?
 	reg ldmem_D; // Set reg write value to value at aluout address?
 	reg wrreg_D; // Write to destreg_D?
-	reg single_reg_D; // Write to destreg_D?
 	reg flush_D; // Unimplemented
 
 	// Control signals
@@ -219,7 +225,6 @@ module Project(
 		wrreg_D = 1'b0;
 		wrmem_D = 1'b0;
 		ldmem_D = 1'b0;
-		single_reg_D = 1'b0;
 		inst_D = inst_F;
 		pcpred_D = pcpred_F;
 
@@ -245,7 +250,6 @@ module Project(
 					alufunc_D = {2'b0, op1_D};
 					destreg_D = rt_D;
 					wrreg_D = 1'b1;
-					single_reg_D = 1'b1;
 				end
 				// Branches
 				OP1_BEQ, OP1_BLE, OP1_BLT, OP1_BNE: begin
@@ -257,7 +261,6 @@ module Project(
 					alufunc_D = JAL_FUNC;
 					isjump_D = 1'b1;
 					destreg_D = rt_D;
-					single_reg_D = 1'b1;
 					wrreg_D = 1'b1;
 				end
 				// Store word: Use imm, add to RS, use this as address. Store RT here.
@@ -273,7 +276,6 @@ module Project(
 					ldmem_D = 1'b1;
 					destreg_D = rt_D;
 					wrreg_D = 1'b1;
-					single_reg_D = 1'b1;
 				end
 				default: ;
 			endcase
@@ -285,7 +287,6 @@ module Project(
 	/**** AGEN/EXEC STAGE ****/
 	reg signed [(DBITS - 1):0] aluin1_A;
 	reg signed [(DBITS - 1):0] aluin2_A;
-	reg signed [(DBITS - 1):0] sxtimm_A;
 	reg [(DBITS - 1):0] inst_A;
 	reg [(DBITS - 1):0] pcpred_A;
 	reg [(OP2BITS - 1):0] alufunc_A;
@@ -296,8 +297,6 @@ module Project(
 	reg [(REGNOBITS - 1):0] destreg_A;
 	reg [(DBITS - 1):0] RTval_A;
 	reg isbranch_A;
-	reg isjump_A;
-	reg single_reg_A;
 
 	// AHA - we don't want these in the same stage. Always block added.
 	always @(posedge clk or posedge reset) begin
@@ -307,7 +306,6 @@ module Project(
 		end else begin
 			aluin1_A <= RSval_D; // Always load RS into 1st input
 			aluin2_A <= aluimm_D ? sxtimm_D : RTval_D; // Perhaps load sxtimm into 2nd input, otherwise RT.
-			sxtimm_A <= sxtimm_D; // Perhaps load sxtimm into 2nd input, otherwise RT.
 			alufunc_A <= alufunc_D;
 			wrreg_A <= wrreg_D;
 			wrmem_A <= wrmem_D;
@@ -317,15 +315,13 @@ module Project(
 			isnop_A <= isnop_D | stall;
 			inst_A <= inst_D;
 			isbranch_A <= isbranch_D;
-			isjump_A <= isjump_D;
 			pcpred_A <= pcpred_D;
-			single_reg_A <= single_reg_D;
 		end
 	end
 
 	reg signed [(DBITS - 1):0] aluout_A;
 
-	always @(alufunc_A or aluin1_A or aluin2_A) begin
+	always @(alufunc_A or aluin1_A or aluin2_A or pcpred_A) begin
 		case (alufunc_A)
 			OP2_EQ: aluout_A = {31'b0, aluin1_A == aluin2_A};
 			OP2_LT: aluout_A = {31'b0, aluin1_A < aluin2_A};

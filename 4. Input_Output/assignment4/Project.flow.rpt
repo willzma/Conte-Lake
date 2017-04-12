@@ -1,5 +1,5 @@
 Flow report for Project
-Wed Apr 12 00:20:21 2017
+Wed Apr 12 01:47:49 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -41,15 +41,15 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +---------------------------------+--------------------------------------------+
-; Flow Status                     ; Successful - Wed Apr 12 00:20:21 2017      ;
+; Flow Status                     ; Successful - Wed Apr 12 01:47:49 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
 ; Family                          ; Cyclone V                                  ;
 ; Device                          ; 5CEBA4F23C7                                ;
 ; Timing Models                   ; Final                                      ;
-; Logic utilization (in ALMs)     ; 1,032 / 18,480 ( 6 % )                     ;
-; Total registers                 ; 1029                                       ;
+; Logic utilization (in ALMs)     ; 1,062 / 18,480 ( 6 % )                     ;
+; Total registers                 ; 1033                                       ;
 ; Total pins                      ; 68 / 224 ( 30 % )                          ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 524,288 / 3,153,920 ( 17 % )               ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/12/2017 00:18:38 ;
+; Start date & time ; 04/12/2017 01:46:12 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Project             ;
 +-------------------+---------------------+
@@ -81,7 +81,7 @@ agreement for further details.
 +----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+----------------+
 ; ALM_REGISTER_PACKING_EFFORT                  ; Low                                                                                                                              ; Medium        ; --          ; --             ;
 ; AUTO_DELAY_CHAINS_FOR_HIGH_FANOUT_INPUT_PINS ; On                                                                                                                               ; Off           ; --          ; --             ;
-; COMPILER_SIGNATURE_ID                        ; 30902508553329.149197071809328                                                                                                   ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                        ; 30902508553329.149197597213248                                                                                                   ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME                     ; NA                                                                                                                               ; --            ; --          ; ProjectTest    ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH         ; ProjectTest                                                                                                                      ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT                       ; Verilog Hdl                                                                                                                      ; --            ; --          ; eda_simulation ;
@@ -154,12 +154,12 @@ agreement for further details.
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Analysis & Synthesis      ; 00:00:08     ; 1.0                     ; 788 MB              ; 00:00:08                           ;
-; Fitter                    ; 00:01:06     ; 1.0                     ; 1500 MB             ; 00:01:05                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 686 MB              ; 00:00:04                           ;
-; TimeQuest Timing Analyzer ; 00:00:13     ; 1.0                     ; 945 MB              ; 00:00:12                           ;
-; Design Assistant          ; 00:00:01     ; 1.0                     ; 579 MB              ; 00:00:01                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 650 MB              ; 00:00:01                           ;
-; Total                     ; 00:01:34     ; --                      ; --                  ; 00:01:31                           ;
+; Fitter                    ; 00:01:03     ; 1.0                     ; 1511 MB             ; 00:01:02                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 674 MB              ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:12     ; 1.0                     ; 924 MB              ; 00:00:12                           ;
+; Design Assistant          ; 00:00:02     ; 1.0                     ; 582 MB              ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 634 MB              ; 00:00:01                           ;
+; Total                     ; 00:01:30     ; --                      ; --                  ; 00:01:28                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
