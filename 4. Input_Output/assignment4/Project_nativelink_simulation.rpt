@@ -1,0 +1,20 @@
+Info: Start Nativelink Simulation process
+executing command line: ip-make-simscript --nativelink-mode --output-directory=Project_iputf_input --spd=D:/Users/theon/Desktop/GitWork/CS3220/Conte-Lake/3. Pipelined_Processor/assignment3/Pll.spd 
+Internal error: Failed to run ip-make-simscript: 2017.03.29.22:19:56 Error: Unrecognized switch <b>1</b>
+Internal error: Failed to run ip-make-simscript: 2017.03.29.22:19:56 Error: Unrecognized switch <b>1</b>
+Error: NativeLink simulation flow was NOT successful
+
+
+
+================The following additional information is provided to help identify the cause of error while running nativelink scripts=================
+Nativelink TCL script failed with errorCode:  1
+Nativelink TCL script failed with errorInfo:  1
+    (procedure "iputf_call_script_gen" line 25)
+    invoked from within
+"iputf_call_script_gen $spd_file_list"
+    (procedure "iputf_setup_info" line 45)
+    invoked from within
+"iputf_setup_info"
+    (procedure "run_eda_simulation_tool" line 178)
+    invoked from within
+"run_eda_simulation_tool eda_opts_hash"

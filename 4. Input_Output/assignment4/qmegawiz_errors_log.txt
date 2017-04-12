@@ -1,0 +1,16 @@
+
+
+D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Pll.v
+
+Mar 28 02AM:36:15>: Megafunction Altera PLL v15.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Pll.v
+
+Mar 28 02AM:36:16>: Megafunction Altera PLL v15.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+D:/School/CS 3220/Conte-Lake/3. Pipelined_Processor/assignment3/Pll.v
+
+Mar 28 02AM:36:25>: Megafunction Altera PLL v15.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
