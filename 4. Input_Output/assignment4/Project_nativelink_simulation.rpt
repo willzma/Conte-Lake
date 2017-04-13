@@ -1,7 +1,7 @@
 Info: Start Nativelink Simulation process
-executing command line: ip-make-simscript --nativelink-mode --output-directory=Project_iputf_input --spd=D:/Users/theon/Desktop/GitWork/CS3220/Conte-Lake/3. Pipelined_Processor/assignment3/Pll.spd 
-Internal error: Failed to run ip-make-simscript: 2017.03.29.22:19:56 Error: Unrecognized switch <b>1</b>
-Internal error: Failed to run ip-make-simscript: 2017.03.29.22:19:56 Error: Unrecognized switch <b>1</b>
+executing command line: ip-make-simscript --nativelink-mode --output-directory=Project_iputf_input --spd=D:/Users/theon/Desktop/GitWork/CS3220/Conte-Lake/4. Input_Output/assignment4/Pll.spd 
+Internal error: Failed to run ip-make-simscript: 2017.04.12.21:27:13 Error: Unrecognized switch <b>1</b>
+Internal error: Failed to run ip-make-simscript: 2017.04.12.21:27:13 Error: Unrecognized switch <b>1</b>
 Error: NativeLink simulation flow was NOT successful
 
 

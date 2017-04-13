@@ -25,7 +25,7 @@ module Project(
 	parameter ADDRSW = 32'hFFFFF090;
 
 	// Change this to fmedian2.mif before submitting
-	parameter IMEMINITFILE = "fmedian2.mif";
+	parameter IMEMINITFILE = "debug.mif";
 
 	parameter IMEMADDRBITS = 16;
 	parameter IMEMWORDBITS = 2;
@@ -76,15 +76,15 @@ module Project(
 
 
 
-	wire clk, locked;
+	wire clk2, locked;
 	Pll myPll(
 		.refclk(CLOCK_50),
 		.rst      (!RESET_N),
-		.outclk_0 (clk),
+		.outclk_0 (clk2),
 		.locked   (locked)
 	);
 
-	//assign clk = ~KEY;
+	assign clk = ~KEY;
 
 	/*wire clk2, locked;
 	Pll myPll(
@@ -113,19 +113,21 @@ module Project(
 	wire reset = !locked;
 
 	/**** STALL CONTROLLER ****/
-	wire stall;
+	/*wire stall;
 	wire rs_dependency;
 	wire rt_dependency;
 	assign rs_dependency = (~isnop_A) & (rs_D === destreg_A) | (~isnop_M) & (rs_D === destreg_M);
 	assign rt_dependency = (~isnop_A) & (rt_D === destreg_A) | (~isnop_M) & (rt_D === destreg_M);
-	assign stall = rs_dependency || rt_dependency;
+	assign stall = rs_dependency || rt_dependency;*/
 
 	/**** DATA FORWARDING CONTROLLER ****/
-	/*wire rs_match_A = (~isnop_A) & (rs_D === destreg_A);
+	wire rs_match_A = (~isnop_A) & (rs_D === destreg_A);
 	wire rs_match_M = (~isnop_M) & (rs_D === destreg_M);
 	wire rt_match_A = (~isnop_A) & (rt_D === destreg_A);
 	wire rt_match_M = (~isnop_M) & (rt_D === destreg_M);
-	wire stall = ldmem_A && rs_match_A;*/
+	wire [(DBITS - 1):0] agex_fwd = aluout_A;
+	wire [(DBITS - 1):0] mem_fwd = wregval_M;
+	wire stall = ldmem_A & rs_match_A;
 
 	/**** BRANCH PREDICTION ****/
 	wire [(DBITS - 1):0] target = isbranch_D ? pcpred_D + (sxtimm_D << 2) : isjump_D ? RSval_D + (sxtimm_D << 2) : pcpred_D;
@@ -201,8 +203,8 @@ module Project(
 	reg [(DBITS - 1):0] regs[(REGWORDS - 1):0];
 	// Two read ports, always using rs and rt for register numbers
 	wire [(REGNOBITS - 1):0] rregno1_D = rs_D, rregno2_D = rt_D;
-	wire [(DBITS - 1):0] RSval_D = /*rs_match_A ? aluout_A :  rs_match_M ?*/ regs[rregno1_D]; // Holds RS value
-	wire [(DBITS - 1):0] RTval_D = regs[rregno2_D]; // Holds RT value
+	wire [(DBITS - 1):0] RSval_D = rs_match_A ? agex_fwd : rs_match_M ? mem_fwd : regs[rregno1_D]; // Holds RS value
+	wire [(DBITS - 1):0] RTval_D = rt_match_A ? agex_fwd : rt_match_M ? mem_fwd : regs[rregno2_D]; // Holds RT value
 
 	reg aluimm_D; // If enabled, aluin2 is the sxtimm_D. Otherwise its regval2.
 	reg [(OP2BITS - 1):0] alufunc_D; // ALU func
@@ -213,6 +215,8 @@ module Project(
 	reg ldmem_D; // Set reg write value to value at aluout address?
 	reg wrreg_D; // Write to destreg_D?
 	reg flush_D; // Unimplemented
+	reg [(DBITS - 1):0] RSreg_D;
+	reg [(DBITS - 1):0] RTreg_D;
 
 	// Control signals
 	always @(*) begin
@@ -227,6 +231,8 @@ module Project(
 		ldmem_D = 1'b0;
 		inst_D = inst_F;
 		pcpred_D = pcpred_F;
+		RSreg_D = RSval_D;
+		RTreg_D = RTval_D;
 
 		if (reset || mispred) begin
 			isnop_D = 1'b1;
@@ -295,7 +301,7 @@ module Project(
 	reg ldmem_A;
 	reg isnop_A;
 	reg [(REGNOBITS - 1):0] destreg_A;
-	reg [(DBITS - 1):0] RTval_A;
+	reg [(DBITS - 1):0] RTreg_A;
 	reg isbranch_A;
 
 	// AHA - we don't want these in the same stage. Always block added.
@@ -304,14 +310,14 @@ module Project(
 			isnop_A <= 1'b1;
 			inst_A <= {DBITS{1'b0}};
 		end else begin
-			aluin1_A <= RSval_D; // Always load RS into 1st input
-			aluin2_A <= aluimm_D ? sxtimm_D : RTval_D; // Perhaps load sxtimm into 2nd input, otherwise RT.
+			aluin1_A <= RSreg_D; // Always load RS into 1st input
+			aluin2_A <= aluimm_D ? sxtimm_D : RTreg_D; // Perhaps load sxtimm into 2nd input, otherwise RT.
 			alufunc_A <= alufunc_D;
 			wrreg_A <= wrreg_D;
 			wrmem_A <= wrmem_D;
 			ldmem_A <= ldmem_D;
 			destreg_A <= destreg_D;
-			RTval_A <= RTval_D;
+			RTreg_A <= RTreg_D;
 			isnop_A <= isnop_D | stall;
 			inst_A <= inst_D;
 			isbranch_A <= isbranch_D;
@@ -365,7 +371,7 @@ module Project(
 			ldmem_M <= ldmem_A;
 			wrreg_M <= wrreg_A;
 			destreg_M <= destreg_A;
-			wmemval_M <= RTval_A;
+			wmemval_M <= RTreg_A;
 			isnop_M <= isnop_A;
 			inst_M <= inst_A;
 		end
@@ -383,23 +389,28 @@ module Project(
 	SevenSeg ss0(.OUT(HEX0), .IN(HEXout[3:0]));
 
 	always @(posedge clk or posedge reset) begin
-		if (reset) begin
+		/*if (reset) begin
 			LEDRout <= 10'b0;
 			//LEDRout <= {isnop_D, isnop_A, isnop_M, {4{1'b0}}, rs_dependency, rt_dependency, stall};
 		end else if (wrmem_M && (memaddr_M == ADDRLEDR) && !isnop_M) begin
 			// NOP check - Don't display HEX on NOP
 			LEDRout <= wmemval_M[9:0];
-		end
+		end*/
+		LEDRout <= {inst_D[31:26], stall, isnop_A, rs_match_A, ldPC_D};
 			//LEDRout <= {isnop_D, isnop_A, isnop_M, {6{1'b0}}, stall};
 	end
 
 	always @(posedge clk or posedge reset) begin
-		if (reset) begin
+		/*if (reset) begin
 			HEXout <= 24'hFEDEAD;
 		end else if (wrmem_M && (memaddr_M == ADDRHEX) && !isnop_M) begin
 			// NOP check - Don't display LEDR on NOP
 			HEXout <= wmemval_M[23:0];
-		end
+		end*/
+		//HEXout <= mem_fwd;
+		//HEXout <= PC;
+		HEXout <= target;
+		//HEXout <= regs[5];
 			//HEXout <= { inst_D[31:28], inst_D[3:0],inst_A[31:28], inst_A[3:0],inst_M[31:28], inst_M[3:0], };
 			//HEXout <=  aluin2_A[23:0];
 	end
@@ -421,8 +432,8 @@ module Project(
 	// Connect memory and input devices to the bus
 	// you might need to change the following statement.
 	wire [(DBITS - 1):0] memout_M = MemEnable ? MemVal :
-	(memaddr_M == ADDRKEY) ? {28'b0, ~KEY} :
-	(memaddr_M == ADDRSW) ? {20'b0, SW}: 32'hDEADDEAD;
+									(memaddr_M == ADDRKEY) ? {28'b0, ~KEY} :
+									(memaddr_M == ADDRSW) ? {20'b0, SW}: 32'hDEADDEAF;
 
 	// Determine register write value
 	wire [(DBITS - 1):0] wregval_M = ldmem_M ? memout_M : memaddr_M;
