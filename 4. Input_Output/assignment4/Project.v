@@ -385,23 +385,29 @@ module Project(
 	SevenSeg ss1(.OUT(HEX1), .IN(HEXout[7:4]));
 	SevenSeg ss0(.OUT(HEX0), .IN(HEXout[3:0]));
 
+	reg [(DBITS - 1):0] ledr_data;
 	always @(posedge clk or posedge reset) begin
 		if (reset) begin
 			LEDRout <= 10'b0;
+			ledr_data <= 32'b0;
 			//LEDRout <= {isnop_D, isnop_A, isnop_M, {4{1'b0}}, rs_dependency, rt_dependency, stall};
 		end else if (wrmem_M && (memaddr_M == ADDRLEDR) && !isnop_M) begin
 			// NOP check - Don't display HEX on NOP
 			LEDRout <= wmemval_M[9:0];
+			ledr_data <= {22'b0, wmemval_M[9:0]};
 		end
 			//LEDRout <= {isnop_D, isnop_A, isnop_M, {6{1'b0}}, stall};
 	end
 
+	reg [(DBITS - 1):0] hex_data;
 	always @(posedge clk or posedge reset) begin
 		if (reset) begin
 			HEXout <= 24'hFEDEAD;
+			hex_data <= 32'h00FEDEAD;
 		end else if (wrmem_M && (memaddr_M == ADDRHEX) && !isnop_M) begin
 			// NOP check - Don't display LEDR on NOP
 			HEXout <= wmemval_M[23:0];
+			hex_data <= {8'b0, wmemval_M[23:0]};
 		end
 			//HEXout <= { inst_D[31:28], inst_D[3:0],inst_A[31:28], inst_A[3:0],inst_M[31:28], inst_M[3:0], };
 			//HEXout <=  aluin2_A[23:0];
@@ -425,6 +431,8 @@ module Project(
 	// you might need to change the following statement.
 	wire [(DBITS - 1):0] memout_M = MemEnable ? MemVal :
 									(memaddr_M == ADDRKEY) ? {28'b0, ~KEY} :
+									(memaddr_M == ADDRHEX) ? hex_data :
+									(memaddr_M == ADDRLEDR) ? ledr_data :
 									(memaddr_M == ADDRSW) ? {20'b0, SW}: 32'hDEADDEAD;
 
 	// Determine register write value
