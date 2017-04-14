@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Project
-Wed Apr 12 00:18:46 2017
+Thu Apr 13 22:11:00 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -61,7 +61,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Apr 12 00:18:46 2017      ;
+; Analysis & Synthesis Status     ; Successful - Thu Apr 13 22:11:00 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
@@ -212,14 +212,14 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 1053                                                               ;
+; Estimate of Logic utilization (ALMs needed) ; 1117                                                               ;
 ;                                             ;                                                                    ;
-; Combinational ALUT usage for logic          ; 1365                                                               ;
-;     -- 7 input functions                    ; 12                                                                 ;
-;     -- 6 input functions                    ; 660                                                                ;
-;     -- 5 input functions                    ; 231                                                                ;
-;     -- 4 input functions                    ; 209                                                                ;
-;     -- <=3 input functions                  ; 253                                                                ;
+; Combinational ALUT usage for logic          ; 1452                                                               ;
+;     -- 7 input functions                    ; 56                                                                 ;
+;     -- 6 input functions                    ; 657                                                                ;
+;     -- 5 input functions                    ; 237                                                                ;
+;     -- 4 input functions                    ; 226                                                                ;
+;     -- <=3 input functions                  ; 276                                                                ;
 ;                                             ;                                                                    ;
 ; Dedicated logic registers                   ; 906                                                                ;
 ;                                             ;                                                                    ;
@@ -231,9 +231,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;     -- PLLs                                 ; 1                                                                  ;
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 1014                                                               ;
-; Total fan-out                               ; 11048                                                              ;
-; Average fan-out                             ; 4.47                                                               ;
+; Maximum fan-out                             ; 978                                                                ;
+; Total fan-out                               ; 11499                                                              ;
+; Average fan-out                             ; 4.49                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
 
@@ -242,7 +242,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                              ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
-; |Project                               ; 1365 (1318)       ; 906 (903)    ; 524288            ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
+; |Project                               ; 1452 (1406)       ; 906 (903)    ; 524288            ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
 ;    |Pll:myPll|                         ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll                                                               ; Pll          ;
 ;       |Pll_0002:pll_inst|              ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst                                             ; Pll          ;
 ;          |altera_pll:altera_pll_i|     ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i                     ; work         ;
@@ -252,8 +252,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;    |SevenSeg:ss3|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss3                                                            ; work         ;
 ;    |SevenSeg:ss4|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss4                                                            ; work         ;
 ;    |SevenSeg:ss5|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss5                                                            ; work         ;
-;    |altsyncram:dmem_rtl_0|             ; 5 (0)             ; 3 (0)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0                                                   ; work         ;
-;       |altsyncram_jlm1:auto_generated| ; 5 (3)             ; 3 (3)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_jlm1:auto_generated                    ; work         ;
+;    |altsyncram:dmem_rtl_0|             ; 4 (0)             ; 3 (0)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0                                                   ; work         ;
+;       |altsyncram_jlm1:auto_generated| ; 4 (2)             ; 3 (3)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_jlm1:auto_generated                    ; work         ;
 ;          |decode_5la:decode2|          ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_jlm1:auto_generated|decode_5la:decode2 ; work         ;
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -326,36 +326,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HEXout[21]                              ; 7       ;
 ; HEXout[22]                              ; 7       ;
 ; HEXout[23]                              ; 7       ;
-; isnop_M                                 ; 5       ;
+; isnop_M                                 ; 7       ;
 ; isnop_A                                 ; 5       ;
-; PC[8]                                   ; 34      ;
-; dmem_rtl_0_bypass[30]                   ; 1       ;
-; dmem_rtl_0_bypass[29]                   ; 1       ;
-; dmem_rtl_0_bypass[40]                   ; 1       ;
-; dmem_rtl_0_bypass[39]                   ; 1       ;
-; dmem_rtl_0_bypass[36]                   ; 1       ;
-; dmem_rtl_0_bypass[35]                   ; 1       ;
-; dmem_rtl_0_bypass[34]                   ; 1       ;
-; dmem_rtl_0_bypass[33]                   ; 1       ;
-; dmem_rtl_0_bypass[32]                   ; 1       ;
+; PC[8]                                   ; 25      ;
+; dmem_rtl_0_bypass[30]                   ; 2       ;
+; dmem_rtl_0_bypass[29]                   ; 2       ;
 ; dmem_rtl_0_bypass[38]                   ; 1       ;
-; dmem_rtl_0_bypass[44]                   ; 1       ;
-; dmem_rtl_0_bypass[43]                   ; 1       ;
-; dmem_rtl_0_bypass[42]                   ; 1       ;
-; dmem_rtl_0_bypass[92]                   ; 1       ;
-; dmem_rtl_0_bypass[90]                   ; 1       ;
-; dmem_rtl_0_bypass[88]                   ; 1       ;
-; dmem_rtl_0_bypass[86]                   ; 1       ;
-; dmem_rtl_0_bypass[84]                   ; 1       ;
-; dmem_rtl_0_bypass[82]                   ; 1       ;
-; dmem_rtl_0_bypass[68]                   ; 1       ;
-; dmem_rtl_0_bypass[66]                   ; 1       ;
-; dmem_rtl_0_bypass[64]                   ; 1       ;
-; dmem_rtl_0_bypass[62]                   ; 1       ;
-; dmem_rtl_0_bypass[60]                   ; 1       ;
-; dmem_rtl_0_bypass[59]                   ; 1       ;
-; dmem_rtl_0_bypass[58]                   ; 1       ;
-; dmem_rtl_0_bypass[57]                   ; 1       ;
 ; dmem_rtl_0_bypass[80]                   ; 1       ;
 ; dmem_rtl_0_bypass[78]                   ; 1       ;
 ; dmem_rtl_0_bypass[76]                   ; 1       ;
@@ -369,9 +345,33 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; dmem_rtl_0_bypass[51]                   ; 1       ;
 ; dmem_rtl_0_bypass[50]                   ; 1       ;
 ; dmem_rtl_0_bypass[49]                   ; 1       ;
-; dmem_rtl_0_bypass[48]                   ; 1       ;
-; dmem_rtl_0_bypass[47]                   ; 1       ;
-; dmem_rtl_0_bypass[46]                   ; 1       ;
+; dmem_rtl_0_bypass[48]                   ; 2       ;
+; dmem_rtl_0_bypass[47]                   ; 2       ;
+; dmem_rtl_0_bypass[46]                   ; 2       ;
+; dmem_rtl_0_bypass[44]                   ; 2       ;
+; dmem_rtl_0_bypass[43]                   ; 2       ;
+; dmem_rtl_0_bypass[42]                   ; 2       ;
+; dmem_rtl_0_bypass[40]                   ; 2       ;
+; dmem_rtl_0_bypass[39]                   ; 2       ;
+; dmem_rtl_0_bypass[64]                   ; 1       ;
+; dmem_rtl_0_bypass[62]                   ; 1       ;
+; dmem_rtl_0_bypass[60]                   ; 1       ;
+; dmem_rtl_0_bypass[59]                   ; 1       ;
+; dmem_rtl_0_bypass[58]                   ; 1       ;
+; dmem_rtl_0_bypass[57]                   ; 1       ;
+; dmem_rtl_0_bypass[92]                   ; 1       ;
+; dmem_rtl_0_bypass[90]                   ; 1       ;
+; dmem_rtl_0_bypass[84]                   ; 1       ;
+; dmem_rtl_0_bypass[82]                   ; 1       ;
+; dmem_rtl_0_bypass[88]                   ; 1       ;
+; dmem_rtl_0_bypass[86]                   ; 1       ;
+; dmem_rtl_0_bypass[68]                   ; 1       ;
+; dmem_rtl_0_bypass[66]                   ; 1       ;
+; dmem_rtl_0_bypass[32]                   ; 2       ;
+; dmem_rtl_0_bypass[34]                   ; 2       ;
+; dmem_rtl_0_bypass[33]                   ; 2       ;
+; dmem_rtl_0_bypass[36]                   ; 2       ;
+; dmem_rtl_0_bypass[35]                   ; 2       ;
 ; Total number of inverted registers = 64 ;         ;
 +-----------------------------------------+---------+
 
@@ -483,26 +483,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Project|PC[1]             ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Project|wrmem_A           ;
-; 16:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; Yes        ; |Project|aluin1_A[10]      ;
-; 5:1                ; 29 bits   ; 87 LEs        ; 58 LEs               ; 29 LEs                 ; Yes        ; |Project|PC[21]            ;
-; 12:1               ; 6 bits    ; 48 LEs        ; 42 LEs               ; 6 LEs                  ; Yes        ; |Project|alufunc_A[2]      ;
-; 22:1               ; 12 bits   ; 168 LEs       ; 120 LEs              ; 48 LEs                 ; Yes        ; |Project|memaddr_M[23]     ;
-; 25:1               ; 3 bits    ; 48 LEs        ; 42 LEs               ; 6 LEs                  ; Yes        ; |Project|memaddr_M[28]     ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Project|isjump_A          ;
+; 5:1                ; 29 bits   ; 87 LEs        ; 58 LEs               ; 29 LEs                 ; Yes        ; |Project|PC[26]            ;
+; 12:1               ; 6 bits    ; 48 LEs        ; 42 LEs               ; 6 LEs                  ; Yes        ; |Project|alufunc_A[0]      ;
+; 18:1               ; 32 bits   ; 384 LEs       ; 384 LEs              ; 0 LEs                  ; Yes        ; |Project|aluin1_A[12]      ;
+; 67:1               ; 4 bits    ; 176 LEs       ; 44 LEs               ; 132 LEs                ; Yes        ; |Project|destreg_A[3]      ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft0        ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftLeft0        ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Project|ShiftRight0       ;
 ; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |Project|ShiftRight0       ;
-; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|ShiftLeft0        ;
+; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Project|ShiftRight0       ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss0|OUT  ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss1|OUT  ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss2|OUT  ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss3|OUT  ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss4|OUT  ;
 ; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |Project|SevenSeg:ss5|OUT  ;
-; 16:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; No         ; |Project|Mux39             ;
+; 18:1               ; 32 bits   ; 384 LEs       ; 384 LEs              ; 0 LEs                  ; No         ; |Project|RTval_D[18]       ;
+; 22:1               ; 12 bits   ; 168 LEs       ; 144 LEs              ; 24 LEs                 ; No         ; |Project|Selector36        ;
 ; 22:1               ; 11 bits   ; 154 LEs       ; 132 LEs              ; 22 LEs                 ; No         ; |Project|Selector47        ;
-; 25:1               ; 2 bits    ; 32 LEs        ; 28 LEs               ; 4 LEs                  ; No         ; |Project|Selector54        ;
+; 25:1               ; 3 bits    ; 48 LEs        ; 42 LEs               ; 6 LEs                  ; No         ; |Project|Selector22        ;
+; 25:1               ; 3 bits    ; 48 LEs        ; 42 LEs               ; 6 LEs                  ; No         ; |Project|Selector49        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -975,27 +976,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA               ; 246                         ;
 ;     ENA CLR           ; 548                         ;
 ;     plain             ; 80                          ;
-; arriav_lcell_comb     ; 1371                        ;
+; arriav_lcell_comb     ; 1458                        ;
 ;     arith             ; 122                         ;
 ;         1 data inputs ; 30                          ;
 ;         2 data inputs ; 92                          ;
-;     extend            ; 12                          ;
-;         7 data inputs ; 12                          ;
-;     normal            ; 1205                        ;
+;     extend            ; 56                          ;
+;         7 data inputs ; 56                          ;
+;     normal            ; 1248                        ;
 ;         1 data inputs ; 35                          ;
-;         2 data inputs ; 24                          ;
-;         3 data inputs ; 46                          ;
-;         4 data inputs ; 209                         ;
-;         5 data inputs ; 231                         ;
-;         6 data inputs ; 660                         ;
+;         2 data inputs ; 30                          ;
+;         3 data inputs ; 63                          ;
+;         4 data inputs ; 226                         ;
+;         5 data inputs ; 237                         ;
+;         6 data inputs ; 657                         ;
 ;     shared            ; 32                          ;
 ;         2 data inputs ; 32                          ;
 ; boundary_port         ; 68                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 64                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 4.16                        ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 5.45                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1004,7 +1005,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:06     ;
+; Top            ; 00:00:07     ;
 +----------------+--------------+
 
 
@@ -1014,7 +1015,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Wed Apr 12 00:18:38 2017
+    Info: Processing started: Thu Apr 13 22:10:48 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Project -c Project
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 2 entities, in source file project.v
@@ -1027,13 +1028,11 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
 Info (12021): Found 1 design units, including 1 entities, in source file pll/pll_0002.v
     Info (12023): Found entity 1: Pll_0002
 Info (12127): Elaborating entity "Project" for the top level hierarchy
-Warning (10858): Verilog HDL warning at Project.v(158): object imem used but never assigned
-Warning (10036): Verilog HDL or VHDL warning at Project.v(300): object "single_reg_A" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at Project.v(353): object "inst_M" assigned a value but never read
+Warning (10858): Verilog HDL warning at Project.v(164): object imem used but never assigned
+Warning (10036): Verilog HDL or VHDL warning at Project.v(352): object "inst_M" assigned a value but never read
+Warning (10764): Verilog HDL warning at Project.v(341): converting signed shift amount to unsigned
 Warning (10764): Verilog HDL warning at Project.v(342): converting signed shift amount to unsigned
-Warning (10764): Verilog HDL warning at Project.v(343): converting signed shift amount to unsigned
-Warning (10235): Verilog HDL Always Construct warning at Project.v(344): variable "pcpred_A" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10240): Verilog HDL Always Construct warning at Project.v(442): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Project.v(441): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
 Info (12128): Elaborating entity "Pll" for hierarchy "Pll:myPll"
 Info (12128): Elaborating entity "Pll_0002" for hierarchy "Pll:myPll|Pll_0002:pll_inst"
 Info (12128): Elaborating entity "altera_pll" for hierarchy "Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i"
@@ -1151,16 +1150,16 @@ Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2245 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2327 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 2112 logic cells
+    Info (21061): Implemented 2194 logic cells
     Info (21064): Implemented 64 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 788 megabytes
-    Info: Processing ended: Wed Apr 12 00:18:46 2017
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:08
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 783 megabytes
+    Info: Processing ended: Thu Apr 13 22:11:00 2017
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:09
 
 
