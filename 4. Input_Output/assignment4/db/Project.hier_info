@@ -69,21 +69,21 @@ LEDR[8] <= LEDRout[8].DB_MAX_OUTPUT_PORT_TYPE
 LEDR[9] <= LEDRout[9].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Project|Pll:myPll
+|Project|Plloc:myPll
 refclk => refclk.IN1
 rst => rst.IN1
-outclk_0 <= Pll_0002:pll_inst.outclk_0
-locked <= Pll_0002:pll_inst.locked
+outclk_0 <= Plloc_0002:plloc_inst.outclk_0
+locked <= Plloc_0002:plloc_inst.locked
 
 
-|Project|Pll:myPll|Pll_0002:pll_inst
+|Project|Plloc:myPll|Plloc_0002:plloc_inst
 refclk => refclk.IN1
 rst => rst.IN1
 outclk_0 <= altera_pll:altera_pll_i.outclk
 locked <= altera_pll:altera_pll_i.locked
 
 
-|Project|Pll:myPll|Pll_0002:pll_inst|altera_pll:altera_pll_i
+|Project|Plloc:myPll|Plloc_0002:plloc_inst|altera_pll:altera_pll_i
 refclk => general[0].gpll.I_REFCLK
 refclk1 => ~NO_FANOUT~
 fbclk => ~NO_FANOUT~

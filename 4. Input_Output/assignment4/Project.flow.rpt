@@ -1,5 +1,5 @@
 Flow report for Project
-Thu Apr 13 22:12:49 2017
+Fri Apr 14 01:01:09 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -41,15 +41,15 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +---------------------------------+--------------------------------------------+
-; Flow Status                     ; Successful - Thu Apr 13 22:12:49 2017      ;
+; Flow Status                     ; Successful - Fri Apr 14 01:01:09 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
 ; Family                          ; Cyclone V                                  ;
 ; Device                          ; 5CEBA4F23C7                                ;
 ; Timing Models                   ; Final                                      ;
-; Logic utilization (in ALMs)     ; 1,118 / 18,480 ( 6 % )                     ;
-; Total registers                 ; 1036                                       ;
+; Logic utilization (in ALMs)     ; 1,161 / 18,480 ( 6 % )                     ;
+; Total registers                 ; 1087                                       ;
 ; Total pins                      ; 68 / 224 ( 30 % )                          ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 524,288 / 3,153,920 ( 17 % )               ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/13/2017 22:10:49 ;
+; Start date & time ; 04/14/2017 00:59:08 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Project             ;
 +-------------------+---------------------+
@@ -81,7 +81,7 @@ agreement for further details.
 +----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+----------------+
 ; ALM_REGISTER_PACKING_EFFORT                  ; Low                                                                                                                              ; Medium        ; --          ; --             ;
 ; AUTO_DELAY_CHAINS_FOR_HIGH_FANOUT_INPUT_PINS ; On                                                                                                                               ; Off           ; --          ; --             ;
-; COMPILER_SIGNATURE_ID                        ; 30902508553329.149213584809408                                                                                                   ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                        ; 30902508553329.149214594810516                                                                                                   ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME                     ; NA                                                                                                                               ; --            ; --          ; ProjectTest    ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH         ; ProjectTest                                                                                                                      ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT                       ; Verilog Hdl                                                                                                                      ; --            ; --          ; eda_simulation ;
@@ -95,35 +95,64 @@ agreement for further details.
 ; FITTER_EFFORT                                ; Standard Fit                                                                                                                     ; Auto Fit      ; --          ; --             ;
 ; IP_COMPONENT_AUTHOR                          ; QWx0ZXJhIENvcnBvcmF0aW9u                                                                                                         ; --            ; Pll         ; --             ;
 ; IP_COMPONENT_AUTHOR                          ; QWx0ZXJhIENvcnBvcmF0aW9u                                                                                                         ; --            ; Pll_0002    ; --             ;
+; IP_COMPONENT_AUTHOR                          ; QWx0ZXJhIENvcnBvcmF0aW9u                                                                                                         ; --            ; Plloc       ; --             ;
+; IP_COMPONENT_AUTHOR                          ; QWx0ZXJhIENvcnBvcmF0aW9u                                                                                                         ; --            ; Plloc_0002  ; --             ;
 ; IP_COMPONENT_DESCRIPTION                     ; QWx0ZXJhIFBoYXNlLUxvY2tlZCBMb29wIChBTFRFUkFfUExMKQ==                                                                             ; --            ; Pll         ; --             ;
 ; IP_COMPONENT_DESCRIPTION                     ; QWx0ZXJhIFBoYXNlLUxvY2tlZCBMb29wIChBTFRFUkFfUExMKQ==                                                                             ; --            ; Pll_0002    ; --             ;
+; IP_COMPONENT_DESCRIPTION                     ; QWx0ZXJhIFBoYXNlLUxvY2tlZCBMb29wIChBTFRFUkFfUExMKQ==                                                                             ; --            ; Plloc       ; --             ;
+; IP_COMPONENT_DESCRIPTION                     ; QWx0ZXJhIFBoYXNlLUxvY2tlZCBMb29wIChBTFRFUkFfUExMKQ==                                                                             ; --            ; Plloc_0002  ; --             ;
 ; IP_COMPONENT_DISPLAY_NAME                    ; QWx0ZXJhIFBMTA==                                                                                                                 ; --            ; Pll         ; --             ;
 ; IP_COMPONENT_DISPLAY_NAME                    ; QWx0ZXJhIFBMTA==                                                                                                                 ; --            ; Pll_0002    ; --             ;
+; IP_COMPONENT_DISPLAY_NAME                    ; QWx0ZXJhIFBMTA==                                                                                                                 ; --            ; Plloc       ; --             ;
+; IP_COMPONENT_DISPLAY_NAME                    ; QWx0ZXJhIFBMTA==                                                                                                                 ; --            ; Plloc_0002  ; --             ;
 ; IP_COMPONENT_INTERNAL                        ; Off                                                                                                                              ; Off           ; Pll         ; --             ;
 ; IP_COMPONENT_INTERNAL                        ; Off                                                                                                                              ; Off           ; Pll_0002    ; --             ;
+; IP_COMPONENT_INTERNAL                        ; Off                                                                                                                              ; Off           ; Plloc       ; --             ;
+; IP_COMPONENT_INTERNAL                        ; Off                                                                                                                              ; Off           ; Plloc_0002  ; --             ;
 ; IP_COMPONENT_NAME                            ; UGxs                                                                                                                             ; --            ; Pll         ; --             ;
 ; IP_COMPONENT_NAME                            ; UGxsXzAwMDI=                                                                                                                     ; --            ; Pll_0002    ; --             ;
+; IP_COMPONENT_NAME                            ; UGxsb2M=                                                                                                                         ; --            ; Plloc       ; --             ;
+; IP_COMPONENT_NAME                            ; UGxsb2NfMDAwMg==                                                                                                                 ; --            ; Plloc_0002  ; --             ;
 ; IP_COMPONENT_PARAMETER                       ; Z3VpX2VuYWJsZV9jYXNjYWRlX2lu::ZmFsc2U=::Q3JlYXRlIGFuIGFkanBsbGluIG9yIGNjbGsgc2lnbmFsIHRvIGNvbm5lY3Qgd2l0aCBhbiB1cHN0cmVhbSBQTEw= ; --            ; Pll_0002    ; --             ;
+; IP_COMPONENT_PARAMETER                       ; QVVUT19SRUZDTEtfQ0xPQ0tfUkFURQ==::LTE=::QXV0byBDTE9DS19SQVRF                                                                     ; --            ; Plloc_0002  ; --             ;
 ; IP_COMPONENT_REPORT_HIERARCHY                ; Off                                                                                                                              ; Off           ; Pll         ; --             ;
 ; IP_COMPONENT_REPORT_HIERARCHY                ; Off                                                                                                                              ; Off           ; Pll_0002    ; --             ;
+; IP_COMPONENT_REPORT_HIERARCHY                ; Off                                                                                                                              ; Off           ; Plloc       ; --             ;
+; IP_COMPONENT_REPORT_HIERARCHY                ; Off                                                                                                                              ; Off           ; Plloc_0002  ; --             ;
 ; IP_COMPONENT_VERSION                         ; MTUuMQ==                                                                                                                         ; --            ; Pll         ; --             ;
 ; IP_COMPONENT_VERSION                         ; MTUuMQ==                                                                                                                         ; --            ; Pll_0002    ; --             ;
+; IP_COMPONENT_VERSION                         ; MTQuMA==                                                                                                                         ; --            ; Plloc       ; --             ;
+; IP_COMPONENT_VERSION                         ; MTQuMA==                                                                                                                         ; --            ; Plloc_0002  ; --             ;
 ; IP_GENERATED_DEVICE_FAMILY                   ; {Cyclone V}                                                                                                                      ; --            ; Pll         ; --             ;
+; IP_GENERATED_DEVICE_FAMILY                   ; {Cyclone V}                                                                                                                      ; --            ; Plloc       ; --             ;
 ; IP_QSYS_MODE                                 ; UNKNOWN                                                                                                                          ; --            ; Pll         ; --             ;
+; IP_QSYS_MODE                                 ; UNKNOWN                                                                                                                          ; --            ; Plloc       ; --             ;
 ; IP_TARGETED_DEVICE_FAMILY                    ; Cyclone V                                                                                                                        ; --            ; Pll         ; --             ;
+; IP_TARGETED_DEVICE_FAMILY                    ; Cyclone V                                                                                                                        ; --            ; Plloc       ; --             ;
 ; IP_TOOL_ENV                                  ; mwpim                                                                                                                            ; --            ; Pll         ; --             ;
 ; IP_TOOL_ENV                                  ; mwpim                                                                                                                            ; --            ; Pll         ; --             ;
 ; IP_TOOL_ENV                                  ; mwpim                                                                                                                            ; --            ; Pll_0002    ; --             ;
+; IP_TOOL_ENV                                  ; mwpim                                                                                                                            ; --            ; Plloc       ; --             ;
+; IP_TOOL_ENV                                  ; mwpim                                                                                                                            ; --            ; Plloc       ; --             ;
+; IP_TOOL_ENV                                  ; mwpim                                                                                                                            ; --            ; Plloc_0002  ; --             ;
 ; IP_TOOL_NAME                                 ; altera_pll                                                                                                                       ; --            ; Pll         ; --             ;
 ; IP_TOOL_NAME                                 ; altera_pll                                                                                                                       ; --            ; Pll         ; --             ;
 ; IP_TOOL_NAME                                 ; altera_pll                                                                                                                       ; --            ; Pll_0002    ; --             ;
+; IP_TOOL_NAME                                 ; altera_pll                                                                                                                       ; --            ; Plloc       ; --             ;
+; IP_TOOL_NAME                                 ; altera_pll                                                                                                                       ; --            ; Plloc       ; --             ;
+; IP_TOOL_NAME                                 ; altera_pll                                                                                                                       ; --            ; Plloc_0002  ; --             ;
 ; IP_TOOL_VERSION                              ; 15.1                                                                                                                             ; --            ; Pll         ; --             ;
 ; IP_TOOL_VERSION                              ; 15.1                                                                                                                             ; --            ; Pll         ; --             ;
 ; IP_TOOL_VERSION                              ; 15.1                                                                                                                             ; --            ; Pll_0002    ; --             ;
+; IP_TOOL_VERSION                              ; 14.0                                                                                                                             ; --            ; Plloc       ; --             ;
+; IP_TOOL_VERSION                              ; 14.0                                                                                                                             ; --            ; Plloc       ; --             ;
+; IP_TOOL_VERSION                              ; 14.0                                                                                                                             ; --            ; Plloc_0002  ; --             ;
 ; MAX_CORE_JUNCTION_TEMP                       ; 85                                                                                                                               ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP                       ; 0                                                                                                                                ; --            ; --          ; --             ;
 ; MISC_FILE                                    ; Pll.cmp                                                                                                                          ; --            ; --          ; --             ;
 ; MISC_FILE                                    ; Pll_sim/Pll.vo                                                                                                                   ; --            ; --          ; --             ;
+; MISC_FILE                                    ; Plloc.cmp                                                                                                                        ; --            ; --          ; --             ;
+; MISC_FILE                                    ; Plloc_sim/Plloc.vo                                                                                                               ; --            ; --          ; --             ;
 ; MUX_RESTRUCTURE                              ; Off                                                                                                                              ; Auto          ; --          ; --             ;
 ; OPTIMIZATION_TECHNIQUE                       ; Speed                                                                                                                            ; Balanced      ; --          ; --             ;
 ; PARTITION_COLOR                              ; 16764057                                                                                                                         ; --            ; --          ; Top            ;
@@ -143,7 +172,9 @@ agreement for further details.
 ; ROUTER_TIMING_OPTIMIZATION_LEVEL             ; MAXIMUM                                                                                                                          ; Normal        ; --          ; --             ;
 ; SMART_RECOMPILE                              ; On                                                                                                                               ; Off           ; --          ; --             ;
 ; SPD_FILE                                     ; Pll.spd                                                                                                                          ; --            ; --          ; --             ;
+; SPD_FILE                                     ; Plloc.spd                                                                                                                        ; --            ; --          ; --             ;
 ; SYNCHRONIZER_IDENTIFICATION                  ; Auto                                                                                                                             ; Off           ; --          ; --             ;
+; SYNTHESIS_ONLY_QIP                           ; On                                                                                                                               ; --            ; --          ; --             ;
 ; SYNTHESIS_ONLY_QIP                           ; On                                                                                                                               ; --            ; --          ; --             ;
 +----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+----------------+
 
@@ -153,13 +184,13 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:10     ; 1.0                     ; 783 MB              ; 00:00:09                           ;
-; Fitter                    ; 00:01:16     ; 1.0                     ; 1504 MB             ; 00:01:07                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 680 MB              ; 00:00:04                           ;
-; TimeQuest Timing Analyzer ; 00:00:14     ; 1.0                     ; 928 MB              ; 00:00:13                           ;
-; Design Assistant          ; 00:00:01     ; 1.0                     ; 584 MB              ; 00:00:01                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 642 MB              ; 00:00:01                           ;
-; Total                     ; 00:01:47     ; --                      ; --                  ; 00:01:35                           ;
+; Analysis & Synthesis      ; 00:00:09     ; 1.0                     ; 788 MB              ; 00:00:09                           ;
+; Fitter                    ; 00:01:25     ; 1.0                     ; 1525 MB             ; 00:01:24                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 682 MB              ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:13     ; 1.0                     ; 923 MB              ; 00:00:13                           ;
+; Design Assistant          ; 00:00:02     ; 1.0                     ; 585 MB              ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 650 MB              ; 00:00:01                           ;
+; Total                     ; 00:01:55     ; --                      ; --                  ; 00:01:52                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

@@ -77,7 +77,7 @@ module Project(
 
 
 	wire clk, locked;
-	Pll myPll(
+	Plloc myPll(
 		.refclk(CLOCK_50),
 		.rst      (!RESET_N),
 		.outclk_0 (clk),
