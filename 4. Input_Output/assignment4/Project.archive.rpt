@@ -1,5 +1,5 @@
 Archive Project report for Project
-Thu Mar 30 15:34:12 2017
+Mon Apr 17 22:49:55 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ agreement for further details.
 +----------------------------------------------------------------+
 ; Archive Project Summary                                        ;
 +------------------------+---------------------------------------+
-; Archive Project Status ; Successful - Thu Mar 30 15:34:12 2017 ;
+; Archive Project Status ; Successful - Mon Apr 17 22:49:55 2017 ;
 ; Revision Name          ; Project                               ;
 ; Top-level Entity Name  ; Project                               ;
 ; Family                 ; Cyclone V                             ;
@@ -50,17 +50,17 @@ Info: File Set 'Source control' contains:
     Info: Project source and settings files
     Info: Automatically detected source files
 Info: Archive will store files relative to the closest common parent directory
-Info (13213): Using common directory C:/Users/Nick/Desktop/Conte-Lake/3. Pipelined_Processor/assignment3/
+Info (13213): Using common directory D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/
 Info: ----------------------------------------------------------
 Info: ----------------------------------------------------------
-Info: Generated archive 'C:/Users/Nick/Desktop/Conte-Lake/3. Pipelined_Processor/assignment3/assignment3.qar'
+Info: Generated archive 'D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/assignment4.qar'
 Info: ----------------------------------------------------------
 Info: ----------------------------------------------------------
 Info: Generated report 'Project.archive.rpt'
-Info (23030): Evaluation of Tcl script c:/altera/14.0/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info (23030): Evaluation of Tcl script d:/altera/14.0/quartus/common/tcl/apps/qpm/qar.tcl was successful
 Info: Quartus II 64-Bit Shell was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 405 megabytes
-    Info: Processing ended: Thu Mar 30 15:34:12 2017
+    Info: Peak virtual memory: 411 megabytes
+    Info: Processing ended: Mon Apr 17 22:49:55 2017
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
@@ -82,6 +82,14 @@ Info: Quartus II 64-Bit Shell was successful. 0 errors, 0 warnings
 ; Pll/Pll_0002.qip              ;
 ; Pll/Pll_0002.v                ;
 ; Pll_sim/Pll.vo                ;
+; Plloc.cmp                     ;
+; Plloc.qip                     ;
+; Plloc.sip                     ;
+; Plloc.spd                     ;
+; Plloc.v                       ;
+; Plloc/Plloc_0002.qip          ;
+; Plloc/Plloc_0002.v            ;
+; Plloc_sim/Plloc.vo            ;
 ; Project.qpf                   ;
 ; Project.qsf                   ;
 ; Project.sdc                   ;
@@ -89,6 +97,7 @@ Info: Quartus II 64-Bit Shell was successful. 0 errors, 0 warnings
 ; SevenSeg.v                    ;
 ; Test.asm                      ;
 ; Test.mif                      ;
+; xmax.mif                      ;
 +-------------------------------+
 
 

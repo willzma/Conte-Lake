@@ -79,8 +79,6 @@ module Project(
 	parameter HEXBITS = 24;
 	parameter LEDRBITS = 10;
 
-
-
 	wire clk, locked;
 	Plloc myPll(
 		.refclk(CLOCK_50),
@@ -89,41 +87,7 @@ module Project(
 		.locked   (locked)
 	);
 
-	//assign clk = ~KEY;
-
-	/*wire clk2, locked;
-	Pll myPll(
-		.refclk(CLOCK_50),
-		.rst      (!RESET_N),
-		.outclk_0 (clk2),
-		.locked   (locked)
-	);
-	reg [31:0] buffer = 32'd0;
-	reg [31:0] cap = 32'd500000;
-	reg clk;
-	always @(posedge clk2 or posedge reset) begin
-		if (reset) begin
-			buffer <= 0;
-			clk <= 0;
-		end
-		else if (buffer < cap) begin
-			buffer <= buffer + 1;
-		end
-		else begin
-			buffer <= 0;
-			clk <= ~clk;
-		end
-	end*/
-
 	wire reset = !locked;
-
-	/**** STALL CONTROLLER ****/
-	/*wire stall;
-	wire rs_dependency;
-	wire rt_dependency;
-	assign rs_dependency = (~isnop_A) & (rs_D === destreg_A) | (~isnop_M) & (rs_D === destreg_M);
-	assign rt_dependency = (~isnop_A) & (rt_D === destreg_A) | (~isnop_M) & (rt_D === destreg_M);
-	assign stall = rs_dependency || rt_dependency;*/
 
 	/**** DATA FORWARDING CONTROLLER ****/
 	wire rs_match_A = (~isnop_A) & (rs_D != 4'b0) & (rs_D === destreg_A);
@@ -292,7 +256,6 @@ module Project(
 	reg signed [(DBITS - 1):0] aluin1_A;
 	reg signed [(DBITS - 1):0] aluin2_A;
 	reg signed [(DBITS - 1):0] sxtimm_A;
-	reg [(DBITS - 1):0] inst_A;
 	reg [(DBITS - 1):0] pcpred_A;
 	reg [(OP2BITS - 1):0] alufunc_A;
 	reg wrreg_A;
@@ -308,7 +271,6 @@ module Project(
 	always @(posedge clk or posedge reset) begin
 		if (reset) begin
 			isnop_A <= 1'b1;
-			inst_A <= {DBITS{1'b0}};
 		end else begin
 			aluin1_A <= RSval_D; // Always load RS into 1st input
 			aluin2_A <= aluimm_D ? sxtimm_D : RTval_D; // Perhaps load sxtimm into 2nd input, otherwise RT.
@@ -320,7 +282,6 @@ module Project(
 			destreg_A <= destreg_D;
 			RTreg_A <= RTval_D;
 			isnop_A <= isnop_D | stall;
-			inst_A <= inst_D;
 			isbranch_A <= isbranch_D;
 			isjump_A <= isjump_D;
 			pcpred_A <= pcpred_D;
@@ -354,7 +315,6 @@ module Project(
 
 	/*** MEM STAGE ****/
 	reg signed [(DBITS - 1):0] memaddr_M;
-	reg [(DBITS - 1):0] inst_M;
 	reg wrmem_M;
 	reg ldmem_M;
 	reg wrreg_M;
@@ -366,7 +326,6 @@ module Project(
 	always @(posedge clk or posedge reset) begin
 		if (reset) begin
 			isnop_M <= 1'b1;
-			inst_M <= {DBITS{1'b0}};
 		end else begin
 			memaddr_M <= aluout_A;
 			wrmem_M <= wrmem_A;
@@ -375,7 +334,6 @@ module Project(
 			destreg_M <= destreg_A;
 			wmemval_M <= RTreg_A;
 			isnop_M <= isnop_A;
-			inst_M <= inst_A;
 		end
 	end
 
@@ -395,13 +353,11 @@ module Project(
 		if (reset) begin
 			LEDRout <= 10'b0;
 			ledr_data <= 32'b0;
-			//LEDRout <= {isnop_D, isnop_A, isnop_M, {4{1'b0}}, rs_dependency, rt_dependency, stall};
 		end else if (wrmem_M && (memaddr_M == ADDRLEDR) && !isnop_M) begin
 			// NOP check - Don't display HEX on NOP
 			LEDRout <= wmemval_M[9:0];
 			ledr_data <= {22'b0, wmemval_M[9:0]};
 		end
-			//LEDRout <= {isnop_D, isnop_A, isnop_M, {6{1'b0}}, stall};
 	end
 
 	reg [(DBITS - 1):0] hex_data;
@@ -414,8 +370,6 @@ module Project(
 			HEXout <= wmemval_M[23:0];
 			hex_data <= {8'b0, wmemval_M[23:0]};
 		end
-			//HEXout <= { inst_D[31:28], inst_D[3:0],inst_A[31:28], inst_A[3:0],inst_M[31:28], inst_M[3:0], };
-			//HEXout <=  aluin2_A[23:0];
 	end
 
 	// Now the real data memory
@@ -434,10 +388,10 @@ module Project(
 
 	// Connect memory and input devices to the bus
 	// you might need to change the following statement.
-	
+
 	// Connect SW device
 	wire [(DBITS-1):0] sw_data;
-	
+
 	Debouncer #(
 		.INIT(10'd0),
 		.DBITS(DBITS),
@@ -454,10 +408,10 @@ module Project(
 		.WE(wrmem_M),
 		.IN(SW)
 	);
-	
+
 	// Connect Key
 	wire [(DBITS-1):0] key_data;
-	
+
 	Debouncer #(
 		.INIT(4'd0),
 		.DBITS(DBITS),
@@ -474,10 +428,10 @@ module Project(
 		.WE(wrmem_M),
 		.IN(~KEY)
 	);
-	
+
 	// Connect Timer
 	wire [(DBITS-1):0] timer_data;
-	
+
 	Timer #(
 		.DBITS(DBITS),
 		.LIM_ADDR(ADDRTLIM),
@@ -496,15 +450,15 @@ module Project(
 	wire [(DBITS-1):0] dbus = (memaddr_M == ADDRHEX) ? hex_data :
 									(memaddr_M == ADDRLEDR) ? ledr_data :
 									(sw_data | key_data | timer_data);
-	
+
 
 	wire [(DBITS - 1):0] memout_M = MemEnable ? MemVal : dbus;
-									
 
-	// Determine register write value	
+
+	// Determine register write value
 	wire [(DBITS - 1):0] wregval_M = ldmem_M ? memout_M : memaddr_M;
 
-	
+
 	/*** Write Back Stage *****/
 	integer r;
 	integer i;
@@ -535,7 +489,7 @@ module Debouncer(CLK, RESET, ABUS, DOUT, DIN, WE, IN);
 	parameter CTRL_ADDR; // Address of control register
 	parameter INIT; // An empty register for resetting current and previous registers
 	parameter DEBOUNCE; // Number of cycles for debounce functionality.
-	
+
 	input CLK;
 	input RESET;
 	input WE;
@@ -543,13 +497,13 @@ module Debouncer(CLK, RESET, ABUS, DOUT, DIN, WE, IN);
 	input [(IOBITS-1):0] IN; // Raw input of the device
 	input [(DBITS-1):0] DIN;
 	output [(DBITS-1):0] DOUT;
-	
+
 	reg [(DBITS-1):0] counter; // Counter variable.
 	reg [(IOBITS-1):0] last;
 	reg [(IOBITS-1):0] current; // Used to determine if IO data has changed
 	reg ready;
 	reg overflow; // The ready and overflow bits of the controller
-	
+
 	wire [(DBITS-1):0] io_data = {{(DBITS - IOBITS){1'b0}}, current}; // Extends the IO data.
 	wire [(DBITS-1):0] ctrl = {{(DBITS - 2){1'b0}}, overflow, ready};
 	wire dataActive = ABUS == DEVICE_ADDR; // Is this data access...
@@ -557,7 +511,7 @@ module Debouncer(CLK, RESET, ABUS, DOUT, DIN, WE, IN);
 	wire writeCtrl = WE && ctrlActive; // Are we writing control?
 	wire readData = !WE && dataActive; // Are we reading data?
 	wire readCtrl = !WE && ctrlActive; // Are we reading control?
-	
+
 	always @(posedge CLK or posedge RESET)
 		if (RESET) begin
 			current <= INIT; // Set current to all 0's
@@ -566,7 +520,7 @@ module Debouncer(CLK, RESET, ABUS, DOUT, DIN, WE, IN);
 			ready <= 1'b0; // Reset ready bit
 			overflow <= 1'b0; // Reset overflow bit
 		end else begin
-		
+
 			if (counter == DEBOUNCE - 1) begin // Finished debouncing. Always runs for KEY.
 				last <= current; // Previous now holds the last read value of IO data.
 				current <= IN; // Confidently set current to raw input. Remember, current is appended to data.
@@ -580,7 +534,7 @@ module Debouncer(CLK, RESET, ABUS, DOUT, DIN, WE, IN);
 			else begin
 				counter <= counter + 1; // Increase counter
 		   end
-			
+
 			if (readData) begin // On data reads, reset control.
 				ready <= 1'b0;
 				overflow <= 1'b0;
@@ -589,10 +543,10 @@ module Debouncer(CLK, RESET, ABUS, DOUT, DIN, WE, IN);
 				if (!DIN[1])
 					overflow <= 1'b0;
 		end
-		
+
 	// Only output data on reads.
 	assign DOUT = readData ? io_data : readCtrl ? ctrl : {DBITS{1'b0}};
-	
+
 endmodule
 
 module Timer(CLK, RESET, ABUS, WE, DIN, DOUT);
@@ -601,26 +555,26 @@ module Timer(CLK, RESET, ABUS, WE, DIN, DOUT);
 	parameter CNT_ADDR; // MMIO address for counter reg
 	parameter CTRL_ADDR; // MMIO address for control reg
 	parameter MSTIME; // Number of clock cycles per milli second
-	
+
 	input CLK;
 	input RESET;
 	input WE;
 	input [(DBITS-1):0] ABUS;
 	input [(DBITS-1):0] DIN;
 	output [(DBITS-1):0] DOUT;
-	
+
 	reg [(DBITS-1):0] limit; // LIM
 	reg [(DBITS-1):0] count; // CNT
 	reg [(DBITS-1):0] internal_lim; // Used as lim for internal clock
 	reg ready;
    reg overflow;
-	
+
 	wire [(DBITS-1):0] ctrl = {{(DBITS - 2){1'b0}},overflow,ready};
-	
+
 	wire countActive = ABUS == CNT_ADDR;
 	wire limitActive = ABUS == LIM_ADDR;
 	wire ctrlActive = ABUS == CTRL_ADDR;
-	
+
 	// Logic for function selection
 	wire readCount = !WE && countActive;
 	wire writeCount = WE && countActive;
@@ -628,7 +582,7 @@ module Timer(CLK, RESET, ABUS, WE, DIN, DOUT);
 	wire writeLimit = WE && limitActive;
 	wire readCtrl = !WE && ctrlActive;
 	wire writeCtrl = WE && ctrlActive;
-	
+
 	always @(posedge CLK or posedge RESET) begin
 		if (RESET) begin
 			internal_lim <= 0;
@@ -648,7 +602,7 @@ module Timer(CLK, RESET, ABUS, WE, DIN, DOUT);
 					count <= count + 1;
 			end else // MS still not complete
 				internal_lim <= internal_lim + 1;
-					
+
 			if (writeLimit) begin // Limit set
 				limit <= DIN;
 			end else if (writeCount) begin // Count set

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Project
-Mon Apr 17 19:53:59 2017
+Mon Apr 17 22:43:52 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -20,7 +20,7 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
  12. Inverted Register Statistics
  13. Registers Added for RAM Pass-Through Logic
  14. Multiplexer Restructuring Statistics (No Restructuring Performed)
- 15. Source assignments for altsyncram:dmem_rtl_0|altsyncram_jlm1:auto_generated
+ 15. Source assignments for altsyncram:dmem_rtl_0|altsyncram_bbm1:auto_generated
  16. Parameter Settings for User Entity Instance: Top-level Entity: |Project
  17. Parameter Settings for User Entity Instance: Plloc:myPll|Plloc_0002:plloc_inst|altera_pll:altera_pll_i
  18. Parameter Settings for User Entity Instance: SXT:sxt
@@ -64,13 +64,13 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Apr 17 19:53:59 2017      ;
+; Analysis & Synthesis Status     ; Successful - Mon Apr 17 22:43:51 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; Project                                    ;
 ; Top-level Entity Name           ; Project                                    ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 1110                                       ;
+; Total registers                 ; 1108                                       ;
 ; Total pins                      ; 68                                         ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 524,288                                    ;
@@ -178,37 +178,37 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 4      ;
+; Number detected on machine ; 8      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                      ;
-+----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                        ; Library ;
-+----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------------+---------+
-; Project.v                        ; yes             ; User Verilog HDL File                  ; C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/Project.v              ;         ;
-; SevenSeg.v                       ; yes             ; User Verilog HDL File                  ; C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/SevenSeg.v             ;         ;
-; Pll/Pll_0002.v                   ; yes             ; User Verilog HDL File                  ; C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/Pll/Pll_0002.v         ; Pll     ;
-; Plloc.v                          ; yes             ; User Wizard-Generated File             ; C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/Plloc.v                ; Plloc   ;
-; Plloc/Plloc_0002.v               ; yes             ; User Verilog HDL File                  ; C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/Plloc/Plloc_0002.v     ; Plloc   ;
-; altera_pll.v                     ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/altera_pll.v                         ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/altsyncram.tdf                       ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/stratix_ram_block.inc                ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/lpm_mux.inc                          ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/lpm_decode.inc                       ;         ;
-; aglobal140.inc                   ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/aglobal140.inc                       ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/a_rdenreg.inc                        ;         ;
-; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/altrom.inc                           ;         ;
-; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/altram.inc                           ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/14.0/quartus/libraries/megafunctions/altdpram.inc                         ;         ;
-; db/altsyncram_jlm1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/db/altsyncram_jlm1.tdf ;         ;
-; fmedian2.mif                     ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/fmedian2.mif           ;         ;
-; db/decode_5la.tdf                ; yes             ; Auto-Generated Megafunction            ; C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/db/decode_5la.tdf      ;         ;
-; db/decode_u0a.tdf                ; yes             ; Auto-Generated Megafunction            ; C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/db/decode_u0a.tdf      ;         ;
-; db/mux_2hb.tdf                   ; yes             ; Auto-Generated Megafunction            ; C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/db/mux_2hb.tdf         ;         ;
-+----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                       ;
++----------------------------------+-----------------+----------------------------------------+--------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                         ; Library ;
++----------------------------------+-----------------+----------------------------------------+--------------------------------------------------------------------------------------+---------+
+; Project.v                        ; yes             ; User Verilog HDL File                  ; D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/Project.v              ;         ;
+; SevenSeg.v                       ; yes             ; User Verilog HDL File                  ; D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/SevenSeg.v             ;         ;
+; Pll/Pll_0002.v                   ; yes             ; User Verilog HDL File                  ; D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/Pll/Pll_0002.v         ; Pll     ;
+; Plloc.v                          ; yes             ; User Wizard-Generated File             ; D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/Plloc.v                ; Plloc   ;
+; Plloc/Plloc_0002.v               ; yes             ; User Verilog HDL File                  ; D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/Plloc/Plloc_0002.v     ; Plloc   ;
+; altera_pll.v                     ; yes             ; Megafunction                           ; d:/altera/14.0/quartus/libraries/megafunctions/altera_pll.v                          ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; d:/altera/14.0/quartus/libraries/megafunctions/altsyncram.tdf                        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; d:/altera/14.0/quartus/libraries/megafunctions/stratix_ram_block.inc                 ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; d:/altera/14.0/quartus/libraries/megafunctions/lpm_mux.inc                           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; d:/altera/14.0/quartus/libraries/megafunctions/lpm_decode.inc                        ;         ;
+; aglobal140.inc                   ; yes             ; Megafunction                           ; d:/altera/14.0/quartus/libraries/megafunctions/aglobal140.inc                        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; d:/altera/14.0/quartus/libraries/megafunctions/a_rdenreg.inc                         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                           ; d:/altera/14.0/quartus/libraries/megafunctions/altrom.inc                            ;         ;
+; altram.inc                       ; yes             ; Megafunction                           ; d:/altera/14.0/quartus/libraries/megafunctions/altram.inc                            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; d:/altera/14.0/quartus/libraries/megafunctions/altdpram.inc                          ;         ;
+; db/altsyncram_bbm1.tdf           ; yes             ; Auto-Generated Megafunction            ; D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/db/altsyncram_bbm1.tdf ;         ;
+; xmax.mif                         ; yes             ; Auto-Found Memory Initialization File  ; D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/xmax.mif               ;         ;
+; db/decode_5la.tdf                ; yes             ; Auto-Generated Megafunction            ; D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/db/decode_5la.tdf      ;         ;
+; db/decode_u0a.tdf                ; yes             ; Auto-Generated Megafunction            ; D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/db/decode_u0a.tdf      ;         ;
+; db/mux_2hb.tdf                   ; yes             ; Auto-Generated Megafunction            ; D:/Users/theon/Desktop/Conte-Lake/4. Input_Output/assignment4/db/mux_2hb.tdf         ;         ;
++----------------------------------+-----------------+----------------------------------------+--------------------------------------------------------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------------------------------------------+
@@ -216,16 +216,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                    ;
 +---------------------------------------------+--------------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 1316                                                                     ;
+; Estimate of Logic utilization (ALMs needed) ; 1351                                                                     ;
 ;                                             ;                                                                          ;
-; Combinational ALUT usage for logic          ; 1802                                                                     ;
-;     -- 7 input functions                    ; 19                                                                       ;
-;     -- 6 input functions                    ; 733                                                                      ;
-;     -- 5 input functions                    ; 278                                                                      ;
-;     -- 4 input functions                    ; 297                                                                      ;
-;     -- <=3 input functions                  ; 475                                                                      ;
+; Combinational ALUT usage for logic          ; 1857                                                                     ;
+;     -- 7 input functions                    ; 27                                                                       ;
+;     -- 6 input functions                    ; 741                                                                      ;
+;     -- 5 input functions                    ; 317                                                                      ;
+;     -- 4 input functions                    ; 270                                                                      ;
+;     -- <=3 input functions                  ; 502                                                                      ;
 ;                                             ;                                                                          ;
-; Dedicated logic registers                   ; 1110                                                                     ;
+; Dedicated logic registers                   ; 1108                                                                     ;
 ;                                             ;                                                                          ;
 ; I/O pins                                    ; 68                                                                       ;
 ; Total MLAB memory bits                      ; 0                                                                        ;
@@ -235,9 +235,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;     -- PLLs                                 ; 1                                                                        ;
 ;                                             ;                                                                          ;
 ; Maximum fan-out node                        ; Plloc:myPll|Plloc_0002:plloc_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 1182                                                                     ;
-; Total fan-out                               ; 13090                                                                    ;
-; Average fan-out                             ; 4.20                                                                     ;
+; Maximum fan-out                             ; 1180                                                                     ;
+; Total fan-out                               ; 13335                                                                    ;
+; Average fan-out                             ; 4.21                                                                     ;
 +---------------------------------------------+--------------------------------------------------------------------------+
 
 
@@ -246,7 +246,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                              ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
-; |Project                               ; 1802 (1449)       ; 1110 (913)   ; 524288            ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
+; |Project                               ; 1857 (1490)       ; 1108 (911)   ; 524288            ; 0          ; 68   ; 0            ; |Project                                                                         ; work         ;
 ;    |Debouncer:devKEY|                  ; 53 (53)           ; 42 (42)      ; 0                 ; 0          ; 0    ; 0            ; |Project|Debouncer:devKEY                                                        ; work         ;
 ;    |Debouncer:devSW|                   ; 62 (62)           ; 54 (54)      ; 0                 ; 0          ; 0    ; 0            ; |Project|Debouncer:devSW                                                         ; work         ;
 ;    |Plloc:myPll|                       ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|Plloc:myPll                                                             ; Plloc        ;
@@ -258,21 +258,21 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;    |SevenSeg:ss3|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss3                                                            ; work         ;
 ;    |SevenSeg:ss4|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss4                                                            ; work         ;
 ;    |SevenSeg:ss5|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|SevenSeg:ss5                                                            ; work         ;
-;    |Timer:devTimer|                    ; 191 (191)         ; 98 (98)      ; 0                 ; 0          ; 0    ; 0            ; |Project|Timer:devTimer                                                          ; work         ;
-;    |altsyncram:dmem_rtl_0|             ; 5 (0)             ; 3 (0)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0                                                   ; work         ;
-;       |altsyncram_jlm1:auto_generated| ; 5 (3)             ; 3 (3)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_jlm1:auto_generated                    ; work         ;
-;          |decode_5la:decode2|          ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_jlm1:auto_generated|decode_5la:decode2 ; work         ;
+;    |Timer:devTimer|                    ; 206 (206)         ; 98 (98)      ; 0                 ; 0          ; 0    ; 0            ; |Project|Timer:devTimer                                                          ; work         ;
+;    |altsyncram:dmem_rtl_0|             ; 4 (0)             ; 3 (0)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0                                                   ; work         ;
+;       |altsyncram_bbm1:auto_generated| ; 4 (2)             ; 3 (3)        ; 524288            ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_bbm1:auto_generated                    ; work         ;
+;          |decode_5la:decode2|          ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Project|altsyncram:dmem_rtl_0|altsyncram_bbm1:auto_generated|decode_5la:decode2 ; work         ;
 +----------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                              ;
-+-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+--------------+
-; Name                                                            ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF          ;
-+-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+--------------+
-; altsyncram:dmem_rtl_0|altsyncram_jlm1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16384        ; 32           ; 16384        ; 32           ; 524288 ; fmedian2.mif ;
-+-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                          ;
++-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------+
+; Name                                                            ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF      ;
++-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------+
+; altsyncram:dmem_rtl_0|altsyncram_bbm1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16384        ; 32           ; 16384        ; 32           ; 524288 ; xmax.mif ;
++-----------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------+
 
 
 +--------------------------------------------------------------------------------------------------------+
@@ -316,8 +316,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; hex_data[2]                            ; Merged with HEXout[2]                  ;
 ; hex_data[1]                            ; Merged with HEXout[1]                  ;
 ; hex_data[0]                            ; Merged with HEXout[0]                  ;
+; sxtimm_A[12]                           ; Merged with sxtimm_A[29]               ;
+; sxtimm_A[13]                           ; Merged with sxtimm_A[14]               ;
 ; alufunc_A[6,7]                         ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 70 ;                                        ;
+; Total Number of Removed Registers = 72 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
 
@@ -326,12 +328,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1110  ;
+; Total registers                              ; 1108  ;
 ; Number of registers using Synchronous Clear  ; 32    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 784   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 864   ;
+; Number of registers using Clock Enable       ; 862   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -361,12 +363,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HEXout[23]                              ; 8       ;
 ; isnop_M                                 ; 7       ;
 ; isnop_A                                 ; 5       ;
-; PC[8]                                   ; 24      ;
+; PC[8]                                   ; 68      ;
 ; dmem_rtl_0_bypass[30]                   ; 1       ;
 ; dmem_rtl_0_bypass[29]                   ; 1       ;
 ; dmem_rtl_0_bypass[40]                   ; 1       ;
 ; dmem_rtl_0_bypass[39]                   ; 1       ;
-; dmem_rtl_0_bypass[38]                   ; 1       ;
 ; dmem_rtl_0_bypass[92]                   ; 1       ;
 ; dmem_rtl_0_bypass[90]                   ; 1       ;
 ; dmem_rtl_0_bypass[88]                   ; 1       ;
@@ -397,9 +398,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; dmem_rtl_0_bypass[70]                   ; 1       ;
 ; dmem_rtl_0_bypass[68]                   ; 1       ;
 ; dmem_rtl_0_bypass[66]                   ; 1       ;
-; dmem_rtl_0_bypass[56]                   ; 2       ;
+; dmem_rtl_0_bypass[56]                   ; 1       ;
 ; dmem_rtl_0_bypass[54]                   ; 1       ;
 ; dmem_rtl_0_bypass[53]                   ; 1       ;
+; dmem_rtl_0_bypass[38]                   ; 1       ;
 ; dmem_rtl_0_bypass[36]                   ; 1       ;
 ; dmem_rtl_0_bypass[35]                   ; 1       ;
 ; dmem_rtl_0_bypass[34]                   ; 1       ;
@@ -546,7 +548,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 +-----------------------------------------------------------------------------+
-; Source assignments for altsyncram:dmem_rtl_0|altsyncram_jlm1:auto_generated ;
+; Source assignments for altsyncram:dmem_rtl_0|altsyncram_bbm1:auto_generated ;
 +---------------------------------+--------------------+------+---------------+
 ; Assignment                      ; Value              ; From ; To            ;
 +---------------------------------+--------------------+------+---------------+
@@ -575,7 +577,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; ADDRTCNT       ; 11111111111111111111000100000000 ; Unsigned Binary     ;
 ; ADDRTLIM       ; 11111111111111111111000100000100 ; Unsigned Binary     ;
 ; ADDRTCTRL      ; 11111111111111111111000100001000 ; Unsigned Binary     ;
-; IMEMINITFILE   ; fmedian2.mif                     ; String              ;
+; IMEMINITFILE   ; xmax.mif                         ; String              ;
 ; IMEMADDRBITS   ; 16                               ; Signed Integer      ;
 ; IMEMWORDBITS   ; 2                                ; Signed Integer      ;
 ; IMEMWORDS      ; 16384                            ; Signed Integer      ;
@@ -961,7 +963,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped        ;
 ; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped        ;
 ; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped        ;
-; INIT_FILE                          ; fmedian2.mif         ; Untyped        ;
+; INIT_FILE                          ; xmax.mif             ; Untyped        ;
 ; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped        ;
 ; MAXIMUM_DEPTH                      ; 0                    ; Untyped        ;
 ; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped        ;
@@ -974,7 +976,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped        ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped        ;
 ; DEVICE_FAMILY                      ; Cyclone V            ; Untyped        ;
-; CBXI_PARAMETER                     ; altsyncram_jlm1      ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_bbm1      ; Untyped        ;
 +------------------------------------+----------------------+----------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -1058,33 +1060,33 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 1110                        ;
+; arriav_ff             ; 1108                        ;
 ;     CLR               ; 134                         ;
 ;     CLR SCLR          ; 32                          ;
-;     ENA               ; 246                         ;
+;     ENA               ; 244                         ;
 ;     ENA CLR           ; 618                         ;
 ;     plain             ; 80                          ;
-; arriav_lcell_comb     ; 1808                        ;
+; arriav_lcell_comb     ; 1863                        ;
 ;     arith             ; 282                         ;
 ;         1 data inputs ; 190                         ;
 ;         2 data inputs ; 92                          ;
-;     extend            ; 19                          ;
-;         7 data inputs ; 19                          ;
-;     normal            ; 1475                        ;
-;         1 data inputs ; 40                          ;
-;         2 data inputs ; 57                          ;
-;         3 data inputs ; 70                          ;
-;         4 data inputs ; 297                         ;
-;         5 data inputs ; 278                         ;
-;         6 data inputs ; 733                         ;
+;     extend            ; 27                          ;
+;         7 data inputs ; 27                          ;
+;     normal            ; 1522                        ;
+;         1 data inputs ; 39                          ;
+;         2 data inputs ; 82                          ;
+;         3 data inputs ; 73                          ;
+;         4 data inputs ; 270                         ;
+;         5 data inputs ; 317                         ;
+;         6 data inputs ; 741                         ;
 ;     shared            ; 32                          ;
 ;         2 data inputs ; 32                          ;
 ; boundary_port         ; 68                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 64                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.00                        ;
-; Average LUT depth     ; 5.45                        ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 5.02                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1093,7 +1095,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:12     ;
+; Top            ; 00:00:08     ;
 +----------------+--------------+
 
 
@@ -1103,7 +1105,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Mon Apr 17 19:53:43 2017
+    Info: Processing started: Mon Apr 17 22:43:41 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Project -c Project
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 4 design units, including 4 entities, in source file project.v
@@ -1122,11 +1124,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file plloc.v
 Info (12021): Found 1 design units, including 1 entities, in source file plloc/plloc_0002.v
     Info (12023): Found entity 1: Plloc_0002
 Info (12127): Elaborating entity "Project" for the top level hierarchy
-Warning (10858): Verilog HDL warning at Project.v(169): object imem used but never assigned
-Warning (10036): Verilog HDL or VHDL warning at Project.v(357): object "inst_M" assigned a value but never read
-Warning (10764): Verilog HDL warning at Project.v(346): converting signed shift amount to unsigned
-Warning (10764): Verilog HDL warning at Project.v(347): converting signed shift amount to unsigned
-Warning (10240): Verilog HDL Always Construct warning at Project.v(511): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
+Warning (10858): Verilog HDL warning at Project.v(133): object imem used but never assigned
+Warning (10764): Verilog HDL warning at Project.v(307): converting signed shift amount to unsigned
+Warning (10764): Verilog HDL warning at Project.v(308): converting signed shift amount to unsigned
+Warning (10240): Verilog HDL Always Construct warning at Project.v(465): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
 Info (12128): Elaborating entity "Plloc" for hierarchy "Plloc:myPll"
 Info (12128): Elaborating entity "Plloc_0002" for hierarchy "Plloc:myPll|Plloc_0002:plloc_inst"
 Info (12128): Elaborating entity "altera_pll" for hierarchy "Plloc:myPll|Plloc_0002:plloc_inst|altera_pll:altera_pll_i"
@@ -1217,7 +1218,7 @@ Info (19000): Inferred 1 megafunctions from design logic
         Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
         Info (286033): Parameter INDATA_ACLR_A set to NONE
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
-        Info (286033): Parameter INIT_FILE set to fmedian2.mif
+        Info (286033): Parameter INIT_FILE set to xmax.mif
 Info (12130): Elaborated megafunction instantiation "altsyncram:dmem_rtl_0"
 Info (12133): Instantiated megafunction "altsyncram:dmem_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
@@ -1234,9 +1235,9 @@ Info (12133): Instantiated megafunction "altsyncram:dmem_rtl_0" with the followi
     Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
     Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
-    Info (12134): Parameter "INIT_FILE" = "fmedian2.mif"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_jlm1.tdf
-    Info (12023): Found entity 1: altsyncram_jlm1
+    Info (12134): Parameter "INIT_FILE" = "xmax.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_bbm1.tdf
+    Info (12023): Found entity 1: altsyncram_bbm1
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_5la.tdf
     Info (12023): Found entity 1: decode_5la
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_u0a.tdf
@@ -1276,16 +1277,16 @@ Warning (20013): Ignored assignments for entity "Pll_0002" -- entity does not ex
     Warning (20014): Assignment for entity set_global_assignment -name IP_COMPONENT_PARAMETER "Z3VpX2VuYWJsZV9jYXNjYWRlX2lu::ZmFsc2U=::Q3JlYXRlIGFuIGFkanBsbGluIG9yIGNjbGsgc2lnbmFsIHRvIGNvbm5lY3Qgd2l0aCBhbiB1cHN0cmVhbSBQTEw=" -entity Pll_0002 -qip Pll.qip -library Pll was ignored
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2752 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2786 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 2619 logic cells
+    Info (21061): Implemented 2653 logic cells
     Info (21064): Implemented 64 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 37 warnings
-    Info: Peak virtual memory: 789 megabytes
-    Info: Processing ended: Mon Apr 17 19:53:59 2017
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:15
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 36 warnings
+    Info: Peak virtual memory: 790 megabytes
+    Info: Processing ended: Mon Apr 17 22:43:52 2017
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:10
 
 
