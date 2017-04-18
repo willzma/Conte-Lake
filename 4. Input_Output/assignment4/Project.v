@@ -21,8 +21,13 @@ module Project(
 	parameter STARTPC = 32'h100;
 	parameter ADDRHEX = 32'hFFFFF000;
 	parameter ADDRLEDR = 32'hFFFFF020;
-	parameter ADDRKEY = 32'hFFFFF080;
-	parameter ADDRSW = 32'hFFFFF090;
+	parameter ADDRKDATA = 32'hFFFFF080;
+	parameter ADDRKCTRL = 32'hFFFFF084;
+	parameter ADDRSDATA = 32'hFFFFF090;
+	parameter ADDRSCTRL = 32'hFFFFF094;
+	parameter ADDRTCNT = 32'hFFFFF100;
+	parameter ADDRTLIM = 32'hFFFFF104;
+	parameter ADDRTCTRL = 32'hFFFFF108;
 
 	// Change this to fmedian2.mif before submitting
 	parameter IMEMINITFILE = "fmedian2.mif";
@@ -429,20 +434,77 @@ module Project(
 
 	// Connect memory and input devices to the bus
 	// you might need to change the following statement.
-	wire [(DBITS - 1):0] memout_M = MemEnable ? MemVal :
-									(memaddr_M == ADDRKEY) ? {28'b0, ~KEY} :
-									(memaddr_M == ADDRHEX) ? hex_data :
-									(memaddr_M == ADDRLEDR) ? ledr_data :
-									(memaddr_M == ADDRSW) ? {20'b0, SW}: 32'hDEADDEAD;
+	
+	// Connect SW device
+	wire [(DBITS-1):0] sw_data;
+	
+	Debouncer #(
+		.INIT(10'd0),
+		.DBITS(DBITS),
+		.IOBITS(10),
+		.DEVICE_ADDR(ADDRSDATA),
+		.CTRL_ADDR(ADDRSCTRL),
+		.DEBOUNCE(900000)
+	) devSW (
+		.CLK(clk),
+		.RESET(reset),
+		.ABUS(memaddr_M),
+		.DIN(wmemval_M),
+		.DOUT(sw_data),
+		.WE(wrmem_M),
+		.IN(SW)
+	);
+	
+	// Connect Key
+	wire [(DBITS-1):0] key_data;
+	
+	Debouncer #(
+		.INIT(4'd0),
+		.DBITS(DBITS),
+		.IOBITS(4),
+		.DEVICE_ADDR(ADDRKDATA),
+		.CTRL_ADDR(ADDRKCTRL),
+		.DEBOUNCE(1)
+	) devKEY (
+		.CLK(clk),
+		.RESET(reset),
+		.ABUS(memaddr_M),
+		.DIN(wmemval_M),
+		.DOUT(key_data),
+		.WE(wrmem_M),
+		.IN(~KEY)
+	);
+	
+	// Connect Timer
+	wire [(DBITS-1):0] timer_data;
+	
+	Timer #(
+		.DBITS(DBITS),
+		.LIM_ADDR(ADDRTLIM),
+		.CNT_ADDR(ADDRTCNT),
+		.CTRL_ADDR(ADDRTCTRL),
+		.MSTIME(90000)
+	) devTimer (
+		.CLK(clk),
+		.RESET(reset),
+		.ABUS(memaddr_M),
+		.DIN(wmemval_M),
+		.DOUT(timer_data),
+		.WE(wrmem_M)
+	);
 
-	// Determine register write value
+	wire [(DBITS-1):0] dbus = (memaddr_M == ADDRHEX) ? hex_data :
+									(memaddr_M == ADDRLEDR) ? ledr_data :
+									(sw_data | key_data | timer_data);
+	
+
+	wire [(DBITS - 1):0] memout_M = MemEnable ? MemVal : dbus;
+									
+
+	// Determine register write value	
 	wire [(DBITS - 1):0] wregval_M = ldmem_M ? memout_M : memaddr_M;
 
-	// TODO: Decide what gets written into the destination register (wregval_M),
-	// when it gets written (wrreg_M) and to which register it gets written (destreg_M)
-
-
-
+	
 	/*** Write Back Stage *****/
 	integer r;
 	integer i;
@@ -464,4 +526,141 @@ module SXT(IN,OUT);
 	input  [(IBITS - 1):0] IN;
   output [(OBITS - 1):0] OUT;
   assign OUT = {{(OBITS - IBITS){IN[IBITS - 1]}}, IN};
+endmodule
+
+module Debouncer(CLK, RESET, ABUS, DOUT, DIN, WE, IN);
+	parameter DBITS;
+	parameter IOBITS;
+	parameter DEVICE_ADDR; // Address of data register
+	parameter CTRL_ADDR; // Address of control register
+	parameter INIT; // An empty register for resetting current and previous registers
+	parameter DEBOUNCE; // Number of cycles for debounce functionality.
+	
+	input CLK;
+	input RESET;
+	input WE;
+	input [(DBITS-1):0] ABUS; // Current address supplied by the processor.
+	input [(IOBITS-1):0] IN; // Raw input of the device
+	input [(DBITS-1):0] DIN;
+	output [(DBITS-1):0] DOUT;
+	
+	reg [(DBITS-1):0] counter; // Counter variable.
+	reg [(IOBITS-1):0] last;
+	reg [(IOBITS-1):0] current; // Used to determine if IO data has changed
+	reg ready;
+	reg overflow; // The ready and overflow bits of the controller
+	
+	wire [(DBITS-1):0] io_data = {{(DBITS - IOBITS){1'b0}}, current}; // Extends the IO data.
+	wire [(DBITS-1):0] ctrl = {{(DBITS - 2){1'b0}}, overflow, ready};
+	wire dataActive = ABUS == DEVICE_ADDR; // Is this data access...
+	wire ctrlActive = ABUS == CTRL_ADDR; // Or is this a control access?
+	wire writeCtrl = WE && ctrlActive; // Are we writing control?
+	wire readData = !WE && dataActive; // Are we reading data?
+	wire readCtrl = !WE && ctrlActive; // Are we reading control?
+	
+	always @(posedge CLK or posedge RESET)
+		if (RESET) begin
+			current <= INIT; // Set current to all 0's
+			last <= INIT; // Set previous to all 0's
+			counter <= 0; // Reset counter
+			ready <= 1'b0; // Reset ready bit
+			overflow <= 1'b0; // Reset overflow bit
+		end else begin
+		
+			if (counter == DEBOUNCE - 1) begin // Finished debouncing. Always runs for KEY.
+				last <= current; // Previous now holds the last read value of IO data.
+				current <= IN; // Confidently set current to raw input. Remember, current is appended to data.
+				counter <= 0;
+				if (last != current) begin // Change in data detected, we have a new value
+					if (ready) // If we were already holding a new value, turn on overflow.
+						overflow <= 1'b1;
+					ready <= 1'b1;
+				end
+			end
+			else begin
+				counter <= counter + 1; // Increase counter
+		   end
+			
+			if (readData) begin // On data reads, reset control.
+				ready <= 1'b0;
+				overflow <= 1'b0;
+			end else if (writeCtrl)
+			// If writing to control, check bus data to see if overflow was manually reset.
+				if (!DIN[1])
+					overflow <= 1'b0;
+		end
+		
+	// Only output data on reads.
+	assign DOUT = readData ? io_data : readCtrl ? ctrl : {DBITS{1'b0}};
+	
+endmodule
+
+module Timer(CLK, RESET, ABUS, WE, DIN, DOUT);
+	parameter DBITS;
+	parameter LIM_ADDR; // MMIO address for limit reg
+	parameter CNT_ADDR; // MMIO address for counter reg
+	parameter CTRL_ADDR; // MMIO address for control reg
+	parameter MSTIME; // Number of clock cycles per milli second
+	
+	input CLK;
+	input RESET;
+	input WE;
+	input [(DBITS-1):0] ABUS;
+	input [(DBITS-1):0] DIN;
+	output [(DBITS-1):0] DOUT;
+	
+	reg [(DBITS-1):0] limit; // LIM
+	reg [(DBITS-1):0] count; // CNT
+	reg [(DBITS-1):0] internal_lim; // Used as lim for internal clock
+	reg ready;
+   reg overflow;
+	
+	wire [(DBITS-1):0] ctrl = {{(DBITS - 2){1'b0}},overflow,ready};
+	
+	wire countActive = ABUS == CNT_ADDR;
+	wire limitActive = ABUS == LIM_ADDR;
+	wire ctrlActive = ABUS == CTRL_ADDR;
+	
+	// Logic for function selection
+	wire readCount = !WE && countActive;
+	wire writeCount = WE && countActive;
+	wire readLimit = !WE && limitActive;
+	wire writeLimit = WE && limitActive;
+	wire readCtrl = !WE && ctrlActive;
+	wire writeCtrl = WE && ctrlActive;
+	
+	always @(posedge CLK or posedge RESET) begin
+		if (RESET) begin
+			internal_lim <= 0;
+			count <= 0;
+			limit <= 0;
+			ready <= 1'b0;
+			overflow <= 1'b0;
+		end else begin
+			if (internal_lim >= (MSTIME - 1)) begin // 1 MS has passed
+				internal_lim <= 0;
+				if (limit != 0 && count >= (limit - 1)) begin // Limit reached
+					count <= 0;
+					ready <= 1'b1;
+					if (ready)
+						overflow <= 1'b1;
+				end else // Lim,it not reached
+					count <= count + 1;
+			end else // MS still not complete
+				internal_lim <= internal_lim + 1;
+					
+			if (writeLimit) begin // Limit set
+				limit <= DIN;
+			end else if (writeCount) begin // Count set
+				count <= DIN;
+			end else if (writeCtrl) begin // Control set
+				if (!DIN[0])
+					ready <= 1'b0;
+				if (!DIN[1])
+					overflow <= 1'b0;
+			end
+		end
+	end
+	// Output based on func selection
+	assign DOUT = readLimit ? limit : readCount ? count :	readCtrl ? ctrl : {DBITS{1'b0}};
 endmodule

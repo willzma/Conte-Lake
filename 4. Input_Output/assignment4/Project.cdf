@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(5CEBA4F23) Path("D:/Users/theon/Desktop/GitWork/CS3220/Conte-Lake/4. Input_Output/assignment4/") File("Project.sof") MfrSpec(OpMask(1));
+		Device PartName(5CEBA4F23) Path("C:/Users/Nick/Desktop/Conte-Lake/4. Input_Output/assignment4/") File("Project.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
